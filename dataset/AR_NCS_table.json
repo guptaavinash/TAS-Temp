@@ -50,5 +50,6 @@
 			"schema": "dbo",
 			"table": "NC_AR_Current"
 		}
-	}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
 }

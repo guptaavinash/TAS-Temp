@@ -81,5 +81,6 @@
 			"schema": "dbo",
 			"table": "tmpRawLEAPTAS_LocationMaster"
 		}
-	}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
 }

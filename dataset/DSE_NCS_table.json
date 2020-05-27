@@ -79,5 +79,6 @@
 			"schema": "dbo",
 			"table": "NC_DSE_Current"
 		}
-	}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
 }

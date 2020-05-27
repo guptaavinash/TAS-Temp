@@ -56,5 +56,6 @@
 			"schema": "dbo",
 			"table": "NC_RETAILER_SUBD"
 		}
-	}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
 }

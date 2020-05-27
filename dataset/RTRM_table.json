@@ -225,5 +225,6 @@
 			"schema": "dbo",
 			"table": "tmpRawLEAPTAS_RTRM"
 		}
-	}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
 }
