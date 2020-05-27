@@ -1,0 +1,33 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "NCS-LEAP-DataMovement"
+		},
+		"Leap_AmazonS3_secretAccessKey": {
+			"value": ""
+		},
+		"NCSdataStorageLink_connectionString": {
+			"value": ""
+		},
+		"LinkedService_PnGADLS_accountKey": {
+			"value": ""
+		},
+		"PnGDataFoundation_connectionString": {
+			"value": ""
+		},
+		"Leap_AmazonS3_properties_typeProperties_accessKeyId": {
+			"value": "AKIAW6LTDL6KHDJLBDO2"
+		},
+		"LinkedService_PnGADLS_properties_typeProperties_url": {
+			"value": "https://pngadls.dfs.core.windows.net"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}
