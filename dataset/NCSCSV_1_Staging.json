@@ -1,5 +1,5 @@
 {
-	"name": "NCSCSV_Staging",
+	"name": "NCSCSV_1_Staging",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "NCSdataStorageLink",
