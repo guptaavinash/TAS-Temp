@@ -5788,7 +5788,7 @@
 												"storeSettings": {
 													"type": "AzureBlobStorageReadSettings",
 													"recursive": true,
-													"wildcardFileName": "LOCM_cloud03_*",
+													"wildcardFileName": "LOCM_cloud01_*",
 													"enablePartitionDiscovery": false
 												},
 												"formatSettings": {
