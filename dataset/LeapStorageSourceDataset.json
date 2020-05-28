@@ -1,0 +1,21 @@
+{
+	"name": "LeapStorageSourceDataset",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "NCSdataStorageLink",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"container": "leap"
+			},
+			"compression": {
+				"type": "bzip2",
+				"level": "Fastest"
+			}
+		}
+	}
+}
