@@ -8,10 +8,10 @@
 		"Leap_AmazonS3_secretAccessKey": {
 			"value": ""
 		},
-		"NCSdataStorageLink_connectionString": {
+		"LinkedService_PnGADLS_accountKey": {
 			"value": ""
 		},
-		"LinkedService_PnGADLS_accountKey": {
+		"NCSdataStorageLink_connectionString": {
 			"value": ""
 		},
 		"PnGDataFoundation_connectionString": {

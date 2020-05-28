@@ -11,13 +11,13 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'secretAccessKey' of 'Leap_AmazonS3'"
 		},
-		"NCSdataStorageLink_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'NCSdataStorageLink'"
-		},
 		"LinkedService_PnGADLS_accountKey": {
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'LinkedService_PnGADLS'"
+		},
+		"NCSdataStorageLink_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'NCSdataStorageLink'"
 		},
 		"PnGDataFoundation_connectionString": {
 			"type": "secureString",
@@ -61,11 +61,11 @@
 					"Leap_AmazonS3_secretAccessKey": {
 						"value": "[parameters('Leap_AmazonS3_secretAccessKey')]"
 					},
-					"NCSdataStorageLink_connectionString": {
-						"value": "[parameters('NCSdataStorageLink_connectionString')]"
-					},
 					"LinkedService_PnGADLS_accountKey": {
 						"value": "[parameters('LinkedService_PnGADLS_accountKey')]"
+					},
+					"NCSdataStorageLink_connectionString": {
+						"value": "[parameters('NCSdataStorageLink_connectionString')]"
 					},
 					"PnGDataFoundation_connectionString": {
 						"value": "[parameters('PnGDataFoundation_connectionString')]"
@@ -98,6 +98,26 @@
 			},
 			"dependsOn": [
 				"[resourceId('Microsoft.Resources/deployments', 'ArmTemplate_0')]"
+			]
+		},
+		{
+			"name": "ArmTemplate_2",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_2.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'ArmTemplate_1')]"
 			]
 		}
 	]

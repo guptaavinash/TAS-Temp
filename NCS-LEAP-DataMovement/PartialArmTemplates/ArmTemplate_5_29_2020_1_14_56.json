@@ -6,30 +6,6 @@
 			"type": "string",
 			"metadata": "Data Factory name",
 			"defaultValue": "NCS-LEAP-DataMovement"
-		},
-		"Leap_AmazonS3_secretAccessKey": {
-			"type": "secureString",
-			"metadata": "Secure string for 'secretAccessKey' of 'Leap_AmazonS3'"
-		},
-		"LinkedService_PnGADLS_accountKey": {
-			"type": "secureString",
-			"metadata": "Secure string for 'accountKey' of 'LinkedService_PnGADLS'"
-		},
-		"NCSdataStorageLink_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'NCSdataStorageLink'"
-		},
-		"PnGDataFoundation_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'PnGDataFoundation'"
-		},
-		"Leap_AmazonS3_properties_typeProperties_accessKeyId": {
-			"type": "string",
-			"defaultValue": "AKIAW6LTDL6KHDJLBDO2"
-		},
-		"LinkedService_PnGADLS_properties_typeProperties_url": {
-			"type": "string",
-			"defaultValue": "https://pngadls.dfs.core.windows.net"
 		}
 	},
 	"variables": {
@@ -59,8 +35,7 @@
 						"typeProperties": {
 							"dataset": {
 								"referenceName": "LeapStorageSourceDataset",
-								"type": "DatasetReference",
-								"parameters": {}
+								"type": "DatasetReference"
 							},
 							"fieldList": [
 								"childItems",
@@ -321,15 +296,13 @@
 												"inputs": [
 													{
 														"referenceName": "LeapCSV_Staging",
-														"type": "DatasetReference",
-														"parameters": {}
+														"type": "DatasetReference"
 													}
 												],
 												"outputs": [
 													{
 														"referenceName": "ATTN_table",
-														"type": "DatasetReference",
-														"parameters": {}
+														"type": "DatasetReference"
 													}
 												]
 											}
@@ -521,15 +494,13 @@
 												"inputs": [
 													{
 														"referenceName": "LeapCSV_Staging",
-														"type": "DatasetReference",
-														"parameters": {}
+														"type": "DatasetReference"
 													}
 												],
 												"outputs": [
 													{
 														"referenceName": "ATTN_table",
-														"type": "DatasetReference",
-														"parameters": {}
+														"type": "DatasetReference"
 													}
 												]
 											}
@@ -721,15 +692,13 @@
 												"inputs": [
 													{
 														"referenceName": "LeapCSV_Staging",
-														"type": "DatasetReference",
-														"parameters": {}
+														"type": "DatasetReference"
 													}
 												],
 												"outputs": [
 													{
 														"referenceName": "ATTN_table",
-														"type": "DatasetReference",
-														"parameters": {}
+														"type": "DatasetReference"
 													}
 												]
 											}
@@ -861,15 +830,13 @@
 												"inputs": [
 													{
 														"referenceName": "LeapCSV_Staging",
-														"type": "DatasetReference",
-														"parameters": {}
+														"type": "DatasetReference"
 													}
 												],
 												"outputs": [
 													{
 														"referenceName": "BSBF_table",
-														"type": "DatasetReference",
-														"parameters": {}
+														"type": "DatasetReference"
 													}
 												]
 											}
@@ -1001,15 +968,13 @@
 												"inputs": [
 													{
 														"referenceName": "LeapCSV_Staging",
-														"type": "DatasetReference",
-														"parameters": {}
+														"type": "DatasetReference"
 													}
 												],
 												"outputs": [
 													{
 														"referenceName": "BSBF_table",
-														"type": "DatasetReference",
-														"parameters": {}
+														"type": "DatasetReference"
 													}
 												]
 											}
@@ -1141,15 +1106,13 @@
 												"inputs": [
 													{
 														"referenceName": "LeapCSV_Staging",
-														"type": "DatasetReference",
-														"parameters": {}
+														"type": "DatasetReference"
 													}
 												],
 												"outputs": [
 													{
 														"referenceName": "BSBF_table",
-														"type": "DatasetReference",
-														"parameters": {}
+														"type": "DatasetReference"
 													}
 												]
 											}
@@ -1501,15 +1464,13 @@
 												"inputs": [
 													{
 														"referenceName": "LeapCSV_Staging",
-														"type": "DatasetReference",
-														"parameters": {}
+														"type": "DatasetReference"
 													}
 												],
 												"outputs": [
 													{
 														"referenceName": "CCCR_table",
-														"type": "DatasetReference",
-														"parameters": {}
+														"type": "DatasetReference"
 													}
 												]
 											}
@@ -1861,15 +1822,13 @@
 												"inputs": [
 													{
 														"referenceName": "LeapCSV_Staging",
-														"type": "DatasetReference",
-														"parameters": {}
+														"type": "DatasetReference"
 													}
 												],
 												"outputs": [
 													{
 														"referenceName": "CCCR_table",
-														"type": "DatasetReference",
-														"parameters": {}
+														"type": "DatasetReference"
 													}
 												]
 											}
@@ -2221,15 +2180,13 @@
 												"inputs": [
 													{
 														"referenceName": "LeapCSV_Staging",
-														"type": "DatasetReference",
-														"parameters": {}
+														"type": "DatasetReference"
 													}
 												],
 												"outputs": [
 													{
 														"referenceName": "CCCR_table",
-														"type": "DatasetReference",
-														"parameters": {}
+														"type": "DatasetReference"
 													}
 												]
 											}
@@ -2831,15 +2788,13 @@
 												"inputs": [
 													{
 														"referenceName": "LeapCSV_Staging",
-														"type": "DatasetReference",
-														"parameters": {}
+														"type": "DatasetReference"
 													}
 												],
 												"outputs": [
 													{
 														"referenceName": "DPSR_table",
-														"type": "DatasetReference",
-														"parameters": {}
+														"type": "DatasetReference"
 													}
 												]
 											}
@@ -3441,15 +3396,13 @@
 												"inputs": [
 													{
 														"referenceName": "LeapCSV_Staging",
-														"type": "DatasetReference",
-														"parameters": {}
+														"type": "DatasetReference"
 													}
 												],
 												"outputs": [
 													{
 														"referenceName": "DPSR_table",
-														"type": "DatasetReference",
-														"parameters": {}
+														"type": "DatasetReference"
 													}
 												]
 											}
@@ -4051,15 +4004,13 @@
 												"inputs": [
 													{
 														"referenceName": "LeapCSV_Staging",
-														"type": "DatasetReference",
-														"parameters": {}
+														"type": "DatasetReference"
 													}
 												],
 												"outputs": [
 													{
 														"referenceName": "DPSR_table",
-														"type": "DatasetReference",
-														"parameters": {}
+														"type": "DatasetReference"
 													}
 												]
 											}
@@ -4631,15 +4582,13 @@
 												"inputs": [
 													{
 														"referenceName": "LeapCSV_Staging",
-														"type": "DatasetReference",
-														"parameters": {}
+														"type": "DatasetReference"
 													}
 												],
 												"outputs": [
 													{
 														"referenceName": "RTRM_table",
-														"type": "DatasetReference",
-														"parameters": {}
+														"type": "DatasetReference"
 													}
 												]
 											}
@@ -5211,15 +5160,13 @@
 												"inputs": [
 													{
 														"referenceName": "LeapCSV_Staging",
-														"type": "DatasetReference",
-														"parameters": {}
+														"type": "DatasetReference"
 													}
 												],
 												"outputs": [
 													{
 														"referenceName": "RTRM_table",
-														"type": "DatasetReference",
-														"parameters": {}
+														"type": "DatasetReference"
 													}
 												]
 											}
@@ -5791,15 +5738,13 @@
 												"inputs": [
 													{
 														"referenceName": "LeapCSV_Staging",
-														"type": "DatasetReference",
-														"parameters": {}
+														"type": "DatasetReference"
 													}
 												],
 												"outputs": [
 													{
 														"referenceName": "RTRM_table",
-														"type": "DatasetReference",
-														"parameters": {}
+														"type": "DatasetReference"
 													}
 												]
 											}
@@ -6011,15 +5956,13 @@
 												"inputs": [
 													{
 														"referenceName": "LeapCSV_Staging",
-														"type": "DatasetReference",
-														"parameters": {}
+														"type": "DatasetReference"
 													}
 												],
 												"outputs": [
 													{
 														"referenceName": "LOCM_table",
-														"type": "DatasetReference",
-														"parameters": {}
+														"type": "DatasetReference"
 													}
 												]
 											}
@@ -6231,15 +6174,13 @@
 												"inputs": [
 													{
 														"referenceName": "LeapCSV_Staging",
-														"type": "DatasetReference",
-														"parameters": {}
+														"type": "DatasetReference"
 													}
 												],
 												"outputs": [
 													{
 														"referenceName": "LOCM_table",
-														"type": "DatasetReference",
-														"parameters": {}
+														"type": "DatasetReference"
 													}
 												]
 											}
@@ -6451,15 +6392,13 @@
 												"inputs": [
 													{
 														"referenceName": "LeapCSV_Staging",
-														"type": "DatasetReference",
-														"parameters": {}
+														"type": "DatasetReference"
 													}
 												],
 												"outputs": [
 													{
 														"referenceName": "LOCM_table",
-														"type": "DatasetReference",
-														"parameters": {}
+														"type": "DatasetReference"
 													}
 												]
 											}
@@ -6515,14 +6454,7 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/LeapStorageSourceDataset')]",
-				"[concat(variables('factoryId'), '/linkedServices/PnGDataFoundation')]",
-				"[concat(variables('factoryId'), '/datasets/LeapCSV_Staging')]",
-				"[concat(variables('factoryId'), '/datasets/ATTN_table')]",
-				"[concat(variables('factoryId'), '/datasets/BSBF_table')]",
-				"[concat(variables('factoryId'), '/datasets/CCCR_table')]",
-				"[concat(variables('factoryId'), '/datasets/DPSR_table')]",
-				"[concat(variables('factoryId'), '/datasets/RTRM_table')]",
-				"[concat(variables('factoryId'), '/datasets/LOCM_table')]"
+				"[concat(variables('factoryId'), '/datasets/LeapCSV_Staging')]"
 			]
 		},
 		{
@@ -6572,15 +6504,13 @@
 						"inputs": [
 							{
 								"referenceName": "S3LeapDataSet_Cloud1",
-								"type": "DatasetReference",
-								"parameters": {}
+								"type": "DatasetReference"
 							}
 						],
 						"outputs": [
 							{
 								"referenceName": "LeapStorageSourceDataset",
-								"type": "DatasetReference",
-								"parameters": {}
+								"type": "DatasetReference"
 							}
 						]
 					},
@@ -6633,15 +6563,13 @@
 						"inputs": [
 							{
 								"referenceName": "S3LeapDataSet_Cloud2",
-								"type": "DatasetReference",
-								"parameters": {}
+								"type": "DatasetReference"
 							}
 						],
 						"outputs": [
 							{
 								"referenceName": "LeapStorageSourceDataset",
-								"type": "DatasetReference",
-								"parameters": {}
+								"type": "DatasetReference"
 							}
 						]
 					},
@@ -6694,15 +6622,13 @@
 						"inputs": [
 							{
 								"referenceName": "S3LeapDataSet_Cloud3",
-								"type": "DatasetReference",
-								"parameters": {}
+								"type": "DatasetReference"
 							}
 						],
 						"outputs": [
 							{
 								"referenceName": "LeapStorageSourceDataset",
-								"type": "DatasetReference",
-								"parameters": {}
+								"type": "DatasetReference"
 							}
 						]
 					}
@@ -6743,8 +6669,7 @@
 								"referenceName": "CopyS3-To-Staging",
 								"type": "PipelineReference"
 							},
-							"waitOnCompletion": true,
-							"parameters": {}
+							"waitOnCompletion": true
 						}
 					},
 					{
@@ -6764,8 +6689,7 @@
 								"referenceName": "CopyLeap_Staging-To-DB",
 								"type": "PipelineReference"
 							},
-							"waitOnCompletion": true,
-							"parameters": {}
+							"waitOnCompletion": true
 						}
 					},
 					{
@@ -6808,8 +6732,7 @@
 						"inputs": [
 							{
 								"referenceName": "LeapStorageSourceDataset",
-								"type": "DatasetReference",
-								"parameters": {}
+								"type": "DatasetReference"
 							}
 						],
 						"outputs": [
@@ -6848,8 +6771,7 @@
 						"typeProperties": {
 							"dataset": {
 								"referenceName": "LeapStorageSourceDataset",
-								"type": "DatasetReference",
-								"parameters": {}
+								"type": "DatasetReference"
 							},
 							"enableLogging": false,
 							"storeSettings": {
@@ -6902,8 +6824,7 @@
 								"referenceName": "CopyLeap_Staging-To-DB_2",
 								"type": "PipelineReference"
 							},
-							"waitOnCompletion": true,
-							"parameters": {}
+							"waitOnCompletion": true
 						}
 					}
 				],
@@ -6925,7 +6846,6 @@
 				"[concat(variables('factoryId'), '/pipelines/CopyLeap_Staging-To-DB')]",
 				"[concat(variables('factoryId'), '/datasets/LeapStorageSourceDataset')]",
 				"[concat(variables('factoryId'), '/datasets/ADLSDataset')]",
-				"[concat(variables('factoryId'), '/linkedServices/PnGDataFoundation')]",
 				"[concat(variables('factoryId'), '/pipelines/CopyLeap_Staging-To-DB_2')]"
 			]
 		},
@@ -7031,9 +6951,7 @@
 					"table": "tmpRawLEAPTAS_ACRV"
 				}
 			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/PnGDataFoundation')]"
-			]
+			"dependsOn": []
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/ADLSDataset')]",
@@ -7068,267 +6986,7 @@
 					}
 				}
 			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/LinkedService_PnGADLS')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/AR_NCS_table')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "PnGDataFoundation",
-					"type": "LinkedServiceReference"
-				},
-				"folder": {
-					"name": "DBConnection/NCS Tables"
-				},
-				"annotations": [],
-				"type": "AzureSqlTable",
-				"schema": [
-					{
-						"name": "BRANCHCODE",
-						"type": "varchar"
-					},
-					{
-						"name": "CUSTCODE",
-						"type": "varchar"
-					},
-					{
-						"name": "DATE",
-						"type": "date"
-					},
-					{
-						"name": "AR",
-						"type": "decimal",
-						"precision": 18,
-						"scale": 0
-					},
-					{
-						"name": "Filename",
-						"type": "varchar"
-					},
-					{
-						"name": "LastModifiedDatetime",
-						"type": "smalldatetime",
-						"precision": 16,
-						"scale": 0
-					},
-					{
-						"name": "TimeStampIns",
-						"type": "smalldatetime",
-						"precision": 16,
-						"scale": 0
-					}
-				],
-				"typeProperties": {
-					"schema": "dbo",
-					"table": "NC_AR_Current"
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/PnGDataFoundation')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/AR_SUBD_NCS_table')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "PnGDataFoundation",
-					"type": "LinkedServiceReference"
-				},
-				"folder": {
-					"name": "DBConnection/NCS Tables"
-				},
-				"annotations": [],
-				"type": "AzureSqlTable",
-				"schema": [
-					{
-						"name": "SUBDCODE",
-						"type": "varchar"
-					},
-					{
-						"name": "CUSTCODE",
-						"type": "varchar"
-					},
-					{
-						"name": "DATE",
-						"type": "date"
-					},
-					{
-						"name": "AR",
-						"type": "decimal",
-						"precision": 18,
-						"scale": 0
-					},
-					{
-						"name": "Filename",
-						"type": "varchar"
-					},
-					{
-						"name": "LastModifiedDatetime",
-						"type": "smalldatetime",
-						"precision": 16,
-						"scale": 0
-					},
-					{
-						"name": "TimeStampIns",
-						"type": "smalldatetime",
-						"precision": 16,
-						"scale": 0
-					}
-				],
-				"typeProperties": {
-					"schema": "dbo",
-					"table": "NC_AR_SUBD"
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/PnGDataFoundation')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/ATTN_table')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "PnGDataFoundation",
-					"type": "LinkedServiceReference"
-				},
-				"folder": {
-					"name": "DBConnection/LEAP Tables"
-				},
-				"annotations": [],
-				"type": "AzureSqlTable",
-				"schema": [
-					{
-						"name": "branchcode",
-						"type": "nvarchar"
-					},
-					{
-						"name": "dsecode",
-						"type": "nvarchar"
-					},
-					{
-						"name": "desename",
-						"type": "nvarchar"
-					},
-					{
-						"name": "visit_date",
-						"type": "nvarchar"
-					},
-					{
-						"name": "route_name",
-						"type": "nvarchar"
-					},
-					{
-						"name": "attendance",
-						"type": "nvarchar"
-					},
-					{
-						"name": "reason",
-						"type": "nvarchar"
-					},
-					{
-						"name": "attendance_timestamp",
-						"type": "nvarchar"
-					},
-					{
-						"name": "generated_at",
-						"type": "nvarchar"
-					},
-					{
-						"name": "FileSetId",
-						"type": "bigint",
-						"precision": 19
-					},
-					{
-						"name": "Filename",
-						"type": "varchar"
-					},
-					{
-						"name": "LastModifiedDatetime",
-						"type": "smalldatetime",
-						"precision": 16,
-						"scale": 0
-					},
-					{
-						"name": "TimeStampIns",
-						"type": "smalldatetime",
-						"precision": 16,
-						"scale": 0
-					}
-				],
-				"typeProperties": {
-					"schema": "dbo",
-					"table": "tmpRawLEAPTAS_ATTN"
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/PnGDataFoundation')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/BSBF_table')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "PnGDataFoundation",
-					"type": "LinkedServiceReference"
-				},
-				"folder": {
-					"name": "DBConnection/LEAP Tables"
-				},
-				"annotations": [],
-				"type": "AzureSqlTable",
-				"schema": [
-					{
-						"name": "branchcode",
-						"type": "nvarchar"
-					},
-					{
-						"name": "subbfname",
-						"type": "nvarchar"
-					},
-					{
-						"name": "status",
-						"type": "nvarchar"
-					},
-					{
-						"name": "FileSetId",
-						"type": "bigint",
-						"precision": 19
-					},
-					{
-						"name": "Filename",
-						"type": "varchar"
-					},
-					{
-						"name": "LastModifiedDatetime",
-						"type": "smalldatetime",
-						"precision": 16,
-						"scale": 0
-					},
-					{
-						"name": "TimeStampIns",
-						"type": "smalldatetime",
-						"precision": 16,
-						"scale": 0
-					}
-				],
-				"typeProperties": {
-					"schema": "dbo",
-					"table": "tmpRawLEAPTAS_BSBF"
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/PnGDataFoundation')]"
-			]
+			"dependsOn": []
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/BinaryDataSource_File')]",
@@ -7371,9 +7029,7 @@
 					}
 				}
 			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/NCSdataStorageLink')]"
-			]
+			"dependsOn": []
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/BinaryDataSource_Folder')]",
@@ -7409,501 +7065,7 @@
 					}
 				}
 			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/NCSdataStorageLink')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/CCCR_table')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "PnGDataFoundation",
-					"type": "LinkedServiceReference"
-				},
-				"folder": {
-					"name": "DBConnection/LEAP Tables"
-				},
-				"annotations": [],
-				"type": "AzureSqlTable",
-				"schema": [
-					{
-						"name": "branch_code",
-						"type": "nvarchar"
-					},
-					{
-						"name": "branch_location",
-						"type": "nvarchar"
-					},
-					{
-						"name": "dse_code",
-						"type": "nvarchar"
-					},
-					{
-						"name": "dse_name",
-						"type": "nvarchar"
-					},
-					{
-						"name": "date",
-						"type": "nvarchar"
-					},
-					{
-						"name": "route_name",
-						"type": "nvarchar"
-					},
-					{
-						"name": "retailer_code",
-						"type": "nvarchar"
-					},
-					{
-						"name": "retailer_name",
-						"type": "nvarchar"
-					},
-					{
-						"name": "contact_number_1",
-						"type": "nvarchar"
-					},
-					{
-						"name": "contact_number_2",
-						"type": "nvarchar"
-					},
-					{
-						"name": "channel_name",
-						"type": "nvarchar"
-					},
-					{
-						"name": "sub_channel_name",
-						"type": "nvarchar"
-					},
-					{
-						"name": "start_time",
-						"type": "nvarchar"
-					},
-					{
-						"name": "end_time",
-						"type": "nvarchar"
-					},
-					{
-						"name": "intime",
-						"type": "nvarchar"
-					},
-					{
-						"name": "order_value",
-						"type": "nvarchar"
-					},
-					{
-						"name": "productivity",
-						"type": "nvarchar"
-					},
-					{
-						"name": "reason",
-						"type": "nvarchar"
-					},
-					{
-						"name": "visit_latitude",
-						"type": "nvarchar"
-					},
-					{
-						"name": "visit_longitude",
-						"type": "nvarchar"
-					},
-					{
-						"name": "deviation_in_meter",
-						"type": "nvarchar"
-					},
-					{
-						"name": "deviation",
-						"type": "nvarchar"
-					},
-					{
-						"name": "reason_for_deviation",
-						"type": "nvarchar"
-					},
-					{
-						"name": "on_route",
-						"type": "nvarchar"
-					},
-					{
-						"name": "remarks",
-						"type": "nvarchar"
-					},
-					{
-						"name": "FileSetId",
-						"type": "bigint",
-						"precision": 19
-					},
-					{
-						"name": "Filename",
-						"type": "varchar"
-					},
-					{
-						"name": "LastModifiedDatetime",
-						"type": "smalldatetime",
-						"precision": 16,
-						"scale": 0
-					},
-					{
-						"name": "TimeStampIns",
-						"type": "smalldatetime",
-						"precision": 16,
-						"scale": 0
-					}
-				],
-				"typeProperties": {
-					"schema": "dbo",
-					"table": "tmpRawLEAPTAS_CCCR"
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/PnGDataFoundation')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/DPSR_table')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "PnGDataFoundation",
-					"type": "LinkedServiceReference"
-				},
-				"folder": {
-					"name": "DBConnection/LEAP Tables"
-				},
-				"annotations": [],
-				"type": "AzureSqlTable",
-				"schema": [
-					{
-						"name": "document_no",
-						"type": "nvarchar"
-					},
-					{
-						"name": "apply_to_doc",
-						"type": "nvarchar"
-					},
-					{
-						"name": "document_date",
-						"type": "nvarchar"
-					},
-					{
-						"name": "transaction_type",
-						"type": "nvarchar"
-					},
-					{
-						"name": "subbrandform_name",
-						"type": "nvarchar"
-					},
-					{
-						"name": "prod_name",
-						"type": "nvarchar"
-					},
-					{
-						"name": "customer_name",
-						"type": "nvarchar"
-					},
-					{
-						"name": "customer_code",
-						"type": "nvarchar"
-					},
-					{
-						"name": "channel_description",
-						"type": "nvarchar"
-					},
-					{
-						"name": "dse",
-						"type": "nvarchar"
-					},
-					{
-						"name": "pcode",
-						"type": "nvarchar"
-					},
-					{
-						"name": "customer_type",
-						"type": "nvarchar"
-					},
-					{
-						"name": "hsn_code",
-						"type": "nvarchar"
-					},
-					{
-						"name": "category",
-						"type": "nvarchar"
-					},
-					{
-						"name": "brand",
-						"type": "nvarchar"
-					},
-					{
-						"name": "brandform",
-						"type": "nvarchar"
-					},
-					{
-						"name": "quantity",
-						"type": "nvarchar"
-					},
-					{
-						"name": "gross_value",
-						"type": "nvarchar"
-					},
-					{
-						"name": "discount",
-						"type": "nvarchar"
-					},
-					{
-						"name": "taxable_scheme",
-						"type": "nvarchar"
-					},
-					{
-						"name": "cgsttax",
-						"type": "nvarchar"
-					},
-					{
-						"name": "sgsttax",
-						"type": "nvarchar"
-					},
-					{
-						"name": "igsttax",
-						"type": "nvarchar"
-					},
-					{
-						"name": "cesstax",
-						"type": "nvarchar"
-					},
-					{
-						"name": "mracc_code",
-						"type": "nvarchar"
-					},
-					{
-						"name": "mracc_desc",
-						"type": "nvarchar"
-					},
-					{
-						"name": "vendor",
-						"type": "nvarchar"
-					},
-					{
-						"name": "net_amount",
-						"type": "nvarchar"
-					},
-					{
-						"name": "tax_on_discount",
-						"type": "nvarchar"
-					},
-					{
-						"name": "tax_on_scheme",
-						"type": "nvarchar"
-					},
-					{
-						"name": "tax_in_rlp",
-						"type": "nvarchar"
-					},
-					{
-						"name": "retailing",
-						"type": "nvarchar"
-					},
-					{
-						"name": "gross_in_slp",
-						"type": "nvarchar"
-					},
-					{
-						"name": "po_no",
-						"type": "nvarchar"
-					},
-					{
-						"name": "dse_code",
-						"type": "nvarchar"
-					},
-					{
-						"name": "msu",
-						"type": "nvarchar"
-					},
-					{
-						"name": "reason",
-						"type": "nvarchar"
-					},
-					{
-						"name": "dist_gstinno",
-						"type": "nvarchar"
-					},
-					{
-						"name": "ret_gstinno",
-						"type": "nvarchar"
-					},
-					{
-						"name": "srn_ref_no",
-						"type": "nvarchar"
-					},
-					{
-						"name": "composite",
-						"type": "nvarchar"
-					},
-					{
-						"name": "cgsttax_rate",
-						"type": "nvarchar"
-					},
-					{
-						"name": "sgsttax_rate",
-						"type": "nvarchar"
-					},
-					{
-						"name": "igsttax_rate",
-						"type": "nvarchar"
-					},
-					{
-						"name": "cesstax_rate",
-						"type": "nvarchar"
-					},
-					{
-						"name": "branch_code",
-						"type": "nvarchar"
-					},
-					{
-						"name": "branch_name",
-						"type": "nvarchar"
-					},
-					{
-						"name": "order_mode",
-						"type": "nvarchar"
-					},
-					{
-						"name": "tc_code",
-						"type": "nvarchar"
-					},
-					{
-						"name": "tc_name",
-						"type": "nvarchar"
-					},
-					{
-						"name": "FileSetId",
-						"type": "bigint",
-						"precision": 19
-					},
-					{
-						"name": "BranchNodeId",
-						"type": "int",
-						"precision": 10
-					},
-					{
-						"name": "BranchNodeType",
-						"type": "int",
-						"precision": 10
-					},
-					{
-						"name": "StoreId",
-						"type": "int",
-						"precision": 10
-					},
-					{
-						"name": "CmpNodeId",
-						"type": "int",
-						"precision": 10
-					},
-					{
-						"name": "CmpNodeType",
-						"type": "int",
-						"precision": 10
-					},
-					{
-						"name": "CatNodeId",
-						"type": "int",
-						"precision": 10
-					},
-					{
-						"name": "CatNodeType",
-						"type": "int",
-						"precision": 10
-					},
-					{
-						"name": "BrandNodeId",
-						"type": "int",
-						"precision": 10
-					},
-					{
-						"name": "BrandNodeType",
-						"type": "int",
-						"precision": 10
-					},
-					{
-						"name": "SBFNodeId",
-						"type": "int",
-						"precision": 10
-					},
-					{
-						"name": "SBFNodeType",
-						"type": "int",
-						"precision": 10
-					},
-					{
-						"name": "PrdNodeId",
-						"type": "int",
-						"precision": 10
-					},
-					{
-						"name": "PrdNodeType",
-						"type": "int",
-						"precision": 10
-					},
-					{
-						"name": "InvId",
-						"type": "bigint",
-						"precision": 19
-					},
-					{
-						"name": "ChannelId",
-						"type": "int",
-						"precision": 10
-					},
-					{
-						"name": "SubChannelId",
-						"type": "int",
-						"precision": 10
-					},
-					{
-						"name": "dsenodeid",
-						"type": "int",
-						"precision": 10
-					},
-					{
-						"name": "dsenodetype",
-						"type": "int",
-						"precision": 10
-					},
-					{
-						"name": "mraccid",
-						"type": "int",
-						"precision": 10
-					},
-					{
-						"name": "SRNId",
-						"type": "int",
-						"precision": 10
-					},
-					{
-						"name": "Filename",
-						"type": "varchar"
-					},
-					{
-						"name": "LastModifiedDatetime",
-						"type": "smalldatetime",
-						"precision": 16,
-						"scale": 0
-					},
-					{
-						"name": "TimeStampIns",
-						"type": "smalldatetime",
-						"precision": 16,
-						"scale": 0
-					}
-				],
-				"typeProperties": {
-					"schema": "dbo",
-					"table": "tmpRawLEAPTAS_DPSR"
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/PnGDataFoundation')]"
-			]
+			"dependsOn": []
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/DSEM_table')]",
@@ -7983,332 +7145,7 @@
 					"table": "tmpRawLEAPTAS_DSEM"
 				}
 			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/PnGDataFoundation')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/DSE_NCS_table')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "PnGDataFoundation",
-					"type": "LinkedServiceReference"
-				},
-				"folder": {
-					"name": "DBConnection/NCS Tables"
-				},
-				"annotations": [],
-				"type": "AzureSqlTable",
-				"schema": [
-					{
-						"name": "BRANCHCODE",
-						"type": "varchar"
-					},
-					{
-						"name": "DSECODE",
-						"type": "varchar"
-					},
-					{
-						"name": "DSENAME",
-						"type": "varchar"
-					},
-					{
-						"name": "STLCODE",
-						"type": "varchar"
-					},
-					{
-						"name": "STLName",
-						"type": "varchar"
-					},
-					{
-						"name": "BECode",
-						"type": "varchar"
-					},
-					{
-						"name": "BEName",
-						"type": "varchar"
-					},
-					{
-						"name": "SectorName",
-						"type": "varchar"
-					},
-					{
-						"name": "SELECTEDDATE",
-						"type": "datetime2",
-						"scale": 3
-					},
-					{
-						"name": "TIMESTAMP",
-						"type": "datetime2",
-						"scale": 3
-					},
-					{
-						"name": "FileSetId",
-						"type": "int",
-						"precision": 10
-					},
-					{
-						"name": "Filename",
-						"type": "varchar"
-					},
-					{
-						"name": "LastModifiedDatetime",
-						"type": "smalldatetime",
-						"precision": 16,
-						"scale": 0
-					},
-					{
-						"name": "TimeStampIns",
-						"type": "smalldatetime",
-						"precision": 16,
-						"scale": 0
-					}
-				],
-				"typeProperties": {
-					"schema": "dbo",
-					"table": "NC_DSE_Current"
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/PnGDataFoundation')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/DTA_INACTBranch_NCS_table')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "PnGDataFoundation",
-					"type": "LinkedServiceReference"
-				},
-				"folder": {
-					"name": "DBConnection/NCS Tables"
-				},
-				"annotations": [],
-				"type": "AzureSqlTable",
-				"schema": [
-					{
-						"name": "BranchId",
-						"type": "int",
-						"precision": 10
-					},
-					{
-						"name": "BRANCHCODE",
-						"type": "varchar"
-					},
-					{
-						"name": "timestamp",
-						"type": "datetime",
-						"precision": 23,
-						"scale": 3
-					},
-					{
-						"name": "Filename",
-						"type": "varchar"
-					},
-					{
-						"name": "LastModifiedDatetime",
-						"type": "smalldatetime",
-						"precision": 16,
-						"scale": 0
-					},
-					{
-						"name": "TimeStampIns",
-						"type": "smalldatetime",
-						"precision": 16,
-						"scale": 0
-					}
-				],
-				"typeProperties": {
-					"schema": "dbo",
-					"table": "tblDTAInactiveBranch"
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/PnGDataFoundation')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/LOCM_table')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "PnGDataFoundation",
-					"type": "LinkedServiceReference"
-				},
-				"folder": {
-					"name": "DBConnection/LEAP Tables"
-				},
-				"annotations": [],
-				"type": "AzureSqlTable",
-				"schema": [
-					{
-						"name": "country_code",
-						"type": "nvarchar"
-					},
-					{
-						"name": "country_name",
-						"type": "nvarchar"
-					},
-					{
-						"name": "division_name",
-						"type": "nvarchar"
-					},
-					{
-						"name": "region_code",
-						"type": "nvarchar"
-					},
-					{
-						"name": "region_name",
-						"type": "nvarchar"
-					},
-					{
-						"name": "site_code",
-						"type": "nvarchar"
-					},
-					{
-						"name": "site_name",
-						"type": "nvarchar"
-					},
-					{
-						"name": "distributor_code",
-						"type": "nvarchar"
-					},
-					{
-						"name": "distributor_name",
-						"type": "nvarchar"
-					},
-					{
-						"name": "branch_code",
-						"type": "nvarchar"
-					},
-					{
-						"name": "branch_name",
-						"type": "nvarchar"
-					},
-					{
-						"name": "FileSetId",
-						"type": "bigint",
-						"precision": 19
-					},
-					{
-						"name": "Filename",
-						"type": "varchar"
-					},
-					{
-						"name": "LastModifiedDatetime",
-						"type": "smalldatetime",
-						"precision": 16,
-						"scale": 0
-					},
-					{
-						"name": "TimeStampIns",
-						"type": "smalldatetime",
-						"precision": 16,
-						"scale": 0
-					}
-				],
-				"typeProperties": {
-					"schema": "dbo",
-					"table": "tmpRawLEAPTAS_LocationMaster"
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/PnGDataFoundation')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/LOCN_NCS_table')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "PnGDataFoundation",
-					"type": "LinkedServiceReference"
-				},
-				"folder": {
-					"name": "DBConnection/NCS Tables"
-				},
-				"annotations": [],
-				"type": "AzureSqlTable",
-				"schema": [
-					{
-						"name": "COUNTRYCODE",
-						"type": "varchar"
-					},
-					{
-						"name": "COUNTRYNAME",
-						"type": "varchar"
-					},
-					{
-						"name": "DIVISION",
-						"type": "varchar"
-					},
-					{
-						"name": "DISTRICT",
-						"type": "varchar"
-					},
-					{
-						"name": "SITECODE",
-						"type": "varchar"
-					},
-					{
-						"name": "SITENAME",
-						"type": "varchar"
-					},
-					{
-						"name": "BRANCHCODE",
-						"type": "varchar"
-					},
-					{
-						"name": "BRANCHNAME",
-						"type": "varchar"
-					},
-					{
-						"name": "TIMESTAMP",
-						"type": "datetime",
-						"precision": 23,
-						"scale": 3
-					},
-					{
-						"name": "Status",
-						"type": "tinyint",
-						"precision": 3
-					},
-					{
-						"name": "BranchId",
-						"type": "int",
-						"precision": 10
-					},
-					{
-						"name": "Filename",
-						"type": "varchar"
-					},
-					{
-						"name": "LastModifiedDatetime",
-						"type": "smalldatetime",
-						"precision": 16,
-						"scale": 0
-					},
-					{
-						"name": "TimeStampIns",
-						"type": "smalldatetime",
-						"precision": 16,
-						"scale": 0
-					}
-				],
-				"typeProperties": {
-					"schema": "dbo",
-					"table": "location_ncmaster"
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/PnGDataFoundation')]"
-			]
+			"dependsOn": []
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/LeapCSV')]",
@@ -8351,9 +7188,7 @@
 				},
 				"schema": []
 			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/LinkedService_PnGADLS')]"
-			]
+			"dependsOn": []
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/LeapCSV_Staging')]",
@@ -8381,9 +7216,7 @@
 				},
 				"schema": []
 			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/NCSdataStorageLink')]"
-			]
+			"dependsOn": []
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/LeapStorageSourceDataset')]",
@@ -8410,492 +7243,7 @@
 					}
 				}
 			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/NCSdataStorageLink')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/PROD_NCS_table')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "PnGDataFoundation",
-					"type": "LinkedServiceReference"
-				},
-				"folder": {
-					"name": "DBConnection/NCS Tables"
-				},
-				"annotations": [],
-				"type": "AzureSqlTable",
-				"schema": [
-					{
-						"name": "ProductId",
-						"type": "int",
-						"precision": 10
-					},
-					{
-						"name": "PRODUCTCODE",
-						"type": "varchar"
-					},
-					{
-						"name": "PRODUCTNAME",
-						"type": "varchar"
-					},
-					{
-						"name": "SLP",
-						"type": "decimal",
-						"precision": 18,
-						"scale": 2
-					},
-					{
-						"name": "RLP",
-						"type": "decimal",
-						"precision": 18,
-						"scale": 2
-					},
-					{
-						"name": "MRP",
-						"type": "decimal",
-						"precision": 18,
-						"scale": 2
-					},
-					{
-						"name": "UPC",
-						"type": "decimal",
-						"precision": 18,
-						"scale": 0
-					},
-					{
-						"name": "MSUFACTOR",
-						"type": "decimal",
-						"precision": 18,
-						"scale": 6
-					},
-					{
-						"name": "CATEGORY",
-						"type": "varchar"
-					},
-					{
-						"name": "BRAND",
-						"type": "varchar"
-					},
-					{
-						"name": "BRANDFORM",
-						"type": "varchar"
-					},
-					{
-						"name": "TIMESTAMP",
-						"type": "datetime",
-						"precision": 23,
-						"scale": 3
-					},
-					{
-						"name": "SAPUPC",
-						"type": "int",
-						"precision": 10
-					},
-					{
-						"name": "Business",
-						"type": "varchar"
-					},
-					{
-						"name": "Sub Brand Form",
-						"type": "varchar"
-					},
-					{
-						"name": "itemid",
-						"type": "varchar"
-					},
-					{
-						"name": "Filename",
-						"type": "varchar"
-					},
-					{
-						"name": "LastModifiedDatetime",
-						"type": "smalldatetime",
-						"precision": 16,
-						"scale": 0
-					},
-					{
-						"name": "TimeStampIns",
-						"type": "smalldatetime",
-						"precision": 16,
-						"scale": 0
-					}
-				],
-				"typeProperties": {
-					"schema": "dbo",
-					"table": "Product_ncmaster"
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/PnGDataFoundation')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/RETAILER_SUBD_NCS_table')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "PnGDataFoundation",
-					"type": "LinkedServiceReference"
-				},
-				"folder": {
-					"name": "DBConnection/NCS Tables"
-				},
-				"annotations": [],
-				"type": "AzureSqlTable",
-				"schema": [
-					{
-						"name": "SUBDCODE",
-						"type": "varchar"
-					},
-					{
-						"name": "CUSTCODE",
-						"type": "varchar"
-					},
-					{
-						"name": "CUSTNAME",
-						"type": "varchar"
-					},
-					{
-						"name": "CHANNEL",
-						"type": "varchar"
-					},
-					{
-						"name": "DSE",
-						"type": "varchar"
-					},
-					{
-						"name": "CUSTTYPE",
-						"type": "varchar"
-					},
-					{
-						"name": "Filename",
-						"type": "varchar"
-					},
-					{
-						"name": "LastModifiedDatetime",
-						"type": "smalldatetime",
-						"precision": 16,
-						"scale": 0
-					},
-					{
-						"name": "TimeStampIns",
-						"type": "smalldatetime",
-						"precision": 16,
-						"scale": 0
-					}
-				],
-				"typeProperties": {
-					"schema": "dbo",
-					"table": "NC_RETAILER_SUBD"
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/PnGDataFoundation')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/RETAIL_NCS_table')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "PnGDataFoundation",
-					"type": "LinkedServiceReference"
-				},
-				"folder": {
-					"name": "DBConnection/NCS Tables"
-				},
-				"annotations": [],
-				"type": "AzureSqlTable",
-				"schema": [
-					{
-						"name": "BRANCHCODE",
-						"type": "varchar"
-					},
-					{
-						"name": "CUSTCODE",
-						"type": "varchar"
-					},
-					{
-						"name": "CUSTNAME",
-						"type": "varchar"
-					},
-					{
-						"name": "CHANNEL",
-						"type": "varchar"
-					},
-					{
-						"name": "DSE",
-						"type": "varchar"
-					},
-					{
-						"name": "CUSTTYPE",
-						"type": "varchar"
-					},
-					{
-						"name": "Filename",
-						"type": "varchar"
-					},
-					{
-						"name": "LastModifiedDatetime",
-						"type": "smalldatetime",
-						"precision": 16,
-						"scale": 0
-					},
-					{
-						"name": "TimeStampIns",
-						"type": "smalldatetime",
-						"precision": 16,
-						"scale": 0
-					}
-				],
-				"typeProperties": {
-					"schema": "dbo",
-					"table": "NC_RETAILER_Current"
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/PnGDataFoundation')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/RTRM_table')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "PnGDataFoundation",
-					"type": "LinkedServiceReference"
-				},
-				"folder": {
-					"name": "DBConnection/LEAP Tables"
-				},
-				"annotations": [],
-				"type": "AzureSqlTable",
-				"schema": [
-					{
-						"name": "branch_code",
-						"type": "nvarchar"
-					},
-					{
-						"name": "branch_location",
-						"type": "nvarchar"
-					},
-					{
-						"name": "retailer_code",
-						"type": "nvarchar"
-					},
-					{
-						"name": "retailer_name",
-						"type": "nvarchar"
-					},
-					{
-						"name": "address_1",
-						"type": "nvarchar"
-					},
-					{
-						"name": "address_2",
-						"type": "nvarchar"
-					},
-					{
-						"name": "pin_number",
-						"type": "nvarchar"
-					},
-					{
-						"name": "area_code",
-						"type": "nvarchar"
-					},
-					{
-						"name": "area",
-						"type": "nvarchar"
-					},
-					{
-						"name": "town_code",
-						"type": "nvarchar"
-					},
-					{
-						"name": "town",
-						"type": "nvarchar"
-					},
-					{
-						"name": "town_class",
-						"type": "nvarchar"
-					},
-					{
-						"name": "city",
-						"type": "nvarchar"
-					},
-					{
-						"name": "state",
-						"type": "nvarchar"
-					},
-					{
-						"name": "mobile_number",
-						"type": "nvarchar"
-					},
-					{
-						"name": "phone_number",
-						"type": "nvarchar"
-					},
-					{
-						"name": "contact_person",
-						"type": "nvarchar"
-					},
-					{
-						"name": "stl_name",
-						"type": "nvarchar"
-					},
-					{
-						"name": "dse_name",
-						"type": "nvarchar"
-					},
-					{
-						"name": "frequency",
-						"type": "nvarchar"
-					},
-					{
-						"name": "distance",
-						"type": "nvarchar"
-					},
-					{
-						"name": "class_code",
-						"type": "nvarchar"
-					},
-					{
-						"name": "class",
-						"type": "nvarchar"
-					},
-					{
-						"name": "channel_code",
-						"type": "nvarchar"
-					},
-					{
-						"name": "channel",
-						"type": "nvarchar"
-					},
-					{
-						"name": "subchannel_code",
-						"type": "nvarchar"
-					},
-					{
-						"name": "subchannel",
-						"type": "nvarchar"
-					},
-					{
-						"name": "mr_account_code",
-						"type": "nvarchar"
-					},
-					{
-						"name": "mr_account_name",
-						"type": "nvarchar"
-					},
-					{
-						"name": "credit_limit",
-						"type": "nvarchar"
-					},
-					{
-						"name": "credit_period",
-						"type": "nvarchar"
-					},
-					{
-						"name": "invoice_limit",
-						"type": "nvarchar"
-					},
-					{
-						"name": "certificate_type",
-						"type": "nvarchar"
-					},
-					{
-						"name": "gst_number",
-						"type": "nvarchar"
-					},
-					{
-						"name": "pan_no",
-						"type": "nvarchar"
-					},
-					{
-						"name": "dl_number",
-						"type": "nvarchar"
-					},
-					{
-						"name": "dl_expiry_date",
-						"type": "nvarchar"
-					},
-					{
-						"name": "email",
-						"type": "nvarchar"
-					},
-					{
-						"name": "dob",
-						"type": "nvarchar"
-					},
-					{
-						"name": "doa",
-						"type": "nvarchar"
-					},
-					{
-						"name": "status",
-						"type": "nvarchar"
-					},
-					{
-						"name": "default_warehouse_code",
-						"type": "nvarchar"
-					},
-					{
-						"name": "default_warehouse",
-						"type": "nvarchar"
-					},
-					{
-						"name": "restricted_orderswap_status",
-						"type": "nvarchar"
-					},
-					{
-						"name": "lattitude",
-						"type": "nvarchar"
-					},
-					{
-						"name": "longitude",
-						"type": "nvarchar"
-					},
-					{
-						"name": "retailer_radius",
-						"type": "nvarchar"
-					},
-					{
-						"name": "FileSetId",
-						"type": "bigint",
-						"precision": 19
-					},
-					{
-						"name": "Filename",
-						"type": "varchar"
-					},
-					{
-						"name": "LastModifiedDatetime",
-						"type": "smalldatetime",
-						"precision": 16,
-						"scale": 0
-					},
-					{
-						"name": "TimeStampIns",
-						"type": "smalldatetime",
-						"precision": 16,
-						"scale": 0
-					}
-				],
-				"typeProperties": {
-					"schema": "dbo",
-					"table": "tmpRawLEAPTAS_RTRM"
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/PnGDataFoundation')]"
-			]
+			"dependsOn": []
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/S3LeapDataSet_Cloud1')]",
@@ -8919,9 +7267,7 @@
 					}
 				}
 			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/Leap_AmazonS3')]"
-			]
+			"dependsOn": []
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/S3LeapDataSet_Cloud2')]",
@@ -8945,9 +7291,7 @@
 					}
 				}
 			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/Leap_AmazonS3')]"
-			]
+			"dependsOn": []
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/S3LeapDataSet_Cloud3')]",
@@ -8969,671 +7313,6 @@
 						"bucketName": "leapdata-tas",
 						"folderPath": "LEAP/Cloud3"
 					}
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/Leap_AmazonS3')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/SALES_NCS_table')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "PnGDataFoundation",
-					"type": "LinkedServiceReference"
-				},
-				"folder": {
-					"name": "DBConnection/NCS Tables"
-				},
-				"annotations": [],
-				"type": "AzureSqlTable",
-				"schema": [
-					{
-						"name": "BRANCHCODE",
-						"type": "varchar"
-					},
-					{
-						"name": "DSECODE",
-						"type": "varchar"
-					},
-					{
-						"name": "CUSTCODE",
-						"type": "varchar"
-					},
-					{
-						"name": "INVNO",
-						"type": "varchar"
-					},
-					{
-						"name": "INVDATE",
-						"type": "datetime2",
-						"scale": 3
-					},
-					{
-						"name": "SKUCCODE",
-						"type": "varchar"
-					},
-					{
-						"name": "SKUDCODE",
-						"type": "varchar"
-					},
-					{
-						"name": "SKUEANCODE",
-						"type": "varchar"
-					},
-					{
-						"name": "BATCHCODE",
-						"type": "varchar"
-					},
-					{
-						"name": "QTY",
-						"type": "int",
-						"precision": 10
-					},
-					{
-						"name": "GROSSAMOUNT",
-						"type": "decimal",
-						"precision": 18,
-						"scale": 2
-					},
-					{
-						"name": "TAXAMOUNT",
-						"type": "decimal",
-						"precision": 18,
-						"scale": 2
-					},
-					{
-						"name": "INITDISC",
-						"type": "decimal",
-						"precision": 18,
-						"scale": 2
-					},
-					{
-						"name": "LINEDISC",
-						"type": "decimal",
-						"precision": 18,
-						"scale": 2
-					},
-					{
-						"name": "NETAMOUNT",
-						"type": "decimal",
-						"precision": 18,
-						"scale": 2
-					},
-					{
-						"name": "INVREF",
-						"type": "varchar"
-					},
-					{
-						"name": "SELECTEDDATE",
-						"type": "datetime2",
-						"scale": 3
-					},
-					{
-						"name": "TIMESTAMP",
-						"type": "datetime2",
-						"scale": 3
-					},
-					{
-						"name": "UPC",
-						"type": "int",
-						"precision": 10
-					},
-					{
-						"name": "RETAILING",
-						"type": "decimal",
-						"precision": 18,
-						"scale": 2
-					},
-					{
-						"name": "BranchId",
-						"type": "int",
-						"precision": 10
-					},
-					{
-						"name": "ProductId",
-						"type": "int",
-						"precision": 10
-					},
-					{
-						"name": "FileSetId",
-						"type": "int",
-						"precision": 10
-					},
-					{
-						"name": "flgProcess",
-						"type": "tinyint",
-						"precision": 3
-					},
-					{
-						"name": "Filename",
-						"type": "varchar"
-					},
-					{
-						"name": "LastModifiedDatetime",
-						"type": "smalldatetime",
-						"precision": 16,
-						"scale": 0
-					},
-					{
-						"name": "TimeStampIns",
-						"type": "smalldatetime",
-						"precision": 16,
-						"scale": 0
-					}
-				],
-				"typeProperties": {
-					"schema": "dbo",
-					"table": "NC_SALES_Current"
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/PnGDataFoundation')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/SALES_SUBD_NCS_table')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "PnGDataFoundation",
-					"type": "LinkedServiceReference"
-				},
-				"folder": {
-					"name": "DBConnection/NCS Tables"
-				},
-				"annotations": [],
-				"type": "AzureSqlTable",
-				"schema": [
-					{
-						"name": "SUBDCODE",
-						"type": "varchar"
-					},
-					{
-						"name": "DSECODE",
-						"type": "varchar"
-					},
-					{
-						"name": "CUSTCODE",
-						"type": "varchar"
-					},
-					{
-						"name": "INVNO",
-						"type": "varchar"
-					},
-					{
-						"name": "INVDATE",
-						"type": "datetime",
-						"precision": 23,
-						"scale": 3
-					},
-					{
-						"name": "SKUCCODE",
-						"type": "varchar"
-					},
-					{
-						"name": "SKUDCODE",
-						"type": "varchar"
-					},
-					{
-						"name": "SKUEANCODE",
-						"type": "varchar"
-					},
-					{
-						"name": "BATCHCODE",
-						"type": "varchar"
-					},
-					{
-						"name": "QTY",
-						"type": "int",
-						"precision": 10
-					},
-					{
-						"name": "GROSSAMOUNT",
-						"type": "decimal",
-						"precision": 18,
-						"scale": 2
-					},
-					{
-						"name": "TAXAMOUNT",
-						"type": "decimal",
-						"precision": 18,
-						"scale": 2
-					},
-					{
-						"name": "INITDISC",
-						"type": "decimal",
-						"precision": 18,
-						"scale": 2
-					},
-					{
-						"name": "LINEDISC",
-						"type": "decimal",
-						"precision": 18,
-						"scale": 2
-					},
-					{
-						"name": "NETAMOUNT",
-						"type": "decimal",
-						"precision": 18,
-						"scale": 2
-					},
-					{
-						"name": "INVREF",
-						"type": "varchar"
-					},
-					{
-						"name": "SELECTEDDATE",
-						"type": "datetime",
-						"precision": 23,
-						"scale": 3
-					},
-					{
-						"name": "TimeStamp",
-						"type": "datetime",
-						"precision": 23,
-						"scale": 3
-					},
-					{
-						"name": "UPC",
-						"type": "int",
-						"precision": 10
-					},
-					{
-						"name": "RETAILING",
-						"type": "decimal",
-						"precision": 18,
-						"scale": 2
-					},
-					{
-						"name": "Filename",
-						"type": "varchar"
-					},
-					{
-						"name": "LastModifiedDatetime",
-						"type": "smalldatetime",
-						"precision": 16,
-						"scale": 0
-					},
-					{
-						"name": "TimeStampIns",
-						"type": "smalldatetime",
-						"precision": 16,
-						"scale": 0
-					}
-				],
-				"typeProperties": {
-					"schema": "dbo",
-					"table": "NC_SALES_SUBD_Current"
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/PnGDataFoundation')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/SRN_NCS_table')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "PnGDataFoundation",
-					"type": "LinkedServiceReference"
-				},
-				"folder": {
-					"name": "DBConnection/NCS Tables"
-				},
-				"annotations": [],
-				"type": "AzureSqlTable",
-				"schema": [
-					{
-						"name": "BRANCHCODE",
-						"type": "varchar"
-					},
-					{
-						"name": "DSECODE",
-						"type": "varchar"
-					},
-					{
-						"name": "CUSTCODE",
-						"type": "varchar"
-					},
-					{
-						"name": "SRNNO",
-						"type": "varchar"
-					},
-					{
-						"name": "INVNO",
-						"type": "varchar"
-					},
-					{
-						"name": "SRNDATE",
-						"type": "datetime2",
-						"scale": 3
-					},
-					{
-						"name": "SKUCCODE",
-						"type": "varchar"
-					},
-					{
-						"name": "SKUDCODE",
-						"type": "varchar"
-					},
-					{
-						"name": "SKUEANCODE",
-						"type": "varchar"
-					},
-					{
-						"name": "BATCHCODE",
-						"type": "varchar"
-					},
-					{
-						"name": "QTY",
-						"type": "int",
-						"precision": 10
-					},
-					{
-						"name": "SELECTEDDATE",
-						"type": "datetime2",
-						"scale": 3
-					},
-					{
-						"name": "TIMESTAMP",
-						"type": "datetime2",
-						"scale": 3
-					},
-					{
-						"name": "GROSSINVAMT",
-						"type": "decimal",
-						"precision": 18,
-						"scale": 2
-					},
-					{
-						"name": "NETINVAMT",
-						"type": "decimal",
-						"precision": 18,
-						"scale": 2
-					},
-					{
-						"name": "LINEDISC",
-						"type": "decimal",
-						"precision": 18,
-						"scale": 2
-					},
-					{
-						"name": "INITDISC",
-						"type": "decimal",
-						"precision": 18,
-						"scale": 2
-					},
-					{
-						"name": "TAXES",
-						"type": "decimal",
-						"precision": 18,
-						"scale": 2
-					},
-					{
-						"name": "UPC",
-						"type": "int",
-						"precision": 10
-					},
-					{
-						"name": "RETAILING",
-						"type": "decimal",
-						"precision": 18,
-						"scale": 2
-					},
-					{
-						"name": "BranchId",
-						"type": "int",
-						"precision": 10
-					},
-					{
-						"name": "ProductId",
-						"type": "int",
-						"precision": 10
-					},
-					{
-						"name": "FileSetId",
-						"type": "int",
-						"precision": 10
-					},
-					{
-						"name": "flgProcess",
-						"type": "tinyint",
-						"precision": 3
-					},
-					{
-						"name": "Filename",
-						"type": "varchar"
-					},
-					{
-						"name": "LastModifiedDatetime",
-						"type": "smalldatetime",
-						"precision": 16,
-						"scale": 0
-					},
-					{
-						"name": "TimeStampIns",
-						"type": "smalldatetime",
-						"precision": 16,
-						"scale": 0
-					}
-				],
-				"typeProperties": {
-					"schema": "dbo",
-					"table": "NC_SRN_Current"
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/PnGDataFoundation')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/SRN_SUBD_NCS_table')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "PnGDataFoundation",
-					"type": "LinkedServiceReference"
-				},
-				"folder": {
-					"name": "DBConnection/NCS Tables"
-				},
-				"annotations": [],
-				"type": "AzureSqlTable",
-				"schema": [
-					{
-						"name": "SUBDCODE",
-						"type": "varchar"
-					},
-					{
-						"name": "DSECODE",
-						"type": "varchar"
-					},
-					{
-						"name": "CUSTCODE",
-						"type": "varchar"
-					},
-					{
-						"name": "SRNNO",
-						"type": "varchar"
-					},
-					{
-						"name": "INVNO",
-						"type": "varchar"
-					},
-					{
-						"name": "SRNDATE",
-						"type": "datetime",
-						"precision": 23,
-						"scale": 3
-					},
-					{
-						"name": "SKUCCODE",
-						"type": "varchar"
-					},
-					{
-						"name": "SKUDCODE",
-						"type": "varchar"
-					},
-					{
-						"name": "SKUEANCODE",
-						"type": "varchar"
-					},
-					{
-						"name": "BATCHCODE",
-						"type": "varchar"
-					},
-					{
-						"name": "QTY",
-						"type": "int",
-						"precision": 10
-					},
-					{
-						"name": "SELECTEDDATE",
-						"type": "datetime",
-						"precision": 23,
-						"scale": 3
-					},
-					{
-						"name": "Timestamp",
-						"type": "datetime",
-						"precision": 23,
-						"scale": 3
-					},
-					{
-						"name": "GROSSINVAMT",
-						"type": "decimal",
-						"precision": 18,
-						"scale": 2
-					},
-					{
-						"name": "NETINVAMT",
-						"type": "decimal",
-						"precision": 18,
-						"scale": 2
-					},
-					{
-						"name": "LINEDISC",
-						"type": "decimal",
-						"precision": 18,
-						"scale": 2
-					},
-					{
-						"name": "INITDISC",
-						"type": "decimal",
-						"precision": 18,
-						"scale": 2
-					},
-					{
-						"name": "TAXES",
-						"type": "decimal",
-						"precision": 18,
-						"scale": 2
-					},
-					{
-						"name": "UPC",
-						"type": "int",
-						"precision": 10
-					},
-					{
-						"name": "RETAILING",
-						"type": "decimal",
-						"precision": 18,
-						"scale": 2
-					},
-					{
-						"name": "Filename",
-						"type": "varchar"
-					},
-					{
-						"name": "LastModifiedDatetime",
-						"type": "smalldatetime",
-						"precision": 16,
-						"scale": 0
-					},
-					{
-						"name": "TimeStampIns",
-						"type": "smalldatetime",
-						"precision": 16,
-						"scale": 0
-					}
-				],
-				"typeProperties": {
-					"schema": "dbo",
-					"table": "NC_SRN_SUBD_Current"
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/PnGDataFoundation')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/Leap_AmazonS3')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"description": "Leap_AmazonS3",
-				"annotations": [],
-				"type": "AmazonS3",
-				"typeProperties": {
-					"serviceUrl": "",
-					"accessKeyId": "[parameters('Leap_AmazonS3_properties_typeProperties_accessKeyId')]",
-					"secretAccessKey": {
-						"type": "SecureString",
-						"value": "[parameters('Leap_AmazonS3_secretAccessKey')]"
-					}
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/LinkedService_PnGADLS')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"description": "LinkedService_PnGADLS",
-				"annotations": [],
-				"type": "AzureBlobFS",
-				"typeProperties": {
-					"url": "[parameters('LinkedService_PnGADLS_properties_typeProperties_url')]",
-					"accountKey": {
-						"type": "SecureString",
-						"value": "[parameters('LinkedService_PnGADLS_accountKey')]"
-					}
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/NCSdataStorageLink')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"description": "NCSdataStorageLink",
-				"annotations": [],
-				"type": "AzureBlobStorage",
-				"typeProperties": {
-					"connectionString": "[parameters('NCSdataStorageLink_connectionString')]"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/PnGDataFoundation')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"description": "PnGDataFoundation",
-				"annotations": [],
-				"type": "AzureSqlDatabase",
-				"typeProperties": {
-					"connectionString": "[parameters('PnGDataFoundation_connectionString')]"
 				}
 			},
 			"dependsOn": []
@@ -9681,9 +7360,7 @@
 				},
 				"schema": []
 			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/LinkedService_PnGADLS')]"
-			]
+			"dependsOn": []
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/NCSCSV_1_Staging')]",
@@ -9713,9 +7390,7 @@
 				},
 				"schema": []
 			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/NCSdataStorageLink')]"
-			]
+			"dependsOn": []
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/NCSCSV_1_Staging_WithHeader')]",
@@ -9745,9 +7420,7 @@
 				},
 				"schema": []
 			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/NCSdataStorageLink')]"
-			]
+			"dependsOn": []
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/NCSCSV_2')]",
@@ -9792,9 +7465,7 @@
 				},
 				"schema": []
 			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/LinkedService_PnGADLS')]"
-			]
+			"dependsOn": []
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/NCSCSV_2_Staging')]",
@@ -9824,9 +7495,7 @@
 				},
 				"schema": []
 			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/NCSdataStorageLink')]"
-			]
+			"dependsOn": []
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/NCSCSV_2_Staging_WithHeader')]",
@@ -9856,9 +7525,7 @@
 				},
 				"schema": []
 			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/NCSdataStorageLink')]"
-			]
+			"dependsOn": []
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/NCSStorageSourceDataset')]",
@@ -9885,9 +7552,7 @@
 					}
 				}
 			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/NCSdataStorageLink')]"
-			]
+			"dependsOn": []
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/CopyNCS_Staging-To-DB')]",
@@ -9912,8 +7577,7 @@
 						"typeProperties": {
 							"dataset": {
 								"referenceName": "NCSStorageSourceDataset",
-								"type": "DatasetReference",
-								"parameters": {}
+								"type": "DatasetReference"
 							},
 							"fieldList": [
 								"childItems",
@@ -10191,15 +7855,13 @@
 												"inputs": [
 													{
 														"referenceName": "NCSCSV_1_Staging",
-														"type": "DatasetReference",
-														"parameters": {}
+														"type": "DatasetReference"
 													}
 												],
 												"outputs": [
 													{
 														"referenceName": "LOCN_NCS_table",
-														"type": "DatasetReference",
-														"parameters": {}
+														"type": "DatasetReference"
 													}
 												]
 											}
@@ -10241,9 +7903,7 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/NCSStorageSourceDataset')]",
-				"[concat(variables('factoryId'), '/linkedServices/PnGDataFoundation')]",
-				"[concat(variables('factoryId'), '/datasets/NCSCSV_1_Staging')]",
-				"[concat(variables('factoryId'), '/datasets/LOCN_NCS_table')]"
+				"[concat(variables('factoryId'), '/datasets/NCSCSV_1_Staging')]"
 			]
 		},
 		{
@@ -10269,8 +7929,7 @@
 						"typeProperties": {
 							"dataset": {
 								"referenceName": "LeapStorageSourceDataset",
-								"type": "DatasetReference",
-								"parameters": {}
+								"type": "DatasetReference"
 							},
 							"fieldList": [
 								"childItems",
@@ -10591,15 +8250,13 @@
 												"inputs": [
 													{
 														"referenceName": "LeapCSV_Staging",
-														"type": "DatasetReference",
-														"parameters": {}
+														"type": "DatasetReference"
 													}
 												],
 												"outputs": [
 													{
 														"referenceName": "ACRV_table",
-														"type": "DatasetReference",
-														"parameters": {}
+														"type": "DatasetReference"
 													}
 												]
 											}
@@ -10851,15 +8508,13 @@
 												"inputs": [
 													{
 														"referenceName": "LeapCSV_Staging",
-														"type": "DatasetReference",
-														"parameters": {}
+														"type": "DatasetReference"
 													}
 												],
 												"outputs": [
 													{
 														"referenceName": "ACRV_table",
-														"type": "DatasetReference",
-														"parameters": {}
+														"type": "DatasetReference"
 													}
 												]
 											}
@@ -11111,15 +8766,13 @@
 												"inputs": [
 													{
 														"referenceName": "LeapCSV_Staging",
-														"type": "DatasetReference",
-														"parameters": {}
+														"type": "DatasetReference"
 													}
 												],
 												"outputs": [
 													{
 														"referenceName": "ACRV_table",
-														"type": "DatasetReference",
-														"parameters": {}
+														"type": "DatasetReference"
 													}
 												]
 											}
@@ -11311,15 +8964,13 @@
 												"inputs": [
 													{
 														"referenceName": "LeapCSV_Staging",
-														"type": "DatasetReference",
-														"parameters": {}
+														"type": "DatasetReference"
 													}
 												],
 												"outputs": [
 													{
 														"referenceName": "DSEM_table",
-														"type": "DatasetReference",
-														"parameters": {}
+														"type": "DatasetReference"
 													}
 												]
 											}
@@ -11511,15 +9162,13 @@
 												"inputs": [
 													{
 														"referenceName": "LeapCSV_Staging",
-														"type": "DatasetReference",
-														"parameters": {}
+														"type": "DatasetReference"
 													}
 												],
 												"outputs": [
 													{
 														"referenceName": "DSEM_table",
-														"type": "DatasetReference",
-														"parameters": {}
+														"type": "DatasetReference"
 													}
 												]
 											}
@@ -11711,15 +9360,13 @@
 												"inputs": [
 													{
 														"referenceName": "LeapCSV_Staging",
-														"type": "DatasetReference",
-														"parameters": {}
+														"type": "DatasetReference"
 													}
 												],
 												"outputs": [
 													{
 														"referenceName": "DSEM_table",
-														"type": "DatasetReference",
-														"parameters": {}
+														"type": "DatasetReference"
 													}
 												]
 											}
@@ -11775,7 +9422,6 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/LeapStorageSourceDataset')]",
-				"[concat(variables('factoryId'), '/linkedServices/PnGDataFoundation')]",
 				"[concat(variables('factoryId'), '/datasets/LeapCSV_Staging')]",
 				"[concat(variables('factoryId'), '/datasets/ACRV_table')]",
 				"[concat(variables('factoryId'), '/datasets/DSEM_table')]"
