@@ -826,6 +826,144 @@
 									}
 								]
 							}
+						},
+						{
+							"name": "BSBF_Could2",
+							"type": "IfCondition",
+							"dependsOn": [
+								{
+									"activity": "BSBF_Could1",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"userProperties": [],
+							"typeProperties": {
+								"expression": {
+									"value": "@bool(startswith(item().name,'BSBF_cloud02_'))",
+									"type": "Expression"
+								},
+								"ifTrueActivities": [
+									{
+										"name": "BSBF_Cloud2",
+										"description": "Copy a file from the source store to the destination store.",
+										"type": "Copy",
+										"dependsOn": [],
+										"policy": {
+											"timeout": "7.00:00:00",
+											"retry": 0,
+											"retryIntervalInSeconds": 30,
+											"secureOutput": false,
+											"secureInput": false
+										},
+										"userProperties": [],
+										"typeProperties": {
+											"source": {
+												"type": "DelimitedTextSource",
+												"additionalColumns": [
+													{
+														"name": "Filename",
+														"value": {
+															"value": "@item().name",
+															"type": "Expression"
+														}
+													},
+													{
+														"name": "LastModifiedDatetime",
+														"value": {
+															"value": "@activity('GetFileList').output.lastModified",
+															"type": "Expression"
+														}
+													}
+												],
+												"storeSettings": {
+													"type": "AzureBlobStorageReadSettings",
+													"recursive": true,
+													"wildcardFileName": "BSBF_cloud02_*",
+													"enablePartitionDiscovery": false
+												},
+												"formatSettings": {
+													"type": "DelimitedTextReadSettings"
+												},
+												"recursive": false
+											},
+											"sink": {
+												"type": "AzureSqlSink"
+											},
+											"enableStaging": false,
+											"dataIntegrationUnits": 2,
+											"translator": {
+												"type": "TabularTranslator",
+												"mappings": [
+													{
+														"source": {
+															"name": "branchcode",
+															"type": "String"
+														},
+														"sink": {
+															"name": "branchcode",
+															"type": "String"
+														}
+													},
+													{
+														"source": {
+															"name": "subbfname",
+															"type": "String"
+														},
+														"sink": {
+															"name": "subbfname",
+															"type": "String"
+														}
+													},
+													{
+														"source": {
+															"name": "status",
+															"type": "String"
+														},
+														"sink": {
+															"name": "status",
+															"type": "String"
+														}
+													},
+													{
+														"source": {
+															"name": "Filename",
+															"type": "String"
+														},
+														"sink": {
+															"name": "Filename",
+															"type": "String"
+														}
+													},
+													{
+														"source": {
+															"name": "LastModifiedDatetime",
+															"type": "String"
+														},
+														"sink": {
+															"name": "LastModifiedDatetime",
+															"type": "DateTime"
+														}
+													}
+												]
+											}
+										},
+										"inputs": [
+											{
+												"referenceName": "LeapCSV_Staging",
+												"type": "DatasetReference"
+											}
+										],
+										"outputs": [
+											{
+												"referenceName": "BSBF_table",
+												"type": "DatasetReference"
+											}
+										]
+									}
+								]
+							}
 						}
 					]
 				}
