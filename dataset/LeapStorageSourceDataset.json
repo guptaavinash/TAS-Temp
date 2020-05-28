@@ -5,6 +5,9 @@
 			"referenceName": "NCSdataStorageLink",
 			"type": "LinkedServiceReference"
 		},
+		"folder": {
+			"name": "StagingSource"
+		},
 		"annotations": [],
 		"type": "Binary",
 		"typeProperties": {

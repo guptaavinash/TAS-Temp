@@ -159,6 +159,9 @@
 				"type": "string"
 			}
 		},
+		"folder": {
+			"name": "Leap Data Pipeline"
+		},
 		"annotations": []
 	}
 }
