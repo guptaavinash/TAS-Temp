@@ -65,7 +65,14 @@
 			{
 				"name": "DeleteFileDuplicateEntry",
 				"type": "SqlServerStoredProcedure",
-				"dependsOn": [],
+				"dependsOn": [
+					{
+						"activity": "CopyLeapStaging-To-ADLS",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
 				"policy": {
 					"timeout": "7.00:00:00",
 					"retry": 0,
@@ -80,6 +87,26 @@
 				"linkedServiceName": {
 					"referenceName": "PnGDataFoundation",
 					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "CopyLeapStaging-To-ADLS",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "CopyLeap_Staging-To-DB_2",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "CopyLeapStaging-To-ADLS",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
 				}
 			}
 		],
