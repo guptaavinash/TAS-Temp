@@ -5,6 +5,11 @@
 			"referenceName": "Leap_AmazonS3",
 			"type": "LinkedServiceReference"
 		},
+		"parameters": {
+			"filename": {
+				"type": "string"
+			}
+		},
 		"folder": {
 			"name": "FileConnection"
 		},
@@ -14,7 +19,11 @@
 			"location": {
 				"type": "AmazonS3Location",
 				"bucketName": "leapdata-tas",
-				"folderPath": "Test/Cloud2"
+				"folderPath": "Test/Cloud2",
+				"fileName": {
+					"value": "@dataset().filename",
+					"type": "Expression"
+				}
 			}
 		}
 	}
