@@ -70,6 +70,9 @@
 								}
 							},
 							"enableStaging": false,
+							"preserve": [
+								"Attributes"
+							],
 							"dataIntegrationUnits": 2
 						},
 						"inputs": [
@@ -8666,6 +8669,9 @@
 											}
 										},
 										"enableStaging": false,
+										"preserve": [
+											"Attributes"
+										],
 										"validateDataConsistency": false,
 										"dataIntegrationUnits": 2
 									},
@@ -8870,6 +8876,9 @@
 											}
 										},
 										"enableStaging": false,
+										"preserve": [
+											"Attributes"
+										],
 										"validateDataConsistency": false,
 										"dataIntegrationUnits": 2
 									},
@@ -9074,6 +9083,9 @@
 											}
 										},
 										"enableStaging": false,
+										"preserve": [
+											"Attributes"
+										],
 										"validateDataConsistency": false,
 										"dataIntegrationUnits": 2
 									},
