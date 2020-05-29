@@ -8589,7 +8589,7 @@
 						"userProperties": [
 							{
 								"name": "Source",
-								"value": "leapdata-tas/LEAP/"
+								"value": "ncsdata/"
 							},
 							{
 								"name": "Destination",
@@ -8602,7 +8602,7 @@
 								"storeSettings": {
 									"type": "AzureBlobStorageReadSettings",
 									"recursive": true,
-									"wildcardFileName": "*"
+									"wildcardFileName": "*.csv"
 								}
 							},
 							"sink": {
