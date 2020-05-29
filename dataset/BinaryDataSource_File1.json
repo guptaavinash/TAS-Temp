@@ -1,25 +1,35 @@
 {
-	"name": "S3LeapDataSet_Cloud3_File",
+	"name": "BinaryDataSource_File1",
 	"properties": {
+		"description": "It describes the file in the data source store.",
 		"linkedServiceName": {
 			"referenceName": "Leap_AmazonS3",
 			"type": "LinkedServiceReference"
 		},
 		"parameters": {
+			"Bucket": {
+				"type": "String"
+			},
+			"Directory": {
+				"type": "String"
+			},
 			"filename": {
 				"type": "string"
 			}
-		},
-		"folder": {
-			"name": "FileConnection"
 		},
 		"annotations": [],
 		"type": "Binary",
 		"typeProperties": {
 			"location": {
 				"type": "AmazonS3Location",
-				"bucketName": "leapdata-tas",
-				"folderPath": "Test/Cloud3",
+				"bucketName": {
+					"value": "@{dataset().Bucket}",
+					"type": "Expression"
+				},
+				"folderPath": {
+					"value": "@{dataset().Directory}",
+					"type": "Expression"
+				},
 				"fileName": {
 					"value": "@dataset().filename",
 					"type": "Expression"
