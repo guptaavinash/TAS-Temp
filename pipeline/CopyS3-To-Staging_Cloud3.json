@@ -16,11 +16,8 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataset": {
-						"referenceName": "S3LeapDataSet_Cloud3_File",
-						"type": "DatasetReference",
-						"parameters": {
-							"filename": "*.csv"
-						}
+						"referenceName": "S3LeapDataSet_Cloud3_Folder",
+						"type": "DatasetReference"
 					},
 					"fieldList": [
 						"childItems",
