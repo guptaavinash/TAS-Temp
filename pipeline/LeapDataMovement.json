@@ -7,7 +7,7 @@
 				"type": "ExecutePipeline",
 				"dependsOn": [
 					{
-						"activity": "SpDeleteOldtmpleapdata",
+						"activity": "CopyS3-To-Staging",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -77,6 +77,26 @@
 				"typeProperties": {
 					"pipeline": {
 						"referenceName": "CopyLeapStaging-To-ADLS",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "CopyS3-To-Staging",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "SpDeleteOldtmpleapdata",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "CopyS3-To-Staging",
 						"type": "PipelineReference"
 					},
 					"waitOnCompletion": true

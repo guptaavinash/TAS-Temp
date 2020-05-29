@@ -14,7 +14,7 @@
 			"location": {
 				"type": "AmazonS3Location",
 				"bucketName": "leapdata-tas",
-				"folderPath": "LEAP/Cloud1"
+				"folderPath": "Test/Cloud1"
 			}
 		}
 	}

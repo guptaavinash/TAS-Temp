@@ -28,7 +28,7 @@
 								"value": "@pipeline().parameters.windowEnd",
 								"type": "Expression"
 							},
-							"wildcardFolderPath": "LEAP/Cloud1",
+							"wildcardFolderPath": "Test/Cloud1",
 							"wildcardFileName": "*.csv"
 						}
 					},
@@ -86,7 +86,7 @@
 								"value": "@pipeline().parameters.windowEnd",
 								"type": "Expression"
 							},
-							"wildcardFolderPath": "LEAP/Cloud2",
+							"wildcardFolderPath": "Test/Cloud2",
 							"wildcardFileName": "*.csv"
 						}
 					},
@@ -145,7 +145,7 @@
 								"value": "@pipeline().parameters.windowEnd",
 								"type": "Expression"
 							},
-							"wildcardFolderPath": "LEAP/Cloud3",
+							"wildcardFolderPath": "Test/Cloud3",
 							"wildcardFileName": "*.csv"
 						}
 					},
