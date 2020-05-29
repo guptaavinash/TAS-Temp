@@ -8469,14 +8469,7 @@
 							],
 							"storeSettings": {
 								"type": "AmazonS3ReadSettings",
-								"modifiedDatetimeStart": {
-									"value": "@pipeline().parameters.windowStart",
-									"type": "Expression"
-								},
-								"modifiedDatetimeEnd": {
-									"value": "@pipeline().parameters.windowEnd",
-									"type": "Expression"
-								}
+								"recursive": true
 							},
 							"formatSettings": {
 								"type": "BinaryReadSettings"
@@ -8677,14 +8670,7 @@
 							],
 							"storeSettings": {
 								"type": "AmazonS3ReadSettings",
-								"modifiedDatetimeStart": {
-									"value": "@pipeline().parameters.windowStart",
-									"type": "Expression"
-								},
-								"modifiedDatetimeEnd": {
-									"value": "@pipeline().parameters.windowEnd",
-									"type": "Expression"
-								}
+								"recursive": true
 							},
 							"formatSettings": {
 								"type": "BinaryReadSettings"
@@ -8885,14 +8871,7 @@
 							],
 							"storeSettings": {
 								"type": "AmazonS3ReadSettings",
-								"modifiedDatetimeStart": {
-									"value": "@pipeline().parameters.windowStart",
-									"type": "Expression"
-								},
-								"modifiedDatetimeEnd": {
-									"value": "@pipeline().parameters.windowEnd",
-									"type": "Expression"
-								}
+								"recursive": true
 							},
 							"formatSettings": {
 								"type": "BinaryReadSettings"
@@ -9062,6 +9041,74 @@
 			"dependsOn": []
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/CopyS3-To-Staging')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "CopyS3-To-Staging_Cloud1",
+						"type": "ExecutePipeline",
+						"dependsOn": [],
+						"userProperties": [],
+						"typeProperties": {
+							"pipeline": {
+								"referenceName": "CopyS3-To-Staging_Cloud1",
+								"type": "PipelineReference"
+							},
+							"waitOnCompletion": true,
+							"parameters": {}
+						}
+					},
+					{
+						"name": "CopyS3-To-Staging_Cloud2",
+						"type": "ExecutePipeline",
+						"dependsOn": [],
+						"userProperties": [],
+						"typeProperties": {
+							"pipeline": {
+								"referenceName": "CopyS3-To-Staging_Cloud2",
+								"type": "PipelineReference"
+							},
+							"waitOnCompletion": true,
+							"parameters": {}
+						}
+					},
+					{
+						"name": "CopyS3-To-Staging_Cloud3",
+						"type": "ExecutePipeline",
+						"dependsOn": [],
+						"userProperties": [],
+						"typeProperties": {
+							"pipeline": {
+								"referenceName": "CopyS3-To-Staging_Cloud3",
+								"type": "PipelineReference"
+							},
+							"waitOnCompletion": true,
+							"parameters": {}
+						}
+					}
+				],
+				"parameters": {
+					"windowStart": {
+						"type": "string"
+					},
+					"windowEnd": {
+						"type": "string"
+					}
+				},
+				"folder": {
+					"name": "Leap Data Pipeline"
+				},
+				"annotations": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/pipelines/CopyS3-To-Staging_Cloud1')]",
+				"[concat(variables('factoryId'), '/pipelines/CopyS3-To-Staging_Cloud2')]",
+				"[concat(variables('factoryId'), '/pipelines/CopyS3-To-Staging_Cloud3')]"
+			]
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/LeapDataMovement')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
 			"apiVersion": "2018-06-01",
@@ -9229,74 +9276,6 @@
 				"[concat(variables('factoryId'), '/pipelines/CopyLeap_Staging-To-DB_2')]",
 				"[concat(variables('factoryId'), '/pipelines/CopyLeapStaging-To-ADLS')]",
 				"[concat(variables('factoryId'), '/pipelines/CopyS3-To-Staging_Cloud1')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/CopyS3-To-Staging')]",
-			"type": "Microsoft.DataFactory/factories/pipelines",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"activities": [
-					{
-						"name": "CopyS3-To-Staging_Cloud1",
-						"type": "ExecutePipeline",
-						"dependsOn": [],
-						"userProperties": [],
-						"typeProperties": {
-							"pipeline": {
-								"referenceName": "CopyS3-To-Staging_Cloud1",
-								"type": "PipelineReference"
-							},
-							"waitOnCompletion": true,
-							"parameters": {}
-						}
-					},
-					{
-						"name": "CopyS3-To-Staging_Cloud2",
-						"type": "ExecutePipeline",
-						"dependsOn": [],
-						"userProperties": [],
-						"typeProperties": {
-							"pipeline": {
-								"referenceName": "CopyS3-To-Staging_Cloud2",
-								"type": "PipelineReference"
-							},
-							"waitOnCompletion": true,
-							"parameters": {}
-						}
-					},
-					{
-						"name": "CopyS3-To-Staging_Cloud3",
-						"type": "ExecutePipeline",
-						"dependsOn": [],
-						"userProperties": [],
-						"typeProperties": {
-							"pipeline": {
-								"referenceName": "CopyS3-To-Staging_Cloud3",
-								"type": "PipelineReference"
-							},
-							"waitOnCompletion": true,
-							"parameters": {}
-						}
-					}
-				],
-				"parameters": {
-					"windowStart": {
-						"type": "string"
-					},
-					"windowEnd": {
-						"type": "string"
-					}
-				},
-				"folder": {
-					"name": "Leap Data Pipeline"
-				},
-				"annotations": []
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/pipelines/CopyS3-To-Staging_Cloud1')]",
-				"[concat(variables('factoryId'), '/pipelines/CopyS3-To-Staging_Cloud2')]",
-				"[concat(variables('factoryId'), '/pipelines/CopyS3-To-Staging_Cloud3')]"
 			]
 		}
 	]
