@@ -58,10 +58,6 @@
 					"location": {
 						"type": "AzureBlobStorageLocation",
 						"container": "leap"
-					},
-					"compression": {
-						"type": "bzip2",
-						"level": "Fastest"
 					}
 				}
 			},
@@ -295,10 +291,6 @@
 					"location": {
 						"type": "AzureBlobStorageLocation",
 						"container": "ncsdata"
-					},
-					"compression": {
-						"type": "bzip2",
-						"level": "Fastest"
 					}
 				}
 			},

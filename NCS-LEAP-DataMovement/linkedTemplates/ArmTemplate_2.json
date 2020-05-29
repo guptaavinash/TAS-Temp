@@ -8479,7 +8479,11 @@
 									"type": "AzureBlobStorageWriteSettings"
 								}
 							},
-							"enableStaging": false
+							"enableStaging": false,
+							"skipErrorFile": {
+								"fileMissing": true
+							},
+							"validateDataConsistency": false
 						},
 						"inputs": [
 							{
@@ -8540,6 +8544,7 @@
 								}
 							},
 							"enableStaging": false,
+							"validateDataConsistency": false,
 							"dataIntegrationUnits": 2
 						},
 						"inputs": [
@@ -8601,6 +8606,7 @@
 								}
 							},
 							"enableStaging": false,
+							"validateDataConsistency": false,
 							"dataIntegrationUnits": 2
 						},
 						"inputs": [
