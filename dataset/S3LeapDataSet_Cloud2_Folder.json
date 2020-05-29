@@ -1,0 +1,26 @@
+{
+	"name": "S3LeapDataSet_Cloud2_Folder",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Leap_AmazonS3",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"filename": {
+				"type": "string"
+			}
+		},
+		"folder": {
+			"name": "FileConnection"
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AmazonS3Location",
+				"bucketName": "leapdata-tas",
+				"folderPath": "Test/Cloud2"
+			}
+		}
+	}
+}
