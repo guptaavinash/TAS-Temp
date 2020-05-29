@@ -8516,9 +8516,7 @@
 									"modifiedDatetimeEnd": {
 										"value": "@pipeline().parameters.windowEnd",
 										"type": "Expression"
-									},
-									"wildcardFolderPath": "Test/Cloud1",
-									"wildcardFileName": "*.csv"
+									}
 								}
 							},
 							"sink": {
@@ -8531,7 +8529,8 @@
 							"skipErrorFile": {
 								"fileMissing": true
 							},
-							"validateDataConsistency": false
+							"validateDataConsistency": false,
+							"dataIntegrationUnits": 2
 						},
 						"inputs": [
 							{
@@ -8580,9 +8579,7 @@
 									"modifiedDatetimeEnd": {
 										"value": "@pipeline().parameters.windowEnd",
 										"type": "Expression"
-									},
-									"wildcardFolderPath": "Test/Cloud2",
-									"wildcardFileName": "*.csv"
+									}
 								}
 							},
 							"sink": {
@@ -8642,9 +8639,7 @@
 									"modifiedDatetimeEnd": {
 										"value": "@pipeline().parameters.windowEnd",
 										"type": "Expression"
-									},
-									"wildcardFolderPath": "Test/Cloud3",
-									"wildcardFileName": "*.csv"
+									}
 								}
 							},
 							"sink": {

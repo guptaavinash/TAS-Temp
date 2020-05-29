@@ -1,0 +1,322 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "NCS-LEAP-DataMovement"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "[concat(parameters('factoryName'), '/CopyS3-To-Staging')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "LeapCSV_Cloud1_Staging",
+						"type": "Copy",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "BinarySource",
+								"storeSettings": {
+									"type": "AmazonS3ReadSettings",
+									"recursive": true,
+									"modifiedDatetimeStart": {
+										"value": "@pipeline().parameters.windowStart",
+										"type": "Expression"
+									},
+									"modifiedDatetimeEnd": {
+										"value": "@pipeline().parameters.windowEnd",
+										"type": "Expression"
+									}
+								}
+							},
+							"sink": {
+								"type": "BinarySink",
+								"storeSettings": {
+									"type": "AzureBlobStorageWriteSettings"
+								}
+							},
+							"enableStaging": false,
+							"skipErrorFile": {
+								"fileMissing": true
+							},
+							"validateDataConsistency": false,
+							"dataIntegrationUnits": 2
+						},
+						"inputs": [
+							{
+								"referenceName": "S3LeapDataSet_Cloud1",
+								"type": "DatasetReference"
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "LeapStorageSourceDataset",
+								"type": "DatasetReference"
+							}
+						]
+					},
+					{
+						"name": "LeapCSV_Cloud2_Staging",
+						"type": "Copy",
+						"dependsOn": [
+							{
+								"activity": "DeleteFiles_Cloud1",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "BinarySource",
+								"storeSettings": {
+									"type": "AmazonS3ReadSettings",
+									"recursive": true,
+									"modifiedDatetimeStart": {
+										"value": "@pipeline().parameters.windowStart",
+										"type": "Expression"
+									},
+									"modifiedDatetimeEnd": {
+										"value": "@pipeline().parameters.windowEnd",
+										"type": "Expression"
+									}
+								}
+							},
+							"sink": {
+								"type": "BinarySink",
+								"storeSettings": {
+									"type": "AzureBlobStorageWriteSettings"
+								}
+							},
+							"enableStaging": false,
+							"validateDataConsistency": false,
+							"dataIntegrationUnits": 2
+						},
+						"inputs": [
+							{
+								"referenceName": "S3LeapDataSet_Cloud2",
+								"type": "DatasetReference"
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "LeapStorageSourceDataset",
+								"type": "DatasetReference"
+							}
+						]
+					},
+					{
+						"name": "LeapCSV_Cloud3_Staging",
+						"type": "Copy",
+						"dependsOn": [
+							{
+								"activity": "DeleteFiles_Cloud2",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "BinarySource",
+								"storeSettings": {
+									"type": "AmazonS3ReadSettings",
+									"recursive": true,
+									"modifiedDatetimeStart": {
+										"value": "@pipeline().parameters.windowStart",
+										"type": "Expression"
+									},
+									"modifiedDatetimeEnd": {
+										"value": "@pipeline().parameters.windowEnd",
+										"type": "Expression"
+									}
+								}
+							},
+							"sink": {
+								"type": "BinarySink",
+								"storeSettings": {
+									"type": "AzureBlobStorageWriteSettings"
+								}
+							},
+							"enableStaging": false,
+							"validateDataConsistency": false,
+							"dataIntegrationUnits": 2
+						},
+						"inputs": [
+							{
+								"referenceName": "S3LeapDataSet_Cloud3",
+								"type": "DatasetReference"
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "LeapStorageSourceDataset",
+								"type": "DatasetReference"
+							}
+						]
+					},
+					{
+						"name": "DeleteFiles_Cloud1",
+						"type": "Delete",
+						"dependsOn": [
+							{
+								"activity": "LeapCSV_Cloud1_Staging",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"dataset": {
+								"referenceName": "S3LeapDataSet_Cloud1",
+								"type": "DatasetReference"
+							},
+							"logStorageSettings": {
+								"linkedServiceName": {
+									"referenceName": "NCSdataStorageLink",
+									"type": "LinkedServiceReference"
+								},
+								"path": "log"
+							},
+							"enableLogging": true,
+							"storeSettings": {
+								"type": "AmazonS3ReadSettings",
+								"recursive": true
+							}
+						}
+					},
+					{
+						"name": "DeleteFiles_Cloud2",
+						"type": "Delete",
+						"dependsOn": [
+							{
+								"activity": "LeapCSV_Cloud2_Staging",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"dataset": {
+								"referenceName": "S3LeapDataSet_Cloud2",
+								"type": "DatasetReference"
+							},
+							"logStorageSettings": {
+								"linkedServiceName": {
+									"referenceName": "NCSdataStorageLink",
+									"type": "LinkedServiceReference"
+								},
+								"path": "log"
+							},
+							"enableLogging": true,
+							"storeSettings": {
+								"type": "AmazonS3ReadSettings",
+								"recursive": true
+							}
+						}
+					},
+					{
+						"name": "DeleteFiles_Cloud3",
+						"type": "Delete",
+						"dependsOn": [
+							{
+								"activity": "LeapCSV_Cloud3_Staging",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"dataset": {
+								"referenceName": "S3LeapDataSet_Cloud3",
+								"type": "DatasetReference"
+							},
+							"logStorageSettings": {
+								"linkedServiceName": {
+									"referenceName": "NCSdataStorageLink",
+									"type": "LinkedServiceReference"
+								},
+								"path": "log"
+							},
+							"enableLogging": true,
+							"storeSettings": {
+								"type": "AmazonS3ReadSettings",
+								"recursive": true
+							}
+						}
+					}
+				],
+				"parameters": {
+					"windowStart": {
+						"type": "string"
+					},
+					"windowEnd": {
+						"type": "string"
+					}
+				},
+				"folder": {
+					"name": "Leap Data Pipeline"
+				},
+				"annotations": []
+			},
+			"dependsOn": []
+		}
+	]
+}
