@@ -14,10 +14,6 @@
 			"location": {
 				"type": "AzureBlobStorageLocation",
 				"container": "leap"
-			},
-			"compression": {
-				"type": "bzip2",
-				"level": "Fastest"
 			}
 		}
 	}
