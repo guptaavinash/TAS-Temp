@@ -310,7 +310,11 @@
 						"referenceName": "S3LeapDataSet_Cloud1",
 						"type": "DatasetReference"
 					},
-					"fieldList": [],
+					"fieldList": [
+						"childItems",
+						"lastModified",
+						"itemName"
+					],
 					"storeSettings": {
 						"type": "AmazonS3ReadSettings",
 						"modifiedDatetimeStart": {
@@ -344,7 +348,11 @@
 						"referenceName": "S3LeapDataSet_Cloud2",
 						"type": "DatasetReference"
 					},
-					"fieldList": [],
+					"fieldList": [
+						"childItems",
+						"lastModified",
+						"itemName"
+					],
 					"storeSettings": {
 						"type": "AmazonS3ReadSettings",
 						"modifiedDatetimeStart": {
@@ -378,7 +386,11 @@
 						"referenceName": "S3LeapDataSet_Cloud3",
 						"type": "DatasetReference"
 					},
-					"fieldList": [],
+					"fieldList": [
+						"childItems",
+						"lastModified",
+						"itemName"
+					],
 					"storeSettings": {
 						"type": "AmazonS3ReadSettings",
 						"modifiedDatetimeStart": {
