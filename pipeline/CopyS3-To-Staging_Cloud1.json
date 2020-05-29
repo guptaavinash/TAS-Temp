@@ -19,7 +19,7 @@
 						"referenceName": "S3LeapDataSet_Cloud1",
 						"type": "DatasetReference",
 						"parameters": {
-							"filename": "file"
+							"filename": "*.csv"
 						}
 					},
 					"fieldList": [
@@ -27,7 +27,8 @@
 						"itemName"
 					],
 					"storeSettings": {
-						"type": "AmazonS3ReadSettings"
+						"type": "AmazonS3ReadSettings",
+						"recursive": true
 					},
 					"formatSettings": {
 						"type": "BinaryReadSettings"
