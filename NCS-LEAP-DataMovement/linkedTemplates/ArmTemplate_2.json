@@ -8790,7 +8790,8 @@
 							},
 							"fieldList": [
 								"childItems",
-								"itemName"
+								"itemName",
+								"lastModified"
 							],
 							"storeSettings": {
 								"type": "AmazonS3ReadSettings",
@@ -9002,7 +9003,8 @@
 							},
 							"fieldList": [
 								"childItems",
-								"itemName"
+								"itemName",
+								"lastModified"
 							],
 							"storeSettings": {
 								"type": "AmazonS3ReadSettings",
