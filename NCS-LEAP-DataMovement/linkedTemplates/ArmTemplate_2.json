@@ -13,6 +13,71 @@
 	},
 	"resources": [
 		{
+			"name": "[concat(parameters('factoryName'), '/CopyLeapStaging-To-ADLS')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "CopyLeapStaging-To-ADLS",
+						"type": "Copy",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "BinarySource",
+								"storeSettings": {
+									"type": "AzureBlobStorageReadSettings",
+									"recursive": true,
+									"wildcardFileName": "*.csv"
+								}
+							},
+							"sink": {
+								"type": "BinarySink",
+								"storeSettings": {
+									"type": "AzureBlobFSWriteSettings"
+								}
+							},
+							"enableStaging": false,
+							"dataIntegrationUnits": 2
+						},
+						"inputs": [
+							{
+								"referenceName": "LeapStorageSourceDataset",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "ADLSDataset",
+								"type": "DatasetReference",
+								"parameters": {
+									"folder": {
+										"value": "@concat('/', formatDateTime(pipeline().TriggerTime, 'yyyy'), '/', formatDateTime(pipeline().TriggerTime, 'MM'), '/', formatDateTime(pipeline().TriggerTime, 'dd'), '/')",
+										"type": "Expression"
+									},
+									"directory": "leap"
+								}
+							}
+						]
+					}
+				],
+				"folder": {
+					"name": "Leap Data Pipeline"
+				},
+				"annotations": []
+			},
+			"dependsOn": []
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/CopyLeap_Staging-To-DB')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
 			"apiVersion": "2018-06-01",
@@ -6492,555 +6557,6 @@
 			"dependsOn": []
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/CopyS3-To-Staging')]",
-			"type": "Microsoft.DataFactory/factories/pipelines",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"activities": [
-					{
-						"name": "LeapCSV_Cloud1_Staging",
-						"type": "Copy",
-						"dependsOn": [],
-						"policy": {
-							"timeout": "7.00:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"source": {
-								"type": "BinarySource",
-								"storeSettings": {
-									"type": "AmazonS3ReadSettings",
-									"recursive": true,
-									"modifiedDatetimeStart": {
-										"value": "@pipeline().parameters.windowStart",
-										"type": "Expression"
-									},
-									"modifiedDatetimeEnd": {
-										"value": "@pipeline().parameters.windowEnd",
-										"type": "Expression"
-									},
-									"wildcardFolderPath": "LEAP/Cloud1",
-									"wildcardFileName": "*.csv"
-								}
-							},
-							"sink": {
-								"type": "BinarySink",
-								"storeSettings": {
-									"type": "AzureBlobStorageWriteSettings"
-								}
-							},
-							"enableStaging": false
-						},
-						"inputs": [
-							{
-								"referenceName": "S3LeapDataSet_Cloud1",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						],
-						"outputs": [
-							{
-								"referenceName": "LeapStorageSourceDataset",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						]
-					},
-					{
-						"name": "LeapCSV_Cloud2_Staging",
-						"type": "Copy",
-						"dependsOn": [
-							{
-								"activity": "LeapCSV_Cloud1_Staging",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"policy": {
-							"timeout": "7.00:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"source": {
-								"type": "BinarySource",
-								"storeSettings": {
-									"type": "AmazonS3ReadSettings",
-									"recursive": true,
-									"modifiedDatetimeStart": {
-										"value": "@pipeline().parameters.windowStart",
-										"type": "Expression"
-									},
-									"modifiedDatetimeEnd": {
-										"value": "@pipeline().parameters.windowEnd",
-										"type": "Expression"
-									},
-									"wildcardFolderPath": "LEAP/Cloud2",
-									"wildcardFileName": "*.csv"
-								}
-							},
-							"sink": {
-								"type": "BinarySink",
-								"storeSettings": {
-									"type": "AzureBlobStorageWriteSettings"
-								}
-							},
-							"enableStaging": false,
-							"dataIntegrationUnits": 2
-						},
-						"inputs": [
-							{
-								"referenceName": "S3LeapDataSet_Cloud2",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						],
-						"outputs": [
-							{
-								"referenceName": "LeapStorageSourceDataset",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						]
-					},
-					{
-						"name": "LeapCSV_Cloud3_Staging",
-						"type": "Copy",
-						"dependsOn": [
-							{
-								"activity": "LeapCSV_Cloud2_Staging",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"policy": {
-							"timeout": "7.00:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"source": {
-								"type": "BinarySource",
-								"storeSettings": {
-									"type": "AmazonS3ReadSettings",
-									"recursive": true,
-									"modifiedDatetimeStart": {
-										"value": "@pipeline().parameters.windowStart",
-										"type": "Expression"
-									},
-									"modifiedDatetimeEnd": {
-										"value": "@pipeline().parameters.windowEnd",
-										"type": "Expression"
-									},
-									"wildcardFolderPath": "LEAP/Cloud3",
-									"wildcardFileName": "*.csv"
-								}
-							},
-							"sink": {
-								"type": "BinarySink",
-								"storeSettings": {
-									"type": "AzureBlobStorageWriteSettings"
-								}
-							},
-							"enableStaging": false,
-							"dataIntegrationUnits": 2
-						},
-						"inputs": [
-							{
-								"referenceName": "S3LeapDataSet_Cloud3",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						],
-						"outputs": [
-							{
-								"referenceName": "LeapStorageSourceDataset",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						]
-					}
-				],
-				"parameters": {
-					"windowStart": {
-						"type": "string"
-					},
-					"windowEnd": {
-						"type": "string"
-					}
-				},
-				"folder": {
-					"name": "Leap Data Pipeline"
-				},
-				"annotations": []
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/CopyNCS_Staging-To-DB')]",
-			"type": "Microsoft.DataFactory/factories/pipelines",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"description": "Copy file data from Staging to DB",
-				"activities": [
-					{
-						"name": "GetFileList",
-						"description": "Get the list of file",
-						"type": "GetMetadata",
-						"dependsOn": [],
-						"policy": {
-							"timeout": "7.00:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"dataset": {
-								"referenceName": "NCSStorageSourceDataset",
-								"type": "DatasetReference",
-								"parameters": {}
-							},
-							"fieldList": [
-								"childItems",
-								"lastModified",
-								"itemName"
-							],
-							"storeSettings": {
-								"type": "AzureBlobStorageReadSettings",
-								"recursive": true
-							},
-							"formatSettings": {
-								"type": "BinaryReadSettings"
-							}
-						}
-					},
-					{
-						"name": "ForEachFile",
-						"description": "Iterate each file, and move them one by one.",
-						"type": "ForEach",
-						"dependsOn": [
-							{
-								"activity": "FilterFiles",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"userProperties": [],
-						"typeProperties": {
-							"items": {
-								"value": "@activity('FilterFiles').output.value",
-								"type": "Expression"
-							},
-							"batchCount": 20,
-							"activities": [
-								{
-									"name": "SpFileEntry",
-									"type": "SqlServerStoredProcedure",
-									"dependsOn": [],
-									"policy": {
-										"timeout": "7.00:00:00",
-										"retry": 0,
-										"retryIntervalInSeconds": 30,
-										"secureOutput": false,
-										"secureInput": false
-									},
-									"userProperties": [],
-									"typeProperties": {
-										"storedProcedureName": "[[dbo].[SpFileEntry]",
-										"storedProcedureParameters": {
-											"Filename": {
-												"value": {
-													"value": "@item().name",
-													"type": "Expression"
-												},
-												"type": "String"
-											},
-											"FileType": {
-												"value": "2",
-												"type": "Byte"
-											},
-											"LastModifiedDatetime": {
-												"value": {
-													"value": "@activity('GetFileList').output.lastModified",
-													"type": "Expression"
-												},
-												"type": "DateTime"
-											}
-										}
-									},
-									"linkedServiceName": {
-										"referenceName": "PnGDataFoundation",
-										"type": "LinkedServiceReference"
-									}
-								},
-								{
-									"name": "Location master",
-									"type": "IfCondition",
-									"dependsOn": [
-										{
-											"activity": "SpFileEntry",
-											"dependencyConditions": [
-												"Succeeded"
-											]
-										}
-									],
-									"userProperties": [],
-									"typeProperties": {
-										"expression": {
-											"value": "@bool(startswith(item().name,'Location'))",
-											"type": "Expression"
-										},
-										"ifTrueActivities": [
-											{
-												"name": "location master data",
-												"type": "Copy",
-												"dependsOn": [],
-												"policy": {
-													"timeout": "7.00:00:00",
-													"retry": 0,
-													"retryIntervalInSeconds": 30,
-													"secureOutput": false,
-													"secureInput": false
-												},
-												"userProperties": [],
-												"typeProperties": {
-													"source": {
-														"type": "DelimitedTextSource",
-														"additionalColumns": [
-															{
-																"name": "Filename",
-																"value": {
-																	"value": "@item().name",
-																	"type": "Expression"
-																}
-															},
-															{
-																"name": "LastModifiedDatetime",
-																"value": {
-																	"value": "@activity('GetFileList').output.lastModified",
-																	"type": "Expression"
-																}
-															}
-														],
-														"storeSettings": {
-															"type": "AzureBlobStorageReadSettings",
-															"recursive": true,
-															"wildcardFileName": "Location*",
-															"enablePartitionDiscovery": false
-														},
-														"formatSettings": {
-															"type": "DelimitedTextReadSettings"
-														}
-													},
-													"sink": {
-														"type": "AzureSqlSink"
-													},
-													"enableStaging": false,
-													"translator": {
-														"type": "TabularTranslator",
-														"mappings": [
-															{
-																"source": {
-																	"type": "String",
-																	"ordinal": 1
-																},
-																"sink": {
-																	"name": "COUNTRYCODE",
-																	"type": "String"
-																}
-															},
-															{
-																"source": {
-																	"type": "String",
-																	"ordinal": 2
-																},
-																"sink": {
-																	"name": "COUNTRYNAME",
-																	"type": "String"
-																}
-															},
-															{
-																"source": {
-																	"type": "String",
-																	"ordinal": 3
-																},
-																"sink": {
-																	"name": "DIVISION",
-																	"type": "String"
-																}
-															},
-															{
-																"source": {
-																	"type": "String",
-																	"ordinal": 4
-																},
-																"sink": {
-																	"name": "DISTRICT",
-																	"type": "String"
-																}
-															},
-															{
-																"source": {
-																	"type": "String",
-																	"ordinal": 5
-																},
-																"sink": {
-																	"name": "SITECODE",
-																	"type": "String"
-																}
-															},
-															{
-																"source": {
-																	"type": "String",
-																	"ordinal": 6
-																},
-																"sink": {
-																	"name": "SITENAME",
-																	"type": "String"
-																}
-															},
-															{
-																"source": {
-																	"type": "String",
-																	"ordinal": 7
-																},
-																"sink": {
-																	"name": "BRANCHCODE",
-																	"type": "String"
-																}
-															},
-															{
-																"source": {
-																	"type": "String",
-																	"ordinal": 8
-																},
-																"sink": {
-																	"name": "BRANCHNAME",
-																	"type": "String"
-																}
-															},
-															{
-																"source": {
-																	"type": "String",
-																	"ordinal": 9
-																},
-																"sink": {
-																	"name": "TIMESTAMP",
-																	"type": "DateTime"
-																}
-															},
-															{
-																"source": {
-																	"type": "String",
-																	"ordinal": 10
-																},
-																"sink": {
-																	"name": "Status",
-																	"type": "Byte"
-																}
-															},
-															{
-																"source": {
-																	"type": "String",
-																	"ordinal": 11
-																},
-																"sink": {
-																	"name": "BranchId",
-																	"type": "Int32"
-																}
-															},
-															{
-																"source": {
-																	"name": "Filename",
-																	"type": "String"
-																},
-																"sink": {
-																	"name": "Filename",
-																	"type": "String"
-																}
-															},
-															{
-																"source": {
-																	"name": "LastModifiedDatetime",
-																	"type": "String"
-																},
-																"sink": {
-																	"name": "LastModifiedDatetime",
-																	"type": "DateTime"
-																}
-															}
-														]
-													}
-												},
-												"inputs": [
-													{
-														"referenceName": "NCSCSV_1_Staging",
-														"type": "DatasetReference",
-														"parameters": {}
-													}
-												],
-												"outputs": [
-													{
-														"referenceName": "LOCN_NCS_table",
-														"type": "DatasetReference",
-														"parameters": {}
-													}
-												]
-											}
-										]
-									}
-								}
-							]
-						}
-					},
-					{
-						"name": "FilterFiles",
-						"description": "Only files will be selected, the source-folders will not be selected.",
-						"type": "Filter",
-						"dependsOn": [
-							{
-								"activity": "GetFileList",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"userProperties": [],
-						"typeProperties": {
-							"items": {
-								"value": "@activity('GetFileList').output.childItems",
-								"type": "Expression"
-							},
-							"condition": {
-								"value": "@equals(item().type, 'File')",
-								"type": "Expression"
-							}
-						}
-					}
-				],
-				"folder": {
-					"name": "Leap Data Pipeline"
-				},
-				"annotations": []
-			},
-			"dependsOn": []
-		},
-		{
 			"name": "[concat(parameters('factoryName'), '/CopyLeap_Staging-To-DB_2')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
 			"apiVersion": "2018-06-01",
@@ -8570,13 +8086,365 @@
 			"dependsOn": []
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/CopyLeapStaging-To-ADLS')]",
+			"name": "[concat(parameters('factoryName'), '/CopyNCS_Staging-To-DB')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"description": "Copy file data from Staging to DB",
+				"activities": [
+					{
+						"name": "GetFileList",
+						"description": "Get the list of file",
+						"type": "GetMetadata",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"dataset": {
+								"referenceName": "NCSStorageSourceDataset",
+								"type": "DatasetReference",
+								"parameters": {}
+							},
+							"fieldList": [
+								"childItems",
+								"lastModified",
+								"itemName"
+							],
+							"storeSettings": {
+								"type": "AzureBlobStorageReadSettings",
+								"recursive": true
+							},
+							"formatSettings": {
+								"type": "BinaryReadSettings"
+							}
+						}
+					},
+					{
+						"name": "ForEachFile",
+						"description": "Iterate each file, and move them one by one.",
+						"type": "ForEach",
+						"dependsOn": [
+							{
+								"activity": "FilterFiles",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"userProperties": [],
+						"typeProperties": {
+							"items": {
+								"value": "@activity('FilterFiles').output.value",
+								"type": "Expression"
+							},
+							"batchCount": 20,
+							"activities": [
+								{
+									"name": "SpFileEntry",
+									"type": "SqlServerStoredProcedure",
+									"dependsOn": [],
+									"policy": {
+										"timeout": "7.00:00:00",
+										"retry": 0,
+										"retryIntervalInSeconds": 30,
+										"secureOutput": false,
+										"secureInput": false
+									},
+									"userProperties": [],
+									"typeProperties": {
+										"storedProcedureName": "[[dbo].[SpFileEntry]",
+										"storedProcedureParameters": {
+											"Filename": {
+												"value": {
+													"value": "@item().name",
+													"type": "Expression"
+												},
+												"type": "String"
+											},
+											"FileType": {
+												"value": "2",
+												"type": "Byte"
+											},
+											"LastModifiedDatetime": {
+												"value": {
+													"value": "@activity('GetFileList').output.lastModified",
+													"type": "Expression"
+												},
+												"type": "DateTime"
+											}
+										}
+									},
+									"linkedServiceName": {
+										"referenceName": "PnGDataFoundation",
+										"type": "LinkedServiceReference"
+									}
+								},
+								{
+									"name": "Location master",
+									"type": "IfCondition",
+									"dependsOn": [
+										{
+											"activity": "SpFileEntry",
+											"dependencyConditions": [
+												"Succeeded"
+											]
+										}
+									],
+									"userProperties": [],
+									"typeProperties": {
+										"expression": {
+											"value": "@bool(startswith(item().name,'Location'))",
+											"type": "Expression"
+										},
+										"ifTrueActivities": [
+											{
+												"name": "location master data",
+												"type": "Copy",
+												"dependsOn": [],
+												"policy": {
+													"timeout": "7.00:00:00",
+													"retry": 0,
+													"retryIntervalInSeconds": 30,
+													"secureOutput": false,
+													"secureInput": false
+												},
+												"userProperties": [],
+												"typeProperties": {
+													"source": {
+														"type": "DelimitedTextSource",
+														"additionalColumns": [
+															{
+																"name": "Filename",
+																"value": {
+																	"value": "@item().name",
+																	"type": "Expression"
+																}
+															},
+															{
+																"name": "LastModifiedDatetime",
+																"value": {
+																	"value": "@activity('GetFileList').output.lastModified",
+																	"type": "Expression"
+																}
+															}
+														],
+														"storeSettings": {
+															"type": "AzureBlobStorageReadSettings",
+															"recursive": true,
+															"wildcardFileName": "Location*",
+															"enablePartitionDiscovery": false
+														},
+														"formatSettings": {
+															"type": "DelimitedTextReadSettings"
+														}
+													},
+													"sink": {
+														"type": "AzureSqlSink"
+													},
+													"enableStaging": false,
+													"translator": {
+														"type": "TabularTranslator",
+														"mappings": [
+															{
+																"source": {
+																	"type": "String",
+																	"ordinal": 1
+																},
+																"sink": {
+																	"name": "COUNTRYCODE",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"type": "String",
+																	"ordinal": 2
+																},
+																"sink": {
+																	"name": "COUNTRYNAME",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"type": "String",
+																	"ordinal": 3
+																},
+																"sink": {
+																	"name": "DIVISION",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"type": "String",
+																	"ordinal": 4
+																},
+																"sink": {
+																	"name": "DISTRICT",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"type": "String",
+																	"ordinal": 5
+																},
+																"sink": {
+																	"name": "SITECODE",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"type": "String",
+																	"ordinal": 6
+																},
+																"sink": {
+																	"name": "SITENAME",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"type": "String",
+																	"ordinal": 7
+																},
+																"sink": {
+																	"name": "BRANCHCODE",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"type": "String",
+																	"ordinal": 8
+																},
+																"sink": {
+																	"name": "BRANCHNAME",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"type": "String",
+																	"ordinal": 9
+																},
+																"sink": {
+																	"name": "TIMESTAMP",
+																	"type": "DateTime"
+																}
+															},
+															{
+																"source": {
+																	"type": "String",
+																	"ordinal": 10
+																},
+																"sink": {
+																	"name": "Status",
+																	"type": "Byte"
+																}
+															},
+															{
+																"source": {
+																	"type": "String",
+																	"ordinal": 11
+																},
+																"sink": {
+																	"name": "BranchId",
+																	"type": "Int32"
+																}
+															},
+															{
+																"source": {
+																	"name": "Filename",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "Filename",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"name": "LastModifiedDatetime",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "LastModifiedDatetime",
+																	"type": "DateTime"
+																}
+															}
+														]
+													}
+												},
+												"inputs": [
+													{
+														"referenceName": "NCSCSV_1_Staging",
+														"type": "DatasetReference",
+														"parameters": {}
+													}
+												],
+												"outputs": [
+													{
+														"referenceName": "LOCN_NCS_table",
+														"type": "DatasetReference",
+														"parameters": {}
+													}
+												]
+											}
+										]
+									}
+								}
+							]
+						}
+					},
+					{
+						"name": "FilterFiles",
+						"description": "Only files will be selected, the source-folders will not be selected.",
+						"type": "Filter",
+						"dependsOn": [
+							{
+								"activity": "GetFileList",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"userProperties": [],
+						"typeProperties": {
+							"items": {
+								"value": "@activity('GetFileList').output.childItems",
+								"type": "Expression"
+							},
+							"condition": {
+								"value": "@equals(item().type, 'File')",
+								"type": "Expression"
+							}
+						}
+					}
+				],
+				"folder": {
+					"name": "Leap Data Pipeline"
+				},
+				"annotations": []
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/CopyS3-To-Staging')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
 			"apiVersion": "2018-06-01",
 			"properties": {
 				"activities": [
 					{
-						"name": "CopyLeapStaging-To-ADLS",
+						"name": "LeapCSV_Cloud1_Staging",
 						"type": "Copy",
 						"dependsOn": [],
 						"policy": {
@@ -8591,15 +8459,84 @@
 							"source": {
 								"type": "BinarySource",
 								"storeSettings": {
-									"type": "AzureBlobStorageReadSettings",
+									"type": "AmazonS3ReadSettings",
 									"recursive": true,
+									"modifiedDatetimeStart": {
+										"value": "@pipeline().parameters.windowStart",
+										"type": "Expression"
+									},
+									"modifiedDatetimeEnd": {
+										"value": "@pipeline().parameters.windowEnd",
+										"type": "Expression"
+									},
+									"wildcardFolderPath": "Test/Cloud1",
 									"wildcardFileName": "*.csv"
 								}
 							},
 							"sink": {
 								"type": "BinarySink",
 								"storeSettings": {
-									"type": "AzureBlobFSWriteSettings"
+									"type": "AzureBlobStorageWriteSettings"
+								}
+							},
+							"enableStaging": false
+						},
+						"inputs": [
+							{
+								"referenceName": "S3LeapDataSet_Cloud1",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "LeapStorageSourceDataset",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						]
+					},
+					{
+						"name": "LeapCSV_Cloud2_Staging",
+						"type": "Copy",
+						"dependsOn": [
+							{
+								"activity": "DeleteFiles_Cloud1",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "BinarySource",
+								"storeSettings": {
+									"type": "AmazonS3ReadSettings",
+									"recursive": true,
+									"modifiedDatetimeStart": {
+										"value": "@pipeline().parameters.windowStart",
+										"type": "Expression"
+									},
+									"modifiedDatetimeEnd": {
+										"value": "@pipeline().parameters.windowEnd",
+										"type": "Expression"
+									},
+									"wildcardFolderPath": "Test/Cloud2",
+									"wildcardFileName": "*.csv"
+								}
+							},
+							"sink": {
+								"type": "BinarySink",
+								"storeSettings": {
+									"type": "AzureBlobStorageWriteSettings"
 								}
 							},
 							"enableStaging": false,
@@ -8607,26 +8544,206 @@
 						},
 						"inputs": [
 							{
-								"referenceName": "LeapStorageSourceDataset",
+								"referenceName": "S3LeapDataSet_Cloud2",
 								"type": "DatasetReference",
 								"parameters": {}
 							}
 						],
 						"outputs": [
 							{
-								"referenceName": "ADLSDataset",
+								"referenceName": "LeapStorageSourceDataset",
 								"type": "DatasetReference",
-								"parameters": {
-									"folder": {
-										"value": "@concat('/', formatDateTime(pipeline().TriggerTime, 'yyyy'), '/', formatDateTime(pipeline().TriggerTime, 'MM'), '/', formatDateTime(pipeline().TriggerTime, 'dd'), '/')",
-										"type": "Expression"
-									},
-									"directory": "leap"
-								}
+								"parameters": {}
 							}
 						]
+					},
+					{
+						"name": "LeapCSV_Cloud3_Staging",
+						"type": "Copy",
+						"dependsOn": [
+							{
+								"activity": "DeleteFiles_Cloud2",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "BinarySource",
+								"storeSettings": {
+									"type": "AmazonS3ReadSettings",
+									"recursive": true,
+									"modifiedDatetimeStart": {
+										"value": "@pipeline().parameters.windowStart",
+										"type": "Expression"
+									},
+									"modifiedDatetimeEnd": {
+										"value": "@pipeline().parameters.windowEnd",
+										"type": "Expression"
+									},
+									"wildcardFolderPath": "Test/Cloud3",
+									"wildcardFileName": "*.csv"
+								}
+							},
+							"sink": {
+								"type": "BinarySink",
+								"storeSettings": {
+									"type": "AzureBlobStorageWriteSettings"
+								}
+							},
+							"enableStaging": false,
+							"dataIntegrationUnits": 2
+						},
+						"inputs": [
+							{
+								"referenceName": "S3LeapDataSet_Cloud3",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "LeapStorageSourceDataset",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						]
+					},
+					{
+						"name": "DeleteFiles_Cloud1",
+						"type": "Delete",
+						"dependsOn": [
+							{
+								"activity": "LeapCSV_Cloud1_Staging",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"dataset": {
+								"referenceName": "S3LeapDataSet_Cloud1",
+								"type": "DatasetReference",
+								"parameters": {}
+							},
+							"logStorageSettings": {
+								"linkedServiceName": {
+									"referenceName": "NCSdataStorageLink",
+									"type": "LinkedServiceReference"
+								},
+								"path": "log"
+							},
+							"enableLogging": true,
+							"storeSettings": {
+								"type": "AmazonS3ReadSettings",
+								"recursive": true
+							}
+						}
+					},
+					{
+						"name": "DeleteFiles_Cloud2",
+						"type": "Delete",
+						"dependsOn": [
+							{
+								"activity": "LeapCSV_Cloud2_Staging",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"dataset": {
+								"referenceName": "S3LeapDataSet_Cloud2",
+								"type": "DatasetReference",
+								"parameters": {}
+							},
+							"logStorageSettings": {
+								"linkedServiceName": {
+									"referenceName": "NCSdataStorageLink",
+									"type": "LinkedServiceReference"
+								},
+								"path": "log"
+							},
+							"enableLogging": true,
+							"storeSettings": {
+								"type": "AmazonS3ReadSettings",
+								"recursive": true
+							}
+						}
+					},
+					{
+						"name": "DeleteFiles_Cloud3",
+						"type": "Delete",
+						"dependsOn": [
+							{
+								"activity": "LeapCSV_Cloud3_Staging",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"dataset": {
+								"referenceName": "S3LeapDataSet_Cloud3",
+								"type": "DatasetReference",
+								"parameters": {}
+							},
+							"logStorageSettings": {
+								"linkedServiceName": {
+									"referenceName": "NCSdataStorageLink",
+									"type": "LinkedServiceReference"
+								},
+								"path": "log"
+							},
+							"enableLogging": true,
+							"storeSettings": {
+								"type": "AmazonS3ReadSettings",
+								"recursive": true
+							}
+						}
 					}
 				],
+				"parameters": {
+					"windowStart": {
+						"type": "string"
+					},
+					"windowEnd": {
+						"type": "string"
+					}
+				},
 				"folder": {
 					"name": "Leap Data Pipeline"
 				},
@@ -8645,7 +8762,7 @@
 						"type": "ExecutePipeline",
 						"dependsOn": [
 							{
-								"activity": "SpDeleteOldtmpleapdata",
+								"activity": "CopyS3-To-Staging",
 								"dependencyConditions": [
 									"Succeeded"
 								]
@@ -8722,6 +8839,66 @@
 							"waitOnCompletion": true,
 							"parameters": {}
 						}
+					},
+					{
+						"name": "CopyS3-To-Staging",
+						"type": "ExecutePipeline",
+						"dependsOn": [
+							{
+								"activity": "SpDeleteOldtmpleapdata",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"userProperties": [],
+						"typeProperties": {
+							"pipeline": {
+								"referenceName": "CopyS3-To-Staging",
+								"type": "PipelineReference"
+							},
+							"waitOnCompletion": true,
+							"parameters": {}
+						}
+					},
+					{
+						"name": "DeleteFiles_Staging",
+						"type": "Delete",
+						"dependsOn": [
+							{
+								"activity": "CopyLeapStaging-To-ADLS",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"dataset": {
+								"referenceName": "NCSStorageSourceDataset",
+								"type": "DatasetReference",
+								"parameters": {}
+							},
+							"logStorageSettings": {
+								"linkedServiceName": {
+									"referenceName": "NCSdataStorageLink",
+									"type": "LinkedServiceReference"
+								},
+								"path": "log"
+							},
+							"enableLogging": true,
+							"storeSettings": {
+								"type": "AzureBlobStorageReadSettings",
+								"recursive": true
+							}
+						}
 					}
 				],
 				"parameters": {
@@ -8740,7 +8917,8 @@
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/pipelines/CopyLeap_Staging-To-DB')]",
 				"[concat(variables('factoryId'), '/pipelines/CopyLeap_Staging-To-DB_2')]",
-				"[concat(variables('factoryId'), '/pipelines/CopyLeapStaging-To-ADLS')]"
+				"[concat(variables('factoryId'), '/pipelines/CopyLeapStaging-To-ADLS')]",
+				"[concat(variables('factoryId'), '/pipelines/CopyS3-To-Staging')]"
 			]
 		}
 	]

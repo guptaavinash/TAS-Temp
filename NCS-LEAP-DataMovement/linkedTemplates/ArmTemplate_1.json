@@ -68,6 +68,243 @@
 			"dependsOn": []
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/NCSCSV_1')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "LinkedService_PnGADLS",
+					"type": "LinkedServiceReference"
+				},
+				"parameters": {
+					"FolderPath": {
+						"type": "string"
+					},
+					"directory": {
+						"type": "string"
+					}
+				},
+				"folder": {
+					"name": "FileConnection"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"folderPath": {
+							"value": "@dataset().FolderPath",
+							"type": "Expression"
+						},
+						"fileSystem": {
+							"value": "@dataset().directory",
+							"type": "Expression"
+						}
+					},
+					"columnDelimiter": "|",
+					"compressionCodec": "ZipDeflate",
+					"compressionLevel": "Fastest",
+					"escapeChar": "\\",
+					"firstRowAsHeader": false,
+					"quoteChar": "\""
+				},
+				"schema": []
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/NCSCSV_1_Staging')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "NCSdataStorageLink",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "FileConnection"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"container": "ncsdata"
+					},
+					"columnDelimiter": "|",
+					"compressionCodec": "ZipDeflate",
+					"compressionLevel": "Fastest",
+					"escapeChar": "\\",
+					"firstRowAsHeader": false,
+					"quoteChar": "\""
+				},
+				"schema": []
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/NCSCSV_1_Staging_WithHeader')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "NCSdataStorageLink",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "FileConnection"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"container": "ncsdata"
+					},
+					"columnDelimiter": "|",
+					"compressionCodec": "ZipDeflate",
+					"compressionLevel": "Fastest",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": []
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/NCSCSV_2')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "LinkedService_PnGADLS",
+					"type": "LinkedServiceReference"
+				},
+				"parameters": {
+					"FolderPath": {
+						"type": "string"
+					},
+					"directory": {
+						"type": "string"
+					}
+				},
+				"folder": {
+					"name": "FileConnection"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"folderPath": {
+							"value": "@dataset().FolderPath",
+							"type": "Expression"
+						},
+						"fileSystem": {
+							"value": "@dataset().directory",
+							"type": "Expression"
+						}
+					},
+					"columnDelimiter": ",",
+					"compressionCodec": "ZipDeflate",
+					"compressionLevel": "Fastest",
+					"escapeChar": "\\",
+					"firstRowAsHeader": false,
+					"quoteChar": "\""
+				},
+				"schema": []
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/NCSCSV_2_Staging')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "NCSdataStorageLink",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "FileConnection"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"container": "ncsdata"
+					},
+					"columnDelimiter": ",",
+					"compressionCodec": "ZipDeflate",
+					"compressionLevel": "Fastest",
+					"escapeChar": "\\",
+					"firstRowAsHeader": false,
+					"quoteChar": "\""
+				},
+				"schema": []
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/NCSCSV_2_Staging_WithHeader')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "NCSdataStorageLink",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "FileConnection"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"container": "ncsdata"
+					},
+					"columnDelimiter": ",",
+					"compressionCodec": "ZipDeflate",
+					"compressionLevel": "Fastest",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": []
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/NCSStorageSourceDataset')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "NCSdataStorageLink",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "StagingSource"
+				},
+				"annotations": [],
+				"type": "Binary",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"container": "ncsdata"
+					},
+					"compression": {
+						"type": "bzip2",
+						"level": "Fastest"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/PROD_NCS_table')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
@@ -560,7 +797,7 @@
 					"location": {
 						"type": "AmazonS3Location",
 						"bucketName": "leapdata-tas",
-						"folderPath": "LEAP/Cloud1"
+						"folderPath": "Test/Cloud1"
 					}
 				}
 			},
@@ -584,7 +821,7 @@
 					"location": {
 						"type": "AmazonS3Location",
 						"bucketName": "leapdata-tas",
-						"folderPath": "LEAP/Cloud2"
+						"folderPath": "Test/Cloud2"
 					}
 				}
 			},
@@ -608,7 +845,7 @@
 					"location": {
 						"type": "AmazonS3Location",
 						"bucketName": "leapdata-tas",
-						"folderPath": "LEAP/Cloud3"
+						"folderPath": "Test/Cloud3"
 					}
 				}
 			},
@@ -1200,243 +1437,6 @@
 				"typeProperties": {
 					"schema": "dbo",
 					"table": "NC_SRN_SUBD_Current"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/NCSCSV_1')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "LinkedService_PnGADLS",
-					"type": "LinkedServiceReference"
-				},
-				"parameters": {
-					"FolderPath": {
-						"type": "string"
-					},
-					"directory": {
-						"type": "string"
-					}
-				},
-				"folder": {
-					"name": "FileConnection"
-				},
-				"annotations": [],
-				"type": "DelimitedText",
-				"typeProperties": {
-					"location": {
-						"type": "AzureBlobFSLocation",
-						"folderPath": {
-							"value": "@dataset().FolderPath",
-							"type": "Expression"
-						},
-						"fileSystem": {
-							"value": "@dataset().directory",
-							"type": "Expression"
-						}
-					},
-					"columnDelimiter": "|",
-					"compressionCodec": "ZipDeflate",
-					"compressionLevel": "Fastest",
-					"escapeChar": "\\",
-					"firstRowAsHeader": false,
-					"quoteChar": "\""
-				},
-				"schema": []
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/NCSCSV_1_Staging')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "NCSdataStorageLink",
-					"type": "LinkedServiceReference"
-				},
-				"folder": {
-					"name": "FileConnection"
-				},
-				"annotations": [],
-				"type": "DelimitedText",
-				"typeProperties": {
-					"location": {
-						"type": "AzureBlobStorageLocation",
-						"container": "ncsdata"
-					},
-					"columnDelimiter": "|",
-					"compressionCodec": "ZipDeflate",
-					"compressionLevel": "Fastest",
-					"escapeChar": "\\",
-					"firstRowAsHeader": false,
-					"quoteChar": "\""
-				},
-				"schema": []
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/NCSCSV_1_Staging_WithHeader')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "NCSdataStorageLink",
-					"type": "LinkedServiceReference"
-				},
-				"folder": {
-					"name": "FileConnection"
-				},
-				"annotations": [],
-				"type": "DelimitedText",
-				"typeProperties": {
-					"location": {
-						"type": "AzureBlobStorageLocation",
-						"container": "ncsdata"
-					},
-					"columnDelimiter": "|",
-					"compressionCodec": "ZipDeflate",
-					"compressionLevel": "Fastest",
-					"escapeChar": "\\",
-					"firstRowAsHeader": true,
-					"quoteChar": "\""
-				},
-				"schema": []
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/NCSCSV_2')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "LinkedService_PnGADLS",
-					"type": "LinkedServiceReference"
-				},
-				"parameters": {
-					"FolderPath": {
-						"type": "string"
-					},
-					"directory": {
-						"type": "string"
-					}
-				},
-				"folder": {
-					"name": "FileConnection"
-				},
-				"annotations": [],
-				"type": "DelimitedText",
-				"typeProperties": {
-					"location": {
-						"type": "AzureBlobFSLocation",
-						"folderPath": {
-							"value": "@dataset().FolderPath",
-							"type": "Expression"
-						},
-						"fileSystem": {
-							"value": "@dataset().directory",
-							"type": "Expression"
-						}
-					},
-					"columnDelimiter": ",",
-					"compressionCodec": "ZipDeflate",
-					"compressionLevel": "Fastest",
-					"escapeChar": "\\",
-					"firstRowAsHeader": false,
-					"quoteChar": "\""
-				},
-				"schema": []
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/NCSCSV_2_Staging')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "NCSdataStorageLink",
-					"type": "LinkedServiceReference"
-				},
-				"folder": {
-					"name": "FileConnection"
-				},
-				"annotations": [],
-				"type": "DelimitedText",
-				"typeProperties": {
-					"location": {
-						"type": "AzureBlobStorageLocation",
-						"container": "ncsdata"
-					},
-					"columnDelimiter": ",",
-					"compressionCodec": "ZipDeflate",
-					"compressionLevel": "Fastest",
-					"escapeChar": "\\",
-					"firstRowAsHeader": false,
-					"quoteChar": "\""
-				},
-				"schema": []
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/NCSCSV_2_Staging_WithHeader')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "NCSdataStorageLink",
-					"type": "LinkedServiceReference"
-				},
-				"folder": {
-					"name": "FileConnection"
-				},
-				"annotations": [],
-				"type": "DelimitedText",
-				"typeProperties": {
-					"location": {
-						"type": "AzureBlobStorageLocation",
-						"container": "ncsdata"
-					},
-					"columnDelimiter": ",",
-					"compressionCodec": "ZipDeflate",
-					"compressionLevel": "Fastest",
-					"escapeChar": "\\",
-					"firstRowAsHeader": true,
-					"quoteChar": "\""
-				},
-				"schema": []
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/NCSStorageSourceDataset')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "NCSdataStorageLink",
-					"type": "LinkedServiceReference"
-				},
-				"folder": {
-					"name": "StagingSource"
-				},
-				"annotations": [],
-				"type": "Binary",
-				"typeProperties": {
-					"location": {
-						"type": "AzureBlobStorageLocation",
-						"container": "ncsdata"
-					},
-					"compression": {
-						"type": "bzip2",
-						"level": "Fastest"
-					}
 				}
 			},
 			"dependsOn": []
