@@ -27,15 +27,7 @@
 						"itemName"
 					],
 					"storeSettings": {
-						"type": "AmazonS3ReadSettings",
-						"modifiedDatetimeStart": {
-							"value": "@pipeline().parameters.windowStart",
-							"type": "Expression"
-						},
-						"modifiedDatetimeEnd": {
-							"value": "@pipeline().parameters.windowEnd",
-							"type": "Expression"
-						}
+						"type": "AmazonS3ReadSettings"
 					},
 					"formatSettings": {
 						"type": "BinaryReadSettings"
