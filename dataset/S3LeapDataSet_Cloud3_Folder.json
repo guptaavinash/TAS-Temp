@@ -5,11 +5,6 @@
 			"referenceName": "Leap_AmazonS3",
 			"type": "LinkedServiceReference"
 		},
-		"parameters": {
-			"filename": {
-				"type": "string"
-			}
-		},
 		"folder": {
 			"name": "FileConnection"
 		},
