@@ -16,7 +16,7 @@
 				"userProperties": [
 					{
 						"name": "Source",
-						"value": "leapdata-tas/LEAP/"
+						"value": "ncsdata/"
 					},
 					{
 						"name": "Destination",
