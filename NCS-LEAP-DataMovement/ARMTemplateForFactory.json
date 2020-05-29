@@ -8513,7 +8513,6 @@
 							},
 							"fieldList": [
 								"childItems",
-								"lastModified",
 								"itemName"
 							],
 							"storeSettings": {
@@ -11882,7 +11881,6 @@
 							},
 							"fieldList": [
 								"childItems",
-								"lastModified",
 								"itemName"
 							],
 							"storeSettings": {
@@ -12095,7 +12093,6 @@
 							},
 							"fieldList": [
 								"childItems",
-								"lastModified",
 								"itemName"
 							],
 							"storeSettings": {
