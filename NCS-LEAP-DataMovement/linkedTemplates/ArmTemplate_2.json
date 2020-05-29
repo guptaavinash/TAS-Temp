@@ -8586,7 +8586,16 @@
 							"secureOutput": false,
 							"secureInput": false
 						},
-						"userProperties": [],
+						"userProperties": [
+							{
+								"name": "Source",
+								"value": "leapdata-tas/LEAP/"
+							},
+							{
+								"name": "Destination",
+								"value": "leap/"
+							}
+						],
 						"typeProperties": {
 							"source": {
 								"type": "BinarySource",

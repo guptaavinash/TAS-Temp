@@ -7000,6 +7000,10 @@
 							"value": "@dataset().directory",
 							"type": "Expression"
 						}
+					},
+					"compression": {
+						"type": "bzip2",
+						"level": "Fastest"
 					}
 				}
 			},
@@ -11733,7 +11737,16 @@
 							"secureOutput": false,
 							"secureInput": false
 						},
-						"userProperties": [],
+						"userProperties": [
+							{
+								"name": "Source",
+								"value": "leapdata-tas/LEAP/"
+							},
+							{
+								"name": "Destination",
+								"value": "leap/"
+							}
+						],
 						"typeProperties": {
 							"source": {
 								"type": "BinarySource",
