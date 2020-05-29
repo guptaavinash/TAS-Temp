@@ -8577,11 +8577,20 @@
 							},
 							"fieldList": [
 								"childItems",
-								"itemName"
+								"itemName",
+								"lastModified"
 							],
 							"storeSettings": {
 								"type": "AmazonS3ReadSettings",
-								"recursive": true
+								"recursive": true,
+								"modifiedDatetimeStart": {
+									"value": "@pipeline().parameters.windowStart",
+									"type": "Expression"
+								},
+								"modifiedDatetimeEnd": {
+									"value": "@pipeline().parameters.windowEnd",
+									"type": "Expression"
+								}
 							},
 							"formatSettings": {
 								"type": "BinaryReadSettings"
@@ -8785,7 +8794,15 @@
 							],
 							"storeSettings": {
 								"type": "AmazonS3ReadSettings",
-								"recursive": true
+								"recursive": true,
+								"modifiedDatetimeStart": {
+									"value": "@pipeline().parameters.windowStart",
+									"type": "Expression"
+								},
+								"modifiedDatetimeEnd": {
+									"value": "@pipeline().parameters.windowEnd",
+									"type": "Expression"
+								}
 							},
 							"formatSettings": {
 								"type": "BinaryReadSettings"
@@ -8989,7 +9006,15 @@
 							],
 							"storeSettings": {
 								"type": "AmazonS3ReadSettings",
-								"recursive": true
+								"recursive": true,
+								"modifiedDatetimeStart": {
+									"value": "@pipeline().parameters.windowStart",
+									"type": "Expression"
+								},
+								"modifiedDatetimeEnd": {
+									"value": "@pipeline().parameters.windowEnd",
+									"type": "Expression"
+								}
 							},
 							"formatSettings": {
 								"type": "BinaryReadSettings"
