@@ -33,6 +33,10 @@
 					"preserve": [
 						"Attributes"
 					],
+					"skipErrorFile": {
+						"fileMissing": true
+					},
+					"validateDataConsistency": false,
 					"dataIntegrationUnits": 2
 				},
 				"inputs": [
