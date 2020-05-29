@@ -42,7 +42,8 @@
 					"skipErrorFile": {
 						"fileMissing": true
 					},
-					"validateDataConsistency": false
+					"validateDataConsistency": false,
+					"dataIntegrationUnits": 2
 				},
 				"inputs": [
 					{
