@@ -30,6 +30,9 @@
 						}
 					},
 					"enableStaging": false,
+					"preserve": [
+						"Attributes"
+					],
 					"dataIntegrationUnits": 2
 				},
 				"inputs": [
