@@ -1,5 +1,5 @@
 {
-	"name": "CopyS3-To-Staging",
+	"name": "CopyS3-To-Staging_Cloud1",
 	"properties": {
 		"activities": [
 			{
