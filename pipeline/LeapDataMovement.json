@@ -96,7 +96,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"pipeline": {
-						"referenceName": "CopyS3-To-Staging",
+						"referenceName": "CopyS3-To-Staging_Cloud1",
 						"type": "PipelineReference"
 					},
 					"waitOnCompletion": true
