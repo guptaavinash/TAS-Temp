@@ -1,7 +1,49 @@
 {
-	"name": "ProcessDFData-To-Final",
+	"name": "spLoadLeapTasIntegration",
 	"properties": {
+		"description": "spLoadLeapTasIntegration",
 		"activities": [
+			{
+				"name": "If Condition1",
+				"type": "IfCondition",
+				"dependsOn": [
+					{
+						"activity": "Lookup1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"expression": {
+						"value": "@bool(activity('Lookup1').output.firstRow.tblFlagDataProcess)",
+						"type": "Expression"
+					},
+					"ifTrueActivities": [
+						{
+							"name": "LoadLeapTasIntegration",
+							"type": "SqlServerStoredProcedure",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "7.00:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"storedProcedureName": "[dbo].[spLoadLeapTasIntegration]"
+							},
+							"linkedServiceName": {
+								"referenceName": "PnGDataFoundation",
+								"type": "LinkedServiceReference"
+							}
+						}
+					]
+				}
+			},
 			{
 				"name": "Lookup1",
 				"type": "Lookup",
@@ -13,7 +55,18 @@
 					"secureOutput": false,
 					"secureInput": false
 				},
-				"userProperties": []
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderQuery": "select flgPngDataTransfer from tblFlagDataProcess",
+						"queryTimeout": "02:00:00"
+					},
+					"dataset": {
+						"referenceName": "DFDBConnection",
+						"type": "DatasetReference"
+					}
+				}
 			}
 		],
 		"annotations": []
