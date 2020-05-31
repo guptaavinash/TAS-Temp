@@ -1,5 +1,5 @@
 {
-	"name": "DS__DF_TmpRawLeapOutstandingAmtData",
+	"name": "DS_DF_TmpRawLeapOutstandingAmtData",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "PnGDataFoundation",
