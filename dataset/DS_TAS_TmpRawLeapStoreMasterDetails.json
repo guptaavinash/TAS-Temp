@@ -1,12 +1,9 @@
 {
-	"name": "DS_DF_TmpRawLeapStoreMasterDetails",
+	"name": "DS_TAS_TmpRawLeapStoreMasterDetails",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "PnGDataFoundation",
+			"referenceName": "TASDatabase",
 			"type": "LinkedServiceReference"
-		},
-		"folder": {
-			"name": "DF_DBConnection"
 		},
 		"annotations": [],
 		"type": "AzureSqlTable",

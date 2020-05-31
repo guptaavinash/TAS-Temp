@@ -1,5 +1,5 @@
 {
-	"name": "DS_tblP3MBranchSalesDetail",
+	"name": "DS_DF_tblP3MBranchSalesDetail",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "PnGDataFoundation",
