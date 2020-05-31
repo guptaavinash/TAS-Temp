@@ -34,7 +34,7 @@
 							},
 							"userProperties": [],
 							"typeProperties": {
-								"storedProcedureName": "SpExecuteBeforeTransfer"
+								"storedProcedureName": "[dbo].[SpExecuteBeforeTransfer]"
 							},
 							"linkedServiceName": {
 								"referenceName": "PnGDataFoundation",
@@ -59,6 +59,33 @@
 									"type": "PipelineReference"
 								},
 								"waitOnCompletion": true
+							}
+						},
+						{
+							"name": "ExecuteAfterSp",
+							"type": "SqlServerStoredProcedure",
+							"dependsOn": [
+								{
+									"activity": "Execute Copy DF-To-TAS",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"policy": {
+								"timeout": "7.00:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"storedProcedureName": "[dbo].[SpExecuteAfterTransfer]"
+							},
+							"linkedServiceName": {
+								"referenceName": "TASDatabase",
+								"type": "LinkedServiceReference"
 							}
 						}
 					]
