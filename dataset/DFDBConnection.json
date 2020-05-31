@@ -1,0 +1,12 @@
+{
+	"name": "DFDBConnection",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "PnGDataFoundation",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": []
+	}
+}
