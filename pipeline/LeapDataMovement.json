@@ -139,6 +139,26 @@
 						"recursive": true
 					}
 				}
+			},
+			{
+				"name": "spLoadLeapTasIntegration",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "DeleteFiles_Staging",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "spLoadLeapTasIntegration",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
 			}
 		],
 		"parameters": {
