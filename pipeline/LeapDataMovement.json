@@ -159,6 +159,26 @@
 					},
 					"waitOnCompletion": true
 				}
+			},
+			{
+				"name": "Copytables-DF-TO-TAS",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "spLoadLeapTasIntegration",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "Copytables-DF-TO-TAS",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
 			}
 		],
 		"parameters": {

@@ -40,6 +40,26 @@
 								"referenceName": "PnGDataFoundation",
 								"type": "LinkedServiceReference"
 							}
+						},
+						{
+							"name": "Execute Copy DF-To-TAS",
+							"type": "ExecutePipeline",
+							"dependsOn": [
+								{
+									"activity": "LoadLeapTasIntegration",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "Copytables-DF-TO-TAS",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true
+							}
 						}
 					]
 				}
