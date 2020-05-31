@@ -1,7 +1,7 @@
 {
-	"name": "spLoadLeapTasIntegration",
+	"name": "DataMovement_DF-TO-TAS",
 	"properties": {
-		"description": "spLoadLeapTasIntegration",
+		"description": "DataMovement_DF-TO-TAS",
 		"activities": [
 			{
 				"name": "If Condition1",
@@ -96,7 +96,7 @@
 				"type": "Lookup",
 				"dependsOn": [
 					{
-						"activity": "IsAllDataLoaded",
+						"activity": "WhenAllFilesCome",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -147,7 +147,7 @@
 				}
 			},
 			{
-				"name": "IsAllDataLoaded",
+				"name": "WhenAllFilesCome",
 				"type": "IfCondition",
 				"dependsOn": [
 					{
