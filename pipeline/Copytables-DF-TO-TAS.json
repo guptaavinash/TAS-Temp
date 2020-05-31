@@ -501,6 +501,76 @@
 						"type": "DatasetReference"
 					}
 				]
+			},
+			{
+				"name": "Copy_TmpRawLeapOutstandingAmtData",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"queryTimeout": "02:00:00"
+					},
+					"sink": {
+						"type": "AzureSqlSink"
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "BranchCode",
+									"type": "String"
+								},
+								"sink": {
+									"name": "BranchCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "StoreCode",
+									"type": "String"
+								},
+								"sink": {
+									"name": "StoreCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "OutstandingAmt",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "OutstandingAmt",
+									"type": "Decimal"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_DF_TmpRawLeapOutstandingAmtData",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_TAS_TmpRawLeapOutstandingAmtData",
+						"type": "DatasetReference"
+					}
+				]
 			}
 		],
 		"annotations": []
