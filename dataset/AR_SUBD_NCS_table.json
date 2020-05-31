@@ -6,7 +6,7 @@
 			"type": "LinkedServiceReference"
 		},
 		"folder": {
-			"name": "DBConnection/NCS Tables"
+			"name": "DF_DBConnection/NCS Tables"
 		},
 		"annotations": [],
 		"type": "AzureSqlTable",

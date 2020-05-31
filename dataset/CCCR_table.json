@@ -6,7 +6,7 @@
 			"type": "LinkedServiceReference"
 		},
 		"folder": {
-			"name": "DBConnection/LEAP Tables"
+			"name": "DF_DBConnection/LEAP Tables"
 		},
 		"annotations": [],
 		"type": "AzureSqlTable",
