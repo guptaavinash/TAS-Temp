@@ -8,7 +8,7 @@
 				"type": "IfCondition",
 				"dependsOn": [
 					{
-						"activity": "Lookup1",
+						"activity": "IFDataTransferCanDone",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -17,7 +17,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"expression": {
-						"value": "@bool(activity('Lookup1').output.firstRow.tblFlagDataProcess)",
+						"value": "@bool(activity('IFDataTransferCanDone').output.firstRow.tblFlagDataProcess)",
 						"type": "Expression"
 					},
 					"ifTrueActivities": [
@@ -92,7 +92,7 @@
 				}
 			},
 			{
-				"name": "Lookup1",
+				"name": "IFDataTransferCanDone",
 				"type": "Lookup",
 				"dependsOn": [
 					{

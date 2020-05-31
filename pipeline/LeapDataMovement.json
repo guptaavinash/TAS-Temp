@@ -141,7 +141,7 @@
 				}
 			},
 			{
-				"name": "spLoadLeapTasIntegration",
+				"name": "DataMovement_DF_To_TAS",
 				"type": "ExecutePipeline",
 				"dependsOn": [
 					{
@@ -154,27 +154,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"pipeline": {
-						"referenceName": "spLoadLeapTasIntegration",
-						"type": "PipelineReference"
-					},
-					"waitOnCompletion": true
-				}
-			},
-			{
-				"name": "Copytables-DF-TO-TAS",
-				"type": "ExecutePipeline",
-				"dependsOn": [
-					{
-						"activity": "spLoadLeapTasIntegration",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
-				"userProperties": [],
-				"typeProperties": {
-					"pipeline": {
-						"referenceName": "Copytables-DF-TO-TAS",
+						"referenceName": "DataMovement_DF-TO-TAS",
 						"type": "PipelineReference"
 					},
 					"waitOnCompletion": true
