@@ -95,6 +95,10 @@
 				],
 				"userProperties": [],
 				"typeProperties": {
+					"pipeline": {
+						"referenceName": "DataMovement_DF-TO-TAS",
+						"type": "PipelineReference"
+					},
 					"waitOnCompletion": true
 				}
 			},
