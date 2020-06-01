@@ -188,6 +188,33 @@
 						"recursive": true
 					}
 				}
+			},
+			{
+				"name": "CCRDataLoad",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "DataMovement_DF_To_TAS",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[spDataLoadRawLEAPTAS_CCCR]"
+				},
+				"linkedServiceName": {
+					"referenceName": "PnGDataFoundation",
+					"type": "LinkedServiceReference"
+				}
 			}
 		],
 		"parameters": {
