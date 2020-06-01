@@ -561,6 +561,47 @@
 			]
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/BinaryDataDestination1')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"description": "It describes the destination store.",
+				"linkedServiceName": {
+					"referenceName": "NCSdataStorageLink",
+					"type": "LinkedServiceReference"
+				},
+				"parameters": {
+					"Container": {
+						"type": "String"
+					},
+					"Directory": {
+						"type": "String"
+					},
+					"filename": {
+						"type": "string"
+					}
+				},
+				"annotations": [],
+				"type": "Binary",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"folderPath": {
+							"value": "@{dataset().Directory}",
+							"type": "Expression"
+						},
+						"container": {
+							"value": "@{dataset().Container}",
+							"type": "Expression"
+						}
+					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/NCSdataStorageLink')]"
+			]
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/BinaryDataSource_File')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
@@ -606,6 +647,51 @@
 			]
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/BinaryDataSource_File1')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"description": "It describes the file in the data source store.",
+				"linkedServiceName": {
+					"referenceName": "LinkedService_PnGADLS",
+					"type": "LinkedServiceReference"
+				},
+				"parameters": {
+					"Container": {
+						"type": "String"
+					},
+					"Directory": {
+						"type": "String"
+					},
+					"filename": {
+						"type": "string"
+					}
+				},
+				"annotations": [],
+				"type": "Binary",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"fileName": {
+							"value": "@dataset().filename",
+							"type": "Expression"
+						},
+						"folderPath": {
+							"value": "@{dataset().Directory}",
+							"type": "Expression"
+						},
+						"fileSystem": {
+							"value": "@{dataset().Container}",
+							"type": "Expression"
+						}
+					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/LinkedService_PnGADLS')]"
+			]
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/BinaryDataSource_Folder')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
@@ -641,6 +727,44 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/linkedServices/NCSdataStorageLink')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/BinaryDataSource_Folder1')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"description": "It describes the folder in the data source store.",
+				"linkedServiceName": {
+					"referenceName": "LinkedService_PnGADLS",
+					"type": "LinkedServiceReference"
+				},
+				"parameters": {
+					"Container": {
+						"type": "String"
+					},
+					"Directory": {
+						"type": "String"
+					}
+				},
+				"annotations": [],
+				"type": "Binary",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"folderPath": {
+							"value": "@{dataset().Directory}",
+							"type": "Expression"
+						},
+						"fileSystem": {
+							"value": "@{dataset().Container}",
+							"type": "Expression"
+						}
+					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/LinkedService_PnGADLS')]"
 			]
 		},
 		{
@@ -784,6 +908,24 @@
 					"schema": "dbo",
 					"table": "tmpRawLEAPTAS_CCCR"
 				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/PnGDataFoundation')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/DFDBConnection')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "PnGDataFoundation",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [],
+				"typeProperties": {}
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/linkedServices/PnGDataFoundation')]"
@@ -1129,322 +1271,6 @@
 				"typeProperties": {
 					"schema": "dbo",
 					"table": "tmpRawLEAPTAS_DPSR"
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/PnGDataFoundation')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/DSEM_table')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "PnGDataFoundation",
-					"type": "LinkedServiceReference"
-				},
-				"folder": {
-					"name": "DF_DBConnection/LEAP Tables"
-				},
-				"annotations": [],
-				"type": "AzureSqlTable",
-				"schema": [
-					{
-						"name": "branchcode",
-						"type": "nvarchar"
-					},
-					{
-						"name": "branchname",
-						"type": "nvarchar"
-					},
-					{
-						"name": "dsecode",
-						"type": "nvarchar"
-					},
-					{
-						"name": "dsename",
-						"type": "nvarchar"
-					},
-					{
-						"name": "stlcode",
-						"type": "nvarchar"
-					},
-					{
-						"name": "stlname",
-						"type": "nvarchar"
-					},
-					{
-						"name": "becode",
-						"type": "nvarchar"
-					},
-					{
-						"name": "bename",
-						"type": "nvarchar"
-					},
-					{
-						"name": "selected_date",
-						"type": "nvarchar"
-					},
-					{
-						"name": "FileSetId",
-						"type": "bigint",
-						"precision": 19
-					},
-					{
-						"name": "Filename",
-						"type": "varchar"
-					},
-					{
-						"name": "LastModifiedDatetime",
-						"type": "smalldatetime",
-						"precision": 16,
-						"scale": 0
-					},
-					{
-						"name": "TimeStampIns",
-						"type": "smalldatetime",
-						"precision": 16,
-						"scale": 0
-					}
-				],
-				"typeProperties": {
-					"schema": "dbo",
-					"table": "tmpRawLEAPTAS_DSEM"
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/PnGDataFoundation')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/DSE_NCS_table')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "PnGDataFoundation",
-					"type": "LinkedServiceReference"
-				},
-				"folder": {
-					"name": "DF_DBConnection/NCS Tables"
-				},
-				"annotations": [],
-				"type": "AzureSqlTable",
-				"schema": [
-					{
-						"name": "BRANCHCODE",
-						"type": "varchar"
-					},
-					{
-						"name": "DSECODE",
-						"type": "varchar"
-					},
-					{
-						"name": "DSENAME",
-						"type": "varchar"
-					},
-					{
-						"name": "STLCODE",
-						"type": "varchar"
-					},
-					{
-						"name": "STLName",
-						"type": "varchar"
-					},
-					{
-						"name": "BECode",
-						"type": "varchar"
-					},
-					{
-						"name": "BEName",
-						"type": "varchar"
-					},
-					{
-						"name": "SectorName",
-						"type": "varchar"
-					},
-					{
-						"name": "SELECTEDDATE",
-						"type": "datetime2",
-						"scale": 3
-					},
-					{
-						"name": "TIMESTAMP",
-						"type": "datetime2",
-						"scale": 3
-					},
-					{
-						"name": "FileSetId",
-						"type": "int",
-						"precision": 10
-					},
-					{
-						"name": "Filename",
-						"type": "varchar"
-					},
-					{
-						"name": "LastModifiedDatetime",
-						"type": "smalldatetime",
-						"precision": 16,
-						"scale": 0
-					},
-					{
-						"name": "TimeStampIns",
-						"type": "smalldatetime",
-						"precision": 16,
-						"scale": 0
-					}
-				],
-				"typeProperties": {
-					"schema": "dbo",
-					"table": "NC_DSE_Current"
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/PnGDataFoundation')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/DTA_INACTBranch_NCS_table')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "PnGDataFoundation",
-					"type": "LinkedServiceReference"
-				},
-				"folder": {
-					"name": "DF_DBConnection/NCS Tables"
-				},
-				"annotations": [],
-				"type": "AzureSqlTable",
-				"schema": [
-					{
-						"name": "BranchId",
-						"type": "int",
-						"precision": 10
-					},
-					{
-						"name": "BRANCHCODE",
-						"type": "varchar"
-					},
-					{
-						"name": "timestamp",
-						"type": "datetime",
-						"precision": 23,
-						"scale": 3
-					},
-					{
-						"name": "Filename",
-						"type": "varchar"
-					},
-					{
-						"name": "LastModifiedDatetime",
-						"type": "smalldatetime",
-						"precision": 16,
-						"scale": 0
-					},
-					{
-						"name": "TimeStampIns",
-						"type": "smalldatetime",
-						"precision": 16,
-						"scale": 0
-					}
-				],
-				"typeProperties": {
-					"schema": "dbo",
-					"table": "tblDTAInactiveBranch"
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/PnGDataFoundation')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/LOCM_table')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "PnGDataFoundation",
-					"type": "LinkedServiceReference"
-				},
-				"folder": {
-					"name": "DF_DBConnection/LEAP Tables"
-				},
-				"annotations": [],
-				"type": "AzureSqlTable",
-				"schema": [
-					{
-						"name": "country_code",
-						"type": "nvarchar"
-					},
-					{
-						"name": "country_name",
-						"type": "nvarchar"
-					},
-					{
-						"name": "division_name",
-						"type": "nvarchar"
-					},
-					{
-						"name": "region_code",
-						"type": "nvarchar"
-					},
-					{
-						"name": "region_name",
-						"type": "nvarchar"
-					},
-					{
-						"name": "site_code",
-						"type": "nvarchar"
-					},
-					{
-						"name": "site_name",
-						"type": "nvarchar"
-					},
-					{
-						"name": "distributor_code",
-						"type": "nvarchar"
-					},
-					{
-						"name": "distributor_name",
-						"type": "nvarchar"
-					},
-					{
-						"name": "branch_code",
-						"type": "nvarchar"
-					},
-					{
-						"name": "branch_name",
-						"type": "nvarchar"
-					},
-					{
-						"name": "FileSetId",
-						"type": "bigint",
-						"precision": 19
-					},
-					{
-						"name": "Filename",
-						"type": "varchar"
-					},
-					{
-						"name": "LastModifiedDatetime",
-						"type": "smalldatetime",
-						"precision": 16,
-						"scale": 0
-					},
-					{
-						"name": "TimeStampIns",
-						"type": "smalldatetime",
-						"precision": 16,
-						"scale": 0
-					}
-				],
-				"typeProperties": {
-					"schema": "dbo",
-					"table": "tmpRawLEAPTAS_LocationMaster"
 				}
 			},
 			"dependsOn": [
