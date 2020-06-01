@@ -1695,7 +1695,7 @@
 						"type": "ExecutePipeline",
 						"dependsOn": [
 							{
-								"activity": "CopyS3-To-Staging",
+								"activity": "CopyS3-To-Staging_Cloud3",
 								"dependencyConditions": [
 									"Succeeded"
 								]
@@ -1774,27 +1774,6 @@
 						}
 					},
 					{
-						"name": "CopyS3-To-Staging",
-						"type": "ExecutePipeline",
-						"dependsOn": [
-							{
-								"activity": "SpDeleteOldtmpleapdata",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"userProperties": [],
-						"typeProperties": {
-							"pipeline": {
-								"referenceName": "CopyS3-To-Staging_Cloud1",
-								"type": "PipelineReference"
-							},
-							"waitOnCompletion": true,
-							"parameters": {}
-						}
-					},
-					{
 						"name": "DeleteFiles_Staging",
 						"type": "Delete",
 						"dependsOn": [
@@ -1853,6 +1832,69 @@
 							"waitOnCompletion": true,
 							"parameters": {}
 						}
+					},
+					{
+						"name": "CopyS3-To-Staging_Cloud1",
+						"type": "ExecutePipeline",
+						"dependsOn": [
+							{
+								"activity": "SpDeleteOldtmpleapdata",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"userProperties": [],
+						"typeProperties": {
+							"pipeline": {
+								"referenceName": "CopyS3-To-Staging_Cloud1",
+								"type": "PipelineReference"
+							},
+							"waitOnCompletion": true,
+							"parameters": {}
+						}
+					},
+					{
+						"name": "CopyS3-To-Staging_Cloud2",
+						"type": "ExecutePipeline",
+						"dependsOn": [
+							{
+								"activity": "CopyS3-To-Staging_Cloud1",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"userProperties": [],
+						"typeProperties": {
+							"pipeline": {
+								"referenceName": "CopyS3-To-Staging_Cloud2",
+								"type": "PipelineReference"
+							},
+							"waitOnCompletion": true,
+							"parameters": {}
+						}
+					},
+					{
+						"name": "CopyS3-To-Staging_Cloud3",
+						"type": "ExecutePipeline",
+						"dependsOn": [
+							{
+								"activity": "CopyS3-To-Staging_Cloud2",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"userProperties": [],
+						"typeProperties": {
+							"pipeline": {
+								"referenceName": "CopyS3-To-Staging_Cloud3",
+								"type": "PipelineReference"
+							},
+							"waitOnCompletion": true,
+							"parameters": {}
+						}
 					}
 				],
 				"parameters": {
@@ -1869,7 +1911,8 @@
 				"annotations": []
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/pipelines/DataMovement_DF-TO-TAS')]"
+				"[concat(variables('factoryId'), '/pipelines/DataMovement_DF-TO-TAS')]",
+				"[concat(variables('factoryId'), '/pipelines/CopyS3-To-Staging_Cloud3')]"
 			]
 		}
 	]
