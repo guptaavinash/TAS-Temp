@@ -1,5 +1,5 @@
 {
-	"name": "LeapDataMovement_copy1",
+	"name": "LeapDataMovement",
 	"properties": {
 		"activities": [
 			{
@@ -133,10 +133,6 @@
 				],
 				"userProperties": [],
 				"typeProperties": {
-					"pipeline": {
-						"referenceName": "DataMovement_DF-TO-TAS",
-						"type": "PipelineReference"
-					},
 					"waitOnCompletion": true
 				}
 			},
