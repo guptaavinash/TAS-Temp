@@ -10585,6 +10585,9 @@
 											}
 										},
 										"enableStaging": false,
+										"preserve": [
+											"Attributes"
+										],
 										"validateDataConsistency": false,
 										"dataIntegrationUnits": 0
 									},
