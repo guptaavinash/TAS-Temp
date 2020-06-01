@@ -1593,8 +1593,7 @@
 				"typeProperties": {
 					"location": {
 						"type": "AzureBlobStorageLocation",
-						"folderPath": "leap",
-						"container": "ncsstorage"
+						"container": "leap"
 					}
 				}
 			},
