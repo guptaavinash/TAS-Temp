@@ -25,6 +25,12 @@
 		},
 		"LinkedService_PnGADLS_properties_typeProperties_url": {
 			"value": "https://pngadls.dfs.core.windows.net"
+		},
+		"Everyday_properties_LeapDataMovement_parameters_windowStart": {
+			"value": "@trigger().outputs.windowStartTime"
+		},
+		"Everyday_properties_LeapDataMovement_parameters_windowEnd": {
+			"value": "@trigger().outputs.windowEndTime"
 		}
 	}
 }

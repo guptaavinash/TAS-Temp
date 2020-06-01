@@ -34,6 +34,14 @@
 		"LinkedService_PnGADLS_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://pngadls.dfs.core.windows.net"
+		},
+		"Everyday_properties_LeapDataMovement_parameters_windowStart": {
+			"type": "string",
+			"defaultValue": "@trigger().outputs.windowStartTime"
+		},
+		"Everyday_properties_LeapDataMovement_parameters_windowEnd": {
+			"type": "string",
+			"defaultValue": "@trigger().outputs.windowEndTime"
 		}
 	},
 	"variables": {
@@ -15869,6 +15877,50 @@
 				}
 			},
 			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Everyday')]",
+			"type": "Microsoft.DataFactory/factories/triggers",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"runtimeState": "Started",
+				"pipelines": [
+					{
+						"pipelineReference": {
+							"referenceName": "LeapDataMovement",
+							"type": "PipelineReference"
+						},
+						"parameters": {
+							"windowStart": "[parameters('Everyday_properties_LeapDataMovement_parameters_windowStart')]",
+							"windowEnd": "[parameters('Everyday_properties_LeapDataMovement_parameters_windowEnd')]"
+						}
+					}
+				],
+				"type": "ScheduleTrigger",
+				"typeProperties": {
+					"recurrence": {
+						"frequency": "Day",
+						"interval": 1,
+						"startTime": "2020-06-02T01:00:00.000Z",
+						"timeZone": "UTC",
+						"schedule": {
+							"minutes": [
+								0
+							],
+							"hours": [
+								1,
+								9,
+								11,
+								17
+							]
+						}
+					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/pipelines/LeapDataMovement')]"
+			]
 		}
 	]
 }
