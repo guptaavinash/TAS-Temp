@@ -17,7 +17,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"expression": {
-						"value": "@bool(activity('IFDataTransferCanDone').output.firstRow.tblFlagDataProcess)",
+						"value": "@bool(activity('IFDataTransferCanDone').output.firstRow.flgPngDataTransfer)",
 						"type": "Expression"
 					},
 					"ifTrueActivities": [
