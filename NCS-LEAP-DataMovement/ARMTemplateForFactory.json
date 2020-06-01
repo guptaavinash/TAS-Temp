@@ -8519,7 +8519,14 @@
 					{
 						"name": "CopyS3-To-Staging_Cloud2",
 						"type": "ExecutePipeline",
-						"dependsOn": [],
+						"dependsOn": [
+							{
+								"activity": "CopyS3-To-Staging_Cloud1",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
 						"userProperties": [],
 						"typeProperties": {
 							"pipeline": {
@@ -8533,7 +8540,14 @@
 					{
 						"name": "CopyS3-To-Staging_Cloud3",
 						"type": "ExecutePipeline",
-						"dependsOn": [],
+						"dependsOn": [
+							{
+								"activity": "CopyS3-To-Staging_Cloud2",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
 						"userProperties": [],
 						"typeProperties": {
 							"pipeline": {
