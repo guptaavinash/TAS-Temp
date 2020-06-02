@@ -740,7 +740,7 @@
 														}
 													},
 													{
-														"name": "LastModifiedDatetime",
+														"name": "Lastmodifieddatetime",
 														"value": {
 															"value": "@activity('GetFileList').output.lastModified",
 															"type": "Expression"
@@ -748,8 +748,12 @@
 													}
 												],
 												"storeSettings": {
-													"type": "AzureBlobStorageReadSettings",
+													"type": "AzureBlobFSReadSettings",
 													"recursive": true,
+													"wildcardFolderPath": {
+														"value": "@concat('/', formatDateTime(pipeline().TriggerTime, 'yyyy'), '/', formatDateTime(pipeline().TriggerTime, 'MM'), '/', formatDateTime(pipeline().TriggerTime, 'dd'), '/')",
+														"type": "Expression"
+													},
 													"wildcardFileName": "DPSR_cloud02_*",
 													"enablePartitionDiscovery": false
 												},
@@ -1278,7 +1282,7 @@
 													},
 													{
 														"source": {
-															"name": "LastModifiedDatetime",
+															"name": "Lastmodifieddatetime",
 															"type": "String"
 														},
 														"sink": {
@@ -1291,8 +1295,15 @@
 										},
 										"inputs": [
 											{
-												"referenceName": "LeapCSV_Staging",
-												"type": "DatasetReference"
+												"referenceName": "ADLSCSVDataSource_Folder",
+												"type": "DatasetReference",
+												"parameters": {
+													"Container": "leap",
+													"Directory": {
+														"value": "@concat('/', formatDateTime(pipeline().TriggerTime, 'yyyy'), '/', formatDateTime(pipeline().TriggerTime, 'MM'), '/', formatDateTime(pipeline().TriggerTime, 'dd'), '/')",
+														"type": "Expression"
+													}
+												}
 											}
 										],
 										"outputs": [
@@ -1348,7 +1359,7 @@
 														}
 													},
 													{
-														"name": "LastModifiedDatetime",
+														"name": "Lastmodifieddatetime",
 														"value": {
 															"value": "@activity('GetFileList').output.lastModified",
 															"type": "Expression"
@@ -1356,8 +1367,12 @@
 													}
 												],
 												"storeSettings": {
-													"type": "AzureBlobStorageReadSettings",
+													"type": "AzureBlobFSReadSettings",
 													"recursive": true,
+													"wildcardFolderPath": {
+														"value": "@concat('/', formatDateTime(pipeline().TriggerTime, 'yyyy'), '/', formatDateTime(pipeline().TriggerTime, 'MM'), '/', formatDateTime(pipeline().TriggerTime, 'dd'), '/')",
+														"type": "Expression"
+													},
 													"wildcardFileName": "DPSR_cloud03_*",
 													"enablePartitionDiscovery": false
 												},
@@ -1886,7 +1901,7 @@
 													},
 													{
 														"source": {
-															"name": "LastModifiedDatetime",
+															"name": "Lastmodifieddatetime",
 															"type": "String"
 														},
 														"sink": {
@@ -1899,8 +1914,15 @@
 										},
 										"inputs": [
 											{
-												"referenceName": "LeapCSV_Staging",
-												"type": "DatasetReference"
+												"referenceName": "ADLSCSVDataSource_Folder",
+												"type": "DatasetReference",
+												"parameters": {
+													"Container": "leap",
+													"Directory": {
+														"value": "@concat('/', formatDateTime(pipeline().TriggerTime, 'yyyy'), '/', formatDateTime(pipeline().TriggerTime, 'MM'), '/', formatDateTime(pipeline().TriggerTime, 'dd'), '/')",
+														"type": "Expression"
+													}
+												}
 											}
 										],
 										"outputs": [
