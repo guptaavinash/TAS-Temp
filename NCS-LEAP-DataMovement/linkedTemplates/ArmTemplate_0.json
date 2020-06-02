@@ -688,7 +688,7 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/BinaryDataSource_File1')]",
+			"name": "[concat(parameters('factoryName'), '/ADLSBinaryDataSource_File')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -816,7 +816,7 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/BinaryDataSource_Folder1')]",
+			"name": "[concat(parameters('factoryName'), '/ADLSBinaryDataSource_Folder')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
