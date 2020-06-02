@@ -18,7 +18,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataset": {
-						"referenceName": "BinaryDataSource_Folder1",
+						"referenceName": "ADLSBinaryDataSource_Folder",
 						"type": "DatasetReference",
 						"parameters": {
 							"Container": {
@@ -97,7 +97,7 @@
 							},
 							"inputs": [
 								{
-									"referenceName": "BinaryDataSource_File1",
+									"referenceName": "ADLSBinaryDataSource_File",
 									"type": "DatasetReference",
 									"parameters": {
 										"Container": {
@@ -158,7 +158,7 @@
 							"userProperties": [],
 							"typeProperties": {
 								"dataset": {
-									"referenceName": "BinaryDataSource_File1",
+									"referenceName": "ADLSBinaryDataSource_File",
 									"type": "DatasetReference",
 									"parameters": {
 										"Container": {
