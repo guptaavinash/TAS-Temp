@@ -1,0 +1,33 @@
+{
+	"name": "CCR_DataProcessingAt10",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "CCRDataMovement",
+					"type": "PipelineReference"
+				},
+				"parameters": {
+					"windowStart": "2020-05-02T08:00:00Z",
+					"windowEnd": "2020-05-02T08:00:00Z"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Day",
+				"interval": 1,
+				"startTime": "2020-06-03T16:35:00.000Z",
+				"timeZone": "UTC",
+				"schedule": {
+					"minutes": [
+						35
+					]
+				}
+			}
+		}
+	}
+}
