@@ -83,26 +83,6 @@
 				}
 			},
 			{
-				"name": "DataMovement_DF_To_TAS",
-				"type": "ExecutePipeline",
-				"dependsOn": [
-					{
-						"activity": "DeleteFiles_Staging",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
-				"userProperties": [],
-				"typeProperties": {
-					"pipeline": {
-						"referenceName": "DataMovement_DF-TO-TAS",
-						"type": "PipelineReference"
-					},
-					"waitOnCompletion": true
-				}
-			},
-			{
 				"name": "CopyS3-To-Staging_Cloud1",
 				"type": "ExecutePipeline",
 				"dependsOn": [
@@ -198,7 +178,7 @@
 				"type": "SqlServerStoredProcedure",
 				"dependsOn": [
 					{
-						"activity": "DataMovement_DF_To_TAS",
+						"activity": "DeleteFiles_Staging",
 						"dependencyConditions": [
 							"Succeeded"
 						]
