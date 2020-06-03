@@ -32,6 +32,12 @@
 		"Everyday_properties_LeapDataMovement_parameters_windowEnd": {
 			"value": "@trigger().outputs.windowEndTime"
 		},
+		"CCR_DataProcessingAt10_properties_CCRDataMovement_parameters_windowStart": {
+			"value": "2020-05-02T08:00:00Z"
+		},
+		"CCR_DataProcessingAt10_properties_CCRDataMovement_parameters_windowEnd": {
+			"value": "2020-05-02T08:00:00Z"
+		},
 		"containerUri": {
 			"value": ""
 		},
