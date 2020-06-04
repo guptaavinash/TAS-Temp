@@ -156,12 +156,6 @@
 				"parameters": {
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
-					},
-					"CCR_DataProcessingAt10_properties_CCRDataMovement_parameters_windowStart": {
-						"value": "[parameters('CCR_DataProcessingAt10_properties_CCRDataMovement_parameters_windowStart')]"
-					},
-					"CCR_DataProcessingAt10_properties_CCRDataMovement_parameters_windowEnd": {
-						"value": "[parameters('CCR_DataProcessingAt10_properties_CCRDataMovement_parameters_windowEnd')]"
 					}
 				}
 			},
@@ -182,6 +176,12 @@
 				"parameters": {
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
+					},
+					"CCR_DataProcessingAt10_properties_CCRDataMovement_parameters_windowStart": {
+						"value": "[parameters('CCR_DataProcessingAt10_properties_CCRDataMovement_parameters_windowStart')]"
+					},
+					"CCR_DataProcessingAt10_properties_CCRDataMovement_parameters_windowEnd": {
+						"value": "[parameters('CCR_DataProcessingAt10_properties_CCRDataMovement_parameters_windowEnd')]"
 					},
 					"Everyday_properties_LeapDataMovement_parameters_windowStart": {
 						"value": "[parameters('Everyday_properties_LeapDataMovement_parameters_windowStart')]"
