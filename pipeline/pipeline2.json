@@ -1304,12 +1304,6 @@
 									"name": "SubChannelId",
 									"type": "Int32"
 								}
-							},
-							{
-								"sink": {
-									"name": "DF_StoreId",
-									"type": "Int32"
-								}
 							}
 						]
 					}
