@@ -5,6 +5,9 @@
 			"referenceName": "PnGDataFoundation",
 			"type": "LinkedServiceReference"
 		},
+		"folder": {
+			"name": "DF_DBConnection"
+		},
 		"annotations": [],
 		"type": "AzureSqlTable",
 		"schema": []
