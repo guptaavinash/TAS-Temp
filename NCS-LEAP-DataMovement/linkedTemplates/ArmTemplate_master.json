@@ -35,14 +35,6 @@
 			"type": "string",
 			"defaultValue": "https://pngadls.dfs.core.windows.net"
 		},
-		"Everyday_properties_LeapDataMovement_parameters_windowStart": {
-			"type": "string",
-			"defaultValue": "@trigger().outputs.windowStartTime"
-		},
-		"Everyday_properties_LeapDataMovement_parameters_windowEnd": {
-			"type": "string",
-			"defaultValue": "@trigger().outputs.windowEndTime"
-		},
 		"CCR_DataProcessingAt10_properties_CCRDataMovement_parameters_windowStart": {
 			"type": "string",
 			"defaultValue": "2020-05-02T08:00:00Z"
@@ -50,6 +42,14 @@
 		"CCR_DataProcessingAt10_properties_CCRDataMovement_parameters_windowEnd": {
 			"type": "string",
 			"defaultValue": "2020-05-02T08:00:00Z"
+		},
+		"Everyday_properties_LeapDataMovement_parameters_windowStart": {
+			"type": "string",
+			"defaultValue": "@trigger().outputs.windowStartTime"
+		},
+		"Everyday_properties_LeapDataMovement_parameters_windowEnd": {
+			"type": "string",
+			"defaultValue": "@trigger().outputs.windowEndTime"
 		},
 		"containerUri": {
 			"type": "string",

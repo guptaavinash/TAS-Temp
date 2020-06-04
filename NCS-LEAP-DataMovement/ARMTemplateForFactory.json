@@ -35,14 +35,6 @@
 			"type": "string",
 			"defaultValue": "https://pngadls.dfs.core.windows.net"
 		},
-		"Everyday_properties_LeapDataMovement_parameters_windowStart": {
-			"type": "string",
-			"defaultValue": "@trigger().outputs.windowStartTime"
-		},
-		"Everyday_properties_LeapDataMovement_parameters_windowEnd": {
-			"type": "string",
-			"defaultValue": "@trigger().outputs.windowEndTime"
-		},
 		"CCR_DataProcessingAt10_properties_CCRDataMovement_parameters_windowStart": {
 			"type": "string",
 			"defaultValue": "2020-05-02T08:00:00Z"
@@ -50,6 +42,14 @@
 		"CCR_DataProcessingAt10_properties_CCRDataMovement_parameters_windowEnd": {
 			"type": "string",
 			"defaultValue": "2020-05-02T08:00:00Z"
+		},
+		"Everyday_properties_LeapDataMovement_parameters_windowStart": {
+			"type": "string",
+			"defaultValue": "@trigger().outputs.windowStartTime"
+		},
+		"Everyday_properties_LeapDataMovement_parameters_windowEnd": {
+			"type": "string",
+			"defaultValue": "@trigger().outputs.windowEndTime"
 		}
 	},
 	"variables": {
@@ -10929,14 +10929,7 @@
 					{
 						"name": "IFDataTransferCanDone",
 						"type": "Lookup",
-						"dependsOn": [
-							{
-								"activity": "WhenAllFilesCome",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
+						"dependsOn": [],
 						"policy": {
 							"timeout": "7.00:00:00",
 							"retry": 0,
@@ -10956,72 +10949,6 @@
 								"type": "DatasetReference",
 								"parameters": {}
 							}
-						}
-					},
-					{
-						"name": "LookupAllFilesCome",
-						"type": "Lookup",
-						"dependsOn": [],
-						"policy": {
-							"timeout": "7.00:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"source": {
-								"type": "AzureSqlSource",
-								"sqlReaderStoredProcedureName": "[[dbo].[SpCheckLeapDataLoaded]",
-								"queryTimeout": "02:00:00"
-							},
-							"dataset": {
-								"referenceName": "DFDBConnection",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						}
-					},
-					{
-						"name": "WhenAllFilesCome",
-						"type": "IfCondition",
-						"dependsOn": [
-							{
-								"activity": "LookupAllFilesCome",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"userProperties": [],
-						"typeProperties": {
-							"expression": {
-								"value": "@bool(activity('LookupAllFilesCome').output.firstRow.flgDataloaded)",
-								"type": "Expression"
-							},
-							"ifTrueActivities": [
-								{
-									"name": "LoadLeapTasIntegration",
-									"type": "SqlServerStoredProcedure",
-									"dependsOn": [],
-									"policy": {
-										"timeout": "7.00:00:00",
-										"retry": 0,
-										"retryIntervalInSeconds": 30,
-										"secureOutput": false,
-										"secureInput": false
-									},
-									"userProperties": [],
-									"typeProperties": {
-										"storedProcedureName": "[[dbo].[spLoadLeapTasIntegration]"
-									},
-									"linkedServiceName": {
-										"referenceName": "PnGDataFoundation",
-										"type": "LinkedServiceReference"
-									}
-								}
-							]
 						}
 					},
 					{
@@ -11155,7 +11082,7 @@
 						"type": "ExecutePipeline",
 						"dependsOn": [
 							{
-								"activity": "DeleteFiles_Staging",
+								"activity": "WhenAllFilesCome",
 								"dependencyConditions": [
 									"Succeeded"
 								]
@@ -11292,6 +11219,79 @@
 							"referenceName": "PnGDataFoundation",
 							"type": "LinkedServiceReference"
 						}
+					},
+					{
+						"name": "LookupAllFilesCome",
+						"type": "Lookup",
+						"dependsOn": [
+							{
+								"activity": "DeleteFiles_Staging",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "AzureSqlSource",
+								"sqlReaderStoredProcedureName": "[[dbo].[SpCheckLeapDataLoaded]",
+								"queryTimeout": "02:00:00"
+							},
+							"dataset": {
+								"referenceName": "DFDBConnection",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						}
+					},
+					{
+						"name": "WhenAllFilesCome",
+						"type": "IfCondition",
+						"dependsOn": [
+							{
+								"activity": "LookupAllFilesCome",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"userProperties": [],
+						"typeProperties": {
+							"expression": {
+								"value": "@bool(activity('LookupAllFilesCome').output.firstRow.flgDataloaded)",
+								"type": "Expression"
+							},
+							"ifTrueActivities": [
+								{
+									"name": "LoadLeapTasIntegration",
+									"type": "SqlServerStoredProcedure",
+									"dependsOn": [],
+									"policy": {
+										"timeout": "7.00:00:00",
+										"retry": 0,
+										"retryIntervalInSeconds": 30,
+										"secureOutput": false,
+										"secureInput": false
+									},
+									"userProperties": [],
+									"typeProperties": {
+										"storedProcedureName": "[[dbo].[spLoadLeapTasIntegration]"
+									},
+									"linkedServiceName": {
+										"referenceName": "PnGDataFoundation",
+										"type": "LinkedServiceReference"
+									}
+								}
+							]
+						}
 					}
 				],
 				"parameters": {
@@ -11316,7 +11316,8 @@
 				"[concat(variables('factoryId'), '/pipelines/CopyS3-To-Staging_Cloud1')]",
 				"[concat(variables('factoryId'), '/pipelines/CopyS3-To-Staging_Cloud2')]",
 				"[concat(variables('factoryId'), '/pipelines/CopyS3-To-Staging_Cloud3')]",
-				"[concat(variables('factoryId'), '/datasets/LeapStorageSourceDataset')]"
+				"[concat(variables('factoryId'), '/datasets/LeapStorageSourceDataset')]",
+				"[concat(variables('factoryId'), '/datasets/DFDBConnection')]"
 			]
 		},
 		{
@@ -11476,7 +11477,7 @@
 						"type": "Delete",
 						"dependsOn": [
 							{
-								"activity": "CopyLeapStaging-To-ADLS",
+								"activity": "WhenAllFilesCome",
 								"dependencyConditions": [
 									"Succeeded"
 								]
@@ -11529,6 +11530,79 @@
 							"referenceName": "PnGDataFoundation",
 							"type": "LinkedServiceReference"
 						}
+					},
+					{
+						"name": "LookupAllFilesCome",
+						"type": "Lookup",
+						"dependsOn": [
+							{
+								"activity": "CopyLeapStaging-To-ADLS",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "AzureSqlSource",
+								"sqlReaderStoredProcedureName": "[[dbo].[SpCheckLeapDataLoaded]",
+								"queryTimeout": "02:00:00"
+							},
+							"dataset": {
+								"referenceName": "DFDBConnection",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						}
+					},
+					{
+						"name": "WhenAllFilesCome",
+						"type": "IfCondition",
+						"dependsOn": [
+							{
+								"activity": "LookupAllFilesCome",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"userProperties": [],
+						"typeProperties": {
+							"expression": {
+								"value": "@bool(activity('LookupAllFilesCome').output.firstRow.flgDataloaded)",
+								"type": "Expression"
+							},
+							"ifTrueActivities": [
+								{
+									"name": "LoadLeapTasIntegration",
+									"type": "SqlServerStoredProcedure",
+									"dependsOn": [],
+									"policy": {
+										"timeout": "7.00:00:00",
+										"retry": 0,
+										"retryIntervalInSeconds": 30,
+										"secureOutput": false,
+										"secureInput": false
+									},
+									"userProperties": [],
+									"typeProperties": {
+										"storedProcedureName": "[[dbo].[spLoadLeapTasIntegration]"
+									},
+									"linkedServiceName": {
+										"referenceName": "PnGDataFoundation",
+										"type": "LinkedServiceReference"
+									}
+								}
+							]
+						}
 					}
 				],
 				"parameters": {
@@ -11552,7 +11626,8 @@
 				"[concat(variables('factoryId'), '/pipelines/CopyS3-To-Staging_Cloud1')]",
 				"[concat(variables('factoryId'), '/pipelines/CopyS3-To-Staging_Cloud2')]",
 				"[concat(variables('factoryId'), '/pipelines/CopyS3-To-Staging_Cloud3')]",
-				"[concat(variables('factoryId'), '/datasets/LeapStorageSourceDataset')]"
+				"[concat(variables('factoryId'), '/datasets/LeapStorageSourceDataset')]",
+				"[concat(variables('factoryId'), '/datasets/DFDBConnection')]"
 			]
 		},
 		{
@@ -18721,6 +18796,44 @@
 			"dependsOn": []
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/CCR_DataProcessingAt10')]",
+			"type": "Microsoft.DataFactory/factories/triggers",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"runtimeState": "Started",
+				"pipelines": [
+					{
+						"pipelineReference": {
+							"referenceName": "CCRDataMovement",
+							"type": "PipelineReference"
+						},
+						"parameters": {
+							"windowStart": "[parameters('CCR_DataProcessingAt10_properties_CCRDataMovement_parameters_windowStart')]",
+							"windowEnd": "[parameters('CCR_DataProcessingAt10_properties_CCRDataMovement_parameters_windowEnd')]"
+						}
+					}
+				],
+				"type": "ScheduleTrigger",
+				"typeProperties": {
+					"recurrence": {
+						"frequency": "Day",
+						"interval": 1,
+						"startTime": "2020-06-03T16:35:00.000Z",
+						"timeZone": "UTC",
+						"schedule": {
+							"minutes": [
+								35
+							]
+						}
+					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/pipelines/CCRDataMovement')]"
+			]
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/Everyday')]",
 			"type": "Microsoft.DataFactory/factories/triggers",
 			"apiVersion": "2018-06-01",
@@ -18762,44 +18875,6 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/pipelines/LeapDataMovement')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/CCR_DataProcessingAt10')]",
-			"type": "Microsoft.DataFactory/factories/triggers",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"runtimeState": "Started",
-				"pipelines": [
-					{
-						"pipelineReference": {
-							"referenceName": "CCRDataMovement",
-							"type": "PipelineReference"
-						},
-						"parameters": {
-							"windowStart": "[parameters('CCR_DataProcessingAt10_properties_CCRDataMovement_parameters_windowStart')]",
-							"windowEnd": "[parameters('CCR_DataProcessingAt10_properties_CCRDataMovement_parameters_windowEnd')]"
-						}
-					}
-				],
-				"type": "ScheduleTrigger",
-				"typeProperties": {
-					"recurrence": {
-						"frequency": "Day",
-						"interval": 1,
-						"startTime": "2020-06-03T16:35:00.000Z",
-						"timeZone": "UTC",
-						"schedule": {
-							"minutes": [
-								35
-							]
-						}
-					}
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/pipelines/CCRDataMovement')]"
 			]
 		}
 	]
