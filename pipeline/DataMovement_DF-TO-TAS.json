@@ -148,14 +148,7 @@
 			{
 				"name": "IFDataTransferCanDone",
 				"type": "Lookup",
-				"dependsOn": [
-					{
-						"activity": "WhenAllFilesCome",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
+				"dependsOn": [],
 				"policy": {
 					"timeout": "7.00:00:00",
 					"retry": 0,
@@ -174,71 +167,6 @@
 						"referenceName": "DFDBConnection",
 						"type": "DatasetReference"
 					}
-				}
-			},
-			{
-				"name": "LookupAllFilesCome",
-				"type": "Lookup",
-				"dependsOn": [],
-				"policy": {
-					"timeout": "7.00:00:00",
-					"retry": 0,
-					"retryIntervalInSeconds": 30,
-					"secureOutput": false,
-					"secureInput": false
-				},
-				"userProperties": [],
-				"typeProperties": {
-					"source": {
-						"type": "AzureSqlSource",
-						"sqlReaderStoredProcedureName": "[dbo].[SpCheckLeapDataLoaded]",
-						"queryTimeout": "02:00:00"
-					},
-					"dataset": {
-						"referenceName": "DFDBConnection",
-						"type": "DatasetReference"
-					}
-				}
-			},
-			{
-				"name": "WhenAllFilesCome",
-				"type": "IfCondition",
-				"dependsOn": [
-					{
-						"activity": "LookupAllFilesCome",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
-				"userProperties": [],
-				"typeProperties": {
-					"expression": {
-						"value": "@bool(activity('LookupAllFilesCome').output.firstRow.flgDataloaded)",
-						"type": "Expression"
-					},
-					"ifTrueActivities": [
-						{
-							"name": "LoadLeapTasIntegration",
-							"type": "SqlServerStoredProcedure",
-							"dependsOn": [],
-							"policy": {
-								"timeout": "7.00:00:00",
-								"retry": 0,
-								"retryIntervalInSeconds": 30,
-								"secureOutput": false,
-								"secureInput": false
-							},
-							"userProperties": [],
-							"typeProperties": {
-								"storedProcedureName": "[dbo].[spLoadLeapTasIntegration]"
-							},
-							"linkedServiceName": {
-								"referenceName": "PnGDataFoundation",
-								"type": "LinkedServiceReference"
-							}
-						}
-					]
 				}
 			},
 			{
