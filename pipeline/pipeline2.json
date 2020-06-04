@@ -32,7 +32,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "DFDBConnection",
+						"referenceName": "DS_DF_tblINITClusterMaster",
 						"type": "DatasetReference"
 					}
 				]

@@ -15,7 +15,7 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"storedProcedureName": "[dbo].[spPoputaleCategorInvDateSales]"
+					"storedProcedureName": "[dbo].[spDailyRefreshRestatement]"
 				},
 				"linkedServiceName": {
 					"referenceName": "PnGDataFoundation",
