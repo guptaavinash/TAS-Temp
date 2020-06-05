@@ -8804,7 +8804,7 @@
 						"timeZone": "UTC",
 						"schedule": {
 							"minutes": [
-								35
+								40
 							]
 						}
 					}
