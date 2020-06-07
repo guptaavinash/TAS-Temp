@@ -2,7 +2,7 @@
 	"name": "DPSR_table",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "PnGDataFoundation",
+			"referenceName": "TASDatabase",
 			"type": "LinkedServiceReference"
 		},
 		"folder": {
