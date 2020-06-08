@@ -8720,6 +8720,9 @@
 													"value": "@pipeline().parameters.windowEnd",
 													"type": "Expression"
 												}
+											},
+											"formatSettings": {
+												"type": "BinaryReadSettings"
 											}
 										},
 										"sink": {
@@ -14809,10 +14812,10 @@
 						},
 						"userProperties": [],
 						"typeProperties": {
-							"storedProcedureName": "[[dbo].[spDataLoadRawLEAPTAS_CCCR]"
+							"storedProcedureName": "[[dbo].[spDataLoadLeapCCRData]"
 						},
 						"linkedServiceName": {
-							"referenceName": "PnGDataFoundation",
+							"referenceName": "TASDatabase",
 							"type": "LinkedServiceReference"
 						}
 					},

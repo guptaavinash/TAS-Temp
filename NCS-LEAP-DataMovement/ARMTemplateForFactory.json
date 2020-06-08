@@ -9139,6 +9139,9 @@
 													"value": "@pipeline().parameters.windowEnd",
 													"type": "Expression"
 												}
+											},
+											"formatSettings": {
+												"type": "BinaryReadSettings"
 											}
 										},
 										"sink": {
@@ -11560,10 +11563,10 @@
 						},
 						"userProperties": [],
 						"typeProperties": {
-							"storedProcedureName": "[[dbo].[spDataLoadRawLEAPTAS_CCCR]"
+							"storedProcedureName": "[[dbo].[spDataLoadLeapCCRData]"
 						},
 						"linkedServiceName": {
-							"referenceName": "PnGDataFoundation",
+							"referenceName": "TASDatabase",
 							"type": "LinkedServiceReference"
 						}
 					},
@@ -11717,7 +11720,6 @@
 				"[concat(variables('factoryId'), '/pipelines/CopyS3-To-Staging_Cloud2')]",
 				"[concat(variables('factoryId'), '/pipelines/CopyS3-To-Staging_Cloud3')]",
 				"[concat(variables('factoryId'), '/datasets/LeapStorageSourceDataset')]",
-				"[concat(variables('factoryId'), '/linkedServices/PnGDataFoundation')]",
 				"[concat(variables('factoryId'), '/datasets/TASDBConnection')]"
 			]
 		},
