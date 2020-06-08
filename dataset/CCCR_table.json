@@ -2,7 +2,7 @@
 	"name": "CCCR_table",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "TASDatabase",
+			"referenceName": "PnGDataFoundation",
 			"type": "LinkedServiceReference"
 		},
 		"folder": {
