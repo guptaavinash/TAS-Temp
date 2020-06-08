@@ -8720,9 +8720,6 @@
 													"value": "@pipeline().parameters.windowEnd",
 													"type": "Expression"
 												}
-											},
-											"formatSettings": {
-												"type": "BinaryReadSettings"
 											}
 										},
 										"sink": {
@@ -14132,33 +14129,6 @@
 								"recursive": true
 							}
 						}
-					},
-					{
-						"name": "CCRDataLoad",
-						"type": "SqlServerStoredProcedure",
-						"dependsOn": [
-							{
-								"activity": "DeleteFiles_Staging",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"policy": {
-							"timeout": "7.00:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"storedProcedureName": "[[dbo].[spDataLoadRawLEAPTAS_CCCR]"
-						},
-						"linkedServiceName": {
-							"referenceName": "PnGDataFoundation",
-							"type": "LinkedServiceReference"
-						}
 					}
 				],
 				"parameters": {
@@ -15329,7 +15299,7 @@
 			"apiVersion": "2018-06-01",
 			"properties": {
 				"annotations": [],
-				"runtimeState": "Started",
+				"runtimeState": "Stopped",
 				"pipelines": [
 					{
 						"pipelineReference": {
