@@ -91,7 +91,7 @@
 								}
 							},
 							"linkedServiceName": {
-								"referenceName": "PnGDataFoundation",
+								"referenceName": "TASDatabase",
 								"type": "LinkedServiceReference"
 							}
 						},
