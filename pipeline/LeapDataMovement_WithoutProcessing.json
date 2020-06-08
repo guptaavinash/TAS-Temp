@@ -193,10 +193,10 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"storedProcedureName": "[dbo].[spDataLoadRawLEAPTAS_CCCR]"
+					"storedProcedureName": "[dbo].[spDataLoadLeapCCRData]"
 				},
 				"linkedServiceName": {
-					"referenceName": "PnGDataFoundation",
+					"referenceName": "TASDatabase",
 					"type": "LinkedServiceReference"
 				}
 			},
