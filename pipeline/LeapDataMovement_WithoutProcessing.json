@@ -174,33 +174,6 @@
 				}
 			},
 			{
-				"name": "CCRDataLoad",
-				"type": "SqlServerStoredProcedure",
-				"dependsOn": [
-					{
-						"activity": "spDailyDataRefreshSalesData",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
-				"policy": {
-					"timeout": "7.00:00:00",
-					"retry": 0,
-					"retryIntervalInSeconds": 30,
-					"secureOutput": false,
-					"secureInput": false
-				},
-				"userProperties": [],
-				"typeProperties": {
-					"storedProcedureName": "[dbo].[spDataLoadLeapCCRData]"
-				},
-				"linkedServiceName": {
-					"referenceName": "TASDatabase",
-					"type": "LinkedServiceReference"
-				}
-			},
-			{
 				"name": "LookupAllFilesCome",
 				"type": "Lookup",
 				"dependsOn": [
@@ -304,7 +277,7 @@
 				"type": "SqlServerStoredProcedure",
 				"dependsOn": [
 					{
-						"activity": "PopulateDSETeleCallingStores",
+						"activity": "IFDataTransferCanDone",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -324,6 +297,37 @@
 				"linkedServiceName": {
 					"referenceName": "TASDatabase",
 					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "IFDataTransferCanDone",
+				"type": "Lookup",
+				"dependsOn": [
+					{
+						"activity": "PopulateDSETeleCallingStores",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderQuery": "select flgPngDataTransfer from tblFlagDataProcess",
+						"queryTimeout": "02:00:00"
+					},
+					"dataset": {
+						"referenceName": "TASDBConnection",
+						"type": "DatasetReference"
+					}
 				}
 			}
 		],
