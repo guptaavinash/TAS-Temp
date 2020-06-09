@@ -220,6 +220,33 @@
 								"recursive": true
 							}
 						}
+					},
+					{
+						"name": "CCRDataLoad",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [
+							{
+								"activity": "DeleteFiles_Staging",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[dbo].[spDataLoadRawLEAPTAS_CCCR]"
+						},
+						"linkedServiceName": {
+							"referenceName": "TASDatabase",
+							"type": "LinkedServiceReference"
+						}
 					}
 				],
 				"parameters": {
@@ -242,7 +269,8 @@
 				"[concat(variables('factoryId'), '/pipelines/CopyS3-To-Staging_Cloud1')]",
 				"[concat(variables('factoryId'), '/pipelines/CopyS3-To-Staging_Cloud2')]",
 				"[concat(variables('factoryId'), '/pipelines/CopyS3-To-Staging_Cloud3')]",
-				"[concat(variables('factoryId'), '/datasets/LeapStorageSourceDataset')]"
+				"[concat(variables('factoryId'), '/datasets/LeapStorageSourceDataset')]",
+				"[concat(variables('factoryId'), '/linkedServices/TASDatabase')]"
 			]
 		},
 		{
@@ -14146,7 +14174,7 @@
 						},
 						"userProperties": [],
 						"typeProperties": {
-							"storedProcedureName": "[[dbo].[spDailyRefreshRestatement]"
+							"storedProcedureName": "[[dbo].[spPoputaleCategorInvDateSales]"
 						},
 						"linkedServiceName": {
 							"referenceName": "PnGDataFoundation",
@@ -21110,7 +21138,7 @@
 						"timeZone": "UTC",
 						"schedule": {
 							"minutes": [
-								45
+								40
 							]
 						}
 					}
