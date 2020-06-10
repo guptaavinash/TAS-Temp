@@ -10,8 +10,8 @@
 					"type": "PipelineReference"
 				},
 				"parameters": {
-					"windowStart": "2020-05-02T08:00:00Z",
-					"windowEnd": "2020-05-02T08:00:00Z"
+					"windowStart": "@adddays(trigger().scheduledTime, -1)",
+					"windowEnd": "@trigger().scheduledTime"
 				}
 			}
 		],
