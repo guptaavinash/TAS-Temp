@@ -7,7 +7,7 @@
 				"type": "ExecutePipeline",
 				"dependsOn": [
 					{
-						"activity": "CopyS3-To-Staging_Cloud3",
+						"activity": "SpDeleteOldtmpleapdata",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -25,7 +25,14 @@
 			{
 				"name": "SpDeleteOldtmpleapdata",
 				"type": "SqlServerStoredProcedure",
-				"dependsOn": [],
+				"dependsOn": [
+					{
+						"activity": "CopyS3-To-Staging_Cloud3",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
 				"policy": {
 					"timeout": "7.00:00:00",
 					"retry": 0,
@@ -87,7 +94,7 @@
 				"type": "ExecutePipeline",
 				"dependsOn": [
 					{
-						"activity": "SpDeleteOldtmpleapdata",
+						"activity": "Scaleup DB",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -328,6 +335,53 @@
 						"referenceName": "TASDBConnection",
 						"type": "DatasetReference"
 					}
+				}
+			},
+			{
+				"name": "Scaleup DB",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[Scale_GP_Gen5_6]"
+				},
+				"linkedServiceName": {
+					"referenceName": "TASDatabase",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Scale Down DB",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "spDailyDataRefreshSalesData",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[Scale_GP_Gen5_2]"
+				},
+				"linkedServiceName": {
+					"referenceName": "TASDatabase",
+					"type": "LinkedServiceReference"
 				}
 			}
 		],
