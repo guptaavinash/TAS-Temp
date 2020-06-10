@@ -37,11 +37,11 @@
 		},
 		"CCR_DataProcessingAt10_properties_CCRDataMovement_parameters_windowStart": {
 			"type": "string",
-			"defaultValue": "2020-05-02T08:00:00Z"
+			"defaultValue": "@adddays(trigger().scheduledTime, -1)"
 		},
 		"CCR_DataProcessingAt10_properties_CCRDataMovement_parameters_windowEnd": {
 			"type": "string",
-			"defaultValue": "2020-05-02T08:00:00Z"
+			"defaultValue": "@trigger().scheduledTime"
 		},
 		"Everyday_properties_LeapDataMovement_parameters_windowStart": {
 			"type": "string",

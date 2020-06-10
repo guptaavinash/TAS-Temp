@@ -9,11 +9,11 @@
 		},
 		"CCR_DataProcessingAt10_properties_CCRDataMovement_parameters_windowStart": {
 			"type": "string",
-			"defaultValue": "2020-05-02T08:00:00Z"
+			"defaultValue": "@adddays(trigger().scheduledTime, -1)"
 		},
 		"CCR_DataProcessingAt10_properties_CCRDataMovement_parameters_windowEnd": {
 			"type": "string",
-			"defaultValue": "2020-05-02T08:00:00Z"
+			"defaultValue": "@trigger().scheduledTime"
 		},
 		"LeapFileLoading_At6_properties_LeapDataMovement_WithoutProcessing_parameters_windowStart": {
 			"type": "string",
@@ -14051,7 +14051,14 @@
 					{
 						"name": "CopyS3-To-Staging_Cloud1",
 						"type": "ExecutePipeline",
-						"dependsOn": [],
+						"dependsOn": [
+							{
+								"activity": "SpTruncateCCRData",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
 						"userProperties": [],
 						"typeProperties": {
 							"pipeline": {
@@ -14157,6 +14164,26 @@
 						"userProperties": [],
 						"typeProperties": {
 							"storedProcedureName": "[[dbo].[spDataLoadRawLEAPTAS_CCCR]"
+						},
+						"linkedServiceName": {
+							"referenceName": "TASDatabase",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "SpTruncateCCRData",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[dbo].[SpTruncateCCRData]"
 						},
 						"linkedServiceName": {
 							"referenceName": "TASDatabase",
