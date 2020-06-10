@@ -2,7 +2,7 @@
 	"name": "CCR_DataProcessingAt10",
 	"properties": {
 		"annotations": [],
-		"runtimeState": "Stopped",
+		"runtimeState": "Started",
 		"pipelines": [
 			{
 				"pipelineReference": {
@@ -25,6 +25,9 @@
 				"schedule": {
 					"minutes": [
 						40
+					],
+					"hours": [
+						16
 					]
 				}
 			}
