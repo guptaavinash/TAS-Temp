@@ -14,20 +14,43 @@
 		"CCR_DataProcessingAt10_properties_CCRDataMovement_parameters_windowEnd": {
 			"type": "string",
 			"defaultValue": "@trigger().scheduledTime"
-		},
-		"LeapFileLoading_At6_properties_LeapDataMovement_WithoutProcessing_parameters_windowStart": {
-			"type": "string",
-			"defaultValue": "@adddays(trigger().scheduledTime, -1)"
-		},
-		"LeapFileLoading_At6_properties_LeapDataMovement_WithoutProcessing_parameters_windowEnd": {
-			"type": "string",
-			"defaultValue": "@trigger().scheduledTime"
 		}
 	},
 	"variables": {
 		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
 	},
 	"resources": [
+		{
+			"name": "[concat(parameters('factoryName'), '/Scaledb')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Scale4",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[dbo].[Scale_S4]"
+						},
+						"linkedServiceName": {
+							"referenceName": "TASDatabase",
+							"type": "LinkedServiceReference"
+						}
+					}
+				],
+				"annotations": []
+			},
+			"dependsOn": []
+		},
 		{
 			"name": "[concat(parameters('factoryName'), '/CopyLeapStaging-To-ADLS')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
@@ -14521,47 +14544,6 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/pipelines/CCRDataMovement')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/LeapFileLoading_At6')]",
-			"type": "Microsoft.DataFactory/factories/triggers",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"runtimeState": "Started",
-				"pipelines": [
-					{
-						"pipelineReference": {
-							"referenceName": "LeapDataMovement_WithoutProcessing",
-							"type": "PipelineReference"
-						},
-						"parameters": {
-							"windowStart": "[parameters('LeapFileLoading_At6_properties_LeapDataMovement_WithoutProcessing_parameters_windowStart')]",
-							"windowEnd": "[parameters('LeapFileLoading_At6_properties_LeapDataMovement_WithoutProcessing_parameters_windowEnd')]"
-						}
-					}
-				],
-				"type": "ScheduleTrigger",
-				"typeProperties": {
-					"recurrence": {
-						"frequency": "Day",
-						"interval": 1,
-						"startTime": "2020-06-07T18:27:00.000Z",
-						"timeZone": "UTC",
-						"schedule": {
-							"minutes": [
-								30
-							],
-							"hours": [
-								0
-							]
-						}
-					}
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/pipelines/LeapDataMovement_WithoutProcessing')]"
 			]
 		}
 	]
