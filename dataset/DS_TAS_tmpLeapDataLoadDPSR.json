@@ -216,7 +216,7 @@
 		],
 		"typeProperties": {
 			"schema": "dbo",
-			"table": "tmpLeapDataLoadDPSR"
+			"table": "tmpRawLEAPTAS_DPSR"
 		}
 	}
 }
