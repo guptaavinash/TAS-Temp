@@ -10526,7 +10526,7 @@
 								"type": "DatasetReference",
 								"parameters": {
 									"folder": {
-										"value": "@concat('/', formatDateTime(pipeline().TriggerTime, 'yyyy'), '/', formatDateTime(pipeline().TriggerTime, 'MM'), '/', formatDateTime(pipeline().TriggerTime, 'dd'), '/')",
+										"value": "/2020/06/18/",
 										"type": "Expression"
 									},
 									"directory": "leap"
