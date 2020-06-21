@@ -83,6 +83,22 @@
 								"referenceName": "TASDatabase",
 								"type": "LinkedServiceReference"
 							}
+						},
+						{
+							"name": "Wait1",
+							"type": "Wait",
+							"dependsOn": [
+								{
+									"activity": "Stored procedure1",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"userProperties": [],
+							"typeProperties": {
+								"waitTimeInSeconds": 15
+							}
 						}
 					],
 					"timeout": "7.00:00:00"
