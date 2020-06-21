@@ -13313,7 +13313,7 @@
 			"properties": {
 				"activities": [
 					{
-						"name": "Scale4",
+						"name": "Scale_v6",
 						"type": "SqlServerStoredProcedure",
 						"dependsOn": [],
 						"policy": {
@@ -13325,7 +13325,7 @@
 						},
 						"userProperties": [],
 						"typeProperties": {
-							"storedProcedureName": "[[dbo].[Scale_GP_Gen5_2]"
+							"storedProcedureName": "[[dbo].[Scale_GP_Gen5_6]"
 						},
 						"linkedServiceName": {
 							"referenceName": "TASDatabase",
@@ -20524,7 +20524,7 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/ScaleDBAt5')]",
+			"name": "[concat(parameters('factoryName'), '/ScaleDBAt4_45')]",
 			"type": "Microsoft.DataFactory/factories/triggers",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -20548,7 +20548,7 @@
 						"timeZone": "UTC",
 						"schedule": {
 							"minutes": [
-								30
+								15
 							],
 							"hours": [
 								23
