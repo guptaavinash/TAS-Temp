@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Scale6",
+				"name": "Scale_v6",
 				"type": "SqlServerStoredProcedure",
 				"dependsOn": [],
 				"policy": {
