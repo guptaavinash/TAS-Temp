@@ -60,7 +60,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"expression": {
-						"value": "@equals(int(variables('flgDone')),'1')",
+						"value": "@bool(int(variables('flgDone')))",
 						"type": "Expression"
 					},
 					"activities": [
@@ -158,7 +158,7 @@
 		],
 		"variables": {
 			"flgDone": {
-				"type": "String"
+				"type": "Boolean"
 			}
 		},
 		"annotations": []
