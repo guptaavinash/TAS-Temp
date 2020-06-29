@@ -1533,113 +1533,123 @@
 												"type": "TabularTranslator",
 												"mappings": [
 													{
-														"source": {
-															"name": "branchcode",
-															"type": "String"
-														},
 														"sink": {
-															"name": "branchcode",
+															"name": "coh_date",
 															"type": "String"
 														}
 													},
 													{
-														"source": {
-															"name": "branchname",
-															"type": "String"
-														},
 														"sink": {
-															"name": "branchname",
+															"name": "retailer_code",
 															"type": "String"
 														}
 													},
 													{
-														"source": {
-															"name": "dsecode",
-															"type": "String"
-														},
 														"sink": {
-															"name": "dsecode",
+															"name": "retailer_name",
 															"type": "String"
 														}
 													},
 													{
-														"source": {
-															"name": "dsename",
-															"type": "String"
-														},
 														"sink": {
-															"name": "dsename",
+															"name": "channel_code",
 															"type": "String"
 														}
 													},
 													{
-														"source": {
-															"name": "stlcode",
-															"type": "String"
-														},
 														"sink": {
-															"name": "stlcode",
+															"name": "channel_name",
 															"type": "String"
 														}
 													},
 													{
-														"source": {
-															"name": "stlname",
-															"type": "String"
-														},
 														"sink": {
-															"name": "stlname",
+															"name": "channel_type_code",
 															"type": "String"
 														}
 													},
 													{
-														"source": {
-															"name": "becode",
-															"type": "String"
-														},
 														"sink": {
-															"name": "becode",
+															"name": "sector_name",
 															"type": "String"
 														}
 													},
 													{
-														"source": {
-															"name": "bename",
-															"type": "String"
-														},
 														"sink": {
-															"name": "bename",
+															"name": "seller_code",
 															"type": "String"
 														}
 													},
 													{
-														"source": {
-															"name": "selected_date",
-															"type": "String"
-														},
 														"sink": {
-															"name": "selected_date",
+															"name": "seller_name",
 															"type": "String"
 														}
 													},
 													{
-														"source": {
-															"name": "Filename",
-															"type": "String"
-														},
 														"sink": {
-															"name": "Filename",
+															"name": "coh_name",
 															"type": "String"
 														}
 													},
 													{
-														"source": {
-															"name": "LastModifiedDatetime",
-															"type": "String"
-														},
 														"sink": {
-															"name": "LastModifiedDatetime",
-															"type": "DateTime"
+															"name": "target",
+															"type": "String"
+														}
+													},
+													{
+														"sink": {
+															"name": "achievement",
+															"type": "String"
+														}
+													},
+													{
+														"sink": {
+															"name": "achievement_status",
+															"type": "String"
+														}
+													},
+													{
+														"sink": {
+															"name": "calculation_rule",
+															"type": "String"
+														}
+													},
+													{
+														"sink": {
+															"name": "coh_detail",
+															"type": "String"
+														}
+													},
+													{
+														"sink": {
+															"name": "withsale",
+															"type": "String"
+														}
+													},
+													{
+														"sink": {
+															"name": "nosale",
+															"type": "String"
+														}
+													},
+													{
+														"sink": {
+															"name": "distributor_code",
+															"type": "String"
+														}
+													},
+													{
+														"sink": {
+															"name": "distributor_name",
+															"type": "String"
+														}
+													},
+													{
+														"sink": {
+															"name": "FileSetId",
+															"type": "Int32"
 														}
 													}
 												]
@@ -1653,7 +1663,7 @@
 										],
 										"outputs": [
 											{
-												"referenceName": "DSEM_table",
+												"referenceName": "COHGAP_table",
 												"type": "DatasetReference"
 											}
 										]

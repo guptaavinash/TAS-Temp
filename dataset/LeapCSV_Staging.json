@@ -13,6 +13,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
+				"fileName": "COHGAP_cloud02_2020Jun17.csv",
 				"container": "leap"
 			},
 			"columnDelimiter": "|",
