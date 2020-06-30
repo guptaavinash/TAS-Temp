@@ -8342,6 +8342,903 @@
 											}
 										]
 									}
+								},
+								{
+									"name": "COHGAP_Could1",
+									"type": "IfCondition",
+									"dependsOn": [
+										{
+											"activity": "DSEM_Could3",
+											"dependencyConditions": [
+												"Succeeded"
+											]
+										}
+									],
+									"userProperties": [],
+									"typeProperties": {
+										"expression": {
+											"value": "@bool(startswith(item().name,'COHGAP_cloud01_'))",
+											"type": "Expression"
+										},
+										"ifTrueActivities": [
+											{
+												"name": "COHGAP_Cloud1",
+												"description": "Copy a file from the source store to the destination store.",
+												"type": "Copy",
+												"dependsOn": [],
+												"policy": {
+													"timeout": "7.00:00:00",
+													"retry": 0,
+													"retryIntervalInSeconds": 30,
+													"secureOutput": false,
+													"secureInput": false
+												},
+												"userProperties": [],
+												"typeProperties": {
+													"source": {
+														"type": "DelimitedTextSource",
+														"additionalColumns": [
+															{
+																"name": "Filename",
+																"value": {
+																	"value": "@item().name",
+																	"type": "Expression"
+																}
+															},
+															{
+																"name": "LastModifiedDatetime",
+																"value": {
+																	"value": "@activity('GetFileList').output.lastModified",
+																	"type": "Expression"
+																}
+															}
+														],
+														"storeSettings": {
+															"type": "AzureBlobStorageReadSettings",
+															"recursive": true,
+															"wildcardFileName": "COHGAP_cloud01_*",
+															"enablePartitionDiscovery": false
+														},
+														"formatSettings": {
+															"type": "DelimitedTextReadSettings"
+														},
+														"recursive": false
+													},
+													"sink": {
+														"type": "AzureSqlSink"
+													},
+													"enableStaging": false,
+													"translator": {
+														"type": "TabularTranslator",
+														"mappings": [
+															{
+																"source": {
+																	"name": "coh_date",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "coh_date",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"name": "retailer_code",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "retailer_code",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"name": "retailer_name",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "retailer_name",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"name": "channel_code",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "channel_code",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"name": "channel_name",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "channel_name",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"name": "channel_type_code",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "channel_type_code",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"name": "sector_name",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "sector_name",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"name": "seller_code",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "seller_code",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"name": "seller_name",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "seller_name",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"name": "coh_name",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "coh_name",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"name": "target",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "target",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"name": "achievement",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "achievement",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"name": "achievement_status",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "achievement_status",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"name": "calculation_rule",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "calculation_rule",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"name": "coh_detail",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "coh_detail",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"name": "withsale",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "withsale",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"name": "nosale",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "nosale",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"name": "distributor_code",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "distributor_code",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"name": "distributor_name",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "distributor_name",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"name": "Filename",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "Filename",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"name": "LastModifiedDatetime",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "LastModifiedDatetime",
+																	"type": "DateTime"
+																}
+															}
+														]
+													}
+												},
+												"inputs": [
+													{
+														"referenceName": "LeapCSV_Staging",
+														"type": "DatasetReference",
+														"parameters": {}
+													}
+												],
+												"outputs": [
+													{
+														"referenceName": "COHGAP_table",
+														"type": "DatasetReference",
+														"parameters": {}
+													}
+												]
+											}
+										]
+									}
+								},
+								{
+									"name": "COHGAP_Could2",
+									"type": "IfCondition",
+									"dependsOn": [
+										{
+											"activity": "COHGAP_Could1",
+											"dependencyConditions": [
+												"Succeeded"
+											]
+										}
+									],
+									"userProperties": [],
+									"typeProperties": {
+										"expression": {
+											"value": "@bool(startswith(item().name,'COHGAP_cloud02_'))",
+											"type": "Expression"
+										},
+										"ifTrueActivities": [
+											{
+												"name": "COHGAP_Cloud2",
+												"description": "Copy a file from the source store to the destination store.",
+												"type": "Copy",
+												"dependsOn": [],
+												"policy": {
+													"timeout": "7.00:00:00",
+													"retry": 0,
+													"retryIntervalInSeconds": 30,
+													"secureOutput": false,
+													"secureInput": false
+												},
+												"userProperties": [],
+												"typeProperties": {
+													"source": {
+														"type": "DelimitedTextSource",
+														"additionalColumns": [
+															{
+																"name": "Filename",
+																"value": {
+																	"value": "@item().name",
+																	"type": "Expression"
+																}
+															},
+															{
+																"name": "LastModifiedDatetime",
+																"value": {
+																	"value": "@activity('GetFileList').output.lastModified",
+																	"type": "Expression"
+																}
+															}
+														],
+														"storeSettings": {
+															"type": "AzureBlobStorageReadSettings",
+															"recursive": true,
+															"wildcardFileName": "COHGAP_cloud02_*",
+															"enablePartitionDiscovery": false
+														},
+														"formatSettings": {
+															"type": "DelimitedTextReadSettings"
+														},
+														"recursive": false
+													},
+													"sink": {
+														"type": "AzureSqlSink"
+													},
+													"enableStaging": false,
+													"translator": {
+														"type": "TabularTranslator",
+														"mappings": [
+															{
+																"source": {
+																	"name": "coh_date",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "coh_date",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"name": "retailer_code",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "retailer_code",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"name": "retailer_name",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "retailer_name",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"name": "channel_code",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "channel_code",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"name": "channel_name",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "channel_name",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"name": "channel_type_code",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "channel_type_code",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"name": "sector_name",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "sector_name",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"name": "seller_code",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "seller_code",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"name": "seller_name",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "seller_name",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"name": "coh_name",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "coh_name",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"name": "target",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "target",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"name": "achievement",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "achievement",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"name": "achievement_status",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "achievement_status",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"name": "calculation_rule",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "calculation_rule",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"name": "coh_detail",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "coh_detail",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"name": "withsale",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "withsale",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"name": "nosale",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "nosale",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"name": "distributor_code",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "distributor_code",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"name": "distributor_name",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "distributor_name",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"name": "Filename",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "Filename",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"name": "LastModifiedDatetime",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "LastModifiedDatetime",
+																	"type": "DateTime"
+																}
+															}
+														]
+													}
+												},
+												"inputs": [
+													{
+														"referenceName": "LeapCSV_Staging",
+														"type": "DatasetReference",
+														"parameters": {}
+													}
+												],
+												"outputs": [
+													{
+														"referenceName": "COHGAP_table",
+														"type": "DatasetReference",
+														"parameters": {}
+													}
+												]
+											}
+										]
+									}
+								},
+								{
+									"name": "COHGAP_Could3",
+									"type": "IfCondition",
+									"dependsOn": [
+										{
+											"activity": "COHGAP_Could2",
+											"dependencyConditions": [
+												"Succeeded"
+											]
+										}
+									],
+									"userProperties": [],
+									"typeProperties": {
+										"expression": {
+											"value": "@bool(startswith(item().name,'COHGAP_cloud03_'))",
+											"type": "Expression"
+										},
+										"ifTrueActivities": [
+											{
+												"name": "COHGAP_Cloud3",
+												"description": "Copy a file from the source store to the destination store.",
+												"type": "Copy",
+												"dependsOn": [],
+												"policy": {
+													"timeout": "7.00:00:00",
+													"retry": 0,
+													"retryIntervalInSeconds": 30,
+													"secureOutput": false,
+													"secureInput": false
+												},
+												"userProperties": [],
+												"typeProperties": {
+													"source": {
+														"type": "DelimitedTextSource",
+														"additionalColumns": [
+															{
+																"name": "Filename",
+																"value": {
+																	"value": "@item().name",
+																	"type": "Expression"
+																}
+															},
+															{
+																"name": "LastModifiedDatetime",
+																"value": {
+																	"value": "@activity('GetFileList').output.lastModified",
+																	"type": "Expression"
+																}
+															}
+														],
+														"storeSettings": {
+															"type": "AzureBlobStorageReadSettings",
+															"recursive": true,
+															"wildcardFileName": "COHGAP_cloud03_*",
+															"enablePartitionDiscovery": false
+														},
+														"formatSettings": {
+															"type": "DelimitedTextReadSettings"
+														},
+														"recursive": false
+													},
+													"sink": {
+														"type": "AzureSqlSink"
+													},
+													"enableStaging": false,
+													"translator": {
+														"type": "TabularTranslator",
+														"mappings": [
+															{
+																"source": {
+																	"name": "coh_date",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "coh_date",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"name": "retailer_code",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "retailer_code",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"name": "retailer_name",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "retailer_name",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"name": "channel_code",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "channel_code",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"name": "channel_name",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "channel_name",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"name": "channel_type_code",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "channel_type_code",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"name": "sector_name",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "sector_name",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"name": "seller_code",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "seller_code",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"name": "seller_name",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "seller_name",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"name": "coh_name",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "coh_name",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"name": "target",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "target",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"name": "achievement",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "achievement",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"name": "achievement_status",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "achievement_status",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"name": "calculation_rule",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "calculation_rule",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"name": "coh_detail",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "coh_detail",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"name": "withsale",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "withsale",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"name": "nosale",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "nosale",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"name": "distributor_code",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "distributor_code",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"name": "distributor_name",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "distributor_name",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"name": "Filename",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "Filename",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"name": "LastModifiedDatetime",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "LastModifiedDatetime",
+																	"type": "DateTime"
+																}
+															}
+														]
+													}
+												},
+												"inputs": [
+													{
+														"referenceName": "LeapCSV_Staging",
+														"type": "DatasetReference",
+														"parameters": {}
+													}
+												],
+												"outputs": [
+													{
+														"referenceName": "COHGAP_table",
+														"type": "DatasetReference",
+														"parameters": {}
+													}
+												]
+											}
+										]
+									}
 								}
 							]
 						}
@@ -8395,7 +9292,8 @@
 				"[concat(variables('factoryId'), '/linkedServices/TASDatabase')]",
 				"[concat(variables('factoryId'), '/datasets/LeapCSV_Staging')]",
 				"[concat(variables('factoryId'), '/datasets/ACRV_table')]",
-				"[concat(variables('factoryId'), '/datasets/DSEM_table')]"
+				"[concat(variables('factoryId'), '/datasets/DSEM_table')]",
+				"[concat(variables('factoryId'), '/datasets/COHGAP_table')]"
 			]
 		},
 		{
