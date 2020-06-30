@@ -10722,7 +10722,6 @@
 														"type": "AzureSqlSink"
 													},
 													"enableStaging": false,
-													"dataIntegrationUnits": 2,
 													"translator": {
 														"type": "TabularTranslator",
 														"mappings": [
@@ -11032,7 +11031,6 @@
 														"type": "AzureSqlSink"
 													},
 													"enableStaging": false,
-													"dataIntegrationUnits": 2,
 													"translator": {
 														"type": "TabularTranslator",
 														"mappings": [
@@ -11342,7 +11340,6 @@
 														"type": "AzureSqlSink"
 													},
 													"enableStaging": false,
-													"dataIntegrationUnits": 2,
 													"translator": {
 														"type": "TabularTranslator",
 														"mappings": [
