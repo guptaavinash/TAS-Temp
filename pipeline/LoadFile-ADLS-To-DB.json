@@ -22,7 +22,7 @@
 						"type": "DatasetReference",
 						"parameters": {
 							"folder": {
-								"value": "/2020/06/18/",
+								"value": "/2020/06/30/",
 								"type": "Expression"
 							},
 							"directory": "leap"
@@ -87,18 +87,18 @@
 					"batchCount": 20,
 					"activities": [
 						{
-							"name": "DPSR_Could3",
+							"name": "COHGAP_Could1",
 							"type": "IfCondition",
 							"dependsOn": [],
 							"userProperties": [],
 							"typeProperties": {
 								"expression": {
-									"value": "@bool(startswith(item().name,'DPSR_cloud03_'))",
+									"value": "@bool(startswith(item().name,'COHGAP_cloud01_'))",
 									"type": "Expression"
 								},
 								"ifTrueActivities": [
 									{
-										"name": "DPSR_Cloud3",
+										"name": "COHGAP_Cloud1",
 										"description": "Copy a file from the source store to the destination store.",
 										"type": "Copy",
 										"dependsOn": [],
@@ -133,10 +133,10 @@
 													"type": "AzureBlobFSReadSettings",
 													"recursive": true,
 													"wildcardFolderPath": {
-														"value": "/2020/06/18/",
+														"value": "/2020/06/30/",
 														"type": "Expression"
 													},
-													"wildcardFileName": "DPSR_cloud03_*",
+													"wildcardFileName": "COHGAP_cloud01_*",
 													"enablePartitionDiscovery": false
 												},
 												"formatSettings": {
@@ -154,501 +154,191 @@
 												"mappings": [
 													{
 														"source": {
-															"name": "document_no",
+															"name": "coh_date",
 															"type": "String"
 														},
 														"sink": {
-															"name": "document_no",
+															"name": "coh_date",
 															"type": "String"
 														}
 													},
 													{
 														"source": {
-															"name": "apply_to_doc",
+															"name": "retailer_code",
 															"type": "String"
 														},
 														"sink": {
-															"name": "apply_to_doc",
+															"name": "retailer_code",
 															"type": "String"
 														}
 													},
 													{
 														"source": {
-															"name": "document_date",
+															"name": "retailer_name",
 															"type": "String"
 														},
 														"sink": {
-															"name": "document_date",
+															"name": "retailer_name",
 															"type": "String"
 														}
 													},
 													{
 														"source": {
-															"name": "transaction_type",
+															"name": "channel_code",
 															"type": "String"
 														},
 														"sink": {
-															"name": "transaction_type",
+															"name": "channel_code",
 															"type": "String"
 														}
 													},
 													{
 														"source": {
-															"name": "subbrandform_name",
+															"name": "channel_name",
 															"type": "String"
 														},
 														"sink": {
-															"name": "subbrandform_name",
+															"name": "channel_name",
 															"type": "String"
 														}
 													},
 													{
 														"source": {
-															"name": "prod_name",
+															"name": "channel_type_code",
 															"type": "String"
 														},
 														"sink": {
-															"name": "prod_name",
+															"name": "channel_type_code",
 															"type": "String"
 														}
 													},
 													{
 														"source": {
-															"name": "customer_name",
+															"name": "sector_name",
 															"type": "String"
 														},
 														"sink": {
-															"name": "customer_name",
+															"name": "sector_name",
 															"type": "String"
 														}
 													},
 													{
 														"source": {
-															"name": "customer_code",
+															"name": "seller_code",
 															"type": "String"
 														},
 														"sink": {
-															"name": "customer_code",
+															"name": "seller_code",
 															"type": "String"
 														}
 													},
 													{
 														"source": {
-															"name": "channel_description",
+															"name": "seller_name",
 															"type": "String"
 														},
 														"sink": {
-															"name": "channel_description",
+															"name": "seller_name",
 															"type": "String"
 														}
 													},
 													{
 														"source": {
-															"name": "dse",
+															"name": "coh_name",
 															"type": "String"
 														},
 														"sink": {
-															"name": "dse",
+															"name": "coh_name",
 															"type": "String"
 														}
 													},
 													{
 														"source": {
-															"name": "pcode",
+															"name": "target",
 															"type": "String"
 														},
 														"sink": {
-															"name": "pcode",
+															"name": "target",
 															"type": "String"
 														}
 													},
 													{
 														"source": {
-															"name": "customer_type",
+															"name": "achievement",
 															"type": "String"
 														},
 														"sink": {
-															"name": "customer_type",
+															"name": "achievement",
 															"type": "String"
 														}
 													},
 													{
 														"source": {
-															"name": "hsn_code",
+															"name": "achievement_status",
 															"type": "String"
 														},
 														"sink": {
-															"name": "hsn_code",
+															"name": "achievement_status",
 															"type": "String"
 														}
 													},
 													{
 														"source": {
-															"name": "category",
+															"name": "calculation_rule",
 															"type": "String"
 														},
 														"sink": {
-															"name": "category",
+															"name": "calculation_rule",
 															"type": "String"
 														}
 													},
 													{
 														"source": {
-															"name": "brand",
+															"name": "coh_detail",
 															"type": "String"
 														},
 														"sink": {
-															"name": "brand",
+															"name": "coh_detail",
 															"type": "String"
 														}
 													},
 													{
 														"source": {
-															"name": "brandform",
+															"name": "withsale",
 															"type": "String"
 														},
 														"sink": {
-															"name": "brandform",
+															"name": "withsale",
 															"type": "String"
 														}
 													},
 													{
 														"source": {
-															"name": "quantity",
+															"name": "nosale",
 															"type": "String"
 														},
 														"sink": {
-															"name": "quantity",
+															"name": "nosale",
 															"type": "String"
 														}
 													},
 													{
 														"source": {
-															"name": "gross_value",
+															"name": "distributor_code",
 															"type": "String"
 														},
 														"sink": {
-															"name": "gross_value",
+															"name": "distributor_code",
 															"type": "String"
 														}
 													},
 													{
 														"source": {
-															"name": "discount",
+															"name": "distributor_name",
 															"type": "String"
 														},
 														"sink": {
-															"name": "discount",
-															"type": "String"
-														}
-													},
-													{
-														"source": {
-															"name": "taxable_scheme",
-															"type": "String"
-														},
-														"sink": {
-															"name": "taxable_scheme",
-															"type": "String"
-														}
-													},
-													{
-														"source": {
-															"name": "cgsttax",
-															"type": "String"
-														},
-														"sink": {
-															"name": "cgsttax",
-															"type": "String"
-														}
-													},
-													{
-														"source": {
-															"name": "sgsttax",
-															"type": "String"
-														},
-														"sink": {
-															"name": "sgsttax",
-															"type": "String"
-														}
-													},
-													{
-														"source": {
-															"name": "igsttax",
-															"type": "String"
-														},
-														"sink": {
-															"name": "igsttax",
-															"type": "String"
-														}
-													},
-													{
-														"source": {
-															"name": "cesstax",
-															"type": "String"
-														},
-														"sink": {
-															"name": "cesstax",
-															"type": "String"
-														}
-													},
-													{
-														"source": {
-															"name": "mracc_code",
-															"type": "String"
-														},
-														"sink": {
-															"name": "mracc_code",
-															"type": "String"
-														}
-													},
-													{
-														"source": {
-															"name": "mracc_desc",
-															"type": "String"
-														},
-														"sink": {
-															"name": "mracc_desc",
-															"type": "String"
-														}
-													},
-													{
-														"source": {
-															"name": "vendor",
-															"type": "String"
-														},
-														"sink": {
-															"name": "vendor",
-															"type": "String"
-														}
-													},
-													{
-														"source": {
-															"name": "net_amount",
-															"type": "String"
-														},
-														"sink": {
-															"name": "net_amount",
-															"type": "String"
-														}
-													},
-													{
-														"source": {
-															"name": "tax_on_discount",
-															"type": "String"
-														},
-														"sink": {
-															"name": "tax_on_discount",
-															"type": "String"
-														}
-													},
-													{
-														"source": {
-															"name": "tax_on_scheme",
-															"type": "String"
-														},
-														"sink": {
-															"name": "tax_on_scheme",
-															"type": "String"
-														}
-													},
-													{
-														"source": {
-															"name": "tax_in_rlp",
-															"type": "String"
-														},
-														"sink": {
-															"name": "tax_in_rlp",
-															"type": "String"
-														}
-													},
-													{
-														"source": {
-															"name": "retailing",
-															"type": "String"
-														},
-														"sink": {
-															"name": "retailing",
-															"type": "String"
-														}
-													},
-													{
-														"source": {
-															"name": "gross_in_slp",
-															"type": "String"
-														},
-														"sink": {
-															"name": "gross_in_slp",
-															"type": "String"
-														}
-													},
-													{
-														"source": {
-															"name": "po_no",
-															"type": "String"
-														},
-														"sink": {
-															"name": "po_no",
-															"type": "String"
-														}
-													},
-													{
-														"source": {
-															"name": "dse_code",
-															"type": "String"
-														},
-														"sink": {
-															"name": "dse_code",
-															"type": "String"
-														}
-													},
-													{
-														"source": {
-															"name": "msu",
-															"type": "String"
-														},
-														"sink": {
-															"name": "msu",
-															"type": "String"
-														}
-													},
-													{
-														"source": {
-															"name": "reason",
-															"type": "String"
-														},
-														"sink": {
-															"name": "reason",
-															"type": "String"
-														}
-													},
-													{
-														"source": {
-															"name": "dist_gstinno",
-															"type": "String"
-														},
-														"sink": {
-															"name": "dist_gstinno",
-															"type": "String"
-														}
-													},
-													{
-														"source": {
-															"name": "ret_gstinno",
-															"type": "String"
-														},
-														"sink": {
-															"name": "ret_gstinno",
-															"type": "String"
-														}
-													},
-													{
-														"source": {
-															"name": "srn_ref_no",
-															"type": "String"
-														},
-														"sink": {
-															"name": "srn_ref_no",
-															"type": "String"
-														}
-													},
-													{
-														"source": {
-															"name": "composite",
-															"type": "String"
-														},
-														"sink": {
-															"name": "composite",
-															"type": "String"
-														}
-													},
-													{
-														"source": {
-															"name": "cgsttax_rate",
-															"type": "String"
-														},
-														"sink": {
-															"name": "cgsttax_rate",
-															"type": "String"
-														}
-													},
-													{
-														"source": {
-															"name": "sgsttax_rate",
-															"type": "String"
-														},
-														"sink": {
-															"name": "sgsttax_rate",
-															"type": "String"
-														}
-													},
-													{
-														"source": {
-															"name": "igsttax_rate",
-															"type": "String"
-														},
-														"sink": {
-															"name": "igsttax_rate",
-															"type": "String"
-														}
-													},
-													{
-														"source": {
-															"name": "cesstax_rate",
-															"type": "String"
-														},
-														"sink": {
-															"name": "cesstax_rate",
-															"type": "String"
-														}
-													},
-													{
-														"source": {
-															"name": "branch_code",
-															"type": "String"
-														},
-														"sink": {
-															"name": "branch_code",
-															"type": "String"
-														}
-													},
-													{
-														"source": {
-															"name": "branch_name",
-															"type": "String"
-														},
-														"sink": {
-															"name": "branch_name",
-															"type": "String"
-														}
-													},
-													{
-														"source": {
-															"name": "order_mode",
-															"type": "String"
-														},
-														"sink": {
-															"name": "order_mode",
-															"type": "String"
-														}
-													},
-													{
-														"source": {
-															"name": "tc_code",
-															"type": "String"
-														},
-														"sink": {
-															"name": "tc_code",
-															"type": "String"
-														}
-													},
-													{
-														"source": {
-															"name": "tc_name",
-															"type": "String"
-														},
-														"sink": {
-															"name": "tc_name",
+															"name": "distributor_name",
 															"type": "String"
 														}
 													},
@@ -682,7 +372,7 @@
 												"parameters": {
 													"Container": "leap",
 													"Directory": {
-														"value": "/2020/06/18/",
+														"value": "/2020/06/30/",
 														"type": "Expression"
 													}
 												}
@@ -690,7 +380,7 @@
 										],
 										"outputs": [
 											{
-												"referenceName": "DS_TAS_tmpLeapDataLoadDPSR",
+												"referenceName": "COHGAP_table",
 												"type": "DatasetReference"
 											}
 										]
