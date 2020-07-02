@@ -13124,7 +13124,7 @@
 															"type": "AzureBlobFSReadSettings",
 															"recursive": true,
 															"wildcardFolderPath": {
-																"value": "/2020/06/30/",
+																"value": "/2020/07/02/",
 																"type": "Expression"
 															},
 															"wildcardFileName": "COHGAP_cloud01_*",
@@ -13433,7 +13433,7 @@
 															"type": "AzureBlobFSReadSettings",
 															"recursive": true,
 															"wildcardFolderPath": {
-																"value": "/2020/06/30/",
+																"value": "/2020/07/02/",
 																"type": "Expression"
 															},
 															"wildcardFileName": "COHGAP_cloud02_*",
@@ -13742,7 +13742,7 @@
 															"type": "AzureBlobFSReadSettings",
 															"recursive": true,
 															"wildcardFolderPath": {
-																"value": "/2020/06/30/",
+																"value": "/2020/07/02/",
 																"type": "Expression"
 															},
 															"wildcardFileName": "COHGAP_cloud03_*",
