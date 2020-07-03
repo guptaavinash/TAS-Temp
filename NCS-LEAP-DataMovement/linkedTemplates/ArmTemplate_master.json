@@ -27,6 +27,10 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'TASDatabase'"
 		},
+		"AstixLiveServer_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AstixLiveServer'"
+		},
 		"Leap_AmazonS3_properties_typeProperties_accessKeyId": {
 			"type": "string",
 			"defaultValue": "AKIAW6LTDL6KHDJLBDO2"
@@ -100,6 +104,9 @@
 					},
 					"TASDatabase_connectionString": {
 						"value": "[parameters('TASDatabase_connectionString')]"
+					},
+					"AstixLiveServer_connectionString": {
+						"value": "[parameters('AstixLiveServer_connectionString')]"
 					},
 					"Leap_AmazonS3_properties_typeProperties_accessKeyId": {
 						"value": "[parameters('Leap_AmazonS3_properties_typeProperties_accessKeyId')]"

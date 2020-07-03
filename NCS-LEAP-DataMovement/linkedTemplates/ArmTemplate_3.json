@@ -13,6 +13,34 @@
 	},
 	"resources": [
 		{
+			"name": "[concat(parameters('factoryName'), '/LeapCSV_Staging')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "NCSdataStorageLink",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "FileConnection"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"container": "leap"
+					},
+					"columnDelimiter": "|",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": []
+			},
+			"dependsOn": []
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/LeapStorageSourceDataset')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
@@ -1066,145 +1094,6 @@
 				"typeProperties": {
 					"schema": "dbo",
 					"table": "NC_SALES_Current"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/SALES_SUBD_NCS_table')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "PnGDataFoundation",
-					"type": "LinkedServiceReference"
-				},
-				"folder": {
-					"name": "DF_DBConnection/NCS Tables"
-				},
-				"annotations": [],
-				"type": "AzureSqlTable",
-				"schema": [
-					{
-						"name": "SUBDCODE",
-						"type": "varchar"
-					},
-					{
-						"name": "DSECODE",
-						"type": "varchar"
-					},
-					{
-						"name": "CUSTCODE",
-						"type": "varchar"
-					},
-					{
-						"name": "INVNO",
-						"type": "varchar"
-					},
-					{
-						"name": "INVDATE",
-						"type": "datetime",
-						"precision": 23,
-						"scale": 3
-					},
-					{
-						"name": "SKUCCODE",
-						"type": "varchar"
-					},
-					{
-						"name": "SKUDCODE",
-						"type": "varchar"
-					},
-					{
-						"name": "SKUEANCODE",
-						"type": "varchar"
-					},
-					{
-						"name": "BATCHCODE",
-						"type": "varchar"
-					},
-					{
-						"name": "QTY",
-						"type": "int",
-						"precision": 10
-					},
-					{
-						"name": "GROSSAMOUNT",
-						"type": "decimal",
-						"precision": 18,
-						"scale": 2
-					},
-					{
-						"name": "TAXAMOUNT",
-						"type": "decimal",
-						"precision": 18,
-						"scale": 2
-					},
-					{
-						"name": "INITDISC",
-						"type": "decimal",
-						"precision": 18,
-						"scale": 2
-					},
-					{
-						"name": "LINEDISC",
-						"type": "decimal",
-						"precision": 18,
-						"scale": 2
-					},
-					{
-						"name": "NETAMOUNT",
-						"type": "decimal",
-						"precision": 18,
-						"scale": 2
-					},
-					{
-						"name": "INVREF",
-						"type": "varchar"
-					},
-					{
-						"name": "SELECTEDDATE",
-						"type": "datetime",
-						"precision": 23,
-						"scale": 3
-					},
-					{
-						"name": "TimeStamp",
-						"type": "datetime",
-						"precision": 23,
-						"scale": 3
-					},
-					{
-						"name": "UPC",
-						"type": "int",
-						"precision": 10
-					},
-					{
-						"name": "RETAILING",
-						"type": "decimal",
-						"precision": 18,
-						"scale": 2
-					},
-					{
-						"name": "Filename",
-						"type": "varchar"
-					},
-					{
-						"name": "LastModifiedDatetime",
-						"type": "smalldatetime",
-						"precision": 16,
-						"scale": 0
-					},
-					{
-						"name": "TimeStampIns",
-						"type": "smalldatetime",
-						"precision": 16,
-						"scale": 0
-					}
-				],
-				"typeProperties": {
-					"schema": "dbo",
-					"table": "NC_SALES_SUBD_Current"
 				}
 			},
 			"dependsOn": []
