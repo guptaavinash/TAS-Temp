@@ -5,6 +5,9 @@
 		"factoryName": {
 			"value": "NCS-LEAP-DataMovement"
 		},
+		"AstixLiveServer_connectionString": {
+			"value": ""
+		},
 		"Leap_AmazonS3_secretAccessKey": {
 			"value": ""
 		},
@@ -18,9 +21,6 @@
 			"value": ""
 		},
 		"TASDatabase_connectionString": {
-			"value": ""
-		},
-		"AstixLiveServer_connectionString": {
 			"value": ""
 		},
 		"Leap_AmazonS3_properties_typeProperties_accessKeyId": {

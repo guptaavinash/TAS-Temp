@@ -7,6 +7,10 @@
 			"metadata": "Data Factory name",
 			"defaultValue": "NCS-LEAP-DataMovement"
 		},
+		"AstixLiveServer_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AstixLiveServer'"
+		},
 		"Leap_AmazonS3_secretAccessKey": {
 			"type": "secureString",
 			"metadata": "Secure string for 'secretAccessKey' of 'Leap_AmazonS3'"
@@ -26,10 +30,6 @@
 		"TASDatabase_connectionString": {
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'TASDatabase'"
-		},
-		"AstixLiveServer_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'AstixLiveServer'"
 		},
 		"Leap_AmazonS3_properties_typeProperties_accessKeyId": {
 			"type": "string",
@@ -90,6 +90,9 @@
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
 					},
+					"AstixLiveServer_connectionString": {
+						"value": "[parameters('AstixLiveServer_connectionString')]"
+					},
 					"Leap_AmazonS3_secretAccessKey": {
 						"value": "[parameters('Leap_AmazonS3_secretAccessKey')]"
 					},
@@ -104,9 +107,6 @@
 					},
 					"TASDatabase_connectionString": {
 						"value": "[parameters('TASDatabase_connectionString')]"
-					},
-					"AstixLiveServer_connectionString": {
-						"value": "[parameters('AstixLiveServer_connectionString')]"
 					},
 					"Leap_AmazonS3_properties_typeProperties_accessKeyId": {
 						"value": "[parameters('Leap_AmazonS3_properties_typeProperties_accessKeyId')]"

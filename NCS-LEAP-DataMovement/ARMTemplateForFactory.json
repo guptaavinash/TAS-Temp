@@ -7,6 +7,10 @@
 			"metadata": "Data Factory name",
 			"defaultValue": "NCS-LEAP-DataMovement"
 		},
+		"AstixLiveServer_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AstixLiveServer'"
+		},
 		"Leap_AmazonS3_secretAccessKey": {
 			"type": "secureString",
 			"metadata": "Secure string for 'secretAccessKey' of 'Leap_AmazonS3'"
@@ -26,10 +30,6 @@
 		"TASDatabase_connectionString": {
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'TASDatabase'"
-		},
-		"AstixLiveServer_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'AstixLiveServer'"
 		},
 		"Leap_AmazonS3_properties_typeProperties_accessKeyId": {
 			"type": "string",
@@ -487,33 +487,6 @@
 							"referenceName": "TASDatabase",
 							"type": "LinkedServiceReference"
 						}
-					},
-					{
-						"name": "OrderReport",
-						"type": "SqlServerStoredProcedure",
-						"dependsOn": [
-							{
-								"activity": "CCRDataLoad",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"policy": {
-							"timeout": "7.00:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"storedProcedureName": "[[dbo].[spOrderReport]"
-						},
-						"linkedServiceName": {
-							"referenceName": "AstixLiveServer",
-							"type": "LinkedServiceReference"
-						}
 					}
 				],
 				"parameters": {
@@ -537,8 +510,7 @@
 				"[concat(variables('factoryId'), '/pipelines/CopyS3-To-Staging_Cloud2')]",
 				"[concat(variables('factoryId'), '/pipelines/CopyS3-To-Staging_Cloud3')]",
 				"[concat(variables('factoryId'), '/datasets/LeapStorageSourceDataset')]",
-				"[concat(variables('factoryId'), '/linkedServices/TASDatabase')]",
-				"[concat(variables('factoryId'), '/linkedServices/AstixLiveServer')]"
+				"[concat(variables('factoryId'), '/linkedServices/TASDatabase')]"
 			]
 		},
 		{
@@ -24682,6 +24654,19 @@
 			]
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/AstixLiveServer')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "SqlServer",
+				"typeProperties": {
+					"connectionString": "[parameters('AstixLiveServer_connectionString')]"
+				}
+			},
+			"dependsOn": []
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/Leap_AmazonS3')]",
 			"type": "Microsoft.DataFactory/factories/linkedServices",
 			"apiVersion": "2018-06-01",
@@ -24922,19 +24907,6 @@
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/pipelines/Scaledb')]"
 			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/AstixLiveServer')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "SqlServer",
-				"typeProperties": {
-					"connectionString": "[parameters('AstixLiveServer_connectionString')]"
-				}
-			},
-			"dependsOn": []
 		}
 	]
 }
