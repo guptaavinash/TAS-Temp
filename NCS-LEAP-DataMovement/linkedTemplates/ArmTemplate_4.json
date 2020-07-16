@@ -15663,7 +15663,7 @@
 									"typeProperties": {
 										"variableName": "flgDone",
 										"value": {
-											"value": "@string(activity('Lookup1_copy1').output.firstRow.flgDone)",
+											"value": "@activity('Lookup1_copy1').output.firstRow.flgDone",
 											"type": "Expression"
 										}
 									}
