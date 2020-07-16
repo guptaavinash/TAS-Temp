@@ -335,7 +335,7 @@
 				"type": "SqlServerStoredProcedure",
 				"dependsOn": [
 					{
-						"activity": "spDailyDataRefreshSalesData",
+						"activity": "spOlapProcessing",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -378,6 +378,33 @@
 				"userProperties": [],
 				"typeProperties": {
 					"storedProcedureName": "[dbo].[spDailyRefreshSchemeData]"
+				},
+				"linkedServiceName": {
+					"referenceName": "TASDatabase",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "spOlapProcessing",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "spDailyDataRefreshSalesData",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[spOlapProcessing]"
 				},
 				"linkedServiceName": {
 					"referenceName": "TASDatabase",
