@@ -142,7 +142,7 @@
 			"properties": {
 				"activities": [
 					{
-						"name": "Scale_v6",
+						"name": "Scale_P1",
 						"type": "SqlServerStoredProcedure",
 						"dependsOn": [],
 						"policy": {
@@ -154,7 +154,7 @@
 						},
 						"userProperties": [],
 						"typeProperties": {
-							"storedProcedureName": "[[dbo].[Scale_GP_Gen5_6]"
+							"storedProcedureName": "[[dbo].[Scale_P1]"
 						},
 						"linkedServiceName": {
 							"referenceName": "TASDatabase",
