@@ -13,6 +13,162 @@
 	},
 	"resources": [
 		{
+			"name": "[concat(parameters('factoryName'), '/SALES_NCS_table')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "PnGDataFoundation",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "DF_DBConnection/NCS Tables"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [
+					{
+						"name": "BRANCHCODE",
+						"type": "varchar"
+					},
+					{
+						"name": "DSECODE",
+						"type": "varchar"
+					},
+					{
+						"name": "CUSTCODE",
+						"type": "varchar"
+					},
+					{
+						"name": "INVNO",
+						"type": "varchar"
+					},
+					{
+						"name": "INVDATE",
+						"type": "datetime2",
+						"scale": 3
+					},
+					{
+						"name": "SKUCCODE",
+						"type": "varchar"
+					},
+					{
+						"name": "SKUDCODE",
+						"type": "varchar"
+					},
+					{
+						"name": "SKUEANCODE",
+						"type": "varchar"
+					},
+					{
+						"name": "BATCHCODE",
+						"type": "varchar"
+					},
+					{
+						"name": "QTY",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "GROSSAMOUNT",
+						"type": "decimal",
+						"precision": 18,
+						"scale": 2
+					},
+					{
+						"name": "TAXAMOUNT",
+						"type": "decimal",
+						"precision": 18,
+						"scale": 2
+					},
+					{
+						"name": "INITDISC",
+						"type": "decimal",
+						"precision": 18,
+						"scale": 2
+					},
+					{
+						"name": "LINEDISC",
+						"type": "decimal",
+						"precision": 18,
+						"scale": 2
+					},
+					{
+						"name": "NETAMOUNT",
+						"type": "decimal",
+						"precision": 18,
+						"scale": 2
+					},
+					{
+						"name": "INVREF",
+						"type": "varchar"
+					},
+					{
+						"name": "SELECTEDDATE",
+						"type": "datetime2",
+						"scale": 3
+					},
+					{
+						"name": "TIMESTAMP",
+						"type": "datetime2",
+						"scale": 3
+					},
+					{
+						"name": "UPC",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "RETAILING",
+						"type": "decimal",
+						"precision": 18,
+						"scale": 2
+					},
+					{
+						"name": "BranchId",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "ProductId",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "FileSetId",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "flgProcess",
+						"type": "tinyint",
+						"precision": 3
+					},
+					{
+						"name": "Filename",
+						"type": "varchar"
+					},
+					{
+						"name": "LastModifiedDatetime",
+						"type": "smalldatetime",
+						"precision": 16,
+						"scale": 0
+					},
+					{
+						"name": "TimeStampIns",
+						"type": "smalldatetime",
+						"precision": 16,
+						"scale": 0
+					}
+				],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "NC_SALES_Current"
+				}
+			},
+			"dependsOn": []
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/SALES_SUBD_NCS_table')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
@@ -462,106 +618,6 @@
 				"type": "AzureSqlTable",
 				"schema": [],
 				"typeProperties": {}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/DRCP_table')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "TASDatabase",
-					"type": "LinkedServiceReference"
-				},
-				"folder": {
-					"name": "DF_DBConnection/LEAP Tables"
-				},
-				"annotations": [],
-				"type": "AzureSqlTable",
-				"schema": [
-					{
-						"name": "branchcode",
-						"type": "nvarchar"
-					},
-					{
-						"name": "branchname",
-						"type": "nvarchar"
-					},
-					{
-						"name": "retailercode",
-						"type": "nvarchar"
-					},
-					{
-						"name": "retailername",
-						"type": "nvarchar"
-					},
-					{
-						"name": "retaileraddress",
-						"type": "nvarchar"
-					},
-					{
-						"name": "retailercontact",
-						"type": "nvarchar"
-					},
-					{
-						"name": "stlname",
-						"type": "nvarchar"
-					},
-					{
-						"name": "dsecode",
-						"type": "nvarchar"
-					},
-					{
-						"name": "dsename",
-						"type": "nvarchar"
-					},
-					{
-						"name": "channel",
-						"type": "nvarchar"
-					},
-					{
-						"name": "channeltype",
-						"type": "nvarchar"
-					},
-					{
-						"name": "channeldescription",
-						"type": "nvarchar"
-					},
-					{
-						"name": "routecode",
-						"type": "nvarchar"
-					},
-					{
-						"name": "routename",
-						"type": "nvarchar"
-					},
-					{
-						"name": "sectorname",
-						"type": "nvarchar"
-					},
-					{
-						"name": "latitude",
-						"type": "nvarchar"
-					},
-					{
-						"name": "longitude",
-						"type": "nvarchar"
-					},
-					{
-						"name": "visit_date",
-						"type": "nvarchar"
-					},
-					{
-						"name": "FileSetId",
-						"type": "bigint",
-						"precision": 19
-					}
-				],
-				"typeProperties": {
-					"schema": "dbo",
-					"table": "tmpRawLEAPTAS_DRCP"
-				}
 			},
 			"dependsOn": []
 		},
@@ -10406,9 +10462,7 @@
 				},
 				"annotations": []
 			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/DRCP_table')]"
-			]
+			"dependsOn": []
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/CopyLeap_Staging-To-DB_2_copy1')]",
