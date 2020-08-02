@@ -1,5 +1,5 @@
 {
-	"name": "ScaleDBAt4_45",
+	"name": "ScaleDBAt4_30",
 	"properties": {
 		"annotations": [],
 		"runtimeState": "Started",
@@ -20,7 +20,7 @@
 				"timeZone": "UTC",
 				"schedule": {
 					"minutes": [
-						15
+						0
 					],
 					"hours": [
 						23
