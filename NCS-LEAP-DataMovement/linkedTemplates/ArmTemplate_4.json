@@ -18054,7 +18054,7 @@
 			"dependsOn": []
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/ScaleDBAt4_30')]",
+			"name": "[concat(parameters('factoryName'), '/ScaleDBAt5_30')]",
 			"type": "Microsoft.DataFactory/factories/triggers",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -18081,7 +18081,7 @@
 								0
 							],
 							"hours": [
-								23
+								0
 							]
 						}
 					}
