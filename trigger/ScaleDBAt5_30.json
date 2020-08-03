@@ -1,5 +1,5 @@
 {
-	"name": "ScaleDBAt4_30",
+	"name": "ScaleDBAt5_30",
 	"properties": {
 		"annotations": [],
 		"runtimeState": "Started",
@@ -23,7 +23,7 @@
 						0
 					],
 					"hours": [
-						23
+						0
 					]
 				}
 			}
