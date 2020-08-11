@@ -13367,6 +13367,9 @@
 											}
 										},
 										"enableStaging": false,
+										"preserve": [
+											"Attributes"
+										],
 										"validateDataConsistency": false,
 										"dataIntegrationUnits": 2
 									},
@@ -13575,6 +13578,9 @@
 											}
 										},
 										"enableStaging": false,
+										"preserve": [
+											"Attributes"
+										],
 										"validateDataConsistency": false,
 										"dataIntegrationUnits": 2
 									},
@@ -13783,6 +13789,9 @@
 											}
 										},
 										"enableStaging": false,
+										"preserve": [
+											"Attributes"
+										],
 										"validateDataConsistency": false,
 										"dataIntegrationUnits": 2
 									},
@@ -13890,7 +13899,8 @@
 						"typeProperties": {
 							"source": {
 								"type": "AzureSqlSource",
-								"queryTimeout": "02:00:00"
+								"queryTimeout": "02:00:00",
+								"partitionOption": "None"
 							},
 							"sink": {
 								"type": "AzureSqlSink"
@@ -14399,7 +14409,8 @@
 						"typeProperties": {
 							"source": {
 								"type": "AzureSqlSource",
-								"queryTimeout": "02:00:00"
+								"queryTimeout": "02:00:00",
+								"partitionOption": "None"
 							},
 							"sink": {
 								"type": "AzureSqlSink"
@@ -14478,7 +14489,8 @@
 						"typeProperties": {
 							"source": {
 								"type": "AzureSqlSource",
-								"queryTimeout": "02:00:00"
+								"queryTimeout": "02:00:00",
+								"partitionOption": "None"
 							},
 							"sink": {
 								"type": "AzureSqlSink"
@@ -14777,7 +14789,8 @@
 						"typeProperties": {
 							"source": {
 								"type": "AzureSqlSource",
-								"queryTimeout": "02:00:00"
+								"queryTimeout": "02:00:00",
+								"partitionOption": "None"
 							},
 							"sink": {
 								"type": "AzureSqlSink"
@@ -16154,6 +16167,9 @@
 												"type": "AzureBlobFSReadSettings",
 												"recursive": true
 											},
+											"formatSettings": {
+												"type": "BinaryReadSettings"
+											},
 											"recursive": false
 										},
 										"sink": {
@@ -16556,7 +16572,8 @@
 							"source": {
 								"type": "AzureSqlSource",
 								"sqlReaderStoredProcedureName": "[[dbo].[SpFilecheck]",
-								"queryTimeout": "02:00:00"
+								"queryTimeout": "02:00:00",
+								"partitionOption": "None"
 							},
 							"dataset": {
 								"referenceName": "TASDBConnection",
@@ -16662,7 +16679,8 @@
 										"source": {
 											"type": "AzureSqlSource",
 											"sqlReaderStoredProcedureName": "[[dbo].[SpFilecheck]",
-											"queryTimeout": "02:00:00"
+											"queryTimeout": "02:00:00",
+											"partitionOption": "None"
 										},
 										"dataset": {
 											"referenceName": "TASDBConnection",
@@ -16728,7 +16746,8 @@
 						"typeProperties": {
 							"source": {
 								"type": "AzureSqlSource",
-								"queryTimeout": "02:00:00"
+								"queryTimeout": "02:00:00",
+								"partitionOption": "None"
 							},
 							"sink": {
 								"type": "AzureSqlSink"
@@ -16827,7 +16846,8 @@
 						"typeProperties": {
 							"source": {
 								"type": "AzureSqlSource",
-								"queryTimeout": "02:00:00"
+								"queryTimeout": "02:00:00",
+								"partitionOption": "None"
 							},
 							"sink": {
 								"type": "AzureSqlSink"
@@ -16936,7 +16956,8 @@
 						"typeProperties": {
 							"source": {
 								"type": "AzureSqlSource",
-								"queryTimeout": "02:00:00"
+								"queryTimeout": "02:00:00",
+								"partitionOption": "None"
 							},
 							"sink": {
 								"type": "AzureSqlSink"
@@ -17005,7 +17026,8 @@
 						"typeProperties": {
 							"source": {
 								"type": "AzureSqlSource",
-								"queryTimeout": "02:00:00"
+								"queryTimeout": "02:00:00",
+								"partitionOption": "None"
 							},
 							"sink": {
 								"type": "AzureSqlSink"
@@ -17124,7 +17146,8 @@
 						"typeProperties": {
 							"source": {
 								"type": "AzureSqlSource",
-								"queryTimeout": "02:00:00"
+								"queryTimeout": "02:00:00",
+								"partitionOption": "None"
 							},
 							"sink": {
 								"type": "AzureSqlSink"
@@ -17243,7 +17266,8 @@
 						"typeProperties": {
 							"source": {
 								"type": "AzureSqlSource",
-								"queryTimeout": "02:00:00"
+								"queryTimeout": "02:00:00",
+								"partitionOption": "None"
 							},
 							"sink": {
 								"type": "AzureSqlSink"
@@ -17332,7 +17356,8 @@
 						"typeProperties": {
 							"source": {
 								"type": "AzureSqlSource",
-								"queryTimeout": "02:00:00"
+								"queryTimeout": "02:00:00",
+								"partitionOption": "None"
 							},
 							"sink": {
 								"type": "AzureSqlSink"
@@ -17451,7 +17476,8 @@
 						"typeProperties": {
 							"source": {
 								"type": "AzureSqlSource",
-								"queryTimeout": "02:00:00"
+								"queryTimeout": "02:00:00",
+								"partitionOption": "None"
 							},
 							"sink": {
 								"type": "AzureSqlSink"
