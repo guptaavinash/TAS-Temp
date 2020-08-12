@@ -31,6 +31,10 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'TASDatabase'"
 		},
+		"CCRDataStorageLink_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'CCRDataStorageLink'"
+		},
 		"Leap_AmazonS3_properties_typeProperties_accessKeyId": {
 			"type": "string",
 			"defaultValue": "AKIAW6LTDL6KHDJLBDO2"
@@ -107,6 +111,9 @@
 					},
 					"TASDatabase_connectionString": {
 						"value": "[parameters('TASDatabase_connectionString')]"
+					},
+					"CCRDataStorageLink_connectionString": {
+						"value": "[parameters('CCRDataStorageLink_connectionString')]"
 					},
 					"Leap_AmazonS3_properties_typeProperties_accessKeyId": {
 						"value": "[parameters('Leap_AmazonS3_properties_typeProperties_accessKeyId')]"

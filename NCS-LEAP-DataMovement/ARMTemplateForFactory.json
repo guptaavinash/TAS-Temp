@@ -31,6 +31,10 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'TASDatabase'"
 		},
+		"CCRDataStorageLink_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'CCRDataStorageLink'"
+		},
 		"Leap_AmazonS3_properties_typeProperties_accessKeyId": {
 			"type": "string",
 			"defaultValue": "AKIAW6LTDL6KHDJLBDO2"
@@ -537,6 +541,9 @@
 								"storeSettings": {
 									"type": "AzureBlobStorageReadSettings",
 									"recursive": true
+								},
+								"formatSettings": {
+									"type": "BinaryReadSettings"
 								}
 							},
 							"sink": {
@@ -575,6 +582,62 @@
 								}
 							}
 						]
+					},
+					{
+						"name": "CopyLeapStaging-To-CCR",
+						"type": "Copy",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "BinarySource",
+								"storeSettings": {
+									"type": "AzureBlobStorageReadSettings",
+									"recursive": true,
+									"wildcardFileName": "CCCR_*",
+									"deleteFilesAfterCompletion": false
+								},
+								"formatSettings": {
+									"type": "BinaryReadSettings"
+								}
+							},
+							"sink": {
+								"type": "BinarySink",
+								"storeSettings": {
+									"type": "AzureBlobStorageWriteSettings"
+								}
+							},
+							"enableStaging": false,
+							"preserve": [
+								"Attributes"
+							],
+							"skipErrorFile": {
+								"fileMissing": true
+							},
+							"validateDataConsistency": false,
+							"dataIntegrationUnits": 2
+						},
+						"inputs": [
+							{
+								"referenceName": "LeapStorageSourceDataset",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "CCRDataStorageDataset",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						]
 					}
 				],
 				"folder": {
@@ -584,7 +647,8 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/LeapStorageSourceDataset')]",
-				"[concat(variables('factoryId'), '/datasets/ADLSDataset')]"
+				"[concat(variables('factoryId'), '/datasets/ADLSDataset')]",
+				"[concat(variables('factoryId'), '/datasets/CCRDataStorageDataset')]"
 			]
 		},
 		{
@@ -13365,6 +13429,9 @@
 													"value": "@pipeline().parameters.windowEnd",
 													"type": "Expression"
 												}
+											},
+											"formatSettings": {
+												"type": "BinaryReadSettings"
 											}
 										},
 										"sink": {
@@ -27154,6 +27221,44 @@
 				"[concat(variables('factoryId'), '/datasets/ADLSDataset')]",
 				"[concat(variables('factoryId'), '/datasets/ADLSCSVDataSource_Folder')]",
 				"[concat(variables('factoryId'), '/datasets/CCCR_table')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/CCRDataStorageLink')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureBlobStorage",
+				"typeProperties": {
+					"connectionString": "[parameters('CCRDataStorageLink_connectionString')]"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/CCRDataStorageDataset')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "CCRDataStorageLink",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "StagingSource"
+				},
+				"annotations": [],
+				"type": "Binary",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"container": "ccrdata"
+					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/CCRDataStorageLink')]"
 			]
 		}
 	]

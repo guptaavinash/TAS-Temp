@@ -31,6 +31,10 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'TASDatabase'"
 		},
+		"CCRDataStorageLink_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'CCRDataStorageLink'"
+		},
 		"Leap_AmazonS3_properties_typeProperties_accessKeyId": {
 			"type": "string",
 			"defaultValue": "AKIAW6LTDL6KHDJLBDO2"
@@ -131,6 +135,19 @@
 				"type": "AzureSqlDatabase",
 				"typeProperties": {
 					"connectionString": "[parameters('TASDatabase_connectionString')]"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/CCRDataStorageLink')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureBlobStorage",
+				"typeProperties": {
+					"connectionString": "[parameters('CCRDataStorageLink_connectionString')]"
 				}
 			},
 			"dependsOn": []
@@ -972,47 +989,6 @@
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/BinaryDataDestination1')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"description": "It describes the destination store.",
-				"linkedServiceName": {
-					"referenceName": "NCSdataStorageLink",
-					"type": "LinkedServiceReference"
-				},
-				"parameters": {
-					"Container": {
-						"type": "String"
-					},
-					"Directory": {
-						"type": "String"
-					},
-					"filename": {
-						"type": "string"
-					}
-				},
-				"annotations": [],
-				"type": "Binary",
-				"typeProperties": {
-					"location": {
-						"type": "AzureBlobStorageLocation",
-						"folderPath": {
-							"value": "@{dataset().Directory}",
-							"type": "Expression"
-						},
-						"container": {
-							"value": "@{dataset().Container}",
-							"type": "Expression"
-						}
-					}
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/NCSdataStorageLink')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/BinaryDataDestination2')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
