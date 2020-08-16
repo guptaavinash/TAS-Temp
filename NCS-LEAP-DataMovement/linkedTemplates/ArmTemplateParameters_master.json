@@ -8,6 +8,9 @@
 		"AstixLiveServer_connectionString": {
 			"value": ""
 		},
+		"CCRDataStorageLink_connectionString": {
+			"value": ""
+		},
 		"Leap_AmazonS3_secretAccessKey": {
 			"value": ""
 		},
@@ -21,9 +24,6 @@
 			"value": ""
 		},
 		"TASDatabase_connectionString": {
-			"value": ""
-		},
-		"CCRDataStorageLink_connectionString": {
 			"value": ""
 		},
 		"Leap_AmazonS3_properties_typeProperties_accessKeyId": {
