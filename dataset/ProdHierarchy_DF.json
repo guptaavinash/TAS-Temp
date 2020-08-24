@@ -1,8 +1,8 @@
 {
-	"name": "ProdHierarchy_TAS",
+	"name": "ProdHierarchy_DF",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "TASDatabase",
+			"referenceName": "PnGDataFoundation",
 			"type": "LinkedServiceReference"
 		},
 		"folder": {
