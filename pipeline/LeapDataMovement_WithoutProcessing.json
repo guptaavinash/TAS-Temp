@@ -196,7 +196,8 @@
 					"source": {
 						"type": "AzureSqlSource",
 						"sqlReaderStoredProcedureName": "[dbo].[SpCheckLeapDataLoaded]",
-						"queryTimeout": "02:00:00"
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
 					},
 					"dataset": {
 						"referenceName": "TASDBConnection",
@@ -322,7 +323,8 @@
 					"source": {
 						"type": "AzureSqlSource",
 						"sqlReaderQuery": "select flgPngDataTransfer from tblFlagDataProcess",
-						"queryTimeout": "02:00:00"
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
 					},
 					"dataset": {
 						"referenceName": "TASDBConnection",
@@ -335,7 +337,7 @@
 				"type": "SqlServerStoredProcedure",
 				"dependsOn": [
 					{
-						"activity": "spOlapProcessing",
+						"activity": "Productmasterprocessing",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -409,6 +411,26 @@
 				"linkedServiceName": {
 					"referenceName": "TASDatabase",
 					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Productmasterprocessing",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "spOlapProcessing",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "Productmasterprocessing",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
 				}
 			}
 		],
