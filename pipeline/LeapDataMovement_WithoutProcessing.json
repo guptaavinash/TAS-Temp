@@ -178,7 +178,7 @@
 				"type": "Lookup",
 				"dependsOn": [
 					{
-						"activity": "DeleteFiles_Staging",
+						"activity": "Productmasterprocessing",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -337,7 +337,7 @@
 				"type": "SqlServerStoredProcedure",
 				"dependsOn": [
 					{
-						"activity": "Productmasterprocessing",
+						"activity": "spOlapProcessing",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -418,7 +418,7 @@
 				"type": "ExecutePipeline",
 				"dependsOn": [
 					{
-						"activity": "spOlapProcessing",
+						"activity": "DeleteFiles_Staging",
 						"dependencyConditions": [
 							"Succeeded"
 						]
