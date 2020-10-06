@@ -3178,46 +3178,6 @@
 															},
 															{
 																"source": {
-																	"name": "cgsttax",
-																	"type": "String"
-																},
-																"sink": {
-																	"name": "cgsttax",
-																	"type": "String"
-																}
-															},
-															{
-																"source": {
-																	"name": "sgsttax",
-																	"type": "String"
-																},
-																"sink": {
-																	"name": "sgsttax",
-																	"type": "String"
-																}
-															},
-															{
-																"source": {
-																	"name": "igsttax",
-																	"type": "String"
-																},
-																"sink": {
-																	"name": "igsttax",
-																	"type": "String"
-																}
-															},
-															{
-																"source": {
-																	"name": "cesstax",
-																	"type": "String"
-																},
-																"sink": {
-																	"name": "cesstax",
-																	"type": "String"
-																}
-															},
-															{
-																"source": {
 																	"name": "mracc_code",
 																	"type": "String"
 																},
@@ -3348,26 +3308,6 @@
 															},
 															{
 																"source": {
-																	"name": "dist_gstinno",
-																	"type": "String"
-																},
-																"sink": {
-																	"name": "dist_gstinno",
-																	"type": "String"
-																}
-															},
-															{
-																"source": {
-																	"name": "ret_gstinno",
-																	"type": "String"
-																},
-																"sink": {
-																	"name": "ret_gstinno",
-																	"type": "String"
-																}
-															},
-															{
-																"source": {
 																	"name": "srn_ref_no",
 																	"type": "String"
 																},
@@ -3388,7 +3328,7 @@
 															},
 															{
 																"source": {
-																	"name": "cgsttax_rate",
+																	"name": "cgst_rate",
 																	"type": "String"
 																},
 																"sink": {
@@ -3398,7 +3338,7 @@
 															},
 															{
 																"source": {
-																	"name": "sgsttax_rate",
+																	"name": "sgst_rate",
 																	"type": "String"
 																},
 																"sink": {
@@ -3408,7 +3348,7 @@
 															},
 															{
 																"source": {
-																	"name": "igsttax_rate",
+																	"name": "igst_rate",
 																	"type": "String"
 																},
 																"sink": {
@@ -3418,7 +3358,7 @@
 															},
 															{
 																"source": {
-																	"name": "cesstax_rate",
+																	"name": "cess_rate",
 																	"type": "String"
 																},
 																"sink": {
@@ -3788,46 +3728,6 @@
 															},
 															{
 																"source": {
-																	"name": "cgsttax",
-																	"type": "String"
-																},
-																"sink": {
-																	"name": "cgsttax",
-																	"type": "String"
-																}
-															},
-															{
-																"source": {
-																	"name": "sgsttax",
-																	"type": "String"
-																},
-																"sink": {
-																	"name": "sgsttax",
-																	"type": "String"
-																}
-															},
-															{
-																"source": {
-																	"name": "igsttax",
-																	"type": "String"
-																},
-																"sink": {
-																	"name": "igsttax",
-																	"type": "String"
-																}
-															},
-															{
-																"source": {
-																	"name": "cesstax",
-																	"type": "String"
-																},
-																"sink": {
-																	"name": "cesstax",
-																	"type": "String"
-																}
-															},
-															{
-																"source": {
 																	"name": "mracc_code",
 																	"type": "String"
 																},
@@ -3958,26 +3858,6 @@
 															},
 															{
 																"source": {
-																	"name": "dist_gstinno",
-																	"type": "String"
-																},
-																"sink": {
-																	"name": "dist_gstinno",
-																	"type": "String"
-																}
-															},
-															{
-																"source": {
-																	"name": "ret_gstinno",
-																	"type": "String"
-																},
-																"sink": {
-																	"name": "ret_gstinno",
-																	"type": "String"
-																}
-															},
-															{
-																"source": {
 																	"name": "srn_ref_no",
 																	"type": "String"
 																},
@@ -3998,7 +3878,7 @@
 															},
 															{
 																"source": {
-																	"name": "cgsttax_rate",
+																	"name": "cgst_rate",
 																	"type": "String"
 																},
 																"sink": {
@@ -4008,7 +3888,7 @@
 															},
 															{
 																"source": {
-																	"name": "sgsttax_rate",
+																	"name": "sgst_rate",
 																	"type": "String"
 																},
 																"sink": {
@@ -4018,7 +3898,7 @@
 															},
 															{
 																"source": {
-																	"name": "igsttax_rate",
+																	"name": "igst_rate",
 																	"type": "String"
 																},
 																"sink": {
@@ -4028,7 +3908,7 @@
 															},
 															{
 																"source": {
-																	"name": "cesstax_rate",
+																	"name": "cess_rate",
 																	"type": "String"
 																},
 																"sink": {
@@ -4398,46 +4278,6 @@
 															},
 															{
 																"source": {
-																	"name": "cgsttax",
-																	"type": "String"
-																},
-																"sink": {
-																	"name": "cgsttax",
-																	"type": "String"
-																}
-															},
-															{
-																"source": {
-																	"name": "sgsttax",
-																	"type": "String"
-																},
-																"sink": {
-																	"name": "sgsttax",
-																	"type": "String"
-																}
-															},
-															{
-																"source": {
-																	"name": "igsttax",
-																	"type": "String"
-																},
-																"sink": {
-																	"name": "igsttax",
-																	"type": "String"
-																}
-															},
-															{
-																"source": {
-																	"name": "cesstax",
-																	"type": "String"
-																},
-																"sink": {
-																	"name": "cesstax",
-																	"type": "String"
-																}
-															},
-															{
-																"source": {
 																	"name": "mracc_code",
 																	"type": "String"
 																},
@@ -4568,26 +4408,6 @@
 															},
 															{
 																"source": {
-																	"name": "dist_gstinno",
-																	"type": "String"
-																},
-																"sink": {
-																	"name": "dist_gstinno",
-																	"type": "String"
-																}
-															},
-															{
-																"source": {
-																	"name": "ret_gstinno",
-																	"type": "String"
-																},
-																"sink": {
-																	"name": "ret_gstinno",
-																	"type": "String"
-																}
-															},
-															{
-																"source": {
 																	"name": "srn_ref_no",
 																	"type": "String"
 																},
@@ -4608,7 +4428,7 @@
 															},
 															{
 																"source": {
-																	"name": "cgsttax_rate",
+																	"name": "cgst_rate",
 																	"type": "String"
 																},
 																"sink": {
@@ -4618,7 +4438,7 @@
 															},
 															{
 																"source": {
-																	"name": "sgsttax_rate",
+																	"name": "sgst_rate",
 																	"type": "String"
 																},
 																"sink": {
@@ -4628,7 +4448,7 @@
 															},
 															{
 																"source": {
-																	"name": "igsttax_rate",
+																	"name": "igst_rate",
 																	"type": "String"
 																},
 																"sink": {
@@ -4638,7 +4458,7 @@
 															},
 															{
 																"source": {
-																	"name": "cesstax_rate",
+																	"name": "cess_rate",
 																	"type": "String"
 																},
 																"sink": {
@@ -17068,6 +16888,219 @@
 			]
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/LeapDataMovement_OnlyProcessing')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "PopulateDSETeleCallingStores",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [
+							{
+								"activity": "LoadLeapTasIntegration",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[dbo].[spPopulateDSETeleCallingStores]"
+						},
+						"linkedServiceName": {
+							"referenceName": "TASDatabase",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "spDailyDataRefreshSalesData",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [
+							{
+								"activity": "IFDataTransferCanDone",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[dbo].[spDailyDataRefreshSalesData]"
+						},
+						"linkedServiceName": {
+							"referenceName": "TASDatabase",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "IFDataTransferCanDone",
+						"type": "Lookup",
+						"dependsOn": [
+							{
+								"activity": "PopulateDSETeleCallingStores",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "AzureSqlSource",
+								"sqlReaderQuery": "select flgPngDataTransfer from tblFlagDataProcess",
+								"queryTimeout": "02:00:00",
+								"partitionOption": "None"
+							},
+							"dataset": {
+								"referenceName": "TASDBConnection",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						}
+					},
+					{
+						"name": "Scale Down DB",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [
+							{
+								"activity": "spOlapProcessing",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[dbo].[Scale_S4_DB]"
+						},
+						"linkedServiceName": {
+							"referenceName": "TASDatabase",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "spOlapProcessing",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [
+							{
+								"activity": "spDailyDataRefreshSalesData",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[dbo].[spOlapProcessing]"
+						},
+						"linkedServiceName": {
+							"referenceName": "TASDatabase",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "SpDailyRefreshSchemeData",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[dbo].[spDailyRefreshSchemeData]"
+						},
+						"linkedServiceName": {
+							"referenceName": "TASDatabase",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "LoadLeapTasIntegration",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [
+							{
+								"activity": "SpDailyRefreshSchemeData",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[dbo].[spLoadLeapTasIntegration]"
+						},
+						"linkedServiceName": {
+							"referenceName": "TASDatabase",
+							"type": "LinkedServiceReference"
+						}
+					}
+				],
+				"parameters": {
+					"windowStart": {
+						"type": "string"
+					},
+					"windowEnd": {
+						"type": "string"
+					}
+				},
+				"folder": {
+					"name": "Leap Data Pipeline"
+				},
+				"annotations": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/TASDatabase')]",
+				"[concat(variables('factoryId'), '/datasets/TASDBConnection')]"
+			]
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/LeapDataMovement_WithoutLastSpCalled')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
 			"apiVersion": "2018-06-01",
@@ -17771,33 +17804,6 @@
 						"userProperties": [],
 						"typeProperties": {
 							"storedProcedureName": "[[dbo].[spOlapProcessing]"
-						},
-						"linkedServiceName": {
-							"referenceName": "TASDatabase",
-							"type": "LinkedServiceReference"
-						}
-					},
-					{
-						"name": "SpDailyRefreshSchemeData",
-						"type": "SqlServerStoredProcedure",
-						"dependsOn": [
-							{
-								"activity": "CopyS3-To-Staging_Cloud1",
-								"dependencyConditions": [
-									"Completed"
-								]
-							}
-						],
-						"policy": {
-							"timeout": "7.00:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"storedProcedureName": "[[dbo].[spDailyRefreshSchemeData]"
 						},
 						"linkedServiceName": {
 							"referenceName": "TASDatabase",
@@ -29994,219 +30000,6 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/pipelines/Scaledb')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/LeapDataMovement_OnlyProcessing')]",
-			"type": "Microsoft.DataFactory/factories/pipelines",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"activities": [
-					{
-						"name": "PopulateDSETeleCallingStores",
-						"type": "SqlServerStoredProcedure",
-						"dependsOn": [
-							{
-								"activity": "LoadLeapTasIntegration",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"policy": {
-							"timeout": "7.00:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"storedProcedureName": "[[dbo].[spPopulateDSETeleCallingStores]"
-						},
-						"linkedServiceName": {
-							"referenceName": "TASDatabase",
-							"type": "LinkedServiceReference"
-						}
-					},
-					{
-						"name": "spDailyDataRefreshSalesData",
-						"type": "SqlServerStoredProcedure",
-						"dependsOn": [
-							{
-								"activity": "IFDataTransferCanDone",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"policy": {
-							"timeout": "7.00:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"storedProcedureName": "[[dbo].[spDailyDataRefreshSalesData]"
-						},
-						"linkedServiceName": {
-							"referenceName": "TASDatabase",
-							"type": "LinkedServiceReference"
-						}
-					},
-					{
-						"name": "IFDataTransferCanDone",
-						"type": "Lookup",
-						"dependsOn": [
-							{
-								"activity": "PopulateDSETeleCallingStores",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"policy": {
-							"timeout": "7.00:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"source": {
-								"type": "AzureSqlSource",
-								"sqlReaderQuery": "select flgPngDataTransfer from tblFlagDataProcess",
-								"queryTimeout": "02:00:00",
-								"partitionOption": "None"
-							},
-							"dataset": {
-								"referenceName": "TASDBConnection",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						}
-					},
-					{
-						"name": "Scale Down DB",
-						"type": "SqlServerStoredProcedure",
-						"dependsOn": [
-							{
-								"activity": "spOlapProcessing",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"policy": {
-							"timeout": "7.00:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"storedProcedureName": "[[dbo].[Scale_S4_DB]"
-						},
-						"linkedServiceName": {
-							"referenceName": "TASDatabase",
-							"type": "LinkedServiceReference"
-						}
-					},
-					{
-						"name": "spOlapProcessing",
-						"type": "SqlServerStoredProcedure",
-						"dependsOn": [
-							{
-								"activity": "spDailyDataRefreshSalesData",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"policy": {
-							"timeout": "7.00:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"storedProcedureName": "[[dbo].[spOlapProcessing]"
-						},
-						"linkedServiceName": {
-							"referenceName": "TASDatabase",
-							"type": "LinkedServiceReference"
-						}
-					},
-					{
-						"name": "SpDailyRefreshSchemeData",
-						"type": "SqlServerStoredProcedure",
-						"dependsOn": [],
-						"policy": {
-							"timeout": "7.00:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"storedProcedureName": "[[dbo].[spDailyRefreshSchemeData]"
-						},
-						"linkedServiceName": {
-							"referenceName": "TASDatabase",
-							"type": "LinkedServiceReference"
-						}
-					},
-					{
-						"name": "LoadLeapTasIntegration",
-						"type": "SqlServerStoredProcedure",
-						"dependsOn": [
-							{
-								"activity": "SpDailyRefreshSchemeData",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"policy": {
-							"timeout": "7.00:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"storedProcedureName": "[[dbo].[spLoadLeapTasIntegration]"
-						},
-						"linkedServiceName": {
-							"referenceName": "TASDatabase",
-							"type": "LinkedServiceReference"
-						}
-					}
-				],
-				"parameters": {
-					"windowStart": {
-						"type": "string"
-					},
-					"windowEnd": {
-						"type": "string"
-					}
-				},
-				"folder": {
-					"name": "Leap Data Pipeline"
-				},
-				"annotations": []
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/TASDatabase')]",
-				"[concat(variables('factoryId'), '/datasets/TASDBConnection')]"
 			]
 		}
 	]
