@@ -2448,46 +2448,6 @@
 													},
 													{
 														"source": {
-															"name": "cgsttax",
-															"type": "String"
-														},
-														"sink": {
-															"name": "cgsttax",
-															"type": "String"
-														}
-													},
-													{
-														"source": {
-															"name": "sgsttax",
-															"type": "String"
-														},
-														"sink": {
-															"name": "sgsttax",
-															"type": "String"
-														}
-													},
-													{
-														"source": {
-															"name": "igsttax",
-															"type": "String"
-														},
-														"sink": {
-															"name": "igsttax",
-															"type": "String"
-														}
-													},
-													{
-														"source": {
-															"name": "cesstax",
-															"type": "String"
-														},
-														"sink": {
-															"name": "cesstax",
-															"type": "String"
-														}
-													},
-													{
-														"source": {
 															"name": "mracc_code",
 															"type": "String"
 														},
@@ -2618,26 +2578,6 @@
 													},
 													{
 														"source": {
-															"name": "dist_gstinno",
-															"type": "String"
-														},
-														"sink": {
-															"name": "dist_gstinno",
-															"type": "String"
-														}
-													},
-													{
-														"source": {
-															"name": "ret_gstinno",
-															"type": "String"
-														},
-														"sink": {
-															"name": "ret_gstinno",
-															"type": "String"
-														}
-													},
-													{
-														"source": {
 															"name": "srn_ref_no",
 															"type": "String"
 														},
@@ -2658,7 +2598,7 @@
 													},
 													{
 														"source": {
-															"name": "cgsttax_rate",
+															"name": "cgst_rate",
 															"type": "String"
 														},
 														"sink": {
@@ -2668,7 +2608,7 @@
 													},
 													{
 														"source": {
-															"name": "sgsttax_rate",
+															"name": "sgst_rate",
 															"type": "String"
 														},
 														"sink": {
@@ -2678,7 +2618,7 @@
 													},
 													{
 														"source": {
-															"name": "igsttax_rate",
+															"name": "igst_rate",
 															"type": "String"
 														},
 														"sink": {
@@ -2688,7 +2628,7 @@
 													},
 													{
 														"source": {
-															"name": "cesstax_rate",
+															"name": "cess_rate",
 															"type": "String"
 														},
 														"sink": {
