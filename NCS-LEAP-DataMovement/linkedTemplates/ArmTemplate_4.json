@@ -3572,6 +3572,46 @@
 															},
 															{
 																"source": {
+																	"name": "cgst_amount",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "cgsttax",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"name": "sgst_amount",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "sgsttax",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"name": "igst_amount",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "igsttax",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"name": "cess_amount",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "cesstax",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
 																	"name": "mracc_code",
 																	"type": "String"
 																},
@@ -3697,6 +3737,26 @@
 																},
 																"sink": {
 																	"name": "reason",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"name": "distributor_gst_no",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "dist_gstinno",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"name": "retailer_gst_no",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "ret_gstinno",
 																	"type": "String"
 																}
 															},
@@ -3828,6 +3888,96 @@
 																"sink": {
 																	"name": "LastModifiedDatetime",
 																	"type": "DateTime"
+																}
+															},
+															{
+																"source": {
+																	"name": "batch",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "batch",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"name": "upc",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "upc",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"name": "tcs_amount",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "tcs_amount",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"name": "remarks",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "remarks",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"name": "tcs_rate",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "tcs_rate",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"name": "branch_gst_no",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "branch_gst_no",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"name": "dl_no",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "dl_no",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"name": "dl_expiry_date",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "dl_expiry_date",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"name": "irn_no",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "irn_no",
+																	"type": "String"
 																}
 															}
 														]
@@ -4122,6 +4272,46 @@
 															},
 															{
 																"source": {
+																	"name": "cgst_amount",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "cgsttax",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"name": "sgst_amount",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "sgsttax",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"name": "igst_amount",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "igsttax",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"name": "cess_amount",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "cesstax",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
 																	"name": "mracc_code",
 																	"type": "String"
 																},
@@ -4247,6 +4437,26 @@
 																},
 																"sink": {
 																	"name": "reason",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"name": "distributor_gst_no",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "dist_gstinno",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"name": "retailer_gst_no",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "ret_gstinno",
 																	"type": "String"
 																}
 															},
@@ -4378,6 +4588,96 @@
 																"sink": {
 																	"name": "LastModifiedDatetime",
 																	"type": "DateTime"
+																}
+															},
+															{
+																"source": {
+																	"name": "batch",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "batch",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"name": "upc",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "upc",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"name": "tcs_amount",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "tcs_amount",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"name": "remarks",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "remarks",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"name": "tcs_rate",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "tcs_rate",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"name": "branch_gst_no",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "branch_gst_no",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"name": "dl_no",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "dl_no",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"name": "dl_expiry_date",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "dl_expiry_date",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"name": "irn_no",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "irn_no",
+																	"type": "String"
 																}
 															}
 														]
@@ -4672,6 +4972,46 @@
 															},
 															{
 																"source": {
+																	"name": "cgst_amount",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "cgsttax",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"name": "sgst_amount",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "sgsttax",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"name": "igst_amount",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "igsttax",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"name": "cess_amount",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "cesstax",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
 																	"name": "mracc_code",
 																	"type": "String"
 																},
@@ -4797,6 +5137,26 @@
 																},
 																"sink": {
 																	"name": "reason",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"name": "distributor_gst_no",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "dist_gstinno",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"name": "retailer_gst_no",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "ret_gstinno",
 																	"type": "String"
 																}
 															},
@@ -4928,6 +5288,96 @@
 																"sink": {
 																	"name": "LastModifiedDatetime",
 																	"type": "DateTime"
+																}
+															},
+															{
+																"source": {
+																	"name": "batch",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "batch",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"name": "upc",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "upc",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"name": "tcs_amount",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "tcs_amount",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"name": "remarks",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "remarks",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"name": "tcs_rate",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "tcs_rate",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"name": "branch_gst_no",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "branch_gst_no",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"name": "dl_no",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "dl_no",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"name": "dl_expiry_date",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "dl_expiry_date",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"name": "irn_no",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "irn_no",
+																	"type": "String"
 																}
 															}
 														]
