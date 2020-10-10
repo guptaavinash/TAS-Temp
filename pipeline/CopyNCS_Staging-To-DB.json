@@ -154,7 +154,7 @@
 														},
 														"sink": {
 															"name": "INVDATE",
-															"type": "String"
+															"type": "DateTime"
 														}
 													},
 													{
@@ -404,7 +404,7 @@
 														},
 														"sink": {
 															"name": "Amount",
-															"type": "String"
+															"type": "Decimal"
 														}
 													},
 													{
@@ -424,17 +424,17 @@
 														},
 														"sink": {
 															"name": "Qty",
-															"type": "String"
+															"type": "Decimal"
 														}
 													},
 													{
 														"source": {
-															"name": "FACT_AMT_3",
+															"name": "retailing",
 															"type": "String"
 														},
 														"sink": {
-															"name": "FACT_AMT_3",
-															"type": "String"
+															"name": "Retailing",
+															"type": "Decimal"
 														}
 													},
 													{
