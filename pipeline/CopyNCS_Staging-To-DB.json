@@ -100,7 +100,7 @@
 												"storeSettings": {
 													"type": "AzureBlobStorageReadSettings",
 													"recursive": true,
-													"wildcardFileName": "AUG_Sales*",
+													"wildcardFileName": "RTDX_SEP*",
 													"enablePartitionDiscovery": false
 												},
 												"formatSettings": {
@@ -458,7 +458,7 @@
 										],
 										"outputs": [
 											{
-												"referenceName": "tmpRTDXSales",
+												"referenceName": "tblRTDXAugSale",
 												"type": "DatasetReference"
 											}
 										]
