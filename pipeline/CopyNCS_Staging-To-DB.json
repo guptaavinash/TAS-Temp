@@ -62,7 +62,7 @@
 							"userProperties": [],
 							"typeProperties": {
 								"expression": {
-									"value": "@bool(startswith(item().name,'AUG'))",
+									"value": "@bool(startswith(item().name,'RTDX'))",
 									"type": "Expression"
 								},
 								"ifTrueActivities": [
