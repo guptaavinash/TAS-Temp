@@ -293,7 +293,13 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"storedProcedureName": "[dbo].[spDailyDataRefreshSalesData]"
+					"storedProcedureName": "[dbo].[spDailyDataRefreshSalesData]",
+					"storedProcedureParameters": {
+						"CalledFrom": {
+							"value": "1",
+							"type": "Byte"
+						}
+					}
 				},
 				"linkedServiceName": {
 					"referenceName": "TASDatabase",
