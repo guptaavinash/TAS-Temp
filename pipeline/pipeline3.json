@@ -39,7 +39,12 @@
 						"referenceName": "Send Notification",
 						"type": "PipelineReference"
 					},
-					"waitOnCompletion": true
+					"waitOnCompletion": true,
+					"parameters": {
+						"EmailTo": "avinash@astixsolutions.com",
+						"Subject": "DataFactory Failure",
+						"ErrorMessage": "Error"
+					}
 				}
 			}
 		],
