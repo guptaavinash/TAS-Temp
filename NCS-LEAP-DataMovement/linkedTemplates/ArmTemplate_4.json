@@ -1149,9 +1149,9 @@
 							},
 							"waitOnCompletion": true,
 							"parameters": {
-								"EmailTo": "avinash@astixsolutions.com",
+								"EmailTo": "avinash@astixsolutions.com,avinash.gupta2@gmail.com",
 								"Subject": "DataFactory Failure",
-								"ErrorMessage": "Error"
+								"ErrorMessage": "Error in processing"
 							}
 						}
 					}

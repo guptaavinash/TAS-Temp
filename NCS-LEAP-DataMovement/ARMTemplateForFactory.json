@@ -18340,6 +18340,56 @@
 							"referenceName": "TASDatabase",
 							"type": "LinkedServiceReference"
 						}
+					},
+					{
+						"name": "SpDailyRefreshScheme_Error",
+						"type": "ExecutePipeline",
+						"dependsOn": [
+							{
+								"activity": "spDailyRefreshSchemeData",
+								"dependencyConditions": [
+									"Failed"
+								]
+							}
+						],
+						"userProperties": [],
+						"typeProperties": {
+							"pipeline": {
+								"referenceName": "Send Notification",
+								"type": "PipelineReference"
+							},
+							"waitOnCompletion": true,
+							"parameters": {
+								"EmailTo": "avinash@astixsolutions.com,alok@astixsolutions.com,ashwani@astixsolutions.com",
+								"Subject": "TAS Datafactory Error",
+								"ErrorMessage": "SpDailyRefreshSchemeData Failed, log on to portal for more details"
+							}
+						}
+					},
+					{
+						"name": "SpDailyDataRefreshSalesData Error",
+						"type": "ExecutePipeline",
+						"dependsOn": [
+							{
+								"activity": "spDailyDataRefreshSalesData",
+								"dependencyConditions": [
+									"Failed"
+								]
+							}
+						],
+						"userProperties": [],
+						"typeProperties": {
+							"pipeline": {
+								"referenceName": "Send Notification",
+								"type": "PipelineReference"
+							},
+							"waitOnCompletion": true,
+							"parameters": {
+								"EmailTo": "avinash@astixsolutions.com,alok@astixsolutions.com,ashwani@astixsolutions.com",
+								"Subject": "Datafactory Error",
+								"ErrorMessage": "SpDailyDataRefreshSalesData failed, log on to portal for more details"
+							}
+						}
 					}
 				],
 				"parameters": {
@@ -18366,7 +18416,8 @@
 				"[concat(variables('factoryId'), '/datasets/LeapStorageSourceDataset')]",
 				"[concat(variables('factoryId'), '/datasets/TASDBConnection')]",
 				"[concat(variables('factoryId'), '/pipelines/Productmasterprocessing')]",
-				"[concat(variables('factoryId'), '/linkedServices/PnGDataFoundation')]"
+				"[concat(variables('factoryId'), '/linkedServices/PnGDataFoundation')]",
+				"[concat(variables('factoryId'), '/pipelines/Send Notification')]"
 			]
 		},
 		{
@@ -30688,9 +30739,9 @@
 							},
 							"waitOnCompletion": true,
 							"parameters": {
-								"EmailTo": "avinash@astixsolutions.com",
+								"EmailTo": "avinash@astixsolutions.com,avinash.gupta2@gmail.com",
 								"Subject": "DataFactory Failure",
-								"ErrorMessage": "Error"
+								"ErrorMessage": "Error in processing"
 							}
 						}
 					}
@@ -30727,7 +30778,7 @@
 								"Content-Type": "application/json"
 							},
 							"body": {
-								"value": "{\n   \"DataFactoryName\": \"@{pipeline().DataFactory}\",\n   \"PipelineName\": \"@{pipeline().Pipeline}\",\n   \"Subject\": \"@{pipeline().parameters.Subject}\",\n   \"ErrorMessage\": \"@{pipeline().parameters.ErrorMessage}\",\n   \"EmailTo\": \"@pipeline().parameters.EmailTo\"\n}\t",
+								"value": "{\n   \"DataFactoryName\": \"@{pipeline().DataFactory}\",\n   \"PipelineName\": \"@{pipeline().Pipeline}\",\n   \"Subject\": \"@{pipeline().parameters.Subject}\",\n   \"ErrorMessage\": \"@{pipeline().parameters.ErrorMessage}\",\n   \"EmailTo\": \"@{pipeline().parameters.EmailTo}\"\n}\t",
 								"type": "Expression"
 							}
 						}
