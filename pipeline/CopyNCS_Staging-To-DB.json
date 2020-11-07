@@ -62,7 +62,7 @@
 							"userProperties": [],
 							"typeProperties": {
 								"expression": {
-									"value": "@bool(startswith(item().name,'RTDX'))",
+									"value": "@bool(startswith(item().name,'Import_RTDXOctSaleData'))",
 									"type": "Expression"
 								},
 								"ifTrueActivities": [
@@ -100,7 +100,7 @@
 												"storeSettings": {
 													"type": "AzureBlobStorageReadSettings",
 													"recursive": true,
-													"wildcardFileName": "RTDX_SEP*",
+													"wildcardFileName": "Import_RTDXOctSaleData*",
 													"enablePartitionDiscovery": false
 												},
 												"formatSettings": {
