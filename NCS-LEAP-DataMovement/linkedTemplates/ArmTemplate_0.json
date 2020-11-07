@@ -49,6 +49,55 @@
 	},
 	"resources": [
 		{
+			"name": "[concat(parameters('factoryName'), '/Send Notification')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Send Failure EMail",
+						"type": "WebActivity",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"url": "https://prod-20.southeastasia.logic.azure.com:443/workflows/4a7c14454139434fbeceb85285268247/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=BvRViYb6NCf7TdrWjRUOZu2PZbKAaIHdpuf40V3za8k",
+							"method": "POST",
+							"headers": {
+								"Content-Type": "application/json"
+							},
+							"body": {
+								"value": "{\n   \"DataFactoryName\": \"@{pipeline().DataFactory}\",\n   \"PipelineName\": \"@{pipeline().Pipeline}\",\n   \"Subject\": \"@{pipeline().parameters.Subject}\",\n   \"ErrorMessage\": \"@{pipeline().parameters.ErrorMessage}\",\n   \"EmailTo\": \"@{pipeline().parameters.EmailTo}\"\n}\t",
+								"type": "Expression"
+							}
+						}
+					}
+				],
+				"parameters": {
+					"EmailTo": {
+						"type": "string",
+						"defaultValue": "No Email Set"
+					},
+					"Subject": {
+						"type": "string",
+						"defaultValue": "No Subject Set"
+					},
+					"ErrorMessage": {
+						"type": "string",
+						"defaultValue": "No Message Set"
+					}
+				},
+				"annotations": []
+			},
+			"dependsOn": []
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/AstixLiveServer')]",
 			"type": "Microsoft.DataFactory/factories/linkedServices",
 			"apiVersion": "2018-06-01",
@@ -88,7 +137,8 @@
 					"secretAccessKey": {
 						"type": "SecureString",
 						"value": "[parameters('Leap_AmazonS3_secretAccessKey')]"
-					}
+					},
+					"authenticationType": "AccessKey"
 				}
 			},
 			"dependsOn": []
@@ -149,55 +199,6 @@
 				"typeProperties": {
 					"connectionString": "[parameters('TASDatabase_connectionString')]"
 				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/Send Notification')]",
-			"type": "Microsoft.DataFactory/factories/pipelines",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"activities": [
-					{
-						"name": "Send Failure EMail",
-						"type": "WebActivity",
-						"dependsOn": [],
-						"policy": {
-							"timeout": "7.00:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"url": "https://prod-20.southeastasia.logic.azure.com:443/workflows/4a7c14454139434fbeceb85285268247/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=BvRViYb6NCf7TdrWjRUOZu2PZbKAaIHdpuf40V3za8k",
-							"method": "POST",
-							"headers": {
-								"Content-Type": "application/json"
-							},
-							"body": {
-								"value": "{\n   \"DataFactoryName\": \"@{pipeline().DataFactory}\",\n   \"PipelineName\": \"@{pipeline().Pipeline}\",\n   \"Subject\": \"@{pipeline().parameters.Subject}\",\n   \"ErrorMessage\": \"@{pipeline().parameters.ErrorMessage}\",\n   \"EmailTo\": \"@{pipeline().parameters.EmailTo}\"\n}\t",
-								"type": "Expression"
-							}
-						}
-					}
-				],
-				"parameters": {
-					"EmailTo": {
-						"type": "string",
-						"defaultValue": "No Email Set"
-					},
-					"Subject": {
-						"type": "string",
-						"defaultValue": "No Subject Set"
-					},
-					"ErrorMessage": {
-						"type": "string",
-						"defaultValue": "No Message Set"
-					}
-				},
-				"annotations": []
 			},
 			"dependsOn": []
 		},
@@ -265,6 +266,65 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/linkedServices/PnGDataFoundation')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/pipeline3')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Stored procedure1",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[dbo].[Sptest]"
+						},
+						"linkedServiceName": {
+							"referenceName": "TASDatabase",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "Send Error Log",
+						"type": "ExecutePipeline",
+						"dependsOn": [
+							{
+								"activity": "Stored procedure1",
+								"dependencyConditions": [
+									"Failed"
+								]
+							}
+						],
+						"userProperties": [],
+						"typeProperties": {
+							"pipeline": {
+								"referenceName": "Send Notification",
+								"type": "PipelineReference"
+							},
+							"waitOnCompletion": true,
+							"parameters": {
+								"EmailTo": "avinash@astixsolutions.com,avinash.gupta2@gmail.com",
+								"Subject": "DataFactory Failure",
+								"ErrorMessage": "Error in processing"
+							}
+						}
+					}
+				],
+				"annotations": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/TASDatabase')]",
+				"[concat(variables('factoryId'), '/pipelines/Send Notification')]"
 			]
 		},
 		{
@@ -993,47 +1053,6 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/linkedServices/TASDatabase')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/BinaryDataDestination')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"description": "It describes the destination store.",
-				"linkedServiceName": {
-					"referenceName": "NCSdataStorageLink",
-					"type": "LinkedServiceReference"
-				},
-				"parameters": {
-					"Container": {
-						"type": "String"
-					},
-					"Directory": {
-						"type": "String"
-					},
-					"filename": {
-						"type": "string"
-					}
-				},
-				"annotations": [],
-				"type": "Binary",
-				"typeProperties": {
-					"location": {
-						"type": "AzureBlobStorageLocation",
-						"folderPath": {
-							"value": "@{dataset().Directory}",
-							"type": "Expression"
-						},
-						"container": {
-							"value": "@{dataset().Container}",
-							"type": "Expression"
-						}
-					}
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/NCSdataStorageLink')]"
 			]
 		}
 	]
