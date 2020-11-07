@@ -18232,7 +18232,7 @@
 						},
 						"userProperties": [],
 						"typeProperties": {
-							"storedProcedureName": "[[dbo].[Scale_S4_DB]"
+							"storedProcedureName": "[[dbo].[Scale_S3_DB]"
 						},
 						"linkedServiceName": {
 							"referenceName": "TASDatabase",
