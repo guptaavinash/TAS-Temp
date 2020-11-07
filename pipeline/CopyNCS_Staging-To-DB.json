@@ -399,7 +399,7 @@
 													},
 													{
 														"source": {
-															"name": "Amount",
+															"name": "LEGAL_ENT_ID",
 															"type": "String"
 														},
 														"sink": {
@@ -429,7 +429,7 @@
 													},
 													{
 														"source": {
-															"name": "retailing",
+															"name": "Amount",
 															"type": "String"
 														},
 														"sink": {
