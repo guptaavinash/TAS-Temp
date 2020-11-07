@@ -358,7 +358,7 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"storedProcedureName": "[dbo].[Scale_S7]"
+					"storedProcedureName": "[dbo].[Scale_S3_DB]"
 				},
 				"linkedServiceName": {
 					"referenceName": "TASDatabase",
