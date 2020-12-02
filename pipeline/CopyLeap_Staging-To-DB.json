@@ -374,7 +374,7 @@
 													},
 													{
 														"source": {
-															"name": "dsecode",
+															"name": "user_code",
 															"type": "String"
 														},
 														"sink": {
@@ -384,7 +384,7 @@
 													},
 													{
 														"source": {
-															"name": "desename",
+															"name": "user_name",
 															"type": "String"
 														},
 														"sink": {
