@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "CopyLeap_Staging-To-DB",
+				"name": "CopyLeap_Staging-To-DB_WithDPSR",
 				"type": "ExecutePipeline",
 				"dependsOn": [
 					{
@@ -16,7 +16,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"pipeline": {
-						"referenceName": "CopyLeap_Staging-To-DB",
+						"referenceName": "CopyLeap_Staging-To-DB_WithDPSR",
 						"type": "PipelineReference"
 					},
 					"waitOnCompletion": true
@@ -54,7 +54,7 @@
 				"type": "ExecutePipeline",
 				"dependsOn": [
 					{
-						"activity": "CopyLeap_Staging-To-DB",
+						"activity": "CopyLeap_Staging-To-DB_WithDPSR",
 						"dependencyConditions": [
 							"Succeeded"
 						]
