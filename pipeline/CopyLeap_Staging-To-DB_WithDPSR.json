@@ -2178,7 +2178,7 @@
 							}
 						},
 						{
-							"name": "DPSR_Could1",
+							"name": "DPSR_MOR_Could1",
 							"type": "IfCondition",
 							"dependsOn": [
 								{
@@ -2880,7 +2880,7 @@
 							"type": "IfCondition",
 							"dependsOn": [
 								{
-									"activity": "DPSR_Could1",
+									"activity": "DPSR_MOR_Could1",
 									"dependencyConditions": [
 										"Succeeded"
 									]
