@@ -8472,7 +8472,7 @@
 						"userProperties": [],
 						"typeProperties": {
 							"pipeline": {
-								"referenceName": "CopyLeap_Staging-To-DB",
+								"referenceName": "CopyLeap_Staging-To-DB_WithDPSR",
 								"type": "PipelineReference"
 							},
 							"waitOnCompletion": true,

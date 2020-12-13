@@ -301,7 +301,7 @@
 						"userProperties": [],
 						"typeProperties": {
 							"pipeline": {
-								"referenceName": "CopyLeap_Staging-To-DB",
+								"referenceName": "CopyLeap_Staging-To-DB_WithDPSR",
 								"type": "PipelineReference"
 							},
 							"waitOnCompletion": true,
@@ -507,7 +507,7 @@
 				"annotations": []
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/pipelines/CopyLeap_Staging-To-DB')]",
+				"[concat(variables('factoryId'), '/pipelines/CopyLeap_Staging-To-DB_WithDPSR')]",
 				"[concat(variables('factoryId'), '/pipelines/CopyLeap_Staging-To-DB_2')]",
 				"[concat(variables('factoryId'), '/pipelines/CopyLeapStaging-To-ADLS')]",
 				"[concat(variables('factoryId'), '/pipelines/CopyS3-To-Staging_Cloud1')]",
