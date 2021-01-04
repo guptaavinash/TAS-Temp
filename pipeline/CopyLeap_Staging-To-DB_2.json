@@ -4249,7 +4249,7 @@
 												"storeSettings": {
 													"type": "AzureBlobStorageReadSettings",
 													"recursive": true,
-													"wildcardFileName": "INVVAL_cloud02_*",
+													"wildcardFileName": "INVVAL_cloud01_*",
 													"enablePartitionDiscovery": false
 												},
 												"formatSettings": {
