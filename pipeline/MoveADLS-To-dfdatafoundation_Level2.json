@@ -73,7 +73,25 @@
 									"referenceName": "MoveADLS-To-dfdatafoundation_Level3",
 									"type": "PipelineReference"
 								},
-								"waitOnCompletion": true
+								"waitOnCompletion": true,
+								"parameters": {
+									"SourceStore_Container": {
+										"value": "@pipeline().parameters.SourceStore_Container",
+										"type": "Expression"
+									},
+									"SourceStore_Directory": {
+										"value": "@concat(pipeline().parameters.SourceStore_Directory,'/', item().name ,'/')\n\n",
+										"type": "Expression"
+									},
+									"DestinationStore_Container": {
+										"value": "@pipeline().parameters.DestinationStore_Container",
+										"type": "Expression"
+									},
+									"DestinationStore_Directory": {
+										"value": "@pipeline().parameters.DestinationStore_Directory",
+										"type": "Expression"
+									}
+								}
 							}
 						}
 					]
