@@ -81,7 +81,7 @@
 										"type": "Expression"
 									},
 									"SourceStore_Directory": {
-										"value": "@concat(pipeline().parameters.SourceStore_Directory,'/', item().name ,'/')\n\n",
+										"value": "@concat(pipeline().parameters.SourceStore_Directory, item().name ,'/')\n\n",
 										"type": "Expression"
 									},
 									"DestinationStore_Container": {
