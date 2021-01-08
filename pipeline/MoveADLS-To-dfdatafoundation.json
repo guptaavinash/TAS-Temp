@@ -19,7 +19,13 @@
 				"typeProperties": {
 					"dataset": {
 						"referenceName": "ADLSBinaryDataSource_Container",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"Container": {
+								"value": "@pipeline().parameters.SourceStore_Location",
+								"type": "Expression"
+							}
+						}
 					},
 					"fieldList": [
 						"childItems"
@@ -96,9 +102,6 @@
 		],
 		"parameters": {
 			"SourceStore_Location": {
-				"type": "String"
-			},
-			"SourceStore_Directory": {
 				"type": "String"
 			},
 			"DestinationStore_Location": {
