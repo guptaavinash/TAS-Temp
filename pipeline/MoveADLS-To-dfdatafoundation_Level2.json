@@ -22,7 +22,7 @@
 						"type": "DatasetReference",
 						"parameters": {
 							"Container": {
-								"value": "@pipeline().parameters.SourceStore_Location",
+								"value": "@pipeline().parameters.SourceStore_Container",
 								"type": "Expression"
 							},
 							"Directory": {
