@@ -124,7 +124,7 @@
 									"type": "DatasetReference",
 									"parameters": {
 										"Container": {
-											"value": "@pipeline().parameters.DestinationStore_Location",
+											"value": "@pipeline().parameters.DestinationStore_Container",
 											"type": "Expression"
 										},
 										"Directory": {
