@@ -13,6 +13,62 @@
 	},
 	"resources": [
 		{
+			"name": "[concat(parameters('factoryName'), '/BSBF_table')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "TASDatabase",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "DF_DBConnection/LEAP Tables"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [
+					{
+						"name": "branchcode",
+						"type": "nvarchar"
+					},
+					{
+						"name": "subbfname",
+						"type": "nvarchar"
+					},
+					{
+						"name": "status",
+						"type": "nvarchar"
+					},
+					{
+						"name": "FileSetId",
+						"type": "bigint",
+						"precision": 19
+					},
+					{
+						"name": "Filename",
+						"type": "varchar"
+					},
+					{
+						"name": "LastModifiedDatetime",
+						"type": "smalldatetime",
+						"precision": 16,
+						"scale": 0
+					},
+					{
+						"name": "TimeStampIns",
+						"type": "smalldatetime",
+						"precision": 16,
+						"scale": 0
+					}
+				],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "tmpRawLEAPTAS_BSBF"
+				}
+			},
+			"dependsOn": []
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/BinaryDataDestination')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
@@ -1526,54 +1582,6 @@
 				"typeProperties": {
 					"schema": "dbo",
 					"table": "tblINITFileList"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/DS_DF_tblINITSBDChannelMapping')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "PnGDataFoundation",
-					"type": "LinkedServiceReference"
-				},
-				"folder": {
-					"name": "Data Transfer"
-				},
-				"annotations": [],
-				"type": "AzureSqlTable",
-				"schema": [
-					{
-						"name": "INITClusterID",
-						"type": "int",
-						"precision": 10
-					},
-					{
-						"name": "ClusterName",
-						"type": "varchar"
-					},
-					{
-						"name": "LoginID",
-						"type": "int",
-						"precision": 10
-					},
-					{
-						"name": "DateTimeStamp",
-						"type": "datetime",
-						"precision": 23,
-						"scale": 3
-					},
-					{
-						"name": "flgActive",
-						"type": "tinyint",
-						"precision": 3
-					}
-				],
-				"typeProperties": {
-					"schema": "dbo",
-					"table": "tblINITSBDChannelMapping"
 				}
 			},
 			"dependsOn": []

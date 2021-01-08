@@ -49,6 +49,9 @@
 		},
 		"LeapFileLoading_At6_properties_LeapDataMovement_WithoutProcessing_parameters_windowEnd": {
 			"value": "@trigger().scheduledTime"
+		},
+		"dfdatafoundationLink_sasUri": {
+			"value": ""
 		}
 	}
 }
