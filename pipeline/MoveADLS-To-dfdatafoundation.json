@@ -74,6 +74,18 @@
 									"SourceStore_Container": {
 										"value": "@pipeline().parameters.SourceStore_Container",
 										"type": "Expression"
+									},
+									"SourceStore_Directory": {
+										"value": "@item().name",
+										"type": "Expression"
+									},
+									"DestinationStore_Container": {
+										"value": "@pipeline().parameters.DestinationStore_Container",
+										"type": "Expression"
+									},
+									"DestinationStore_Directory": {
+										"value": "@pipeline().parameters.DestinationStore_Directory",
+										"type": "Expression"
 									}
 								}
 							}
