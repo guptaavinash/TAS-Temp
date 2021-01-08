@@ -4,7 +4,7 @@
 		"description": "Move files from one folder to another folder",
 		"activities": [
 			{
-				"name": "GetFileList",
+				"name": "GetFoldername",
 				"description": "Get the list of file",
 				"type": "GetMetadata",
 				"dependsOn": [],
@@ -148,7 +148,7 @@
 				"type": "Filter",
 				"dependsOn": [
 					{
-						"activity": "GetFileList",
+						"activity": "GetFoldername",
 						"dependencyConditions": [
 							"Succeeded"
 						]
