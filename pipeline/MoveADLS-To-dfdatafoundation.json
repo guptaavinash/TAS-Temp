@@ -69,7 +69,13 @@
 									"referenceName": "MoveADLS-To-dfdatafoundation_Level2",
 									"type": "PipelineReference"
 								},
-								"waitOnCompletion": true
+								"waitOnCompletion": true,
+								"parameters": {
+									"SourceStore_Container": {
+										"value": "@pipeline().parameters.SourceStore_Container",
+										"type": "Expression"
+									}
+								}
 							}
 						}
 					]
