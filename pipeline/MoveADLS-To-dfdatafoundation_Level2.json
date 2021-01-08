@@ -177,13 +177,13 @@
 			}
 		],
 		"parameters": {
-			"SourceStore_Location": {
+			"SourceStore_Container": {
 				"type": "String"
 			},
 			"SourceStore_Directory": {
 				"type": "String"
 			},
-			"DestinationStore_Location": {
+			"DestinationStore_Container": {
 				"type": "String"
 			},
 			"DestinationStore_Directory": {
