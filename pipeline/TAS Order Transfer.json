@@ -14,10 +14,46 @@
 					"secureInput": false
 				},
 				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[spCreateAutoTransferProcess]",
+					"storedProcedureParameters": {
+						"CloudId": {
+							"value": "1",
+							"type": "Byte"
+						},
+						"TimeSlot": {
+							"value": {
+								"value": "@pipeline().parameters.windowStart",
+								"type": "Expression"
+							},
+							"type": "TimeSpan"
+						}
+					}
+				},
 				"linkedServiceName": {
-					"referenceName": "TASDatabase",
+					"referenceName": "TASDatabase_Test",
 					"type": "LinkedServiceReference"
 				}
+			},
+			{
+				"name": "Cloud1_Lookup",
+				"type": "Lookup",
+				"dependsOn": [
+					{
+						"activity": "spCreateAutoTransferProcess",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": []
 			}
 		],
 		"parameters": {

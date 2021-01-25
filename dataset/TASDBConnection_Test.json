@@ -1,0 +1,15 @@
+{
+	"name": "TASDBConnection_Test",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "TASDatabase_Test",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "TASOrders"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": []
+	}
+}
