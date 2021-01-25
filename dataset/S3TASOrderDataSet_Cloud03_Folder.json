@@ -1,5 +1,5 @@
 {
-	"name": "S3TASOrderDataSet_Cloud01_Folder",
+	"name": "S3TASOrderDataSet_Cloud03_Folder",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "Leap_AmazonS3",
@@ -14,7 +14,7 @@
 			"location": {
 				"type": "AmazonS3Location",
 				"bucketName": "leapdata-tas",
-				"folderPath": "TASOrdersQA01/Upload"
+				"folderPath": "TASOrdersQA03/Upload"
 			}
 		}
 	}
