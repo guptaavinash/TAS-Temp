@@ -35,6 +35,10 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'TASDatabase'"
 		},
+		"TASDatabase_Test_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'TASDatabase_Test'"
+		},
 		"Leap_AmazonS3_properties_typeProperties_accessKeyId": {
 			"type": "string",
 			"defaultValue": "AKIAW6LTDL6KHDJLBDO2"
@@ -42,6 +46,10 @@
 		"LinkedService_PnGADLS_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://pngadls.dfs.core.windows.net"
+		},
+		"dfdatafoundationLink_sasUri": {
+			"type": "secureString",
+			"metadata": "Secure string for 'sasUri' of 'dfdatafoundationLink'"
 		},
 		"CCR_DataProcessingAt10_properties_CCRDataMovement_parameters_windowStart": {
 			"type": "string",
@@ -66,10 +74,6 @@
 		"LeapFileLoading_At6_properties_LeapDataMovement_WithoutProcessing_parameters_windowEnd": {
 			"type": "string",
 			"defaultValue": "@trigger().scheduledTime"
-		},
-		"dfdatafoundationLink_sasUri": {
-			"type": "secureString",
-			"metadata": "Secure string for 'sasUri' of 'dfdatafoundationLink'"
 		},
 		"containerUri": {
 			"type": "string",
@@ -118,6 +122,9 @@
 					},
 					"TASDatabase_connectionString": {
 						"value": "[parameters('TASDatabase_connectionString')]"
+					},
+					"TASDatabase_Test_connectionString": {
+						"value": "[parameters('TASDatabase_Test_connectionString')]"
 					},
 					"Leap_AmazonS3_properties_typeProperties_accessKeyId": {
 						"value": "[parameters('Leap_AmazonS3_properties_typeProperties_accessKeyId')]"
@@ -245,6 +252,26 @@
 				"parameters": {
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'NCS-LEAP-DataMovement_ArmTemplate_5')]"
+			]
+		},
+		{
+			"name": "NCS-LEAP-DataMovement_ArmTemplate_7",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_7.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
 					},
 					"CCR_DataProcessingAt10_properties_CCRDataMovement_parameters_windowStart": {
 						"value": "[parameters('CCR_DataProcessingAt10_properties_CCRDataMovement_parameters_windowStart')]"
@@ -267,7 +294,7 @@
 				}
 			},
 			"dependsOn": [
-				"[resourceId('Microsoft.Resources/deployments', 'NCS-LEAP-DataMovement_ArmTemplate_5')]"
+				"[resourceId('Microsoft.Resources/deployments', 'NCS-LEAP-DataMovement_ArmTemplate_6')]"
 			]
 		}
 	]

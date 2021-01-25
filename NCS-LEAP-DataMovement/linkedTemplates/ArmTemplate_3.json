@@ -13,6 +13,332 @@
 	},
 	"resources": [
 		{
+			"name": "[concat(parameters('factoryName'), '/DS_TAS_tmpLeapDataLoadCOHGAP')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "TASDatabase",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [
+					{
+						"name": "coh_date",
+						"type": "nvarchar"
+					},
+					{
+						"name": "retailer_code",
+						"type": "nvarchar"
+					},
+					{
+						"name": "retailer_name",
+						"type": "nvarchar"
+					},
+					{
+						"name": "channel_code",
+						"type": "nvarchar"
+					},
+					{
+						"name": "channel_name",
+						"type": "nvarchar"
+					},
+					{
+						"name": "channel_type_code",
+						"type": "nvarchar"
+					},
+					{
+						"name": "sector_name",
+						"type": "nvarchar"
+					},
+					{
+						"name": "seller_code",
+						"type": "nvarchar"
+					},
+					{
+						"name": "seller_name",
+						"type": "nvarchar"
+					},
+					{
+						"name": "coh_name",
+						"type": "nvarchar"
+					},
+					{
+						"name": "target",
+						"type": "nvarchar"
+					},
+					{
+						"name": "achievement",
+						"type": "nvarchar"
+					},
+					{
+						"name": "achievement_status",
+						"type": "nvarchar"
+					},
+					{
+						"name": "calculation_rule",
+						"type": "nvarchar"
+					},
+					{
+						"name": "coh_detail",
+						"type": "nvarchar"
+					},
+					{
+						"name": "withsale",
+						"type": "nvarchar"
+					},
+					{
+						"name": "nosale",
+						"type": "nvarchar"
+					},
+					{
+						"name": "distributor_code",
+						"type": "nvarchar"
+					},
+					{
+						"name": "distributor_name",
+						"type": "nvarchar"
+					},
+					{
+						"name": "FileSetId",
+						"type": "int",
+						"precision": 10
+					}
+				],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "tmpLeapDataLoadCOHGAP"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/DS_TAS_tmpLeapDataLoadDPSR')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "TASDatabase",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [
+					{
+						"name": "document_no",
+						"type": "nvarchar"
+					},
+					{
+						"name": "apply_to_doc",
+						"type": "nvarchar"
+					},
+					{
+						"name": "document_date",
+						"type": "nvarchar"
+					},
+					{
+						"name": "transaction_type",
+						"type": "nvarchar"
+					},
+					{
+						"name": "subbrandform_name",
+						"type": "nvarchar"
+					},
+					{
+						"name": "prod_name",
+						"type": "nvarchar"
+					},
+					{
+						"name": "customer_name",
+						"type": "nvarchar"
+					},
+					{
+						"name": "customer_code",
+						"type": "nvarchar"
+					},
+					{
+						"name": "channel_description",
+						"type": "nvarchar"
+					},
+					{
+						"name": "dse",
+						"type": "nvarchar"
+					},
+					{
+						"name": "pcode",
+						"type": "nvarchar"
+					},
+					{
+						"name": "customer_type",
+						"type": "nvarchar"
+					},
+					{
+						"name": "hsn_code",
+						"type": "nvarchar"
+					},
+					{
+						"name": "category",
+						"type": "nvarchar"
+					},
+					{
+						"name": "brand",
+						"type": "nvarchar"
+					},
+					{
+						"name": "brandform",
+						"type": "nvarchar"
+					},
+					{
+						"name": "quantity",
+						"type": "nvarchar"
+					},
+					{
+						"name": "gross_value",
+						"type": "nvarchar"
+					},
+					{
+						"name": "discount",
+						"type": "nvarchar"
+					},
+					{
+						"name": "taxable_scheme",
+						"type": "nvarchar"
+					},
+					{
+						"name": "cgsttax",
+						"type": "nvarchar"
+					},
+					{
+						"name": "sgsttax",
+						"type": "nvarchar"
+					},
+					{
+						"name": "igsttax",
+						"type": "nvarchar"
+					},
+					{
+						"name": "cesstax",
+						"type": "nvarchar"
+					},
+					{
+						"name": "mracc_code",
+						"type": "nvarchar"
+					},
+					{
+						"name": "mracc_desc",
+						"type": "nvarchar"
+					},
+					{
+						"name": "vendor",
+						"type": "nvarchar"
+					},
+					{
+						"name": "net_amount",
+						"type": "nvarchar"
+					},
+					{
+						"name": "tax_on_discount",
+						"type": "nvarchar"
+					},
+					{
+						"name": "tax_on_scheme",
+						"type": "nvarchar"
+					},
+					{
+						"name": "tax_in_rlp",
+						"type": "nvarchar"
+					},
+					{
+						"name": "retailing",
+						"type": "nvarchar"
+					},
+					{
+						"name": "gross_in_slp",
+						"type": "nvarchar"
+					},
+					{
+						"name": "po_no",
+						"type": "nvarchar"
+					},
+					{
+						"name": "dse_code",
+						"type": "nvarchar"
+					},
+					{
+						"name": "msu",
+						"type": "nvarchar"
+					},
+					{
+						"name": "reason",
+						"type": "nvarchar"
+					},
+					{
+						"name": "dist_gstinno",
+						"type": "nvarchar"
+					},
+					{
+						"name": "ret_gstinno",
+						"type": "nvarchar"
+					},
+					{
+						"name": "srn_ref_no",
+						"type": "nvarchar"
+					},
+					{
+						"name": "composite",
+						"type": "nvarchar"
+					},
+					{
+						"name": "cgsttax_rate",
+						"type": "nvarchar"
+					},
+					{
+						"name": "sgsttax_rate",
+						"type": "nvarchar"
+					},
+					{
+						"name": "igsttax_rate",
+						"type": "nvarchar"
+					},
+					{
+						"name": "cesstax_rate",
+						"type": "nvarchar"
+					},
+					{
+						"name": "branch_code",
+						"type": "nvarchar"
+					},
+					{
+						"name": "branch_name",
+						"type": "nvarchar"
+					},
+					{
+						"name": "order_mode",
+						"type": "nvarchar"
+					},
+					{
+						"name": "tc_code",
+						"type": "nvarchar"
+					},
+					{
+						"name": "tc_name",
+						"type": "nvarchar"
+					},
+					{
+						"name": "FileSetId",
+						"type": "int",
+						"precision": 10
+					}
+				],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "tmpRawLEAPTAS_DPSR"
+				}
+			},
+			"dependsOn": []
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/DS_TAS_tmpRawDataP3MBranchSalesDetail')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
@@ -310,6 +636,45 @@
 				"typeProperties": {
 					"schema": "dbo",
 					"table": "tmpRawDataP3MSUBDSalesDetail"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/DS_dfdatafoundation')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"description": "It describes the destination store.",
+				"linkedServiceName": {
+					"referenceName": "dfdatafoundationLink",
+					"type": "LinkedServiceReference"
+				},
+				"parameters": {
+					"Container": {
+						"type": "String"
+					},
+					"Directory": {
+						"type": "String"
+					},
+					"filename": {
+						"type": "string"
+					}
+				},
+				"annotations": [],
+				"type": "Binary",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"folderPath": {
+							"value": "@{dataset().Directory}",
+							"type": "Expression"
+						},
+						"container": {
+							"value": "@{dataset().Container}",
+							"type": "Expression"
+						}
+					}
 				}
 			},
 			"dependsOn": []
@@ -1130,387 +1495,6 @@
 				"typeProperties": {
 					"schema": "dbo",
 					"table": "tmpRawLEAPTAS_PRDM"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/PROD_NCS_table')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "PnGDataFoundation",
-					"type": "LinkedServiceReference"
-				},
-				"folder": {
-					"name": "DF_DBConnection/NCS Tables"
-				},
-				"annotations": [],
-				"type": "AzureSqlTable",
-				"schema": [
-					{
-						"name": "ProductId",
-						"type": "int",
-						"precision": 10
-					},
-					{
-						"name": "PRODUCTCODE",
-						"type": "varchar"
-					},
-					{
-						"name": "PRODUCTNAME",
-						"type": "varchar"
-					},
-					{
-						"name": "SLP",
-						"type": "decimal",
-						"precision": 18,
-						"scale": 2
-					},
-					{
-						"name": "RLP",
-						"type": "decimal",
-						"precision": 18,
-						"scale": 2
-					},
-					{
-						"name": "MRP",
-						"type": "decimal",
-						"precision": 18,
-						"scale": 2
-					},
-					{
-						"name": "UPC",
-						"type": "decimal",
-						"precision": 18,
-						"scale": 0
-					},
-					{
-						"name": "MSUFACTOR",
-						"type": "decimal",
-						"precision": 18,
-						"scale": 6
-					},
-					{
-						"name": "CATEGORY",
-						"type": "varchar"
-					},
-					{
-						"name": "BRAND",
-						"type": "varchar"
-					},
-					{
-						"name": "BRANDFORM",
-						"type": "varchar"
-					},
-					{
-						"name": "TIMESTAMP",
-						"type": "datetime",
-						"precision": 23,
-						"scale": 3
-					},
-					{
-						"name": "SAPUPC",
-						"type": "int",
-						"precision": 10
-					},
-					{
-						"name": "Business",
-						"type": "varchar"
-					},
-					{
-						"name": "Sub Brand Form",
-						"type": "varchar"
-					},
-					{
-						"name": "itemid",
-						"type": "varchar"
-					},
-					{
-						"name": "Filename",
-						"type": "varchar"
-					},
-					{
-						"name": "LastModifiedDatetime",
-						"type": "smalldatetime",
-						"precision": 16,
-						"scale": 0
-					},
-					{
-						"name": "TimeStampIns",
-						"type": "smalldatetime",
-						"precision": 16,
-						"scale": 0
-					}
-				],
-				"typeProperties": {
-					"schema": "dbo",
-					"table": "Product_ncmaster"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/ProdHierarchy_DF')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "PnGDataFoundation",
-					"type": "LinkedServiceReference"
-				},
-				"folder": {
-					"name": "DF_DBConnection/LEAP Tables"
-				},
-				"annotations": [],
-				"type": "AzureSqlTable",
-				"schema": [
-					{
-						"name": "Legal_entity",
-						"type": "nvarchar"
-					},
-					{
-						"name": "Category Code",
-						"type": "nvarchar"
-					},
-					{
-						"name": "Category Name",
-						"type": "nvarchar"
-					},
-					{
-						"name": "Brand Code",
-						"type": "nvarchar"
-					},
-					{
-						"name": "Brand Name",
-						"type": "nvarchar"
-					},
-					{
-						"name": "Brand Form Code",
-						"type": "nvarchar"
-					},
-					{
-						"name": "Brand Form Name",
-						"type": "nvarchar"
-					},
-					{
-						"name": "SubBF Code",
-						"type": "nvarchar"
-					},
-					{
-						"name": "SubBF Name",
-						"type": "nvarchar"
-					},
-					{
-						"name": "Product_Code",
-						"type": "nvarchar"
-					},
-					{
-						"name": "Product_Short_Desc",
-						"type": "nvarchar"
-					},
-					{
-						"name": "Product_Full_Desc",
-						"type": "nvarchar"
-					},
-					{
-						"name": "Piece_Weight",
-						"type": "nvarchar"
-					},
-					{
-						"name": "Conversion_Qty",
-						"type": "nvarchar"
-					},
-					{
-						"name": "MSU",
-						"type": "nvarchar"
-					},
-					{
-						"name": "Volume",
-						"type": "nvarchar"
-					},
-					{
-						"name": "HSN_Code",
-						"type": "nvarchar"
-					},
-					{
-						"name": "IsDrug",
-						"type": "nvarchar"
-					},
-					{
-						"name": "Shelf Life",
-						"type": "nvarchar"
-					},
-					{
-						"name": "SAP UPC",
-						"type": "nvarchar"
-					},
-					{
-						"name": "Bar Code",
-						"type": "nvarchar"
-					},
-					{
-						"name": "DM3",
-						"type": "nvarchar"
-					},
-					{
-						"name": "FileSetId",
-						"type": "bigint",
-						"precision": 19
-					},
-					{
-						"name": "Filename",
-						"type": "varchar"
-					},
-					{
-						"name": "LastModifiedDatetime",
-						"type": "smalldatetime",
-						"precision": 16,
-						"scale": 0
-					},
-					{
-						"name": "TimeStampIns",
-						"type": "smalldatetime",
-						"precision": 16,
-						"scale": 0
-					}
-				],
-				"typeProperties": {
-					"schema": "dbo",
-					"table": "tmpTransferProductHierarchy"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/ProdHierarchy_TAS')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "TASDatabase",
-					"type": "LinkedServiceReference"
-				},
-				"folder": {
-					"name": "DF_DBConnection/LEAP Tables"
-				},
-				"annotations": [],
-				"type": "AzureSqlTable",
-				"schema": [
-					{
-						"name": "Legal_entity",
-						"type": "nvarchar"
-					},
-					{
-						"name": "Category Code",
-						"type": "nvarchar"
-					},
-					{
-						"name": "Category Name",
-						"type": "nvarchar"
-					},
-					{
-						"name": "Brand Code",
-						"type": "nvarchar"
-					},
-					{
-						"name": "Brand Name",
-						"type": "nvarchar"
-					},
-					{
-						"name": "Brand Form Code",
-						"type": "nvarchar"
-					},
-					{
-						"name": "Brand Form Name",
-						"type": "nvarchar"
-					},
-					{
-						"name": "SubBF Code",
-						"type": "nvarchar"
-					},
-					{
-						"name": "SubBF Name",
-						"type": "nvarchar"
-					},
-					{
-						"name": "Product_Code",
-						"type": "nvarchar"
-					},
-					{
-						"name": "Product_Short_Desc",
-						"type": "nvarchar"
-					},
-					{
-						"name": "Product_Full_Desc",
-						"type": "nvarchar"
-					},
-					{
-						"name": "Piece_Weight",
-						"type": "nvarchar"
-					},
-					{
-						"name": "Conversion_Qty",
-						"type": "nvarchar"
-					},
-					{
-						"name": "MSU",
-						"type": "nvarchar"
-					},
-					{
-						"name": "Volume",
-						"type": "nvarchar"
-					},
-					{
-						"name": "HSN_Code",
-						"type": "nvarchar"
-					},
-					{
-						"name": "IsDrug",
-						"type": "nvarchar"
-					},
-					{
-						"name": "Shelf Life",
-						"type": "nvarchar"
-					},
-					{
-						"name": "SAP UPC",
-						"type": "nvarchar"
-					},
-					{
-						"name": "Bar Code",
-						"type": "nvarchar"
-					},
-					{
-						"name": "DM3",
-						"type": "nvarchar"
-					},
-					{
-						"name": "FileSetId",
-						"type": "bigint",
-						"precision": 19
-					},
-					{
-						"name": "Filename",
-						"type": "varchar"
-					},
-					{
-						"name": "LastModifiedDatetime",
-						"type": "smalldatetime",
-						"precision": 16,
-						"scale": 0
-					},
-					{
-						"name": "TimeStampIns",
-						"type": "smalldatetime",
-						"precision": 16,
-						"scale": 0
-					}
-				],
-				"typeProperties": {
-					"schema": "dbo",
-					"table": "tmpTransferProductHierarchy"
 				}
 			},
 			"dependsOn": []
