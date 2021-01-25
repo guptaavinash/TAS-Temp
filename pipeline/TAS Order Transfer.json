@@ -98,6 +98,9 @@
 								},
 								"sink": {
 									"type": "DelimitedTextSink",
+									"storeSettings": {
+										"type": "AzureBlobStorageWriteSettings"
+									},
 									"formatSettings": {
 										"type": "DelimitedTextWriteSettings",
 										"quoteAllText": true,
@@ -122,7 +125,7 @@
 							],
 							"outputs": [
 								{
-									"referenceName": "S3TASOrderDataSet_Cloud1_File",
+									"referenceName": "TASOrderDataSet_Cloud1_File",
 									"type": "DatasetReference",
 									"parameters": {
 										"filename": {
