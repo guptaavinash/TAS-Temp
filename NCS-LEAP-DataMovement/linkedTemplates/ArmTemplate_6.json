@@ -8004,7 +8004,8 @@
 								"referenceName": "DS_TAS_tmpLeapDataLoadDPSR",
 								"type": "DatasetReference",
 								"parameters": {}
-							}
+							},
+							"firstRowOnly": false
 						}
 					},
 					{
@@ -8021,7 +8022,7 @@
 						"userProperties": [],
 						"typeProperties": {
 							"items": {
-								"value": "@activity('spGetAutoOrderFileList_Cloud1_Lookup').output.firstRow.FileSName\n",
+								"value": "@activity('spGetAutoOrderFileList_Cloud1_Lookup').output.value\n",
 								"type": "Expression"
 							},
 							"activities": [
@@ -8176,7 +8177,8 @@
 								"referenceName": "DS_TAS_tmpLeapDataLoadDPSR",
 								"type": "DatasetReference",
 								"parameters": {}
-							}
+							},
+							"firstRowOnly": false
 						}
 					},
 					{
@@ -8193,7 +8195,7 @@
 						"userProperties": [],
 						"typeProperties": {
 							"items": {
-								"value": "@activity('spGetAutoOrderFileList_Cloud2_Lookup').output.firstRow.FileSName\n",
+								"value": "@activity('spGetAutoOrderFileList_Cloud2_Lookup').output.value\n",
 								"type": "Expression"
 							},
 							"activities": [
@@ -8348,7 +8350,8 @@
 								"referenceName": "DS_TAS_tmpLeapDataLoadDPSR",
 								"type": "DatasetReference",
 								"parameters": {}
-							}
+							},
+							"firstRowOnly": false
 						}
 					},
 					{
@@ -8365,7 +8368,7 @@
 						"userProperties": [],
 						"typeProperties": {
 							"items": {
-								"value": "@activity('spGetAutoOrderFileList_Cloud3_Lookup').output.firstRow.FileSName\n",
+								"value": "@activity('spGetAutoOrderFileList_Cloud3_Lookup').output.value\n",
 								"type": "Expression"
 							},
 							"activities": [
