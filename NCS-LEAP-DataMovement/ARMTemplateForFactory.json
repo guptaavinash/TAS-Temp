@@ -41388,7 +41388,10 @@
 									"userProperties": [],
 									"typeProperties": {
 										"variableName": "bCheckIFFileExists_Cloud2",
-										"value": "0"
+										"value": {
+											"value": "@bool(0)",
+											"type": "Expression"
+										}
 									}
 								},
 								{
@@ -41561,7 +41564,10 @@
 									"userProperties": [],
 									"typeProperties": {
 										"variableName": "bCheckIFFileExists_Cloud2",
-										"value": "0"
+										"value": {
+											"value": "@bool(0)",
+											"type": "Expression"
+										}
 									}
 								},
 								{
@@ -41734,7 +41740,10 @@
 									"userProperties": [],
 									"typeProperties": {
 										"variableName": "bCheckIFFileExists_Cloud3",
-										"value": "0"
+										"value": {
+											"value": "@bool(0)",
+											"type": "Expression"
+										}
 									}
 								},
 								{
