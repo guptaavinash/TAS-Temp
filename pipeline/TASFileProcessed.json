@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "spGetAutoOrderFileList_Lookup",
+				"name": "spGetAutoOrderFileList_Cloud1_Lookup",
 				"type": "Lookup",
 				"dependsOn": [],
 				"policy": {
@@ -34,11 +34,11 @@
 				}
 			},
 			{
-				"name": "ForEach1",
+				"name": "ForEach_Cloud1",
 				"type": "ForEach",
 				"dependsOn": [
 					{
-						"activity": "spGetAutoOrderFileList_Lookup",
+						"activity": "spGetAutoOrderFileList_Cloud1_Lookup",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -47,7 +47,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"items": {
-						"value": "@activity('spGetAutoOrderFileList_Lookup').output.value\n",
+						"value": "@activity('spGetAutoOrderFileList_Cloud1_Lookup').output.value\n",
 						"type": "Expression"
 					},
 					"activities": [
