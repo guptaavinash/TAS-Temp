@@ -26,15 +26,7 @@
 					],
 					"storeSettings": {
 						"type": "AmazonS3ReadSettings",
-						"recursive": true,
-						"modifiedDatetimeStart": {
-							"value": "@pipeline().parameters.windowStart",
-							"type": "Expression"
-						},
-						"modifiedDatetimeEnd": {
-							"value": "@pipeline().parameters.windowEnd",
-							"type": "Expression"
-						}
+						"recursive": true
 					},
 					"formatSettings": {
 						"type": "BinaryReadSettings"
@@ -107,14 +99,6 @@
 									"storeSettings": {
 										"type": "AmazonS3ReadSettings",
 										"recursive": true,
-										"modifiedDatetimeStart": {
-											"value": "@pipeline().parameters.windowStart",
-											"type": "Expression"
-										},
-										"modifiedDatetimeEnd": {
-											"value": "@pipeline().parameters.windowEnd",
-											"type": "Expression"
-										},
 										"enablePartitionDiscovery": false
 									},
 									"formatSettings": {
@@ -224,14 +208,6 @@
 									"storeSettings": {
 										"type": "AmazonS3ReadSettings",
 										"recursive": true,
-										"modifiedDatetimeStart": {
-											"value": "@pipeline().parameters.windowStart",
-											"type": "Expression"
-										},
-										"modifiedDatetimeEnd": {
-											"value": "@pipeline().parameters.windowEnd",
-											"type": "Expression"
-										},
 										"enablePartitionDiscovery": false
 									},
 									"formatSettings": {
@@ -451,14 +427,6 @@
 				}
 			}
 		],
-		"parameters": {
-			"windowStart": {
-				"type": "string"
-			},
-			"windowEnd": {
-				"type": "string"
-			}
-		},
 		"folder": {
 			"name": "TASOrder"
 		},
