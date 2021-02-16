@@ -85,7 +85,14 @@
 						{
 							"name": "LeapOrderLog_Cloud3_Staging",
 							"type": "Copy",
-							"dependsOn": [],
+							"dependsOn": [
+								{
+									"activity": "LeapOrderLog_Cloud3",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
 							"policy": {
 								"timeout": "7.00:00:00",
 								"retry": 0,
@@ -180,6 +187,263 @@
 								"storeSettings": {
 									"type": "AmazonS3ReadSettings",
 									"recursive": true
+								}
+							}
+						},
+						{
+							"name": "LeapOrderLog_Cloud3",
+							"type": "Copy",
+							"dependsOn": [
+								{
+									"activity": "LookupspGetAutoTransferCycleIdForErrorOrder",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"policy": {
+								"timeout": "7.00:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"source": {
+									"type": "DelimitedTextSource",
+									"additionalColumns": [
+										{
+											"name": "TrnsCycleId",
+											"value": {
+												"value": "@activity('LookupspGetAutoTransferCycleIdForErrorOrder').output.firstRow.TrnsCycleId",
+												"type": "Expression"
+											}
+										}
+									],
+									"storeSettings": {
+										"type": "AmazonS3ReadSettings",
+										"recursive": true,
+										"modifiedDatetimeStart": {
+											"value": "@pipeline().parameters.windowStart",
+											"type": "Expression"
+										},
+										"modifiedDatetimeEnd": {
+											"value": "@pipeline().parameters.windowEnd",
+											"type": "Expression"
+										},
+										"enablePartitionDiscovery": false
+									},
+									"formatSettings": {
+										"type": "DelimitedTextReadSettings"
+									}
+								},
+								"sink": {
+									"type": "AzureSqlSink"
+								},
+								"enableStaging": false,
+								"validateDataConsistency": false,
+								"dataIntegrationUnits": 2,
+								"translator": {
+									"type": "TabularTranslator",
+									"mappings": [
+										{
+											"source": {
+												"name": "Branch_Code",
+												"type": "String"
+											},
+											"sink": {
+												"name": "Branch_Code",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"name": "Order_Number",
+												"type": "String"
+											},
+											"sink": {
+												"name": "Order_Number",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"name": "DSE_Code",
+												"type": "String"
+											},
+											"sink": {
+												"name": "DSE_Code",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"name": "Retailer_Code",
+												"type": "String"
+											},
+											"sink": {
+												"name": "Retailer_Code",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"name": "Route_Code",
+												"type": "String"
+											},
+											"sink": {
+												"name": "Route_Code",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"name": "Order_Date",
+												"type": "String"
+											},
+											"sink": {
+												"name": "Order_Date",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"name": "Exp_Delivery_Date",
+												"type": "String"
+											},
+											"sink": {
+												"name": "Exp_Delivery_Date",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"name": "SUBBF_Name",
+												"type": "String"
+											},
+											"sink": {
+												"name": "SUBBF_Name",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"name": "Order_Qty",
+												"type": "String"
+											},
+											"sink": {
+												"name": "Order_Qty",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"name": "TeleCaller_Name",
+												"type": "String"
+											},
+											"sink": {
+												"name": "TeleCaller_Name",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"name": "TeleCaller_Code",
+												"type": "String"
+											},
+											"sink": {
+												"name": "TeleCaller_Code",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"name": "PO_Number",
+												"type": "String"
+											},
+											"sink": {
+												"name": "PO_Number",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"name": "Error_Description",
+												"type": "String"
+											},
+											"sink": {
+												"name": "Error_Description",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"name": "TrnsCycleId",
+												"type": "String"
+											},
+											"sink": {
+												"name": "TrnsCycleId",
+												"type": "Int64"
+											}
+										}
+									]
+								}
+							},
+							"inputs": [
+								{
+									"referenceName": "S3TASOrderDataSet_Cloud3_File",
+									"type": "DatasetReference",
+									"parameters": {
+										"filename": {
+											"value": "@item().name",
+											"type": "Expression"
+										}
+									}
+								}
+							],
+							"outputs": [
+								{
+									"referenceName": "DS_TAS_tblDownloadOrderDetail_Error",
+									"type": "DatasetReference"
+								}
+							]
+						},
+						{
+							"name": "LookupspGetAutoTransferCycleIdForErrorOrder",
+							"type": "Lookup",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "7.00:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"source": {
+									"type": "AzureSqlSource",
+									"sqlReaderStoredProcedureName": "[dbo].[spGetAutoTransferCycleIdForErrorOrder]",
+									"storedProcedureParameters": {
+										"CloudId": {
+											"type": "Byte",
+											"value": "3"
+										},
+										"FileName": {
+											"type": "String",
+											"value": {
+												"value": "@item().name",
+												"type": "Expression"
+											}
+										}
+									},
+									"queryTimeout": "02:00:00",
+									"partitionOption": "None"
+								},
+								"dataset": {
+									"referenceName": "DS_TAS_tblDownloadOrderDetail_Error",
+									"type": "DatasetReference"
 								}
 							}
 						}
