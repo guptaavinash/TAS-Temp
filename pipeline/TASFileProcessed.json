@@ -132,6 +132,10 @@
 							],
 							"userProperties": [],
 							"typeProperties": {
+								"expression": {
+									"value": "@variables('bCheckIFFileExists')",
+									"type": "Expression"
+								},
 								"ifTrueActivities": [
 									{
 										"name": "spMarkAutoDownloadOrderFileProcessed",
@@ -298,6 +302,10 @@
 							],
 							"userProperties": [],
 							"typeProperties": {
+								"expression": {
+									"value": "@variables('bCheckIFFileExists_Cloud2')",
+									"type": "Expression"
+								},
 								"ifTrueActivities": [
 									{
 										"name": "spMarkAutoDownloadOrderFileProcessed_Cloud2",
@@ -464,6 +472,10 @@
 							],
 							"userProperties": [],
 							"typeProperties": {
+								"expression": {
+									"value": "@variables('bCheckIFFileExists_Cloud3')",
+									"type": "Expression"
+								},
 								"ifTrueActivities": [
 									{
 										"name": "spMarkAutoDownloadOrderFileProcessed_Cloud3",
