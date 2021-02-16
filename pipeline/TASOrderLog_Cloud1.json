@@ -139,7 +139,10 @@
 							"outputs": [
 								{
 									"referenceName": "TASOrderLogStorageDataset",
-									"type": "DatasetReference"
+									"type": "DatasetReference",
+									"parameters": {
+										"Directory": "Cloud01"
+									}
 								}
 							]
 						},
