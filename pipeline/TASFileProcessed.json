@@ -47,7 +47,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"items": {
-						"value": "@activity('spGetAutoOrderFileList_Cloud1_Lookup').output.value\n",
+						"value": "@activity('spGetAutoOrderFileList_Cloud1_Lookup').output.firstRow.FileSName\n",
 						"type": "Expression"
 					},
 					"activities": [
@@ -217,7 +217,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"items": {
-						"value": "@activity('spGetAutoOrderFileList_Cloud2_Lookup').output.value\n",
+						"value": "@activity('spGetAutoOrderFileList_Cloud2_Lookup').output.firstRow.FileSName\n",
 						"type": "Expression"
 					},
 					"activities": [
@@ -387,7 +387,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"items": {
-						"value": "@activity('spGetAutoOrderFileList_Cloud3_Lookup').output.value\n",
+						"value": "@activity('spGetAutoOrderFileList_Cloud3_Lookup').output.firstRow.FileSName\n",
 						"type": "Expression"
 					},
 					"activities": [
