@@ -85,7 +85,14 @@
 						{
 							"name": "LeapOrderLog_Cloud1_Staging",
 							"type": "Copy",
-							"dependsOn": [],
+							"dependsOn": [
+								{
+									"activity": "LookupspGetAutoTransferCycleIdForErrorOrder",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
 							"policy": {
 								"timeout": "7.00:00:00",
 								"retry": 0,
@@ -180,6 +187,44 @@
 								"storeSettings": {
 									"type": "AmazonS3ReadSettings",
 									"recursive": true
+								}
+							}
+						},
+						{
+							"name": "LookupspGetAutoTransferCycleIdForErrorOrder",
+							"type": "Lookup",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "7.00:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"source": {
+									"type": "AzureSqlSource",
+									"sqlReaderStoredProcedureName": "[dbo].[spGetAutoTransferCycleIdForErrorOrder]",
+									"storedProcedureParameters": {
+										"CloudId": {
+											"type": "Byte",
+											"value": "1"
+										},
+										"FileName": {
+											"type": "String",
+											"value": {
+												"value": "@item().name",
+												"type": "Expression"
+											}
+										}
+									},
+									"queryTimeout": "02:00:00",
+									"partitionOption": "None"
+								},
+								"dataset": {
+									"referenceName": "DS_TAS_tblDownloadOrderDetail_Error",
+									"type": "DatasetReference"
 								}
 							}
 						}
