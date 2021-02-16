@@ -1,5 +1,5 @@
 {
-	"name": "TAS Order Transfer",
+	"name": "TASOrderLog_Cloud1",
 	"properties": {
 		"activities": [
 			{
@@ -83,7 +83,7 @@
 					},
 					"activities": [
 						{
-							"name": "LeapCSV_Cloud1_Staging",
+							"name": "LeapOrderLog_Cloud1_Staging",
 							"type": "Copy",
 							"dependsOn": [],
 							"policy": {
@@ -96,7 +96,7 @@
 							"userProperties": [],
 							"typeProperties": {
 								"source": {
-									"type": "BinarySource",
+									"type": "DelimitedTextSource",
 									"storeSettings": {
 										"type": "AmazonS3ReadSettings",
 										"recursive": true,
@@ -107,10 +107,11 @@
 										"modifiedDatetimeEnd": {
 											"value": "@pipeline().parameters.windowEnd",
 											"type": "Expression"
-										}
+										},
+										"enablePartitionDiscovery": false
 									},
 									"formatSettings": {
-										"type": "BinaryReadSettings"
+										"type": "DelimitedTextReadSettings"
 									}
 								},
 								"sink": {
@@ -120,19 +121,16 @@
 									}
 								},
 								"enableStaging": false,
-								"preserve": [
-									"Attributes"
-								],
 								"validateDataConsistency": false,
 								"dataIntegrationUnits": 2
 							},
 							"inputs": [
 								{
-									"referenceName": "S3LeapDataSet_Cloud1_File",
+									"referenceName": "S3TASOrderDataSet_Cloud1_File",
 									"type": "DatasetReference",
 									"parameters": {
 										"filename": {
-											"value": "@item().name",
+											"value": "@item.name()",
 											"type": "Expression"
 										}
 									}
@@ -146,11 +144,11 @@
 							]
 						},
 						{
-							"name": "DeleteFiles_Cloud1",
+							"name": "DeletelogFiles_Cloud1",
 							"type": "Delete",
 							"dependsOn": [
 								{
-									"activity": "LeapCSV_Cloud1_Staging",
+									"activity": "LeapOrderLog_Cloud1_Staging",
 									"dependencyConditions": [
 										"Succeeded"
 									]
@@ -166,7 +164,7 @@
 							"userProperties": [],
 							"typeProperties": {
 								"dataset": {
-									"referenceName": "S3LeapDataSet_Cloud1_File",
+									"referenceName": "S3TASOrderDataSet_Cloud1_File",
 									"type": "DatasetReference",
 									"parameters": {
 										"filename": {
@@ -175,14 +173,7 @@
 										}
 									}
 								},
-								"logStorageSettings": {
-									"linkedServiceName": {
-										"referenceName": "NCSdataStorageLink",
-										"type": "LinkedServiceReference"
-									},
-									"path": "log"
-								},
-								"enableLogging": true,
+								"enableLogging": false,
 								"storeSettings": {
 									"type": "AmazonS3ReadSettings",
 									"recursive": true
