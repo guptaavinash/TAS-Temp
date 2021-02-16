@@ -1,0 +1,113 @@
+{
+	"name": "TASFileProcessed",
+	"properties": {
+		"activities": [
+			{
+				"name": "spGetAutoOrderFileList_Lookup",
+				"type": "Lookup",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderStoredProcedureName": "[dbo].[spGetAutoOrderFileList]",
+						"storedProcedureParameters": {
+							"CloudId": {
+								"type": "Int32",
+								"value": "1"
+							}
+						},
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"dataset": {
+						"referenceName": "DS_TAS_tmpLeapDataLoadDPSR",
+						"type": "DatasetReference"
+					}
+				}
+			},
+			{
+				"name": "ForEach1",
+				"type": "ForEach",
+				"dependsOn": [
+					{
+						"activity": "spGetAutoOrderFileList_Lookup",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@activity('spGetAutoOrderFileList_Lookup').output.value\n",
+						"type": "Expression"
+					},
+					"activities": [
+						{
+							"name": "Cloud1OrderFilesMetaData",
+							"type": "GetMetadata",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "7.00:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"dataset": {
+									"referenceName": "S3LeapDataSet_Cloud1_Folder",
+									"type": "DatasetReference"
+								},
+								"fieldList": [
+									"childItems",
+									"itemName",
+									"lastModified"
+								],
+								"storeSettings": {
+									"type": "AmazonS3ReadSettings",
+									"recursive": true
+								},
+								"formatSettings": {
+									"type": "BinaryReadSettings"
+								}
+							}
+						},
+						{
+							"name": "ForEachCloud1OrderFolderFiles",
+							"type": "ForEach",
+							"dependsOn": [
+								{
+									"activity": "Cloud1OrderFilesMetaData",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"userProperties": [],
+							"typeProperties": {
+								"items": {
+									"value": "@activity('Cloud1OrderFilesMetaData').output.value",
+									"type": "Expression"
+								}
+							}
+						}
+					]
+				}
+			}
+		],
+		"folder": {
+			"name": "TASOrder"
+		},
+		"annotations": []
+	}
+}
