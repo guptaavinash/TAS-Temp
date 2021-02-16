@@ -208,10 +208,6 @@
 									"storeSettings": {
 										"type": "AmazonS3ReadSettings",
 										"recursive": true,
-										"modifiedDatetimeStart": {
-											"value": "@pipeline().parameters.windowStart",
-											"type": "Expression"
-										},
 										"enablePartitionDiscovery": false
 									},
 									"formatSettings": {
