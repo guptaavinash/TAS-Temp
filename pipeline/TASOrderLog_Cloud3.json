@@ -195,6 +195,9 @@
 				"type": "string"
 			}
 		},
+		"folder": {
+			"name": "TASOrder"
+		},
 		"annotations": []
 	}
 }
