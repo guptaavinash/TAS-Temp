@@ -5,6 +5,11 @@
 			"referenceName": "NCSdataStorageLink",
 			"type": "LinkedServiceReference"
 		},
+		"parameters": {
+			"Directory": {
+				"type": "string"
+			}
+		},
 		"folder": {
 			"name": "StagingSource"
 		},
@@ -13,6 +18,10 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
+				"folderPath": {
+					"value": "@dataset().Directory",
+					"type": "Expression"
+				},
 				"container": "tasorderlog"
 			}
 		}
