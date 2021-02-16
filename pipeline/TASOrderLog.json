@@ -5,14 +5,7 @@
 			{
 				"name": "TASOrderLog_Cloud1",
 				"type": "ExecutePipeline",
-				"dependsOn": [
-					{
-						"activity": "TASFileProcessed",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
+				"dependsOn": [],
 				"userProperties": [],
 				"typeProperties": {
 					"pipeline": {
@@ -57,19 +50,6 @@
 				"typeProperties": {
 					"pipeline": {
 						"referenceName": "TASOrderLog_Cloud3",
-						"type": "PipelineReference"
-					},
-					"waitOnCompletion": true
-				}
-			},
-			{
-				"name": "TASFileProcessed",
-				"type": "ExecutePipeline",
-				"dependsOn": [],
-				"userProperties": [],
-				"typeProperties": {
-					"pipeline": {
-						"referenceName": "TASFileProcessed",
 						"type": "PipelineReference"
 					},
 					"waitOnCompletion": true

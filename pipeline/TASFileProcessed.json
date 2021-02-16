@@ -74,7 +74,10 @@
 							"typeProperties": {
 								"dataset": {
 									"referenceName": "S3TASOrderDataSet_Cloud1_Folder",
-									"type": "DatasetReference"
+									"type": "DatasetReference",
+									"parameters": {
+										"Directory": "LEAP/Cloud1/Upload"
+									}
 								},
 								"fieldList": [
 									"childItems",
