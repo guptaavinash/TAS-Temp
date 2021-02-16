@@ -95,7 +95,7 @@
 							"dependsOn": [],
 							"userProperties": [],
 							"typeProperties": {
-								"variableName": "bCheckIFFileExists",
+								"variableName": "bCheckIFFileExists_Cloud2",
 								"value": "0"
 							}
 						},
@@ -112,7 +112,7 @@
 							],
 							"userProperties": [],
 							"typeProperties": {
-								"variableName": "bCheckIFFileExists",
+								"variableName": "bCheckIFFileExists_Cloud2",
 								"value": {
 									"value": "@bool(startswith(item().name,string(activity('Cloud1OrderFilesMetaData').output.childItems)))\n\n",
 									"type": "Expression"
@@ -167,10 +167,348 @@
 						}
 					]
 				}
+			},
+			{
+				"name": "spGetAutoOrderFileList_Cloud2_Lookup",
+				"type": "Lookup",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderStoredProcedureName": "[dbo].[spGetAutoOrderFileList]",
+						"storedProcedureParameters": {
+							"CloudId": {
+								"type": "Int32",
+								"value": "2"
+							}
+						},
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"dataset": {
+						"referenceName": "DS_TAS_tmpLeapDataLoadDPSR",
+						"type": "DatasetReference"
+					}
+				}
+			},
+			{
+				"name": "ForEach_Cloud2",
+				"type": "ForEach",
+				"dependsOn": [
+					{
+						"activity": "spGetAutoOrderFileList_Cloud2_Lookup",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@activity('spGetAutoOrderFileList_Cloud2_Lookup').output.value\n",
+						"type": "Expression"
+					},
+					"activities": [
+						{
+							"name": "Cloud2OrderFilesMetaData",
+							"type": "GetMetadata",
+							"dependsOn": [
+								{
+									"activity": "bCheckIFFileExistsCloud2Default",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"policy": {
+								"timeout": "7.00:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"dataset": {
+									"referenceName": "S3TASOrderDataSet_Cloud2_Folder",
+									"type": "DatasetReference"
+								},
+								"fieldList": [
+									"childItems",
+									"itemName",
+									"lastModified"
+								],
+								"storeSettings": {
+									"type": "AmazonS3ReadSettings",
+									"recursive": true
+								},
+								"formatSettings": {
+									"type": "BinaryReadSettings"
+								}
+							}
+						},
+						{
+							"name": "bCheckIFFileExistsCloud2Default",
+							"type": "SetVariable",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "bCheckIFFileExists_Cloud2",
+								"value": "0"
+							}
+						},
+						{
+							"name": "bCheckIFFileExistsCloud2",
+							"type": "SetVariable",
+							"dependsOn": [
+								{
+									"activity": "Cloud2OrderFilesMetaData",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "bCheckIFFileExists_Cloud2",
+								"value": {
+									"value": "@bool(startswith(item().name,string(activity('Cloud2OrderFilesMetaData').output.childItems)))\n\n",
+									"type": "Expression"
+								}
+							}
+						},
+						{
+							"name": "If File Exists Cloud2",
+							"type": "IfCondition",
+							"dependsOn": [
+								{
+									"activity": "bCheckIFFileExistsCloud2",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"userProperties": [],
+							"typeProperties": {
+								"ifTrueActivities": [
+									{
+										"name": "spMarkAutoDownloadOrderFileProcessed_Cloud2",
+										"type": "SqlServerStoredProcedure",
+										"dependsOn": [],
+										"policy": {
+											"timeout": "7.00:00:00",
+											"retry": 0,
+											"retryIntervalInSeconds": 30,
+											"secureOutput": false,
+											"secureInput": false
+										},
+										"userProperties": [],
+										"typeProperties": {
+											"storedProcedureName": "[dbo].[spMarkAutoDownloadOrderFileProcessed]",
+											"storedProcedureParameters": {
+												"TrnsCycleId": {
+													"value": {
+														"value": "@item.TrnsCycleId",
+														"type": "Expression"
+													},
+													"type": "Int64"
+												}
+											}
+										},
+										"linkedServiceName": {
+											"referenceName": "TASDatabase",
+											"type": "LinkedServiceReference"
+										}
+									}
+								]
+							}
+						}
+					]
+				}
+			},
+			{
+				"name": "spGetAutoOrderFileList_Cloud3_Lookup",
+				"type": "Lookup",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderStoredProcedureName": "[dbo].[spGetAutoOrderFileList]",
+						"storedProcedureParameters": {
+							"CloudId": {
+								"type": "Int32",
+								"value": "3"
+							}
+						},
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"dataset": {
+						"referenceName": "DS_TAS_tmpLeapDataLoadDPSR",
+						"type": "DatasetReference"
+					}
+				}
+			},
+			{
+				"name": "ForEach_Cloud3",
+				"type": "ForEach",
+				"dependsOn": [
+					{
+						"activity": "spGetAutoOrderFileList_Cloud3_Lookup",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@activity('spGetAutoOrderFileList_Cloud3_Lookup').output.value\n",
+						"type": "Expression"
+					},
+					"activities": [
+						{
+							"name": "Cloud3OrderFilesMetaData",
+							"type": "GetMetadata",
+							"dependsOn": [
+								{
+									"activity": "bCheckIFFileExistsCloud3Default",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"policy": {
+								"timeout": "7.00:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"dataset": {
+									"referenceName": "S3TASOrderDataSet_Cloud3_Folder",
+									"type": "DatasetReference"
+								},
+								"fieldList": [
+									"childItems",
+									"itemName",
+									"lastModified"
+								],
+								"storeSettings": {
+									"type": "AmazonS3ReadSettings",
+									"recursive": true
+								},
+								"formatSettings": {
+									"type": "BinaryReadSettings"
+								}
+							}
+						},
+						{
+							"name": "bCheckIFFileExistsCloud3Default",
+							"type": "SetVariable",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "bCheckIFFileExists_Cloud3",
+								"value": "0"
+							}
+						},
+						{
+							"name": "bCheckIFFileExistsCloud3",
+							"type": "SetVariable",
+							"dependsOn": [
+								{
+									"activity": "Cloud3OrderFilesMetaData",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "bCheckIFFileExists_Cloud3",
+								"value": {
+									"value": "@bool(startswith(item().name,string(activity('Cloud3OrderFilesMetaData').output.childItems)))\n\n",
+									"type": "Expression"
+								}
+							}
+						},
+						{
+							"name": "If File Exists Cloud3",
+							"type": "IfCondition",
+							"dependsOn": [
+								{
+									"activity": "bCheckIFFileExistsCloud3",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"userProperties": [],
+							"typeProperties": {
+								"ifTrueActivities": [
+									{
+										"name": "spMarkAutoDownloadOrderFileProcessed_Cloud3",
+										"type": "SqlServerStoredProcedure",
+										"dependsOn": [],
+										"policy": {
+											"timeout": "7.00:00:00",
+											"retry": 0,
+											"retryIntervalInSeconds": 30,
+											"secureOutput": false,
+											"secureInput": false
+										},
+										"userProperties": [],
+										"typeProperties": {
+											"storedProcedureName": "[dbo].[spMarkAutoDownloadOrderFileProcessed]",
+											"storedProcedureParameters": {
+												"TrnsCycleId": {
+													"value": {
+														"value": "@item.TrnsCycleId",
+														"type": "Expression"
+													},
+													"type": "Int64"
+												}
+											}
+										},
+										"linkedServiceName": {
+											"referenceName": "TASDatabase",
+											"type": "LinkedServiceReference"
+										}
+									}
+								]
+							}
+						}
+					]
+				}
 			}
 		],
 		"variables": {
 			"bCheckIFFileExists": {
+				"type": "Boolean"
+			},
+			"bCheckIFFileExists_Cloud2": {
+				"type": "Boolean"
+			},
+			"bCheckIFFileExists_Cloud3": {
 				"type": "Boolean"
 			}
 		},
