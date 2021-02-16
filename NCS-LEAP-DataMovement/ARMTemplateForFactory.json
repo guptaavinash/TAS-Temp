@@ -41409,7 +41409,7 @@
 									"typeProperties": {
 										"variableName": "bCheckIFFileExists_Cloud2",
 										"value": {
-											"value": "@bool(startswith(item().name,string(activity('Cloud1OrderFilesMetaData').output.childItems)))\n\n",
+											"value": "@bool(startswith(item().FileSName,string(activity('Cloud1OrderFilesMetaData').output.childItems)))\n\n",
 											"type": "Expression"
 										}
 									}
@@ -41585,7 +41585,7 @@
 									"typeProperties": {
 										"variableName": "bCheckIFFileExists_Cloud2",
 										"value": {
-											"value": "@bool(startswith(item().name,string(activity('Cloud2OrderFilesMetaData').output.childItems)))\n\n",
+											"value": "@bool(startswith(item().FileSName,string(activity('Cloud2OrderFilesMetaData').output.childItems)))\n\n",
 											"type": "Expression"
 										}
 									}
@@ -41761,7 +41761,7 @@
 									"typeProperties": {
 										"variableName": "bCheckIFFileExists_Cloud3",
 										"value": {
-											"value": "@bool(startswith(item().name,string(activity('Cloud3OrderFilesMetaData').output.childItems)))\n\n",
+											"value": "@bool(startswith(item().FileSName,string(activity('Cloud3OrderFilesMetaData').output.childItems)))\n\n",
 											"type": "Expression"
 										}
 									}
