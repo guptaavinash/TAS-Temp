@@ -30564,7 +30564,9 @@
 							"dataset": {
 								"referenceName": "S3TASOrderDataSet_Cloud1_Folder",
 								"type": "DatasetReference",
-								"parameters": {}
+								"parameters": {
+									"Directory": "LEAP/Cloud1/Log"
+								}
 							},
 							"fieldList": [
 								"childItems",
@@ -30970,7 +30972,7 @@
 											"type": "DatasetReference",
 											"parameters": {
 												"filename": {
-													"value": "@item.name()",
+													"value": "@item().name",
 													"type": "Expression"
 												}
 											}
@@ -38724,6 +38726,11 @@
 					"referenceName": "Leap_AmazonS3",
 					"type": "LinkedServiceReference"
 				},
+				"parameters": {
+					"Directory": {
+						"type": "string"
+					}
+				},
 				"folder": {
 					"name": "TASOrders"
 				},
@@ -38733,7 +38740,10 @@
 					"location": {
 						"type": "AmazonS3Location",
 						"bucketName": "leapdata-tas",
-						"folderPath": "LEAP/Cloud1/Log"
+						"folderPath": {
+							"value": "@dataset().Directory",
+							"type": "Expression"
+						}
 					}
 				}
 			},
@@ -38790,6 +38800,11 @@
 					"referenceName": "Leap_AmazonS3",
 					"type": "LinkedServiceReference"
 				},
+				"parameters": {
+					"Directory": {
+						"type": "string"
+					}
+				},
 				"folder": {
 					"name": "TASOrders"
 				},
@@ -38799,7 +38814,10 @@
 					"location": {
 						"type": "AmazonS3Location",
 						"bucketName": "leapdata-tas",
-						"folderPath": "LEAP/Cloud2/Log"
+						"folderPath": {
+							"value": "@dataset().Directory",
+							"type": "Expression"
+						}
 					}
 				}
 			},
@@ -38856,6 +38874,11 @@
 					"referenceName": "Leap_AmazonS3",
 					"type": "LinkedServiceReference"
 				},
+				"parameters": {
+					"Directory": {
+						"type": "string"
+					}
+				},
 				"folder": {
 					"name": "TASOrders"
 				},
@@ -38865,7 +38888,10 @@
 					"location": {
 						"type": "AmazonS3Location",
 						"bucketName": "leapdata-tas",
-						"folderPath": "LEAP/Cloud3/Log"
+						"folderPath": {
+							"value": "@dataset().Directory",
+							"type": "Expression"
+						}
 					}
 				}
 			},
@@ -40220,7 +40246,9 @@
 							"dataset": {
 								"referenceName": "S3TASOrderDataSet_Cloud2_Folder",
 								"type": "DatasetReference",
-								"parameters": {}
+								"parameters": {
+									"Directory": "LEAP/Cloud2/Log"
+								}
 							},
 							"fieldList": [
 								"childItems",
@@ -40672,7 +40700,9 @@
 							"dataset": {
 								"referenceName": "S3TASOrderDataSet_Cloud3_Folder",
 								"type": "DatasetReference",
-								"parameters": {}
+								"parameters": {
+									"Directory": "LEAP/Cloud3/Log"
+								}
 							},
 							"fieldList": [
 								"childItems",
@@ -41111,14 +41141,7 @@
 					{
 						"name": "TASOrderLog_Cloud1",
 						"type": "ExecutePipeline",
-						"dependsOn": [
-							{
-								"activity": "TASFileProcessed",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
+						"dependsOn": [],
 						"userProperties": [],
 						"typeProperties": {
 							"pipeline": {
@@ -41170,20 +41193,6 @@
 							"waitOnCompletion": true,
 							"parameters": {}
 						}
-					},
-					{
-						"name": "TASFileProcessed",
-						"type": "ExecutePipeline",
-						"dependsOn": [],
-						"userProperties": [],
-						"typeProperties": {
-							"pipeline": {
-								"referenceName": "TASFileProcessed",
-								"type": "PipelineReference"
-							},
-							"waitOnCompletion": true,
-							"parameters": {}
-						}
 					}
 				],
 				"folder": {
@@ -41194,8 +41203,7 @@
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/pipelines/TASOrderLog_Cloud1')]",
 				"[concat(variables('factoryId'), '/pipelines/TASOrderLog_Cloud2')]",
-				"[concat(variables('factoryId'), '/pipelines/TASOrderLog_Cloud3')]",
-				"[concat(variables('factoryId'), '/pipelines/TASFileProcessed')]"
+				"[concat(variables('factoryId'), '/pipelines/TASOrderLog_Cloud3')]"
 			]
 		},
 		{
@@ -41365,7 +41373,9 @@
 										"dataset": {
 											"referenceName": "S3TASOrderDataSet_Cloud1_Folder",
 											"type": "DatasetReference",
-											"parameters": {}
+											"parameters": {
+												"Directory": "LEAP/Cloud1/Upload"
+											}
 										},
 										"fieldList": [
 											"childItems",
@@ -41541,7 +41551,9 @@
 										"dataset": {
 											"referenceName": "S3TASOrderDataSet_Cloud2_Folder",
 											"type": "DatasetReference",
-											"parameters": {}
+											"parameters": {
+												"Directory": "LEAP/Cloud2/Upload"
+											}
 										},
 										"fieldList": [
 											"childItems",
@@ -41717,7 +41729,9 @@
 										"dataset": {
 											"referenceName": "S3TASOrderDataSet_Cloud3_Folder",
 											"type": "DatasetReference",
-											"parameters": {}
+											"parameters": {
+												"Directory": "LEAP/Cloud3/Upload"
+											}
 										},
 										"fieldList": [
 											"childItems",

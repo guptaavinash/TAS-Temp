@@ -5081,7 +5081,9 @@
 							"dataset": {
 								"referenceName": "S3TASOrderDataSet_Cloud1_Folder",
 								"type": "DatasetReference",
-								"parameters": {}
+								"parameters": {
+									"Directory": "LEAP/Cloud1/Log"
+								}
 							},
 							"fieldList": [
 								"childItems",
@@ -5487,7 +5489,7 @@
 											"type": "DatasetReference",
 											"parameters": {
 												"filename": {
-													"value": "@item.name()",
+													"value": "@item().name",
 													"type": "Expression"
 												}
 											}
@@ -7099,7 +7101,9 @@
 							"dataset": {
 								"referenceName": "S3TASOrderDataSet_Cloud2_Folder",
 								"type": "DatasetReference",
-								"parameters": {}
+								"parameters": {
+									"Directory": "LEAP/Cloud2/Log"
+								}
 							},
 							"fieldList": [
 								"childItems",
@@ -7545,7 +7549,9 @@
 							"dataset": {
 								"referenceName": "S3TASOrderDataSet_Cloud3_Folder",
 								"type": "DatasetReference",
-								"parameters": {}
+								"parameters": {
+									"Directory": "LEAP/Cloud3/Log"
+								}
 							},
 							"fieldList": [
 								"childItems",
@@ -8049,7 +8055,9 @@
 										"dataset": {
 											"referenceName": "S3TASOrderDataSet_Cloud1_Folder",
 											"type": "DatasetReference",
-											"parameters": {}
+											"parameters": {
+												"Directory": "LEAP/Cloud1/Upload"
+											}
 										},
 										"fieldList": [
 											"childItems",
@@ -8225,7 +8233,9 @@
 										"dataset": {
 											"referenceName": "S3TASOrderDataSet_Cloud2_Folder",
 											"type": "DatasetReference",
-											"parameters": {}
+											"parameters": {
+												"Directory": "LEAP/Cloud2/Upload"
+											}
 										},
 										"fieldList": [
 											"childItems",
@@ -8401,7 +8411,9 @@
 										"dataset": {
 											"referenceName": "S3TASOrderDataSet_Cloud3_Folder",
 											"type": "DatasetReference",
-											"parameters": {}
+											"parameters": {
+												"Directory": "LEAP/Cloud3/Upload"
+											}
 										},
 										"fieldList": [
 											"childItems",

@@ -969,6 +969,11 @@
 					"referenceName": "Leap_AmazonS3",
 					"type": "LinkedServiceReference"
 				},
+				"parameters": {
+					"Directory": {
+						"type": "string"
+					}
+				},
 				"folder": {
 					"name": "TASOrders"
 				},
@@ -978,7 +983,10 @@
 					"location": {
 						"type": "AmazonS3Location",
 						"bucketName": "leapdata-tas",
-						"folderPath": "LEAP/Cloud1/Log"
+						"folderPath": {
+							"value": "@dataset().Directory",
+							"type": "Expression"
+						}
 					}
 				}
 			},
@@ -1031,6 +1039,11 @@
 					"referenceName": "Leap_AmazonS3",
 					"type": "LinkedServiceReference"
 				},
+				"parameters": {
+					"Directory": {
+						"type": "string"
+					}
+				},
 				"folder": {
 					"name": "TASOrders"
 				},
@@ -1040,7 +1053,10 @@
 					"location": {
 						"type": "AmazonS3Location",
 						"bucketName": "leapdata-tas",
-						"folderPath": "LEAP/Cloud2/Log"
+						"folderPath": {
+							"value": "@dataset().Directory",
+							"type": "Expression"
+						}
 					}
 				}
 			},
@@ -1093,6 +1109,11 @@
 					"referenceName": "Leap_AmazonS3",
 					"type": "LinkedServiceReference"
 				},
+				"parameters": {
+					"Directory": {
+						"type": "string"
+					}
+				},
 				"folder": {
 					"name": "TASOrders"
 				},
@@ -1102,7 +1123,10 @@
 					"location": {
 						"type": "AmazonS3Location",
 						"bucketName": "leapdata-tas",
-						"folderPath": "LEAP/Cloud3/Log"
+						"folderPath": {
+							"value": "@dataset().Directory",
+							"type": "Expression"
+						}
 					}
 				}
 			},
