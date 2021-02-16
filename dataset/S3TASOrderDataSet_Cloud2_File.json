@@ -19,7 +19,7 @@
 			"location": {
 				"type": "AmazonS3Location",
 				"bucketName": "leapdata-tas",
-				"folderPath": "TASOrdersQA02/Upload",
+				"folderPath": "LEAP/Cloud2/Log",
 				"fileName": {
 					"value": "@dataset().filename",
 					"type": "Expression"
