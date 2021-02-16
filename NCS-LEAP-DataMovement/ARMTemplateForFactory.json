@@ -41445,7 +41445,7 @@
 													"storedProcedureParameters": {
 														"TrnsCycleId": {
 															"value": {
-																"value": "@item.TrnsCycleId",
+																"value": "@item().TrnsCycleId",
 																"type": "Expression"
 															},
 															"type": "Int64"
@@ -41617,7 +41617,7 @@
 													"storedProcedureParameters": {
 														"TrnsCycleId": {
 															"value": {
-																"value": "@item.TrnsCycleId",
+																"value": "@item().TrnsCycleId",
 																"type": "Expression"
 															},
 															"type": "Int64"
@@ -41789,7 +41789,7 @@
 													"storedProcedureParameters": {
 														"TrnsCycleId": {
 															"value": {
-																"value": "@item.TrnsCycleId",
+																"value": "@item().TrnsCycleId",
 																"type": "Expression"
 															},
 															"type": "Int64"
