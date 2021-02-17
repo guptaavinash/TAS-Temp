@@ -296,6 +296,9 @@
 						}
 					}
 				],
+				"folder": {
+					"name": "Other Pipelines"
+				},
 				"annotations": []
 			},
 			"dependsOn": [
@@ -354,6 +357,9 @@
 						}
 					}
 				],
+				"folder": {
+					"name": "Other Pipelines"
+				},
 				"annotations": []
 			},
 			"dependsOn": [
@@ -482,6 +488,9 @@
 						"type": "String"
 					}
 				},
+				"folder": {
+					"name": "OtherDataSet"
+				},
 				"annotations": [],
 				"type": "Binary",
 				"typeProperties": {
@@ -518,6 +527,9 @@
 					"filename": {
 						"type": "string"
 					}
+				},
+				"folder": {
+					"name": "OtherDataSet"
 				},
 				"annotations": [],
 				"type": "Binary",
@@ -561,6 +573,9 @@
 						"type": "String"
 					}
 				},
+				"folder": {
+					"name": "OtherDataSet"
+				},
 				"annotations": [],
 				"type": "Binary",
 				"typeProperties": {
@@ -597,6 +612,9 @@
 					"Directory": {
 						"type": "string"
 					}
+				},
+				"folder": {
+					"name": "OtherDataSet"
 				},
 				"annotations": [],
 				"type": "DelimitedText",
@@ -841,6 +859,9 @@
 					"directory": {
 						"type": "string"
 					}
+				},
+				"folder": {
+					"name": "OtherDataSet"
 				},
 				"annotations": [],
 				"type": "Binary",

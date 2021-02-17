@@ -21,6 +21,9 @@
 					"referenceName": "TASDatabase",
 					"type": "LinkedServiceReference"
 				},
+				"folder": {
+					"name": "OtherDataSet"
+				},
 				"annotations": [],
 				"type": "AzureSqlTable",
 				"schema": [
@@ -121,6 +124,9 @@
 				"linkedServiceName": {
 					"referenceName": "TASDatabase",
 					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "OtherDataSet"
 				},
 				"annotations": [],
 				"type": "AzureSqlTable",
@@ -660,6 +666,9 @@
 					"filename": {
 						"type": "string"
 					}
+				},
+				"folder": {
+					"name": "OtherDataSet"
 				},
 				"annotations": [],
 				"type": "Binary",

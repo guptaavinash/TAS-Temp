@@ -226,6 +226,9 @@
 						"type": "string"
 					}
 				},
+				"folder": {
+					"name": "OtherDataSet"
+				},
 				"annotations": [],
 				"type": "Binary",
 				"typeProperties": {
@@ -264,6 +267,9 @@
 					"filename": {
 						"type": "string"
 					}
+				},
+				"folder": {
+					"name": "OtherDataSet"
 				},
 				"annotations": [],
 				"type": "Binary",
@@ -304,6 +310,9 @@
 						"type": "string"
 					}
 				},
+				"folder": {
+					"name": "OtherDataSet"
+				},
 				"annotations": [],
 				"type": "Binary",
 				"typeProperties": {
@@ -342,6 +351,9 @@
 					"filename": {
 						"type": "string"
 					}
+				},
+				"folder": {
+					"name": "OtherDataSet"
 				},
 				"annotations": [],
 				"type": "Binary",
@@ -386,6 +398,9 @@
 						"type": "string"
 					}
 				},
+				"folder": {
+					"name": "OtherDataSet"
+				},
 				"annotations": [],
 				"type": "Binary",
 				"typeProperties": {
@@ -426,6 +441,9 @@
 						"type": "String"
 					}
 				},
+				"folder": {
+					"name": "OtherDataSet"
+				},
 				"annotations": [],
 				"type": "Binary",
 				"typeProperties": {
@@ -461,6 +479,9 @@
 					"Directory": {
 						"type": "String"
 					}
+				},
+				"folder": {
+					"name": "OtherDataSet"
 				},
 				"annotations": [],
 				"type": "Binary",

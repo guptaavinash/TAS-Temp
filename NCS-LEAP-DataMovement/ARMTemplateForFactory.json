@@ -21852,6 +21852,9 @@
 						]
 					}
 				],
+				"folder": {
+					"name": "Other Pipelines"
+				},
 				"annotations": []
 			},
 			"dependsOn": [
@@ -21994,6 +21997,9 @@
 						}
 					}
 				],
+				"folder": {
+					"name": "Other Pipelines"
+				},
 				"annotations": []
 			},
 			"dependsOn": [
@@ -22206,6 +22212,9 @@
 						}
 					}
 				],
+				"folder": {
+					"name": "Other Pipelines"
+				},
 				"annotations": []
 			},
 			"dependsOn": [
@@ -27637,6 +27646,9 @@
 						}
 					}
 				],
+				"folder": {
+					"name": "Other Pipelines"
+				},
 				"annotations": []
 			},
 			"dependsOn": [
@@ -28839,6 +28851,9 @@
 						}
 					}
 				],
+				"folder": {
+					"name": "Other Pipelines"
+				},
 				"annotations": []
 			},
 			"dependsOn": [
@@ -29075,6 +29090,9 @@
 						"type": "String"
 					}
 				},
+				"folder": {
+					"name": "Other Pipelines"
+				},
 				"annotations": []
 			},
 			"dependsOn": [
@@ -29215,6 +29233,9 @@
 					"DestinationStore_Directory": {
 						"type": "String"
 					}
+				},
+				"folder": {
+					"name": "Other Pipelines"
 				},
 				"annotations": []
 			},
@@ -29364,6 +29385,9 @@
 						"type": "String"
 					}
 				},
+				"folder": {
+					"name": "Other Pipelines"
+				},
 				"annotations": []
 			},
 			"dependsOn": [
@@ -29511,6 +29535,9 @@
 					"DestinationStore_Directory": {
 						"type": "String"
 					}
+				},
+				"folder": {
+					"name": "Other Pipelines"
 				},
 				"annotations": []
 			},
@@ -29705,6 +29732,9 @@
 					"DestinationStore_Directory": {
 						"type": "String"
 					}
+				},
+				"folder": {
+					"name": "Other Pipelines"
 				},
 				"annotations": []
 			},
@@ -29944,6 +29974,9 @@
 					"DestinationStore_Directory": {
 						"type": "String"
 					}
+				},
+				"folder": {
+					"name": "Other Pipelines"
 				},
 				"annotations": []
 			},
@@ -31174,6 +31207,9 @@
 						"type": "Boolean"
 					}
 				},
+				"folder": {
+					"name": "Other Pipelines"
+				},
 				"annotations": []
 			},
 			"dependsOn": [
@@ -31208,6 +31244,9 @@
 						}
 					}
 				],
+				"folder": {
+					"name": "Other Pipelines"
+				},
 				"annotations": []
 			},
 			"dependsOn": [
@@ -32564,6 +32603,9 @@
 						]
 					}
 				],
+				"folder": {
+					"name": "Other Pipelines"
+				},
 				"annotations": []
 			},
 			"dependsOn": [
@@ -32637,6 +32679,9 @@
 						}
 					}
 				],
+				"folder": {
+					"name": "Other Pipelines"
+				},
 				"annotations": []
 			},
 			"dependsOn": [
@@ -32765,6 +32810,9 @@
 						"type": "String"
 					}
 				},
+				"folder": {
+					"name": "OtherDataSet"
+				},
 				"annotations": [],
 				"type": "Binary",
 				"typeProperties": {
@@ -32801,6 +32849,9 @@
 					"filename": {
 						"type": "string"
 					}
+				},
+				"folder": {
+					"name": "OtherDataSet"
 				},
 				"annotations": [],
 				"type": "Binary",
@@ -32844,6 +32895,9 @@
 						"type": "String"
 					}
 				},
+				"folder": {
+					"name": "OtherDataSet"
+				},
 				"annotations": [],
 				"type": "Binary",
 				"typeProperties": {
@@ -32880,6 +32934,9 @@
 					"Directory": {
 						"type": "string"
 					}
+				},
+				"folder": {
+					"name": "OtherDataSet"
 				},
 				"annotations": [],
 				"type": "DelimitedText",
@@ -33124,6 +33181,9 @@
 					"directory": {
 						"type": "string"
 					}
+				},
+				"folder": {
+					"name": "OtherDataSet"
 				},
 				"annotations": [],
 				"type": "Binary",
@@ -33424,6 +33484,9 @@
 						"type": "string"
 					}
 				},
+				"folder": {
+					"name": "OtherDataSet"
+				},
 				"annotations": [],
 				"type": "Binary",
 				"typeProperties": {
@@ -33464,6 +33527,9 @@
 					"filename": {
 						"type": "string"
 					}
+				},
+				"folder": {
+					"name": "OtherDataSet"
 				},
 				"annotations": [],
 				"type": "Binary",
@@ -33506,6 +33572,9 @@
 						"type": "string"
 					}
 				},
+				"folder": {
+					"name": "OtherDataSet"
+				},
 				"annotations": [],
 				"type": "Binary",
 				"typeProperties": {
@@ -33546,6 +33615,9 @@
 					"filename": {
 						"type": "string"
 					}
+				},
+				"folder": {
+					"name": "OtherDataSet"
 				},
 				"annotations": [],
 				"type": "Binary",
@@ -33592,6 +33664,9 @@
 						"type": "string"
 					}
 				},
+				"folder": {
+					"name": "OtherDataSet"
+				},
 				"annotations": [],
 				"type": "Binary",
 				"typeProperties": {
@@ -33634,6 +33709,9 @@
 						"type": "String"
 					}
 				},
+				"folder": {
+					"name": "OtherDataSet"
+				},
 				"annotations": [],
 				"type": "Binary",
 				"typeProperties": {
@@ -33671,6 +33749,9 @@
 					"Directory": {
 						"type": "String"
 					}
+				},
+				"folder": {
+					"name": "OtherDataSet"
 				},
 				"annotations": [],
 				"type": "Binary",
@@ -36225,6 +36306,9 @@
 					"referenceName": "TASDatabase",
 					"type": "LinkedServiceReference"
 				},
+				"folder": {
+					"name": "OtherDataSet"
+				},
 				"annotations": [],
 				"type": "AzureSqlTable",
 				"schema": [
@@ -36327,6 +36411,9 @@
 				"linkedServiceName": {
 					"referenceName": "TASDatabase",
 					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "OtherDataSet"
 				},
 				"annotations": [],
 				"type": "AzureSqlTable",
@@ -36872,6 +36959,9 @@
 					"filename": {
 						"type": "string"
 					}
+				},
+				"folder": {
+					"name": "OtherDataSet"
 				},
 				"annotations": [],
 				"type": "Binary",
@@ -41894,6 +41984,40 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/linkedServices/NCSdataStorageLink')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/S3DFStorageSourceDataset')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "Leap_AmazonS3",
+					"type": "LinkedServiceReference"
+				},
+				"parameters": {
+					"Directory": {
+						"type": "string"
+					}
+				},
+				"folder": {
+					"name": "StagingSource"
+				},
+				"annotations": [],
+				"type": "Binary",
+				"typeProperties": {
+					"location": {
+						"type": "AmazonS3Location",
+						"bucketName": "leapdata-tas",
+						"folderPath": {
+							"value": "@dataset().Directory",
+							"type": "Expression"
+						}
+					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/Leap_AmazonS3')]"
 			]
 		}
 	]
