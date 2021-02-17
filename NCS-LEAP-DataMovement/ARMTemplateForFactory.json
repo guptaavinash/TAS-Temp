@@ -276,7 +276,8 @@
 				"folder": {
 					"name": "Leap Data Pipeline"
 				},
-				"annotations": []
+				"annotations": [],
+				"lastPublishTime": "2020-07-02T07:41:31Z"
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/pipelines/CopyLeap_Staging-To-DB')]",
@@ -512,7 +513,8 @@
 				"folder": {
 					"name": "Leap Data Pipeline"
 				},
-				"annotations": []
+				"annotations": [],
+				"lastPublishTime": "2020-12-13T19:11:06Z"
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/pipelines/CopyLeap_Staging-To-DB_WithDPSR')]",
@@ -707,7 +709,8 @@
 				"folder": {
 					"name": "Leap Data Pipeline"
 				},
-				"annotations": []
+				"annotations": [],
+				"lastPublishTime": "2020-09-10T06:17:28Z"
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/LeapStorageSourceDataset')]",
@@ -5360,7 +5363,8 @@
 				"folder": {
 					"name": "Leap Data Pipeline"
 				},
-				"annotations": []
+				"annotations": [],
+				"lastPublishTime": "2020-12-04T18:37:57Z"
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/LeapStorageSourceDataset')]",
@@ -10819,7 +10823,8 @@
 				"folder": {
 					"name": "Leap Data Pipeline"
 				},
-				"annotations": []
+				"annotations": [],
+				"lastPublishTime": "2021-01-04T16:41:12Z"
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/LeapStorageSourceDataset')]",
@@ -13258,7 +13263,8 @@
 				"folder": {
 					"name": "Leap Data Pipeline"
 				},
-				"annotations": []
+				"annotations": [],
+				"lastPublishTime": "2020-06-30T03:01:03Z"
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/LeapStorageSourceDataset')]",
@@ -19414,7 +19420,8 @@
 				"folder": {
 					"name": "Leap Data Pipeline"
 				},
-				"annotations": []
+				"annotations": [],
+				"lastPublishTime": "2020-12-09T03:23:55Z"
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/LeapStorageSourceDataset')]",
@@ -19931,7 +19938,8 @@
 				"folder": {
 					"name": "Leap Data Pipeline"
 				},
-				"annotations": []
+				"annotations": [],
+				"lastPublishTime": "2020-11-07T12:23:10Z"
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/NCSStorageSourceDataset')]",
@@ -20013,7 +20021,8 @@
 				"folder": {
 					"name": "Leap Data Pipeline"
 				},
-				"annotations": []
+				"annotations": [],
+				"lastPublishTime": "2020-06-01T01:07:46Z"
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/pipelines/CopyS3-To-Staging_Cloud1')]",
@@ -20171,50 +20180,6 @@
 											"parameters": {}
 										}
 									]
-								},
-								{
-									"name": "DeleteFiles_Cloud1",
-									"type": "Delete",
-									"dependsOn": [
-										{
-											"activity": "LeapCSV_Cloud1_Staging",
-											"dependencyConditions": [
-												"Succeeded"
-											]
-										}
-									],
-									"policy": {
-										"timeout": "7.00:00:00",
-										"retry": 0,
-										"retryIntervalInSeconds": 30,
-										"secureOutput": false,
-										"secureInput": false
-									},
-									"userProperties": [],
-									"typeProperties": {
-										"dataset": {
-											"referenceName": "S3LeapDataSet_Cloud1_File",
-											"type": "DatasetReference",
-											"parameters": {
-												"filename": {
-													"value": "@item().name",
-													"type": "Expression"
-												}
-											}
-										},
-										"logStorageSettings": {
-											"linkedServiceName": {
-												"referenceName": "NCSdataStorageLink",
-												"type": "LinkedServiceReference"
-											},
-											"path": "log"
-										},
-										"enableLogging": true,
-										"storeSettings": {
-											"type": "AmazonS3ReadSettings",
-											"recursive": true
-										}
-									}
 								}
 							]
 						}
@@ -20231,13 +20196,13 @@
 				"folder": {
 					"name": "Leap Data Pipeline"
 				},
-				"annotations": []
+				"annotations": [],
+				"lastPublishTime": "2021-02-17T07:38:58Z"
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/S3LeapDataSet_Cloud1_Folder')]",
 				"[concat(variables('factoryId'), '/datasets/S3LeapDataSet_Cloud1_File')]",
-				"[concat(variables('factoryId'), '/datasets/LeapStorageSourceDataset')]",
-				"[concat(variables('factoryId'), '/linkedServices/NCSdataStorageLink')]"
+				"[concat(variables('factoryId'), '/datasets/LeapStorageSourceDataset')]"
 			]
 		},
 		{
@@ -20387,50 +20352,6 @@
 											"parameters": {}
 										}
 									]
-								},
-								{
-									"name": "DeleteFiles_Cloud2",
-									"type": "Delete",
-									"dependsOn": [
-										{
-											"activity": "LeapCSV_Cloud2_Staging",
-											"dependencyConditions": [
-												"Succeeded"
-											]
-										}
-									],
-									"policy": {
-										"timeout": "7.00:00:00",
-										"retry": 0,
-										"retryIntervalInSeconds": 30,
-										"secureOutput": false,
-										"secureInput": false
-									},
-									"userProperties": [],
-									"typeProperties": {
-										"dataset": {
-											"referenceName": "S3LeapDataSet_Cloud2_File",
-											"type": "DatasetReference",
-											"parameters": {
-												"filename": {
-													"value": "@item().name",
-													"type": "Expression"
-												}
-											}
-										},
-										"logStorageSettings": {
-											"linkedServiceName": {
-												"referenceName": "NCSdataStorageLink",
-												"type": "LinkedServiceReference"
-											},
-											"path": "log"
-										},
-										"enableLogging": true,
-										"storeSettings": {
-											"type": "AmazonS3ReadSettings",
-											"recursive": true
-										}
-									}
 								}
 							]
 						}
@@ -20447,13 +20368,13 @@
 				"folder": {
 					"name": "Leap Data Pipeline"
 				},
-				"annotations": []
+				"annotations": [],
+				"lastPublishTime": "2020-05-29T19:10:03Z"
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/S3LeapDataSet_Cloud2_Folder')]",
 				"[concat(variables('factoryId'), '/datasets/S3LeapDataSet_Cloud2_File')]",
-				"[concat(variables('factoryId'), '/datasets/LeapStorageSourceDataset')]",
-				"[concat(variables('factoryId'), '/linkedServices/NCSdataStorageLink')]"
+				"[concat(variables('factoryId'), '/datasets/LeapStorageSourceDataset')]"
 			]
 		},
 		{
@@ -20603,50 +20524,6 @@
 											"parameters": {}
 										}
 									]
-								},
-								{
-									"name": "DeleteFiles_Cloud3",
-									"type": "Delete",
-									"dependsOn": [
-										{
-											"activity": "LeapCSV_Cloud3_Staging",
-											"dependencyConditions": [
-												"Succeeded"
-											]
-										}
-									],
-									"policy": {
-										"timeout": "7.00:00:00",
-										"retry": 0,
-										"retryIntervalInSeconds": 30,
-										"secureOutput": false,
-										"secureInput": false
-									},
-									"userProperties": [],
-									"typeProperties": {
-										"dataset": {
-											"referenceName": "S3LeapDataSet_Cloud3_File",
-											"type": "DatasetReference",
-											"parameters": {
-												"filename": {
-													"value": "@item().name",
-													"type": "Expression"
-												}
-											}
-										},
-										"logStorageSettings": {
-											"linkedServiceName": {
-												"referenceName": "NCSdataStorageLink",
-												"type": "LinkedServiceReference"
-											},
-											"path": "log"
-										},
-										"enableLogging": true,
-										"storeSettings": {
-											"type": "AmazonS3ReadSettings",
-											"recursive": true
-										}
-									}
 								}
 							]
 						}
@@ -20663,13 +20540,13 @@
 				"folder": {
 					"name": "Leap Data Pipeline"
 				},
-				"annotations": []
+				"annotations": [],
+				"lastPublishTime": "2020-05-29T19:10:03Z"
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/S3LeapDataSet_Cloud3_Folder')]",
 				"[concat(variables('factoryId'), '/datasets/S3LeapDataSet_Cloud3_File')]",
-				"[concat(variables('factoryId'), '/datasets/LeapStorageSourceDataset')]",
-				"[concat(variables('factoryId'), '/linkedServices/NCSdataStorageLink')]"
+				"[concat(variables('factoryId'), '/datasets/LeapStorageSourceDataset')]"
 			]
 		},
 		{
@@ -21855,7 +21732,8 @@
 				"folder": {
 					"name": "Other Pipelines"
 				},
-				"annotations": []
+				"annotations": [],
+				"lastPublishTime": "2021-02-17T07:38:58Z"
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/DS_DF_TmpRawLeapStoreMasterDetails')]",
@@ -22000,7 +21878,8 @@
 				"folder": {
 					"name": "Other Pipelines"
 				},
-				"annotations": []
+				"annotations": [],
+				"lastPublishTime": "2021-02-17T07:39:00Z"
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/linkedServices/PnGDataFoundation')]",
@@ -22215,7 +22094,8 @@
 				"folder": {
 					"name": "Other Pipelines"
 				},
-				"annotations": []
+				"annotations": [],
+				"lastPublishTime": "2021-02-17T07:39:00Z"
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/TASDBConnection')]",
@@ -22569,7 +22449,8 @@
 				"folder": {
 					"name": "Leap Data Pipeline"
 				},
-				"annotations": []
+				"annotations": [],
+				"lastPublishTime": "2020-06-05T01:51:48Z"
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/pipelines/CopyLeap_Staging-To-DB')]",
@@ -22791,7 +22672,8 @@
 				"folder": {
 					"name": "Leap Data Pipeline"
 				},
-				"annotations": []
+				"annotations": [],
+				"lastPublishTime": "2020-09-24T01:59:54Z"
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/linkedServices/TASDatabase')]",
@@ -23055,7 +22937,8 @@
 				"folder": {
 					"name": "Leap Data Pipeline"
 				},
-				"annotations": []
+				"annotations": [],
+				"lastPublishTime": "2020-12-08T03:37:36Z"
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/TASDBConnection')]",
@@ -23360,7 +23243,8 @@
 				"folder": {
 					"name": "Leap Data Pipeline"
 				},
-				"annotations": []
+				"annotations": [],
+				"lastPublishTime": "2020-06-20T05:07:47Z"
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/pipelines/CopyLeap_Staging-To-DB')]",
@@ -24016,7 +23900,8 @@
 				"folder": {
 					"name": "Leap Data Pipeline"
 				},
-				"annotations": []
+				"annotations": [],
+				"lastPublishTime": "2020-12-13T19:05:55Z"
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/pipelines/CopyLeap_Staging-To-DB_WithDPSR')]",
@@ -24550,7 +24435,8 @@
 				"folder": {
 					"name": "Leap Data Pipeline"
 				},
-				"annotations": []
+				"annotations": [],
+				"lastPublishTime": "2021-01-07T05:18:58Z"
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/pipelines/CopyLeap_Staging-To-DB_WithDPSR')]",
@@ -24977,7 +24863,8 @@
 				"folder": {
 					"name": "Leap Data Pipeline"
 				},
-				"annotations": []
+				"annotations": [],
+				"lastPublishTime": "2020-08-16T05:05:08Z"
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/pipelines/CopyLeap_Staging-To-DB')]",
@@ -25418,7 +25305,8 @@
 				"folder": {
 					"name": "Leap Data Pipeline"
 				},
-				"annotations": []
+				"annotations": [],
+				"lastPublishTime": "2020-12-11T03:28:26Z"
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/pipelines/CopyLeap_Staging-To-DB_WithDPSR')]",
@@ -27649,7 +27537,8 @@
 				"folder": {
 					"name": "Other Pipelines"
 				},
-				"annotations": []
+				"annotations": [],
+				"lastPublishTime": "2021-02-17T07:39:00Z"
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/ADLSDataset')]",
@@ -28854,7 +28743,8 @@
 				"folder": {
 					"name": "Other Pipelines"
 				},
-				"annotations": []
+				"annotations": [],
+				"lastPublishTime": "2021-02-17T07:39:00Z"
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/ADLSDataset')]",
@@ -29093,7 +28983,8 @@
 				"folder": {
 					"name": "Other Pipelines"
 				},
-				"annotations": []
+				"annotations": [],
+				"lastPublishTime": "2021-02-17T07:39:00Z"
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/ADLSBinaryDataSource_Folder')]",
@@ -29237,7 +29128,8 @@
 				"folder": {
 					"name": "Other Pipelines"
 				},
-				"annotations": []
+				"annotations": [],
+				"lastPublishTime": "2021-02-17T07:39:04Z"
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/ADLSBinaryDataSource_Container')]",
@@ -29388,7 +29280,8 @@
 				"folder": {
 					"name": "Other Pipelines"
 				},
-				"annotations": []
+				"annotations": [],
+				"lastPublishTime": "2021-02-17T07:39:03Z"
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/ADLSBinaryDataSource_Folder')]",
@@ -29539,7 +29432,8 @@
 				"folder": {
 					"name": "Other Pipelines"
 				},
-				"annotations": []
+				"annotations": [],
+				"lastPublishTime": "2021-02-17T07:39:01Z"
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/ADLSBinaryDataSource_Folder')]",
@@ -29736,7 +29630,8 @@
 				"folder": {
 					"name": "Other Pipelines"
 				},
-				"annotations": []
+				"annotations": [],
+				"lastPublishTime": "2021-02-17T07:39:00Z"
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/ADLSBinaryDataSource_Folder')]",
@@ -29978,7 +29873,8 @@
 				"folder": {
 					"name": "Other Pipelines"
 				},
-				"annotations": []
+				"annotations": [],
+				"lastPublishTime": "2021-02-17T07:39:00Z"
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/BinaryDataSource_Folder2')]",
@@ -30484,7 +30380,8 @@
 				"folder": {
 					"name": "Leap Data Pipeline"
 				},
-				"annotations": []
+				"annotations": [],
+				"lastPublishTime": "2020-08-24T12:52:49Z"
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/linkedServices/PnGDataFoundation')]",
@@ -30520,7 +30417,8 @@
 						}
 					}
 				],
-				"annotations": []
+				"annotations": [],
+				"lastPublishTime": "2021-02-14T16:14:46Z"
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/linkedServices/TASDatabase')]"
@@ -30571,9 +30469,651 @@
 						"defaultValue": "No Message Set"
 					}
 				},
-				"annotations": []
+				"annotations": [],
+				"lastPublishTime": "2020-10-28T11:18:23Z"
 			},
 			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/TASFileProcessed')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "spGetAutoOrderFileList_Cloud1_Lookup",
+						"type": "Lookup",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "AzureSqlSource",
+								"sqlReaderStoredProcedureName": "[[dbo].[spGetAutoOrderFileList]",
+								"storedProcedureParameters": {
+									"CloudId": {
+										"type": "Int32",
+										"value": "1"
+									}
+								},
+								"queryTimeout": "02:00:00",
+								"partitionOption": "None"
+							},
+							"dataset": {
+								"referenceName": "DS_TAS_tmpLeapDataLoadDPSR",
+								"type": "DatasetReference",
+								"parameters": {}
+							},
+							"firstRowOnly": false
+						}
+					},
+					{
+						"name": "ForEach_Cloud1",
+						"type": "ForEach",
+						"dependsOn": [
+							{
+								"activity": "spGetAutoOrderFileList_Cloud1_Lookup",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"userProperties": [],
+						"typeProperties": {
+							"items": {
+								"value": "@activity('spGetAutoOrderFileList_Cloud1_Lookup').output.value\n",
+								"type": "Expression"
+							},
+							"activities": [
+								{
+									"name": "Cloud1OrderFilesMetaData",
+									"type": "GetMetadata",
+									"dependsOn": [
+										{
+											"activity": "bCheckIFFileExistsCloud1Default",
+											"dependencyConditions": [
+												"Succeeded"
+											]
+										}
+									],
+									"policy": {
+										"timeout": "7.00:00:00",
+										"retry": 0,
+										"retryIntervalInSeconds": 30,
+										"secureOutput": false,
+										"secureInput": false
+									},
+									"userProperties": [],
+									"typeProperties": {
+										"dataset": {
+											"referenceName": "S3TASOrderDataSet_Cloud1_Folder",
+											"type": "DatasetReference",
+											"parameters": {
+												"Directory": "LEAP/Cloud1/Upload"
+											}
+										},
+										"fieldList": [
+											"childItems",
+											"itemName",
+											"lastModified"
+										],
+										"storeSettings": {
+											"type": "AmazonS3ReadSettings",
+											"recursive": true
+										},
+										"formatSettings": {
+											"type": "BinaryReadSettings"
+										}
+									}
+								},
+								{
+									"name": "bCheckIFFileExistsCloud1Default",
+									"type": "SetVariable",
+									"dependsOn": [],
+									"userProperties": [],
+									"typeProperties": {
+										"variableName": "bCheckIFFileExists_Cloud2",
+										"value": {
+											"value": "@bool(0)",
+											"type": "Expression"
+										}
+									}
+								},
+								{
+									"name": "bCheckIFFileExistsCloud1",
+									"type": "SetVariable",
+									"dependsOn": [
+										{
+											"activity": "Cloud1OrderFilesMetaData",
+											"dependencyConditions": [
+												"Succeeded"
+											]
+										}
+									],
+									"userProperties": [],
+									"typeProperties": {
+										"variableName": "bCheckIFFileExists_Cloud2",
+										"value": {
+											"value": "@bool(startswith(item().FileSName,string(activity('Cloud1OrderFilesMetaData').output.childItems)))\n\n",
+											"type": "Expression"
+										}
+									}
+								},
+								{
+									"name": "If File Exists Cloud1",
+									"type": "IfCondition",
+									"dependsOn": [
+										{
+											"activity": "bCheckIFFileExistsCloud1",
+											"dependencyConditions": [
+												"Succeeded"
+											]
+										}
+									],
+									"userProperties": [],
+									"typeProperties": {
+										"expression": {
+											"value": "@variables('bCheckIFFileExists')",
+											"type": "Expression"
+										},
+										"ifTrueActivities": [
+											{
+												"name": "spMarkAutoDownloadOrderFileProcessed",
+												"type": "SqlServerStoredProcedure",
+												"dependsOn": [],
+												"policy": {
+													"timeout": "7.00:00:00",
+													"retry": 0,
+													"retryIntervalInSeconds": 30,
+													"secureOutput": false,
+													"secureInput": false
+												},
+												"userProperties": [],
+												"typeProperties": {
+													"storedProcedureName": "[[dbo].[spMarkAutoDownloadOrderFileProcessed]",
+													"storedProcedureParameters": {
+														"TrnsCycleId": {
+															"value": {
+																"value": "@item().TrnsCycleId",
+																"type": "Expression"
+															},
+															"type": "Int64"
+														}
+													}
+												},
+												"linkedServiceName": {
+													"referenceName": "TASDatabase",
+													"type": "LinkedServiceReference"
+												}
+											}
+										]
+									}
+								}
+							]
+						}
+					},
+					{
+						"name": "spGetAutoOrderFileList_Cloud2_Lookup",
+						"type": "Lookup",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "AzureSqlSource",
+								"sqlReaderStoredProcedureName": "[[dbo].[spGetAutoOrderFileList]",
+								"storedProcedureParameters": {
+									"CloudId": {
+										"type": "Int32",
+										"value": "2"
+									}
+								},
+								"queryTimeout": "02:00:00",
+								"partitionOption": "None"
+							},
+							"dataset": {
+								"referenceName": "DS_TAS_tmpLeapDataLoadDPSR",
+								"type": "DatasetReference",
+								"parameters": {}
+							},
+							"firstRowOnly": false
+						}
+					},
+					{
+						"name": "ForEach_Cloud2",
+						"type": "ForEach",
+						"dependsOn": [
+							{
+								"activity": "spGetAutoOrderFileList_Cloud2_Lookup",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"userProperties": [],
+						"typeProperties": {
+							"items": {
+								"value": "@activity('spGetAutoOrderFileList_Cloud2_Lookup').output.value\n",
+								"type": "Expression"
+							},
+							"activities": [
+								{
+									"name": "Cloud2OrderFilesMetaData",
+									"type": "GetMetadata",
+									"dependsOn": [
+										{
+											"activity": "bCheckIFFileExistsCloud2Default",
+											"dependencyConditions": [
+												"Succeeded"
+											]
+										}
+									],
+									"policy": {
+										"timeout": "7.00:00:00",
+										"retry": 0,
+										"retryIntervalInSeconds": 30,
+										"secureOutput": false,
+										"secureInput": false
+									},
+									"userProperties": [],
+									"typeProperties": {
+										"dataset": {
+											"referenceName": "S3TASOrderDataSet_Cloud2_Folder",
+											"type": "DatasetReference",
+											"parameters": {
+												"Directory": "LEAP/Cloud2/Upload"
+											}
+										},
+										"fieldList": [
+											"childItems",
+											"itemName",
+											"lastModified"
+										],
+										"storeSettings": {
+											"type": "AmazonS3ReadSettings",
+											"recursive": true
+										},
+										"formatSettings": {
+											"type": "BinaryReadSettings"
+										}
+									}
+								},
+								{
+									"name": "bCheckIFFileExistsCloud2Default",
+									"type": "SetVariable",
+									"dependsOn": [],
+									"userProperties": [],
+									"typeProperties": {
+										"variableName": "bCheckIFFileExists_Cloud2",
+										"value": {
+											"value": "@bool(0)",
+											"type": "Expression"
+										}
+									}
+								},
+								{
+									"name": "bCheckIFFileExistsCloud2",
+									"type": "SetVariable",
+									"dependsOn": [
+										{
+											"activity": "Cloud2OrderFilesMetaData",
+											"dependencyConditions": [
+												"Succeeded"
+											]
+										}
+									],
+									"userProperties": [],
+									"typeProperties": {
+										"variableName": "bCheckIFFileExists_Cloud2",
+										"value": {
+											"value": "@bool(startswith(item().FileSName,string(activity('Cloud2OrderFilesMetaData').output.childItems)))\n\n",
+											"type": "Expression"
+										}
+									}
+								},
+								{
+									"name": "If File Exists Cloud2",
+									"type": "IfCondition",
+									"dependsOn": [
+										{
+											"activity": "bCheckIFFileExistsCloud2",
+											"dependencyConditions": [
+												"Succeeded"
+											]
+										}
+									],
+									"userProperties": [],
+									"typeProperties": {
+										"expression": {
+											"value": "@variables('bCheckIFFileExists_Cloud2')",
+											"type": "Expression"
+										},
+										"ifTrueActivities": [
+											{
+												"name": "spMarkAutoDownloadOrderFileProcessed_Cloud2",
+												"type": "SqlServerStoredProcedure",
+												"dependsOn": [],
+												"policy": {
+													"timeout": "7.00:00:00",
+													"retry": 0,
+													"retryIntervalInSeconds": 30,
+													"secureOutput": false,
+													"secureInput": false
+												},
+												"userProperties": [],
+												"typeProperties": {
+													"storedProcedureName": "[[dbo].[spMarkAutoDownloadOrderFileProcessed]",
+													"storedProcedureParameters": {
+														"TrnsCycleId": {
+															"value": {
+																"value": "@item().TrnsCycleId",
+																"type": "Expression"
+															},
+															"type": "Int64"
+														}
+													}
+												},
+												"linkedServiceName": {
+													"referenceName": "TASDatabase",
+													"type": "LinkedServiceReference"
+												}
+											}
+										]
+									}
+								}
+							]
+						}
+					},
+					{
+						"name": "spGetAutoOrderFileList_Cloud3_Lookup",
+						"type": "Lookup",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "AzureSqlSource",
+								"sqlReaderStoredProcedureName": "[[dbo].[spGetAutoOrderFileList]",
+								"storedProcedureParameters": {
+									"CloudId": {
+										"type": "Int32",
+										"value": "3"
+									}
+								},
+								"queryTimeout": "02:00:00",
+								"partitionOption": "None"
+							},
+							"dataset": {
+								"referenceName": "DS_TAS_tmpLeapDataLoadDPSR",
+								"type": "DatasetReference",
+								"parameters": {}
+							},
+							"firstRowOnly": false
+						}
+					},
+					{
+						"name": "ForEach_Cloud3",
+						"type": "ForEach",
+						"dependsOn": [
+							{
+								"activity": "spGetAutoOrderFileList_Cloud3_Lookup",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"userProperties": [],
+						"typeProperties": {
+							"items": {
+								"value": "@activity('spGetAutoOrderFileList_Cloud3_Lookup').output.value\n",
+								"type": "Expression"
+							},
+							"activities": [
+								{
+									"name": "Cloud3OrderFilesMetaData",
+									"type": "GetMetadata",
+									"dependsOn": [
+										{
+											"activity": "bCheckIFFileExistsCloud3Default",
+											"dependencyConditions": [
+												"Succeeded"
+											]
+										}
+									],
+									"policy": {
+										"timeout": "7.00:00:00",
+										"retry": 0,
+										"retryIntervalInSeconds": 30,
+										"secureOutput": false,
+										"secureInput": false
+									},
+									"userProperties": [],
+									"typeProperties": {
+										"dataset": {
+											"referenceName": "S3TASOrderDataSet_Cloud3_Folder",
+											"type": "DatasetReference",
+											"parameters": {
+												"Directory": "LEAP/Cloud3/Upload"
+											}
+										},
+										"fieldList": [
+											"childItems",
+											"itemName",
+											"lastModified"
+										],
+										"storeSettings": {
+											"type": "AmazonS3ReadSettings",
+											"recursive": true
+										},
+										"formatSettings": {
+											"type": "BinaryReadSettings"
+										}
+									}
+								},
+								{
+									"name": "bCheckIFFileExistsCloud3Default",
+									"type": "SetVariable",
+									"dependsOn": [],
+									"userProperties": [],
+									"typeProperties": {
+										"variableName": "bCheckIFFileExists_Cloud3",
+										"value": {
+											"value": "@bool(0)",
+											"type": "Expression"
+										}
+									}
+								},
+								{
+									"name": "bCheckIFFileExistsCloud3",
+									"type": "SetVariable",
+									"dependsOn": [
+										{
+											"activity": "Cloud3OrderFilesMetaData",
+											"dependencyConditions": [
+												"Succeeded"
+											]
+										}
+									],
+									"userProperties": [],
+									"typeProperties": {
+										"variableName": "bCheckIFFileExists_Cloud3",
+										"value": {
+											"value": "@bool(startswith(item().FileSName,string(activity('Cloud3OrderFilesMetaData').output.childItems)))\n\n",
+											"type": "Expression"
+										}
+									}
+								},
+								{
+									"name": "If File Exists Cloud3",
+									"type": "IfCondition",
+									"dependsOn": [
+										{
+											"activity": "bCheckIFFileExistsCloud3",
+											"dependencyConditions": [
+												"Succeeded"
+											]
+										}
+									],
+									"userProperties": [],
+									"typeProperties": {
+										"expression": {
+											"value": "@variables('bCheckIFFileExists_Cloud3')",
+											"type": "Expression"
+										},
+										"ifTrueActivities": [
+											{
+												"name": "spMarkAutoDownloadOrderFileProcessed_Cloud3",
+												"type": "SqlServerStoredProcedure",
+												"dependsOn": [],
+												"policy": {
+													"timeout": "7.00:00:00",
+													"retry": 0,
+													"retryIntervalInSeconds": 30,
+													"secureOutput": false,
+													"secureInput": false
+												},
+												"userProperties": [],
+												"typeProperties": {
+													"storedProcedureName": "[[dbo].[spMarkAutoDownloadOrderFileProcessed]",
+													"storedProcedureParameters": {
+														"TrnsCycleId": {
+															"value": {
+																"value": "@item().TrnsCycleId",
+																"type": "Expression"
+															},
+															"type": "Int64"
+														}
+													}
+												},
+												"linkedServiceName": {
+													"referenceName": "TASDatabase",
+													"type": "LinkedServiceReference"
+												}
+											}
+										]
+									}
+								}
+							]
+						}
+					}
+				],
+				"variables": {
+					"bCheckIFFileExists": {
+						"type": "Boolean"
+					},
+					"bCheckIFFileExists_Cloud2": {
+						"type": "Boolean"
+					},
+					"bCheckIFFileExists_Cloud3": {
+						"type": "Boolean"
+					}
+				},
+				"folder": {
+					"name": "TASOrder"
+				},
+				"annotations": [],
+				"lastPublishTime": "2021-02-16T14:36:07Z"
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/DS_TAS_tmpLeapDataLoadDPSR')]",
+				"[concat(variables('factoryId'), '/datasets/S3TASOrderDataSet_Cloud1_Folder')]",
+				"[concat(variables('factoryId'), '/datasets/S3TASOrderDataSet_Cloud2_Folder')]",
+				"[concat(variables('factoryId'), '/datasets/S3TASOrderDataSet_Cloud3_Folder')]",
+				"[concat(variables('factoryId'), '/linkedServices/TASDatabase')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/TASOrderLog')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "TASOrderLog_Cloud1",
+						"type": "ExecutePipeline",
+						"dependsOn": [],
+						"userProperties": [],
+						"typeProperties": {
+							"pipeline": {
+								"referenceName": "TASOrderLog_Cloud1",
+								"type": "PipelineReference"
+							},
+							"waitOnCompletion": true,
+							"parameters": {}
+						}
+					},
+					{
+						"name": "TASOrderLog_Cloud2",
+						"type": "ExecutePipeline",
+						"dependsOn": [
+							{
+								"activity": "TASOrderLog_Cloud1",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"userProperties": [],
+						"typeProperties": {
+							"pipeline": {
+								"referenceName": "TASOrderLog_Cloud2",
+								"type": "PipelineReference"
+							},
+							"waitOnCompletion": true,
+							"parameters": {}
+						}
+					},
+					{
+						"name": "TASOrderLog_Cloud3",
+						"type": "ExecutePipeline",
+						"dependsOn": [
+							{
+								"activity": "TASOrderLog_Cloud2",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"userProperties": [],
+						"typeProperties": {
+							"pipeline": {
+								"referenceName": "TASOrderLog_Cloud3",
+								"type": "PipelineReference"
+							},
+							"waitOnCompletion": true,
+							"parameters": {}
+						}
+					}
+				],
+				"folder": {
+					"name": "TASOrder"
+				},
+				"annotations": [],
+				"lastPublishTime": "2021-02-16T14:36:08Z"
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/pipelines/TASOrderLog_Cloud1')]",
+				"[concat(variables('factoryId'), '/pipelines/TASOrderLog_Cloud2')]",
+				"[concat(variables('factoryId'), '/pipelines/TASOrderLog_Cloud3')]"
+			]
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/TASOrderLog_Cloud1')]",
@@ -31028,14 +31568,922 @@
 				"folder": {
 					"name": "TASOrder"
 				},
-				"annotations": []
+				"annotations": [],
+				"lastPublishTime": "2021-02-16T14:36:07Z"
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/S3TASOrderDataSet_Cloud1_Folder')]",
 				"[concat(variables('factoryId'), '/datasets/S3TASOrderDataSet_Cloud1_File')]",
 				"[concat(variables('factoryId'), '/datasets/DS_TAS_tblDownloadOrderDetail_Error')]",
+				"[concat(variables('factoryId'), '/datasets/TASOrderLogStorageDS')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/TASOrderLog_Cloud2')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Cloud2FilesMetaData",
+						"type": "GetMetadata",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"dataset": {
+								"referenceName": "S3TASOrderDataSet_Cloud2_Folder",
+								"type": "DatasetReference",
+								"parameters": {
+									"Directory": "LEAP/Cloud2/Log"
+								}
+							},
+							"fieldList": [
+								"childItems",
+								"itemName",
+								"lastModified"
+							],
+							"storeSettings": {
+								"type": "AmazonS3ReadSettings",
+								"recursive": true
+							},
+							"formatSettings": {
+								"type": "BinaryReadSettings"
+							}
+						}
+					},
+					{
+						"name": "Cloud2FilesFilter",
+						"type": "Filter",
+						"dependsOn": [
+							{
+								"activity": "Cloud2FilesMetaData",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"userProperties": [],
+						"typeProperties": {
+							"items": {
+								"value": "@activity('Cloud2FilesMetaData').output.childItems",
+								"type": "Expression"
+							},
+							"condition": {
+								"value": "@equals(item().type, 'File')",
+								"type": "Expression"
+							}
+						}
+					},
+					{
+						"name": "ForEachCloud2FolderFiles",
+						"type": "ForEach",
+						"dependsOn": [
+							{
+								"activity": "Cloud2FilesFilter",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"userProperties": [],
+						"typeProperties": {
+							"items": {
+								"value": "@activity('Cloud2FilesFilter').output.value",
+								"type": "Expression"
+							},
+							"activities": [
+								{
+									"name": "LeapOrderLog_Cloud2_Staging",
+									"type": "Copy",
+									"dependsOn": [
+										{
+											"activity": "LeapOrderLog_Cloud2",
+											"dependencyConditions": [
+												"Succeeded"
+											]
+										}
+									],
+									"policy": {
+										"timeout": "7.00:00:00",
+										"retry": 0,
+										"retryIntervalInSeconds": 30,
+										"secureOutput": false,
+										"secureInput": false
+									},
+									"userProperties": [],
+									"typeProperties": {
+										"source": {
+											"type": "DelimitedTextSource",
+											"storeSettings": {
+												"type": "AmazonS3ReadSettings",
+												"recursive": true,
+												"enablePartitionDiscovery": false
+											},
+											"formatSettings": {
+												"type": "DelimitedTextReadSettings"
+											}
+										},
+										"sink": {
+											"type": "DelimitedTextSink",
+											"storeSettings": {
+												"type": "AzureBlobStorageWriteSettings"
+											},
+											"formatSettings": {
+												"type": "DelimitedTextWriteSettings",
+												"quoteAllText": true,
+												"fileExtension": ".txt"
+											}
+										},
+										"enableStaging": false,
+										"validateDataConsistency": false,
+										"dataIntegrationUnits": 2
+									},
+									"inputs": [
+										{
+											"referenceName": "S3TASOrderDataSet_Cloud2_File",
+											"type": "DatasetReference",
+											"parameters": {
+												"filename": {
+													"value": "@item().name",
+													"type": "Expression"
+												}
+											}
+										}
+									],
+									"outputs": [
+										{
+											"referenceName": "TASOrderLogStorageDS",
+											"type": "DatasetReference",
+											"parameters": {
+												"Directory": "Cloud02"
+											}
+										}
+									]
+								},
+								{
+									"name": "DeletelogFiles_Cloud2",
+									"type": "Delete",
+									"dependsOn": [
+										{
+											"activity": "LeapOrderLog_Cloud2_Staging",
+											"dependencyConditions": [
+												"Succeeded"
+											]
+										}
+									],
+									"policy": {
+										"timeout": "7.00:00:00",
+										"retry": 0,
+										"retryIntervalInSeconds": 30,
+										"secureOutput": false,
+										"secureInput": false
+									},
+									"userProperties": [],
+									"typeProperties": {
+										"dataset": {
+											"referenceName": "S3TASOrderDataSet_Cloud2_File",
+											"type": "DatasetReference",
+											"parameters": {
+												"filename": {
+													"value": "@item().name",
+													"type": "Expression"
+												}
+											}
+										},
+										"enableLogging": false,
+										"storeSettings": {
+											"type": "AmazonS3ReadSettings",
+											"recursive": true
+										}
+									}
+								},
+								{
+									"name": "LeapOrderLog_Cloud2",
+									"type": "Copy",
+									"dependsOn": [
+										{
+											"activity": "LookupspGetAutoTransferCycleIdForErrorOrder",
+											"dependencyConditions": [
+												"Succeeded"
+											]
+										}
+									],
+									"policy": {
+										"timeout": "7.00:00:00",
+										"retry": 0,
+										"retryIntervalInSeconds": 30,
+										"secureOutput": false,
+										"secureInput": false
+									},
+									"userProperties": [],
+									"typeProperties": {
+										"source": {
+											"type": "DelimitedTextSource",
+											"additionalColumns": [
+												{
+													"name": "TrnsCycleId",
+													"value": {
+														"value": "@activity('LookupspGetAutoTransferCycleIdForErrorOrder').output.firstRow.TrnsCycleId",
+														"type": "Expression"
+													}
+												}
+											],
+											"storeSettings": {
+												"type": "AmazonS3ReadSettings",
+												"recursive": true,
+												"enablePartitionDiscovery": false
+											},
+											"formatSettings": {
+												"type": "DelimitedTextReadSettings"
+											}
+										},
+										"sink": {
+											"type": "AzureSqlSink"
+										},
+										"enableStaging": false,
+										"validateDataConsistency": false,
+										"dataIntegrationUnits": 2,
+										"translator": {
+											"type": "TabularTranslator",
+											"mappings": [
+												{
+													"source": {
+														"name": "Branch_Code",
+														"type": "String"
+													},
+													"sink": {
+														"name": "Branch_Code",
+														"type": "String"
+													}
+												},
+												{
+													"source": {
+														"name": "Order_Number",
+														"type": "String"
+													},
+													"sink": {
+														"name": "Order_Number",
+														"type": "String"
+													}
+												},
+												{
+													"source": {
+														"name": "DSE_Code",
+														"type": "String"
+													},
+													"sink": {
+														"name": "DSE_Code",
+														"type": "String"
+													}
+												},
+												{
+													"source": {
+														"name": "Retailer_Code",
+														"type": "String"
+													},
+													"sink": {
+														"name": "Retailer_Code",
+														"type": "String"
+													}
+												},
+												{
+													"source": {
+														"name": "Route_Code",
+														"type": "String"
+													},
+													"sink": {
+														"name": "Route_Code",
+														"type": "String"
+													}
+												},
+												{
+													"source": {
+														"name": "Order_Date",
+														"type": "String"
+													},
+													"sink": {
+														"name": "Order_Date",
+														"type": "String"
+													}
+												},
+												{
+													"source": {
+														"name": "Exp_Delivery_Date",
+														"type": "String"
+													},
+													"sink": {
+														"name": "Exp_Delivery_Date",
+														"type": "String"
+													}
+												},
+												{
+													"source": {
+														"name": "SUBBF_Name",
+														"type": "String"
+													},
+													"sink": {
+														"name": "SUBBF_Name",
+														"type": "String"
+													}
+												},
+												{
+													"source": {
+														"name": "Order_Qty",
+														"type": "String"
+													},
+													"sink": {
+														"name": "Order_Qty",
+														"type": "String"
+													}
+												},
+												{
+													"source": {
+														"name": "TeleCaller_Name",
+														"type": "String"
+													},
+													"sink": {
+														"name": "TeleCaller_Name",
+														"type": "String"
+													}
+												},
+												{
+													"source": {
+														"name": "TeleCaller_Code",
+														"type": "String"
+													},
+													"sink": {
+														"name": "TeleCaller_Code",
+														"type": "String"
+													}
+												},
+												{
+													"source": {
+														"name": "PO_Number",
+														"type": "String"
+													},
+													"sink": {
+														"name": "PO_Number",
+														"type": "String"
+													}
+												},
+												{
+													"source": {
+														"name": "Error_Description",
+														"type": "String"
+													},
+													"sink": {
+														"name": "Error_Description",
+														"type": "String"
+													}
+												},
+												{
+													"source": {
+														"name": "TrnsCycleId",
+														"type": "String"
+													},
+													"sink": {
+														"name": "TrnsCycleId",
+														"type": "Int64"
+													}
+												}
+											]
+										}
+									},
+									"inputs": [
+										{
+											"referenceName": "S3TASOrderDataSet_Cloud2_File",
+											"type": "DatasetReference",
+											"parameters": {
+												"filename": {
+													"value": "@item().name",
+													"type": "Expression"
+												}
+											}
+										}
+									],
+									"outputs": [
+										{
+											"referenceName": "DS_TAS_tblDownloadOrderDetail_Error",
+											"type": "DatasetReference",
+											"parameters": {}
+										}
+									]
+								},
+								{
+									"name": "LookupspGetAutoTransferCycleIdForErrorOrder",
+									"type": "Lookup",
+									"dependsOn": [],
+									"policy": {
+										"timeout": "7.00:00:00",
+										"retry": 0,
+										"retryIntervalInSeconds": 30,
+										"secureOutput": false,
+										"secureInput": false
+									},
+									"userProperties": [],
+									"typeProperties": {
+										"source": {
+											"type": "AzureSqlSource",
+											"sqlReaderStoredProcedureName": "[[dbo].[spGetAutoTransferCycleIdForErrorOrder]",
+											"storedProcedureParameters": {
+												"CloudId": {
+													"type": "Byte",
+													"value": "2"
+												},
+												"FileName": {
+													"type": "String",
+													"value": {
+														"value": "@item().name",
+														"type": "Expression"
+													}
+												}
+											},
+											"queryTimeout": "02:00:00",
+											"partitionOption": "None"
+										},
+										"dataset": {
+											"referenceName": "DS_TAS_tblDownloadOrderDetail_Error",
+											"type": "DatasetReference",
+											"parameters": {}
+										}
+									}
+								}
+							]
+						}
+					}
+				],
+				"folder": {
+					"name": "TASOrder"
+				},
+				"annotations": [],
+				"lastPublishTime": "2021-02-16T14:36:06Z"
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/S3TASOrderDataSet_Cloud2_Folder')]",
+				"[concat(variables('factoryId'), '/datasets/S3TASOrderDataSet_Cloud2_File')]",
 				"[concat(variables('factoryId'), '/datasets/TASOrderLogStorageDS')]",
-				"[concat(variables('factoryId'), '/linkedServices/NCSdataStorageLink')]"
+				"[concat(variables('factoryId'), '/datasets/DS_TAS_tblDownloadOrderDetail_Error')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/TASOrderLog_Cloud3')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Cloud3FilesMetaData",
+						"type": "GetMetadata",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"dataset": {
+								"referenceName": "S3TASOrderDataSet_Cloud3_Folder",
+								"type": "DatasetReference",
+								"parameters": {
+									"Directory": "LEAP/Cloud3/Log"
+								}
+							},
+							"fieldList": [
+								"childItems",
+								"itemName",
+								"lastModified"
+							],
+							"storeSettings": {
+								"type": "AmazonS3ReadSettings",
+								"recursive": true
+							},
+							"formatSettings": {
+								"type": "BinaryReadSettings"
+							}
+						}
+					},
+					{
+						"name": "Cloud3FilesFilter",
+						"type": "Filter",
+						"dependsOn": [
+							{
+								"activity": "Cloud3FilesMetaData",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"userProperties": [],
+						"typeProperties": {
+							"items": {
+								"value": "@activity('Cloud3FilesMetaData').output.childItems",
+								"type": "Expression"
+							},
+							"condition": {
+								"value": "@equals(item().type, 'File')",
+								"type": "Expression"
+							}
+						}
+					},
+					{
+						"name": "ForEachCloud3FolderFiles",
+						"type": "ForEach",
+						"dependsOn": [
+							{
+								"activity": "Cloud3FilesFilter",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"userProperties": [],
+						"typeProperties": {
+							"items": {
+								"value": "@activity('Cloud3FilesFilter').output.value",
+								"type": "Expression"
+							},
+							"activities": [
+								{
+									"name": "LeapOrderLog_Cloud3_Staging",
+									"type": "Copy",
+									"dependsOn": [
+										{
+											"activity": "LeapOrderLog_Cloud3",
+											"dependencyConditions": [
+												"Succeeded"
+											]
+										}
+									],
+									"policy": {
+										"timeout": "7.00:00:00",
+										"retry": 0,
+										"retryIntervalInSeconds": 30,
+										"secureOutput": false,
+										"secureInput": false
+									},
+									"userProperties": [],
+									"typeProperties": {
+										"source": {
+											"type": "DelimitedTextSource",
+											"storeSettings": {
+												"type": "AmazonS3ReadSettings",
+												"recursive": true,
+												"enablePartitionDiscovery": false
+											},
+											"formatSettings": {
+												"type": "DelimitedTextReadSettings"
+											}
+										},
+										"sink": {
+											"type": "DelimitedTextSink",
+											"storeSettings": {
+												"type": "AzureBlobStorageWriteSettings"
+											},
+											"formatSettings": {
+												"type": "DelimitedTextWriteSettings",
+												"quoteAllText": true,
+												"fileExtension": ".txt"
+											}
+										},
+										"enableStaging": false,
+										"validateDataConsistency": false,
+										"dataIntegrationUnits": 2
+									},
+									"inputs": [
+										{
+											"referenceName": "S3TASOrderDataSet_Cloud3_File",
+											"type": "DatasetReference",
+											"parameters": {
+												"filename": {
+													"value": "@item().name",
+													"type": "Expression"
+												}
+											}
+										}
+									],
+									"outputs": [
+										{
+											"referenceName": "TASOrderLogStorageDS",
+											"type": "DatasetReference",
+											"parameters": {
+												"Directory": "Cloud03"
+											}
+										}
+									]
+								},
+								{
+									"name": "DeletelogFiles_Cloud3",
+									"type": "Delete",
+									"dependsOn": [
+										{
+											"activity": "LeapOrderLog_Cloud3_Staging",
+											"dependencyConditions": [
+												"Succeeded"
+											]
+										}
+									],
+									"policy": {
+										"timeout": "7.00:00:00",
+										"retry": 0,
+										"retryIntervalInSeconds": 30,
+										"secureOutput": false,
+										"secureInput": false
+									},
+									"userProperties": [],
+									"typeProperties": {
+										"dataset": {
+											"referenceName": "S3TASOrderDataSet_Cloud3_File",
+											"type": "DatasetReference",
+											"parameters": {
+												"filename": {
+													"value": "@item().name",
+													"type": "Expression"
+												}
+											}
+										},
+										"enableLogging": false,
+										"storeSettings": {
+											"type": "AmazonS3ReadSettings",
+											"recursive": true
+										}
+									}
+								},
+								{
+									"name": "LeapOrderLog_Cloud3",
+									"type": "Copy",
+									"dependsOn": [
+										{
+											"activity": "LookupspGetAutoTransferCycleIdForErrorOrder",
+											"dependencyConditions": [
+												"Succeeded"
+											]
+										}
+									],
+									"policy": {
+										"timeout": "7.00:00:00",
+										"retry": 0,
+										"retryIntervalInSeconds": 30,
+										"secureOutput": false,
+										"secureInput": false
+									},
+									"userProperties": [],
+									"typeProperties": {
+										"source": {
+											"type": "DelimitedTextSource",
+											"additionalColumns": [
+												{
+													"name": "TrnsCycleId",
+													"value": {
+														"value": "@activity('LookupspGetAutoTransferCycleIdForErrorOrder').output.firstRow.TrnsCycleId",
+														"type": "Expression"
+													}
+												}
+											],
+											"storeSettings": {
+												"type": "AmazonS3ReadSettings",
+												"recursive": true,
+												"enablePartitionDiscovery": false
+											},
+											"formatSettings": {
+												"type": "DelimitedTextReadSettings"
+											}
+										},
+										"sink": {
+											"type": "AzureSqlSink"
+										},
+										"enableStaging": false,
+										"validateDataConsistency": false,
+										"dataIntegrationUnits": 2,
+										"translator": {
+											"type": "TabularTranslator",
+											"mappings": [
+												{
+													"source": {
+														"name": "Branch_Code",
+														"type": "String"
+													},
+													"sink": {
+														"name": "Branch_Code",
+														"type": "String"
+													}
+												},
+												{
+													"source": {
+														"name": "Order_Number",
+														"type": "String"
+													},
+													"sink": {
+														"name": "Order_Number",
+														"type": "String"
+													}
+												},
+												{
+													"source": {
+														"name": "DSE_Code",
+														"type": "String"
+													},
+													"sink": {
+														"name": "DSE_Code",
+														"type": "String"
+													}
+												},
+												{
+													"source": {
+														"name": "Retailer_Code",
+														"type": "String"
+													},
+													"sink": {
+														"name": "Retailer_Code",
+														"type": "String"
+													}
+												},
+												{
+													"source": {
+														"name": "Route_Code",
+														"type": "String"
+													},
+													"sink": {
+														"name": "Route_Code",
+														"type": "String"
+													}
+												},
+												{
+													"source": {
+														"name": "Order_Date",
+														"type": "String"
+													},
+													"sink": {
+														"name": "Order_Date",
+														"type": "String"
+													}
+												},
+												{
+													"source": {
+														"name": "Exp_Delivery_Date",
+														"type": "String"
+													},
+													"sink": {
+														"name": "Exp_Delivery_Date",
+														"type": "String"
+													}
+												},
+												{
+													"source": {
+														"name": "SUBBF_Name",
+														"type": "String"
+													},
+													"sink": {
+														"name": "SUBBF_Name",
+														"type": "String"
+													}
+												},
+												{
+													"source": {
+														"name": "Order_Qty",
+														"type": "String"
+													},
+													"sink": {
+														"name": "Order_Qty",
+														"type": "String"
+													}
+												},
+												{
+													"source": {
+														"name": "TeleCaller_Name",
+														"type": "String"
+													},
+													"sink": {
+														"name": "TeleCaller_Name",
+														"type": "String"
+													}
+												},
+												{
+													"source": {
+														"name": "TeleCaller_Code",
+														"type": "String"
+													},
+													"sink": {
+														"name": "TeleCaller_Code",
+														"type": "String"
+													}
+												},
+												{
+													"source": {
+														"name": "PO_Number",
+														"type": "String"
+													},
+													"sink": {
+														"name": "PO_Number",
+														"type": "String"
+													}
+												},
+												{
+													"source": {
+														"name": "Error_Description",
+														"type": "String"
+													},
+													"sink": {
+														"name": "Error_Description",
+														"type": "String"
+													}
+												},
+												{
+													"source": {
+														"name": "TrnsCycleId",
+														"type": "String"
+													},
+													"sink": {
+														"name": "TrnsCycleId",
+														"type": "Int64"
+													}
+												}
+											]
+										}
+									},
+									"inputs": [
+										{
+											"referenceName": "S3TASOrderDataSet_Cloud3_File",
+											"type": "DatasetReference",
+											"parameters": {
+												"filename": {
+													"value": "@item().name",
+													"type": "Expression"
+												}
+											}
+										}
+									],
+									"outputs": [
+										{
+											"referenceName": "DS_TAS_tblDownloadOrderDetail_Error",
+											"type": "DatasetReference",
+											"parameters": {}
+										}
+									]
+								},
+								{
+									"name": "LookupspGetAutoTransferCycleIdForErrorOrder",
+									"type": "Lookup",
+									"dependsOn": [],
+									"policy": {
+										"timeout": "7.00:00:00",
+										"retry": 0,
+										"retryIntervalInSeconds": 30,
+										"secureOutput": false,
+										"secureInput": false
+									},
+									"userProperties": [],
+									"typeProperties": {
+										"source": {
+											"type": "AzureSqlSource",
+											"sqlReaderStoredProcedureName": "[[dbo].[spGetAutoTransferCycleIdForErrorOrder]",
+											"storedProcedureParameters": {
+												"CloudId": {
+													"type": "Byte",
+													"value": "3"
+												},
+												"FileName": {
+													"type": "String",
+													"value": {
+														"value": "@item().name",
+														"type": "Expression"
+													}
+												}
+											},
+											"queryTimeout": "02:00:00",
+											"partitionOption": "None"
+										},
+										"dataset": {
+											"referenceName": "DS_TAS_tblDownloadOrderDetail_Error",
+											"type": "DatasetReference",
+											"parameters": {}
+										}
+									}
+								}
+							]
+						}
+					}
+				],
+				"folder": {
+					"name": "TASOrder"
+				},
+				"annotations": [],
+				"lastPublishTime": "2021-02-16T14:36:07Z"
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/S3TASOrderDataSet_Cloud3_Folder')]",
+				"[concat(variables('factoryId'), '/datasets/S3TASOrderDataSet_Cloud3_File')]",
+				"[concat(variables('factoryId'), '/datasets/TASOrderLogStorageDS')]",
+				"[concat(variables('factoryId'), '/datasets/DS_TAS_tblDownloadOrderDetail_Error')]"
 			]
 		},
 		{
@@ -31210,7 +32658,8 @@
 				"folder": {
 					"name": "Other Pipelines"
 				},
-				"annotations": []
+				"annotations": [],
+				"lastPublishTime": "2021-02-17T07:38:58Z"
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/TASDBConnection')]",
@@ -31247,7 +32696,8 @@
 				"folder": {
 					"name": "Other Pipelines"
 				},
-				"annotations": []
+				"annotations": [],
+				"lastPublishTime": "2021-02-17T07:38:58Z"
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/linkedServices/PnGDataFoundation')]"
@@ -32606,7 +34056,8 @@
 				"folder": {
 					"name": "Other Pipelines"
 				},
-				"annotations": []
+				"annotations": [],
+				"lastPublishTime": "2021-02-17T07:38:58Z"
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/DS_TAS_tblINITClusterMaster')]",
@@ -32682,7 +34133,8 @@
 				"folder": {
 					"name": "Other Pipelines"
 				},
-				"annotations": []
+				"annotations": [],
+				"lastPublishTime": "2021-02-17T07:38:58Z"
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/linkedServices/TASDatabase')]",
@@ -35891,6 +37343,93 @@
 				"typeProperties": {
 					"schema": "dbo",
 					"table": "TmpRawLeapStoreMasterDetails"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/TASDatabase')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/DS_TAS_tblDownloadOrderDetail_Error')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "TASDatabase",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "TASOrders"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [
+					{
+						"name": "Branch_Code",
+						"type": "varchar"
+					},
+					{
+						"name": "Order_Number",
+						"type": "varchar"
+					},
+					{
+						"name": "DSE_Code",
+						"type": "varchar"
+					},
+					{
+						"name": "Retailer_Code",
+						"type": "varchar"
+					},
+					{
+						"name": "Route_Code",
+						"type": "varchar"
+					},
+					{
+						"name": "Order_Date",
+						"type": "varchar"
+					},
+					{
+						"name": "Exp_Delivery_Date",
+						"type": "varchar"
+					},
+					{
+						"name": "SUBBF_Name",
+						"type": "varchar"
+					},
+					{
+						"name": "Order_Qty",
+						"type": "varchar"
+					},
+					{
+						"name": "TeleCaller_Name",
+						"type": "varchar"
+					},
+					{
+						"name": "TeleCaller_Code",
+						"type": "varchar"
+					},
+					{
+						"name": "PO_Number",
+						"type": "varchar"
+					},
+					{
+						"name": "Error_Description",
+						"type": "varchar"
+					},
+					{
+						"name": "TrnsCycleId",
+						"type": "bigint",
+						"precision": 19
+					},
+					{
+						"name": "CycleId",
+						"type": "int",
+						"precision": 10
+					}
+				],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "tblDownloadOrderDetail_Error"
 				}
 			},
 			"dependsOn": [
@@ -39670,6 +41209,78 @@
 			]
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/TASOrderLogStorageDS')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "NCSdataStorageLink",
+					"type": "LinkedServiceReference"
+				},
+				"parameters": {
+					"Directory": {
+						"type": "string"
+					}
+				},
+				"folder": {
+					"name": "TASOrders"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"folderPath": {
+							"value": "@dataset().Directory",
+							"type": "Expression"
+						},
+						"container": "tasorderlog"
+					},
+					"columnDelimiter": "|",
+					"escapeChar": "\\",
+					"quoteChar": "\""
+				},
+				"schema": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/NCSdataStorageLink')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/TASOrderLogStorageDataset')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "NCSdataStorageLink",
+					"type": "LinkedServiceReference"
+				},
+				"parameters": {
+					"Directory": {
+						"type": "string"
+					}
+				},
+				"folder": {
+					"name": "StagingSource"
+				},
+				"annotations": [],
+				"type": "Binary",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"folderPath": {
+							"value": "@dataset().Directory",
+							"type": "Expression"
+						},
+						"container": "tasorderlog"
+					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/NCSdataStorageLink')]"
+			]
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/tblRTDXAugSale')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
@@ -40278,1712 +41889,6 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/pipelines/Scaledb')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/TASOrderLogStorageDataset')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "NCSdataStorageLink",
-					"type": "LinkedServiceReference"
-				},
-				"parameters": {
-					"Directory": {
-						"type": "string"
-					}
-				},
-				"folder": {
-					"name": "StagingSource"
-				},
-				"annotations": [],
-				"type": "Binary",
-				"typeProperties": {
-					"location": {
-						"type": "AzureBlobStorageLocation",
-						"folderPath": {
-							"value": "@dataset().Directory",
-							"type": "Expression"
-						},
-						"container": "tasorderlog"
-					}
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/NCSdataStorageLink')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/TASOrderLog_Cloud2')]",
-			"type": "Microsoft.DataFactory/factories/pipelines",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"activities": [
-					{
-						"name": "Cloud2FilesMetaData",
-						"type": "GetMetadata",
-						"dependsOn": [],
-						"policy": {
-							"timeout": "7.00:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"dataset": {
-								"referenceName": "S3TASOrderDataSet_Cloud2_Folder",
-								"type": "DatasetReference",
-								"parameters": {
-									"Directory": "LEAP/Cloud2/Log"
-								}
-							},
-							"fieldList": [
-								"childItems",
-								"itemName",
-								"lastModified"
-							],
-							"storeSettings": {
-								"type": "AmazonS3ReadSettings",
-								"recursive": true
-							},
-							"formatSettings": {
-								"type": "BinaryReadSettings"
-							}
-						}
-					},
-					{
-						"name": "Cloud2FilesFilter",
-						"type": "Filter",
-						"dependsOn": [
-							{
-								"activity": "Cloud2FilesMetaData",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"userProperties": [],
-						"typeProperties": {
-							"items": {
-								"value": "@activity('Cloud2FilesMetaData').output.childItems",
-								"type": "Expression"
-							},
-							"condition": {
-								"value": "@equals(item().type, 'File')",
-								"type": "Expression"
-							}
-						}
-					},
-					{
-						"name": "ForEachCloud2FolderFiles",
-						"type": "ForEach",
-						"dependsOn": [
-							{
-								"activity": "Cloud2FilesFilter",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"userProperties": [],
-						"typeProperties": {
-							"items": {
-								"value": "@activity('Cloud2FilesFilter').output.value",
-								"type": "Expression"
-							},
-							"activities": [
-								{
-									"name": "LeapOrderLog_Cloud2_Staging",
-									"type": "Copy",
-									"dependsOn": [
-										{
-											"activity": "LeapOrderLog_Cloud2",
-											"dependencyConditions": [
-												"Succeeded"
-											]
-										}
-									],
-									"policy": {
-										"timeout": "7.00:00:00",
-										"retry": 0,
-										"retryIntervalInSeconds": 30,
-										"secureOutput": false,
-										"secureInput": false
-									},
-									"userProperties": [],
-									"typeProperties": {
-										"source": {
-											"type": "DelimitedTextSource",
-											"storeSettings": {
-												"type": "AmazonS3ReadSettings",
-												"recursive": true,
-												"enablePartitionDiscovery": false
-											},
-											"formatSettings": {
-												"type": "DelimitedTextReadSettings"
-											}
-										},
-										"sink": {
-											"type": "DelimitedTextSink",
-											"storeSettings": {
-												"type": "AzureBlobStorageWriteSettings"
-											},
-											"formatSettings": {
-												"type": "DelimitedTextWriteSettings",
-												"quoteAllText": true,
-												"fileExtension": ".txt"
-											}
-										},
-										"enableStaging": false,
-										"validateDataConsistency": false,
-										"dataIntegrationUnits": 2
-									},
-									"inputs": [
-										{
-											"referenceName": "S3TASOrderDataSet_Cloud2_File",
-											"type": "DatasetReference",
-											"parameters": {
-												"filename": {
-													"value": "@item().name",
-													"type": "Expression"
-												}
-											}
-										}
-									],
-									"outputs": [
-										{
-											"referenceName": "TASOrderLogStorageDS",
-											"type": "DatasetReference",
-											"parameters": {
-												"Directory": "Cloud02"
-											}
-										}
-									]
-								},
-								{
-									"name": "DeletelogFiles_Cloud2",
-									"type": "Delete",
-									"dependsOn": [
-										{
-											"activity": "LeapOrderLog_Cloud2_Staging",
-											"dependencyConditions": [
-												"Succeeded"
-											]
-										}
-									],
-									"policy": {
-										"timeout": "7.00:00:00",
-										"retry": 0,
-										"retryIntervalInSeconds": 30,
-										"secureOutput": false,
-										"secureInput": false
-									},
-									"userProperties": [],
-									"typeProperties": {
-										"dataset": {
-											"referenceName": "S3TASOrderDataSet_Cloud2_File",
-											"type": "DatasetReference",
-											"parameters": {
-												"filename": {
-													"value": "@item().name",
-													"type": "Expression"
-												}
-											}
-										},
-										"enableLogging": false,
-										"storeSettings": {
-											"type": "AmazonS3ReadSettings",
-											"recursive": true
-										}
-									}
-								},
-								{
-									"name": "LeapOrderLog_Cloud2",
-									"type": "Copy",
-									"dependsOn": [
-										{
-											"activity": "LookupspGetAutoTransferCycleIdForErrorOrder",
-											"dependencyConditions": [
-												"Succeeded"
-											]
-										}
-									],
-									"policy": {
-										"timeout": "7.00:00:00",
-										"retry": 0,
-										"retryIntervalInSeconds": 30,
-										"secureOutput": false,
-										"secureInput": false
-									},
-									"userProperties": [],
-									"typeProperties": {
-										"source": {
-											"type": "DelimitedTextSource",
-											"additionalColumns": [
-												{
-													"name": "TrnsCycleId",
-													"value": {
-														"value": "@activity('LookupspGetAutoTransferCycleIdForErrorOrder').output.firstRow.TrnsCycleId",
-														"type": "Expression"
-													}
-												}
-											],
-											"storeSettings": {
-												"type": "AmazonS3ReadSettings",
-												"recursive": true,
-												"enablePartitionDiscovery": false
-											},
-											"formatSettings": {
-												"type": "DelimitedTextReadSettings"
-											}
-										},
-										"sink": {
-											"type": "AzureSqlSink"
-										},
-										"enableStaging": false,
-										"validateDataConsistency": false,
-										"dataIntegrationUnits": 2,
-										"translator": {
-											"type": "TabularTranslator",
-											"mappings": [
-												{
-													"source": {
-														"name": "Branch_Code",
-														"type": "String"
-													},
-													"sink": {
-														"name": "Branch_Code",
-														"type": "String"
-													}
-												},
-												{
-													"source": {
-														"name": "Order_Number",
-														"type": "String"
-													},
-													"sink": {
-														"name": "Order_Number",
-														"type": "String"
-													}
-												},
-												{
-													"source": {
-														"name": "DSE_Code",
-														"type": "String"
-													},
-													"sink": {
-														"name": "DSE_Code",
-														"type": "String"
-													}
-												},
-												{
-													"source": {
-														"name": "Retailer_Code",
-														"type": "String"
-													},
-													"sink": {
-														"name": "Retailer_Code",
-														"type": "String"
-													}
-												},
-												{
-													"source": {
-														"name": "Route_Code",
-														"type": "String"
-													},
-													"sink": {
-														"name": "Route_Code",
-														"type": "String"
-													}
-												},
-												{
-													"source": {
-														"name": "Order_Date",
-														"type": "String"
-													},
-													"sink": {
-														"name": "Order_Date",
-														"type": "String"
-													}
-												},
-												{
-													"source": {
-														"name": "Exp_Delivery_Date",
-														"type": "String"
-													},
-													"sink": {
-														"name": "Exp_Delivery_Date",
-														"type": "String"
-													}
-												},
-												{
-													"source": {
-														"name": "SUBBF_Name",
-														"type": "String"
-													},
-													"sink": {
-														"name": "SUBBF_Name",
-														"type": "String"
-													}
-												},
-												{
-													"source": {
-														"name": "Order_Qty",
-														"type": "String"
-													},
-													"sink": {
-														"name": "Order_Qty",
-														"type": "String"
-													}
-												},
-												{
-													"source": {
-														"name": "TeleCaller_Name",
-														"type": "String"
-													},
-													"sink": {
-														"name": "TeleCaller_Name",
-														"type": "String"
-													}
-												},
-												{
-													"source": {
-														"name": "TeleCaller_Code",
-														"type": "String"
-													},
-													"sink": {
-														"name": "TeleCaller_Code",
-														"type": "String"
-													}
-												},
-												{
-													"source": {
-														"name": "PO_Number",
-														"type": "String"
-													},
-													"sink": {
-														"name": "PO_Number",
-														"type": "String"
-													}
-												},
-												{
-													"source": {
-														"name": "Error_Description",
-														"type": "String"
-													},
-													"sink": {
-														"name": "Error_Description",
-														"type": "String"
-													}
-												},
-												{
-													"source": {
-														"name": "TrnsCycleId",
-														"type": "String"
-													},
-													"sink": {
-														"name": "TrnsCycleId",
-														"type": "Int64"
-													}
-												}
-											]
-										}
-									},
-									"inputs": [
-										{
-											"referenceName": "S3TASOrderDataSet_Cloud2_File",
-											"type": "DatasetReference",
-											"parameters": {
-												"filename": {
-													"value": "@item().name",
-													"type": "Expression"
-												}
-											}
-										}
-									],
-									"outputs": [
-										{
-											"referenceName": "DS_TAS_tblDownloadOrderDetail_Error",
-											"type": "DatasetReference",
-											"parameters": {}
-										}
-									]
-								},
-								{
-									"name": "LookupspGetAutoTransferCycleIdForErrorOrder",
-									"type": "Lookup",
-									"dependsOn": [],
-									"policy": {
-										"timeout": "7.00:00:00",
-										"retry": 0,
-										"retryIntervalInSeconds": 30,
-										"secureOutput": false,
-										"secureInput": false
-									},
-									"userProperties": [],
-									"typeProperties": {
-										"source": {
-											"type": "AzureSqlSource",
-											"sqlReaderStoredProcedureName": "[[dbo].[spGetAutoTransferCycleIdForErrorOrder]",
-											"storedProcedureParameters": {
-												"CloudId": {
-													"type": "Byte",
-													"value": "2"
-												},
-												"FileName": {
-													"type": "String",
-													"value": {
-														"value": "@item().name",
-														"type": "Expression"
-													}
-												}
-											},
-											"queryTimeout": "02:00:00",
-											"partitionOption": "None"
-										},
-										"dataset": {
-											"referenceName": "DS_TAS_tblDownloadOrderDetail_Error",
-											"type": "DatasetReference",
-											"parameters": {}
-										}
-									}
-								}
-							]
-						}
-					}
-				],
-				"folder": {
-					"name": "TASOrder"
-				},
-				"annotations": []
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/S3TASOrderDataSet_Cloud2_Folder')]",
-				"[concat(variables('factoryId'), '/datasets/S3TASOrderDataSet_Cloud2_File')]",
-				"[concat(variables('factoryId'), '/datasets/TASOrderLogStorageDS')]",
-				"[concat(variables('factoryId'), '/datasets/DS_TAS_tblDownloadOrderDetail_Error')]",
-				"[concat(variables('factoryId'), '/linkedServices/NCSdataStorageLink')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/TASOrderLog_Cloud3')]",
-			"type": "Microsoft.DataFactory/factories/pipelines",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"activities": [
-					{
-						"name": "Cloud3FilesMetaData",
-						"type": "GetMetadata",
-						"dependsOn": [],
-						"policy": {
-							"timeout": "7.00:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"dataset": {
-								"referenceName": "S3TASOrderDataSet_Cloud3_Folder",
-								"type": "DatasetReference",
-								"parameters": {
-									"Directory": "LEAP/Cloud3/Log"
-								}
-							},
-							"fieldList": [
-								"childItems",
-								"itemName",
-								"lastModified"
-							],
-							"storeSettings": {
-								"type": "AmazonS3ReadSettings",
-								"recursive": true
-							},
-							"formatSettings": {
-								"type": "BinaryReadSettings"
-							}
-						}
-					},
-					{
-						"name": "Cloud3FilesFilter",
-						"type": "Filter",
-						"dependsOn": [
-							{
-								"activity": "Cloud3FilesMetaData",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"userProperties": [],
-						"typeProperties": {
-							"items": {
-								"value": "@activity('Cloud3FilesMetaData').output.childItems",
-								"type": "Expression"
-							},
-							"condition": {
-								"value": "@equals(item().type, 'File')",
-								"type": "Expression"
-							}
-						}
-					},
-					{
-						"name": "ForEachCloud3FolderFiles",
-						"type": "ForEach",
-						"dependsOn": [
-							{
-								"activity": "Cloud3FilesFilter",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"userProperties": [],
-						"typeProperties": {
-							"items": {
-								"value": "@activity('Cloud3FilesFilter').output.value",
-								"type": "Expression"
-							},
-							"activities": [
-								{
-									"name": "LeapOrderLog_Cloud3_Staging",
-									"type": "Copy",
-									"dependsOn": [
-										{
-											"activity": "LeapOrderLog_Cloud3",
-											"dependencyConditions": [
-												"Succeeded"
-											]
-										}
-									],
-									"policy": {
-										"timeout": "7.00:00:00",
-										"retry": 0,
-										"retryIntervalInSeconds": 30,
-										"secureOutput": false,
-										"secureInput": false
-									},
-									"userProperties": [],
-									"typeProperties": {
-										"source": {
-											"type": "DelimitedTextSource",
-											"storeSettings": {
-												"type": "AmazonS3ReadSettings",
-												"recursive": true,
-												"enablePartitionDiscovery": false
-											},
-											"formatSettings": {
-												"type": "DelimitedTextReadSettings"
-											}
-										},
-										"sink": {
-											"type": "DelimitedTextSink",
-											"storeSettings": {
-												"type": "AzureBlobStorageWriteSettings"
-											},
-											"formatSettings": {
-												"type": "DelimitedTextWriteSettings",
-												"quoteAllText": true,
-												"fileExtension": ".txt"
-											}
-										},
-										"enableStaging": false,
-										"validateDataConsistency": false,
-										"dataIntegrationUnits": 2
-									},
-									"inputs": [
-										{
-											"referenceName": "S3TASOrderDataSet_Cloud3_File",
-											"type": "DatasetReference",
-											"parameters": {
-												"filename": {
-													"value": "@item().name",
-													"type": "Expression"
-												}
-											}
-										}
-									],
-									"outputs": [
-										{
-											"referenceName": "TASOrderLogStorageDS",
-											"type": "DatasetReference",
-											"parameters": {
-												"Directory": "Cloud03"
-											}
-										}
-									]
-								},
-								{
-									"name": "DeletelogFiles_Cloud3",
-									"type": "Delete",
-									"dependsOn": [
-										{
-											"activity": "LeapOrderLog_Cloud3_Staging",
-											"dependencyConditions": [
-												"Succeeded"
-											]
-										}
-									],
-									"policy": {
-										"timeout": "7.00:00:00",
-										"retry": 0,
-										"retryIntervalInSeconds": 30,
-										"secureOutput": false,
-										"secureInput": false
-									},
-									"userProperties": [],
-									"typeProperties": {
-										"dataset": {
-											"referenceName": "S3TASOrderDataSet_Cloud3_File",
-											"type": "DatasetReference",
-											"parameters": {
-												"filename": {
-													"value": "@item().name",
-													"type": "Expression"
-												}
-											}
-										},
-										"enableLogging": false,
-										"storeSettings": {
-											"type": "AmazonS3ReadSettings",
-											"recursive": true
-										}
-									}
-								},
-								{
-									"name": "LeapOrderLog_Cloud3",
-									"type": "Copy",
-									"dependsOn": [
-										{
-											"activity": "LookupspGetAutoTransferCycleIdForErrorOrder",
-											"dependencyConditions": [
-												"Succeeded"
-											]
-										}
-									],
-									"policy": {
-										"timeout": "7.00:00:00",
-										"retry": 0,
-										"retryIntervalInSeconds": 30,
-										"secureOutput": false,
-										"secureInput": false
-									},
-									"userProperties": [],
-									"typeProperties": {
-										"source": {
-											"type": "DelimitedTextSource",
-											"additionalColumns": [
-												{
-													"name": "TrnsCycleId",
-													"value": {
-														"value": "@activity('LookupspGetAutoTransferCycleIdForErrorOrder').output.firstRow.TrnsCycleId",
-														"type": "Expression"
-													}
-												}
-											],
-											"storeSettings": {
-												"type": "AmazonS3ReadSettings",
-												"recursive": true,
-												"enablePartitionDiscovery": false
-											},
-											"formatSettings": {
-												"type": "DelimitedTextReadSettings"
-											}
-										},
-										"sink": {
-											"type": "AzureSqlSink"
-										},
-										"enableStaging": false,
-										"validateDataConsistency": false,
-										"dataIntegrationUnits": 2,
-										"translator": {
-											"type": "TabularTranslator",
-											"mappings": [
-												{
-													"source": {
-														"name": "Branch_Code",
-														"type": "String"
-													},
-													"sink": {
-														"name": "Branch_Code",
-														"type": "String"
-													}
-												},
-												{
-													"source": {
-														"name": "Order_Number",
-														"type": "String"
-													},
-													"sink": {
-														"name": "Order_Number",
-														"type": "String"
-													}
-												},
-												{
-													"source": {
-														"name": "DSE_Code",
-														"type": "String"
-													},
-													"sink": {
-														"name": "DSE_Code",
-														"type": "String"
-													}
-												},
-												{
-													"source": {
-														"name": "Retailer_Code",
-														"type": "String"
-													},
-													"sink": {
-														"name": "Retailer_Code",
-														"type": "String"
-													}
-												},
-												{
-													"source": {
-														"name": "Route_Code",
-														"type": "String"
-													},
-													"sink": {
-														"name": "Route_Code",
-														"type": "String"
-													}
-												},
-												{
-													"source": {
-														"name": "Order_Date",
-														"type": "String"
-													},
-													"sink": {
-														"name": "Order_Date",
-														"type": "String"
-													}
-												},
-												{
-													"source": {
-														"name": "Exp_Delivery_Date",
-														"type": "String"
-													},
-													"sink": {
-														"name": "Exp_Delivery_Date",
-														"type": "String"
-													}
-												},
-												{
-													"source": {
-														"name": "SUBBF_Name",
-														"type": "String"
-													},
-													"sink": {
-														"name": "SUBBF_Name",
-														"type": "String"
-													}
-												},
-												{
-													"source": {
-														"name": "Order_Qty",
-														"type": "String"
-													},
-													"sink": {
-														"name": "Order_Qty",
-														"type": "String"
-													}
-												},
-												{
-													"source": {
-														"name": "TeleCaller_Name",
-														"type": "String"
-													},
-													"sink": {
-														"name": "TeleCaller_Name",
-														"type": "String"
-													}
-												},
-												{
-													"source": {
-														"name": "TeleCaller_Code",
-														"type": "String"
-													},
-													"sink": {
-														"name": "TeleCaller_Code",
-														"type": "String"
-													}
-												},
-												{
-													"source": {
-														"name": "PO_Number",
-														"type": "String"
-													},
-													"sink": {
-														"name": "PO_Number",
-														"type": "String"
-													}
-												},
-												{
-													"source": {
-														"name": "Error_Description",
-														"type": "String"
-													},
-													"sink": {
-														"name": "Error_Description",
-														"type": "String"
-													}
-												},
-												{
-													"source": {
-														"name": "TrnsCycleId",
-														"type": "String"
-													},
-													"sink": {
-														"name": "TrnsCycleId",
-														"type": "Int64"
-													}
-												}
-											]
-										}
-									},
-									"inputs": [
-										{
-											"referenceName": "S3TASOrderDataSet_Cloud3_File",
-											"type": "DatasetReference",
-											"parameters": {
-												"filename": {
-													"value": "@item().name",
-													"type": "Expression"
-												}
-											}
-										}
-									],
-									"outputs": [
-										{
-											"referenceName": "DS_TAS_tblDownloadOrderDetail_Error",
-											"type": "DatasetReference",
-											"parameters": {}
-										}
-									]
-								},
-								{
-									"name": "LookupspGetAutoTransferCycleIdForErrorOrder",
-									"type": "Lookup",
-									"dependsOn": [],
-									"policy": {
-										"timeout": "7.00:00:00",
-										"retry": 0,
-										"retryIntervalInSeconds": 30,
-										"secureOutput": false,
-										"secureInput": false
-									},
-									"userProperties": [],
-									"typeProperties": {
-										"source": {
-											"type": "AzureSqlSource",
-											"sqlReaderStoredProcedureName": "[[dbo].[spGetAutoTransferCycleIdForErrorOrder]",
-											"storedProcedureParameters": {
-												"CloudId": {
-													"type": "Byte",
-													"value": "3"
-												},
-												"FileName": {
-													"type": "String",
-													"value": {
-														"value": "@item().name",
-														"type": "Expression"
-													}
-												}
-											},
-											"queryTimeout": "02:00:00",
-											"partitionOption": "None"
-										},
-										"dataset": {
-											"referenceName": "DS_TAS_tblDownloadOrderDetail_Error",
-											"type": "DatasetReference",
-											"parameters": {}
-										}
-									}
-								}
-							]
-						}
-					}
-				],
-				"folder": {
-					"name": "TASOrder"
-				},
-				"annotations": []
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/S3TASOrderDataSet_Cloud3_Folder')]",
-				"[concat(variables('factoryId'), '/datasets/S3TASOrderDataSet_Cloud3_File')]",
-				"[concat(variables('factoryId'), '/datasets/TASOrderLogStorageDS')]",
-				"[concat(variables('factoryId'), '/datasets/DS_TAS_tblDownloadOrderDetail_Error')]",
-				"[concat(variables('factoryId'), '/linkedServices/NCSdataStorageLink')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/TASOrderLog')]",
-			"type": "Microsoft.DataFactory/factories/pipelines",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"activities": [
-					{
-						"name": "TASOrderLog_Cloud1",
-						"type": "ExecutePipeline",
-						"dependsOn": [],
-						"userProperties": [],
-						"typeProperties": {
-							"pipeline": {
-								"referenceName": "TASOrderLog_Cloud1",
-								"type": "PipelineReference"
-							},
-							"waitOnCompletion": true,
-							"parameters": {}
-						}
-					},
-					{
-						"name": "TASOrderLog_Cloud2",
-						"type": "ExecutePipeline",
-						"dependsOn": [
-							{
-								"activity": "TASOrderLog_Cloud1",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"userProperties": [],
-						"typeProperties": {
-							"pipeline": {
-								"referenceName": "TASOrderLog_Cloud2",
-								"type": "PipelineReference"
-							},
-							"waitOnCompletion": true,
-							"parameters": {}
-						}
-					},
-					{
-						"name": "TASOrderLog_Cloud3",
-						"type": "ExecutePipeline",
-						"dependsOn": [
-							{
-								"activity": "TASOrderLog_Cloud2",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"userProperties": [],
-						"typeProperties": {
-							"pipeline": {
-								"referenceName": "TASOrderLog_Cloud3",
-								"type": "PipelineReference"
-							},
-							"waitOnCompletion": true,
-							"parameters": {}
-						}
-					}
-				],
-				"folder": {
-					"name": "TASOrder"
-				},
-				"annotations": []
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/pipelines/TASOrderLog_Cloud1')]",
-				"[concat(variables('factoryId'), '/pipelines/TASOrderLog_Cloud2')]",
-				"[concat(variables('factoryId'), '/pipelines/TASOrderLog_Cloud3')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/DS_TAS_tblDownloadOrderDetail_Error')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "TASDatabase",
-					"type": "LinkedServiceReference"
-				},
-				"folder": {
-					"name": "TASOrders"
-				},
-				"annotations": [],
-				"type": "AzureSqlTable",
-				"schema": [
-					{
-						"name": "Branch_Code",
-						"type": "varchar"
-					},
-					{
-						"name": "Order_Number",
-						"type": "varchar"
-					},
-					{
-						"name": "DSE_Code",
-						"type": "varchar"
-					},
-					{
-						"name": "Retailer_Code",
-						"type": "varchar"
-					},
-					{
-						"name": "Route_Code",
-						"type": "varchar"
-					},
-					{
-						"name": "Order_Date",
-						"type": "varchar"
-					},
-					{
-						"name": "Exp_Delivery_Date",
-						"type": "varchar"
-					},
-					{
-						"name": "SUBBF_Name",
-						"type": "varchar"
-					},
-					{
-						"name": "Order_Qty",
-						"type": "varchar"
-					},
-					{
-						"name": "TeleCaller_Name",
-						"type": "varchar"
-					},
-					{
-						"name": "TeleCaller_Code",
-						"type": "varchar"
-					},
-					{
-						"name": "PO_Number",
-						"type": "varchar"
-					},
-					{
-						"name": "Error_Description",
-						"type": "varchar"
-					},
-					{
-						"name": "TrnsCycleId",
-						"type": "bigint",
-						"precision": 19
-					},
-					{
-						"name": "CycleId",
-						"type": "int",
-						"precision": 10
-					}
-				],
-				"typeProperties": {
-					"schema": "dbo",
-					"table": "tblDownloadOrderDetail_Error"
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/TASDatabase')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/TASFileProcessed')]",
-			"type": "Microsoft.DataFactory/factories/pipelines",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"activities": [
-					{
-						"name": "spGetAutoOrderFileList_Cloud1_Lookup",
-						"type": "Lookup",
-						"dependsOn": [],
-						"policy": {
-							"timeout": "7.00:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"source": {
-								"type": "AzureSqlSource",
-								"sqlReaderStoredProcedureName": "[[dbo].[spGetAutoOrderFileList]",
-								"storedProcedureParameters": {
-									"CloudId": {
-										"type": "Int32",
-										"value": "1"
-									}
-								},
-								"queryTimeout": "02:00:00",
-								"partitionOption": "None"
-							},
-							"dataset": {
-								"referenceName": "DS_TAS_tmpLeapDataLoadDPSR",
-								"type": "DatasetReference",
-								"parameters": {}
-							},
-							"firstRowOnly": false
-						}
-					},
-					{
-						"name": "ForEach_Cloud1",
-						"type": "ForEach",
-						"dependsOn": [
-							{
-								"activity": "spGetAutoOrderFileList_Cloud1_Lookup",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"userProperties": [],
-						"typeProperties": {
-							"items": {
-								"value": "@activity('spGetAutoOrderFileList_Cloud1_Lookup').output.value\n",
-								"type": "Expression"
-							},
-							"activities": [
-								{
-									"name": "Cloud1OrderFilesMetaData",
-									"type": "GetMetadata",
-									"dependsOn": [
-										{
-											"activity": "bCheckIFFileExistsCloud1Default",
-											"dependencyConditions": [
-												"Succeeded"
-											]
-										}
-									],
-									"policy": {
-										"timeout": "7.00:00:00",
-										"retry": 0,
-										"retryIntervalInSeconds": 30,
-										"secureOutput": false,
-										"secureInput": false
-									},
-									"userProperties": [],
-									"typeProperties": {
-										"dataset": {
-											"referenceName": "S3TASOrderDataSet_Cloud1_Folder",
-											"type": "DatasetReference",
-											"parameters": {
-												"Directory": "LEAP/Cloud1/Upload"
-											}
-										},
-										"fieldList": [
-											"childItems",
-											"itemName",
-											"lastModified"
-										],
-										"storeSettings": {
-											"type": "AmazonS3ReadSettings",
-											"recursive": true
-										},
-										"formatSettings": {
-											"type": "BinaryReadSettings"
-										}
-									}
-								},
-								{
-									"name": "bCheckIFFileExistsCloud1Default",
-									"type": "SetVariable",
-									"dependsOn": [],
-									"userProperties": [],
-									"typeProperties": {
-										"variableName": "bCheckIFFileExists_Cloud2",
-										"value": {
-											"value": "@bool(0)",
-											"type": "Expression"
-										}
-									}
-								},
-								{
-									"name": "bCheckIFFileExistsCloud1",
-									"type": "SetVariable",
-									"dependsOn": [
-										{
-											"activity": "Cloud1OrderFilesMetaData",
-											"dependencyConditions": [
-												"Succeeded"
-											]
-										}
-									],
-									"userProperties": [],
-									"typeProperties": {
-										"variableName": "bCheckIFFileExists_Cloud2",
-										"value": {
-											"value": "@bool(startswith(item().FileSName,string(activity('Cloud1OrderFilesMetaData').output.childItems)))\n\n",
-											"type": "Expression"
-										}
-									}
-								},
-								{
-									"name": "If File Exists Cloud1",
-									"type": "IfCondition",
-									"dependsOn": [
-										{
-											"activity": "bCheckIFFileExistsCloud1",
-											"dependencyConditions": [
-												"Succeeded"
-											]
-										}
-									],
-									"userProperties": [],
-									"typeProperties": {
-										"expression": {
-											"value": "@variables('bCheckIFFileExists')",
-											"type": "Expression"
-										},
-										"ifTrueActivities": [
-											{
-												"name": "spMarkAutoDownloadOrderFileProcessed",
-												"type": "SqlServerStoredProcedure",
-												"dependsOn": [],
-												"policy": {
-													"timeout": "7.00:00:00",
-													"retry": 0,
-													"retryIntervalInSeconds": 30,
-													"secureOutput": false,
-													"secureInput": false
-												},
-												"userProperties": [],
-												"typeProperties": {
-													"storedProcedureName": "[[dbo].[spMarkAutoDownloadOrderFileProcessed]",
-													"storedProcedureParameters": {
-														"TrnsCycleId": {
-															"value": {
-																"value": "@item().TrnsCycleId",
-																"type": "Expression"
-															},
-															"type": "Int64"
-														}
-													}
-												},
-												"linkedServiceName": {
-													"referenceName": "TASDatabase",
-													"type": "LinkedServiceReference"
-												}
-											}
-										]
-									}
-								}
-							]
-						}
-					},
-					{
-						"name": "spGetAutoOrderFileList_Cloud2_Lookup",
-						"type": "Lookup",
-						"dependsOn": [],
-						"policy": {
-							"timeout": "7.00:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"source": {
-								"type": "AzureSqlSource",
-								"sqlReaderStoredProcedureName": "[[dbo].[spGetAutoOrderFileList]",
-								"storedProcedureParameters": {
-									"CloudId": {
-										"type": "Int32",
-										"value": "2"
-									}
-								},
-								"queryTimeout": "02:00:00",
-								"partitionOption": "None"
-							},
-							"dataset": {
-								"referenceName": "DS_TAS_tmpLeapDataLoadDPSR",
-								"type": "DatasetReference",
-								"parameters": {}
-							},
-							"firstRowOnly": false
-						}
-					},
-					{
-						"name": "ForEach_Cloud2",
-						"type": "ForEach",
-						"dependsOn": [
-							{
-								"activity": "spGetAutoOrderFileList_Cloud2_Lookup",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"userProperties": [],
-						"typeProperties": {
-							"items": {
-								"value": "@activity('spGetAutoOrderFileList_Cloud2_Lookup').output.value\n",
-								"type": "Expression"
-							},
-							"activities": [
-								{
-									"name": "Cloud2OrderFilesMetaData",
-									"type": "GetMetadata",
-									"dependsOn": [
-										{
-											"activity": "bCheckIFFileExistsCloud2Default",
-											"dependencyConditions": [
-												"Succeeded"
-											]
-										}
-									],
-									"policy": {
-										"timeout": "7.00:00:00",
-										"retry": 0,
-										"retryIntervalInSeconds": 30,
-										"secureOutput": false,
-										"secureInput": false
-									},
-									"userProperties": [],
-									"typeProperties": {
-										"dataset": {
-											"referenceName": "S3TASOrderDataSet_Cloud2_Folder",
-											"type": "DatasetReference",
-											"parameters": {
-												"Directory": "LEAP/Cloud2/Upload"
-											}
-										},
-										"fieldList": [
-											"childItems",
-											"itemName",
-											"lastModified"
-										],
-										"storeSettings": {
-											"type": "AmazonS3ReadSettings",
-											"recursive": true
-										},
-										"formatSettings": {
-											"type": "BinaryReadSettings"
-										}
-									}
-								},
-								{
-									"name": "bCheckIFFileExistsCloud2Default",
-									"type": "SetVariable",
-									"dependsOn": [],
-									"userProperties": [],
-									"typeProperties": {
-										"variableName": "bCheckIFFileExists_Cloud2",
-										"value": {
-											"value": "@bool(0)",
-											"type": "Expression"
-										}
-									}
-								},
-								{
-									"name": "bCheckIFFileExistsCloud2",
-									"type": "SetVariable",
-									"dependsOn": [
-										{
-											"activity": "Cloud2OrderFilesMetaData",
-											"dependencyConditions": [
-												"Succeeded"
-											]
-										}
-									],
-									"userProperties": [],
-									"typeProperties": {
-										"variableName": "bCheckIFFileExists_Cloud2",
-										"value": {
-											"value": "@bool(startswith(item().FileSName,string(activity('Cloud2OrderFilesMetaData').output.childItems)))\n\n",
-											"type": "Expression"
-										}
-									}
-								},
-								{
-									"name": "If File Exists Cloud2",
-									"type": "IfCondition",
-									"dependsOn": [
-										{
-											"activity": "bCheckIFFileExistsCloud2",
-											"dependencyConditions": [
-												"Succeeded"
-											]
-										}
-									],
-									"userProperties": [],
-									"typeProperties": {
-										"expression": {
-											"value": "@variables('bCheckIFFileExists_Cloud2')",
-											"type": "Expression"
-										},
-										"ifTrueActivities": [
-											{
-												"name": "spMarkAutoDownloadOrderFileProcessed_Cloud2",
-												"type": "SqlServerStoredProcedure",
-												"dependsOn": [],
-												"policy": {
-													"timeout": "7.00:00:00",
-													"retry": 0,
-													"retryIntervalInSeconds": 30,
-													"secureOutput": false,
-													"secureInput": false
-												},
-												"userProperties": [],
-												"typeProperties": {
-													"storedProcedureName": "[[dbo].[spMarkAutoDownloadOrderFileProcessed]",
-													"storedProcedureParameters": {
-														"TrnsCycleId": {
-															"value": {
-																"value": "@item().TrnsCycleId",
-																"type": "Expression"
-															},
-															"type": "Int64"
-														}
-													}
-												},
-												"linkedServiceName": {
-													"referenceName": "TASDatabase",
-													"type": "LinkedServiceReference"
-												}
-											}
-										]
-									}
-								}
-							]
-						}
-					},
-					{
-						"name": "spGetAutoOrderFileList_Cloud3_Lookup",
-						"type": "Lookup",
-						"dependsOn": [],
-						"policy": {
-							"timeout": "7.00:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"source": {
-								"type": "AzureSqlSource",
-								"sqlReaderStoredProcedureName": "[[dbo].[spGetAutoOrderFileList]",
-								"storedProcedureParameters": {
-									"CloudId": {
-										"type": "Int32",
-										"value": "3"
-									}
-								},
-								"queryTimeout": "02:00:00",
-								"partitionOption": "None"
-							},
-							"dataset": {
-								"referenceName": "DS_TAS_tmpLeapDataLoadDPSR",
-								"type": "DatasetReference",
-								"parameters": {}
-							},
-							"firstRowOnly": false
-						}
-					},
-					{
-						"name": "ForEach_Cloud3",
-						"type": "ForEach",
-						"dependsOn": [
-							{
-								"activity": "spGetAutoOrderFileList_Cloud3_Lookup",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"userProperties": [],
-						"typeProperties": {
-							"items": {
-								"value": "@activity('spGetAutoOrderFileList_Cloud3_Lookup').output.value\n",
-								"type": "Expression"
-							},
-							"activities": [
-								{
-									"name": "Cloud3OrderFilesMetaData",
-									"type": "GetMetadata",
-									"dependsOn": [
-										{
-											"activity": "bCheckIFFileExistsCloud3Default",
-											"dependencyConditions": [
-												"Succeeded"
-											]
-										}
-									],
-									"policy": {
-										"timeout": "7.00:00:00",
-										"retry": 0,
-										"retryIntervalInSeconds": 30,
-										"secureOutput": false,
-										"secureInput": false
-									},
-									"userProperties": [],
-									"typeProperties": {
-										"dataset": {
-											"referenceName": "S3TASOrderDataSet_Cloud3_Folder",
-											"type": "DatasetReference",
-											"parameters": {
-												"Directory": "LEAP/Cloud3/Upload"
-											}
-										},
-										"fieldList": [
-											"childItems",
-											"itemName",
-											"lastModified"
-										],
-										"storeSettings": {
-											"type": "AmazonS3ReadSettings",
-											"recursive": true
-										},
-										"formatSettings": {
-											"type": "BinaryReadSettings"
-										}
-									}
-								},
-								{
-									"name": "bCheckIFFileExistsCloud3Default",
-									"type": "SetVariable",
-									"dependsOn": [],
-									"userProperties": [],
-									"typeProperties": {
-										"variableName": "bCheckIFFileExists_Cloud3",
-										"value": {
-											"value": "@bool(0)",
-											"type": "Expression"
-										}
-									}
-								},
-								{
-									"name": "bCheckIFFileExistsCloud3",
-									"type": "SetVariable",
-									"dependsOn": [
-										{
-											"activity": "Cloud3OrderFilesMetaData",
-											"dependencyConditions": [
-												"Succeeded"
-											]
-										}
-									],
-									"userProperties": [],
-									"typeProperties": {
-										"variableName": "bCheckIFFileExists_Cloud3",
-										"value": {
-											"value": "@bool(startswith(item().FileSName,string(activity('Cloud3OrderFilesMetaData').output.childItems)))\n\n",
-											"type": "Expression"
-										}
-									}
-								},
-								{
-									"name": "If File Exists Cloud3",
-									"type": "IfCondition",
-									"dependsOn": [
-										{
-											"activity": "bCheckIFFileExistsCloud3",
-											"dependencyConditions": [
-												"Succeeded"
-											]
-										}
-									],
-									"userProperties": [],
-									"typeProperties": {
-										"expression": {
-											"value": "@variables('bCheckIFFileExists_Cloud3')",
-											"type": "Expression"
-										},
-										"ifTrueActivities": [
-											{
-												"name": "spMarkAutoDownloadOrderFileProcessed_Cloud3",
-												"type": "SqlServerStoredProcedure",
-												"dependsOn": [],
-												"policy": {
-													"timeout": "7.00:00:00",
-													"retry": 0,
-													"retryIntervalInSeconds": 30,
-													"secureOutput": false,
-													"secureInput": false
-												},
-												"userProperties": [],
-												"typeProperties": {
-													"storedProcedureName": "[[dbo].[spMarkAutoDownloadOrderFileProcessed]",
-													"storedProcedureParameters": {
-														"TrnsCycleId": {
-															"value": {
-																"value": "@item().TrnsCycleId",
-																"type": "Expression"
-															},
-															"type": "Int64"
-														}
-													}
-												},
-												"linkedServiceName": {
-													"referenceName": "TASDatabase",
-													"type": "LinkedServiceReference"
-												}
-											}
-										]
-									}
-								}
-							]
-						}
-					}
-				],
-				"variables": {
-					"bCheckIFFileExists": {
-						"type": "Boolean"
-					},
-					"bCheckIFFileExists_Cloud2": {
-						"type": "Boolean"
-					},
-					"bCheckIFFileExists_Cloud3": {
-						"type": "Boolean"
-					}
-				},
-				"folder": {
-					"name": "TASOrder"
-				},
-				"annotations": []
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/DS_TAS_tmpLeapDataLoadDPSR')]",
-				"[concat(variables('factoryId'), '/datasets/S3TASOrderDataSet_Cloud1_Folder')]",
-				"[concat(variables('factoryId'), '/datasets/S3TASOrderDataSet_Cloud2_Folder')]",
-				"[concat(variables('factoryId'), '/datasets/S3TASOrderDataSet_Cloud3_Folder')]",
-				"[concat(variables('factoryId'), '/linkedServices/TASDatabase')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/TASOrderLogStorageDS')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "NCSdataStorageLink",
-					"type": "LinkedServiceReference"
-				},
-				"parameters": {
-					"Directory": {
-						"type": "string"
-					}
-				},
-				"folder": {
-					"name": "TASOrders"
-				},
-				"annotations": [],
-				"type": "DelimitedText",
-				"typeProperties": {
-					"location": {
-						"type": "AzureBlobStorageLocation",
-						"folderPath": {
-							"value": "@dataset().Directory",
-							"type": "Expression"
-						},
-						"container": "tasorderlog"
-					},
-					"columnDelimiter": "|",
-					"escapeChar": "\\",
-					"quoteChar": "\""
-				},
-				"schema": []
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/NCSdataStorageLink')]"
 			]
 		}
 	]
