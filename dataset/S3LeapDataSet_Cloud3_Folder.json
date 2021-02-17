@@ -17,5 +17,6 @@
 				"folderPath": "LEAP/Cloud3"
 			}
 		}
-	}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
 }

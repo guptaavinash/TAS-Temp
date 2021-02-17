@@ -447,6 +447,8 @@
 		"folder": {
 			"name": "TASOrder"
 		},
-		"annotations": []
-	}
+		"annotations": [],
+		"lastPublishTime": "2021-02-16T14:36:07Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
 }

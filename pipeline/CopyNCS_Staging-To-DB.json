@@ -497,6 +497,8 @@
 		"folder": {
 			"name": "Leap Data Pipeline"
 		},
-		"annotations": []
-	}
+		"annotations": [],
+		"lastPublishTime": "2020-11-07T12:23:10Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
 }

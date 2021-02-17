@@ -243,7 +243,8 @@
 					"source": {
 						"type": "AzureSqlSource",
 						"sqlReaderStoredProcedureName": "[dbo].[SpCheckLeapDataLoaded]",
-						"queryTimeout": "02:00:00"
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
 					},
 					"dataset": {
 						"referenceName": "DFDBConnection",
@@ -331,6 +332,8 @@
 		"folder": {
 			"name": "Leap Data Pipeline"
 		},
-		"annotations": []
-	}
+		"annotations": [],
+		"lastPublishTime": "2020-06-05T01:51:48Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
 }

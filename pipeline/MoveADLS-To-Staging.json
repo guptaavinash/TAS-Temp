@@ -227,6 +227,8 @@
 		"folder": {
 			"name": "Other Pipelines"
 		},
-		"annotations": []
-	}
+		"annotations": [],
+		"lastPublishTime": "2021-02-17T07:39:00Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
 }

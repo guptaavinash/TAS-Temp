@@ -201,6 +201,8 @@
 		"folder": {
 			"name": "Leap Data Pipeline"
 		},
-		"annotations": []
-	}
+		"annotations": [],
+		"lastPublishTime": "2020-09-24T01:59:54Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
 }

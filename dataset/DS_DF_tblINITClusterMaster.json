@@ -41,5 +41,6 @@
 			"schema": "dbo",
 			"table": "tblINITClusterMaster"
 		}
-	}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
 }
