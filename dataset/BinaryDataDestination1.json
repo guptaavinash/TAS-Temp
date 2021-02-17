@@ -17,6 +17,9 @@
 				"type": "string"
 			}
 		},
+		"folder": {
+			"name": "OtherDataSet"
+		},
 		"annotations": [],
 		"type": "Binary",
 		"typeProperties": {

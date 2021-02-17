@@ -18,7 +18,8 @@
 					"source": {
 						"type": "AzureSqlSource",
 						"sqlReaderStoredProcedureName": "[dbo].[SpFilecheck]",
-						"queryTimeout": "02:00:00"
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
 					},
 					"dataset": {
 						"referenceName": "TASDBConnection",
@@ -123,7 +124,8 @@
 								"source": {
 									"type": "AzureSqlSource",
 									"sqlReaderStoredProcedureName": "[dbo].[SpFilecheck]",
-									"queryTimeout": "02:00:00"
+									"queryTimeout": "02:00:00",
+									"partitionOption": "None"
 								},
 								"dataset": {
 									"referenceName": "TASDBConnection",
@@ -160,6 +162,9 @@
 			"flgDone": {
 				"type": "Boolean"
 			}
+		},
+		"folder": {
+			"name": "Other Pipelines"
 		},
 		"annotations": []
 	}

@@ -1187,6 +1187,9 @@
 				}
 			}
 		],
+		"folder": {
+			"name": "Other Pipelines"
+		},
 		"annotations": []
 	}
 }

@@ -227,6 +227,9 @@
 				"type": "String"
 			}
 		},
+		"folder": {
+			"name": "Other Pipelines"
+		},
 		"annotations": []
 	}
 }

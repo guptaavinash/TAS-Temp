@@ -161,7 +161,8 @@
 					"source": {
 						"type": "AzureSqlSource",
 						"sqlReaderQuery": "select flgPngDataTransfer from tblFlagDataProcess",
-						"queryTimeout": "02:00:00"
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
 					},
 					"dataset": {
 						"referenceName": "TASDBConnection",
@@ -197,6 +198,9 @@
 				}
 			}
 		],
+		"folder": {
+			"name": "Other Pipelines"
+		},
 		"annotations": []
 	}
 }

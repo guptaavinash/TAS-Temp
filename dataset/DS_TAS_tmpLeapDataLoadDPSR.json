@@ -5,6 +5,9 @@
 			"referenceName": "TASDatabase",
 			"type": "LinkedServiceReference"
 		},
+		"folder": {
+			"name": "OtherDataSet"
+		},
 		"annotations": [],
 		"type": "AzureSqlTable",
 		"schema": [
