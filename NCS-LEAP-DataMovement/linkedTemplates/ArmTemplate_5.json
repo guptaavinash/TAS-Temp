@@ -6230,7 +6230,7 @@
 															},
 															{
 																"source": {
-																	"name": "doc_reference_number",
+																	"name": "sales_invoice_no",
 																	"type": "String"
 																},
 																"sink": {
@@ -6240,7 +6240,7 @@
 															},
 															{
 																"source": {
-																	"name": "document_date",
+																	"name": "sales_invoice_date",
 																	"type": "String"
 																},
 																"sink": {
