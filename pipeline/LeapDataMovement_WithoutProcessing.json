@@ -615,6 +615,31 @@
 						"ErrorMessage": "SpDSETeleCallingStores Failed, log on to portal for more details"
 					}
 				}
+			},
+			{
+				"name": "Productmasterpocessing_Error",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "Productmasterprocessing",
+						"dependencyConditions": [
+							"Failed"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "Send Notification",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true,
+					"parameters": {
+						"EmailTo": "avinash@astixsolutions.com,alok@astixsolutions.com,ashwani@astixsolutions.com",
+						"Subject": "TAS Datafactory Error",
+						"ErrorMessage": "Productmaster Processing Failed, log on to portal for more details"
+					}
+				}
 			}
 		],
 		"parameters": {
