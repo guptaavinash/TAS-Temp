@@ -331,6 +331,46 @@
 				"type": "smalldatetime",
 				"precision": 16,
 				"scale": 0
+			},
+			{
+				"name": "batch",
+				"type": "nvarchar"
+			},
+			{
+				"name": "upc",
+				"type": "nvarchar"
+			},
+			{
+				"name": "tcs_amount",
+				"type": "nvarchar"
+			},
+			{
+				"name": "remarks",
+				"type": "nvarchar"
+			},
+			{
+				"name": "tcs_rate",
+				"type": "nvarchar"
+			},
+			{
+				"name": "branch_gst_no",
+				"type": "nvarchar"
+			},
+			{
+				"name": "dl_no",
+				"type": "nvarchar"
+			},
+			{
+				"name": "dl_expiry_date",
+				"type": "nvarchar"
+			},
+			{
+				"name": "irn_no",
+				"type": "nvarchar"
+			},
+			{
+				"name": "apply_to_doc_date",
+				"type": "nvarchar"
 			}
 		],
 		"typeProperties": {
