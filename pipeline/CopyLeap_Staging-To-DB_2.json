@@ -333,6 +333,16 @@
 															"name": "LastModifiedDatetime",
 															"type": "DateTime"
 														}
+													},
+													{
+														"source": {
+															"name": "channel_type_name",
+															"type": "String"
+														},
+														"sink": {
+															"name": "channel_type_name",
+															"type": "String"
+														}
 													}
 												]
 											}
@@ -591,6 +601,16 @@
 															"name": "LastModifiedDatetime",
 															"type": "DateTime"
 														}
+													},
+													{
+														"source": {
+															"name": "channel_type_name",
+															"type": "String"
+														},
+														"sink": {
+															"name": "channel_type_name",
+															"type": "String"
+														}
 													}
 												]
 											}
@@ -848,6 +868,16 @@
 														"sink": {
 															"name": "LastModifiedDatetime",
 															"type": "DateTime"
+														}
+													},
+													{
+														"source": {
+															"name": "channel_type_name",
+															"type": "String"
+														},
+														"sink": {
+															"name": "channel_type_name",
+															"type": "String"
 														}
 													}
 												]
