@@ -13,6 +13,102 @@
 	},
 	"resources": [
 		{
+			"name": "[concat(parameters('factoryName'), '/DS_TAS_tblINITSBDSBFList')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "TASDatabase",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "Data Transfer"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [
+					{
+						"name": "INITClusterID",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "ClusterName",
+						"type": "varchar"
+					},
+					{
+						"name": "LoginID",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "DateTimeStamp",
+						"type": "datetime",
+						"precision": 23,
+						"scale": 3
+					},
+					{
+						"name": "flgActive",
+						"type": "tinyint",
+						"precision": 3
+					}
+				],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "tblINITSBDSBFList"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/DS_TAS_tblINITSBDStoreWiseGaps')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "TASDatabase",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "Data Transfer"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [
+					{
+						"name": "INITClusterID",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "ClusterName",
+						"type": "varchar"
+					},
+					{
+						"name": "LoginID",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "DateTimeStamp",
+						"type": "datetime",
+						"precision": 23,
+						"scale": 3
+					},
+					{
+						"name": "flgActive",
+						"type": "tinyint",
+						"precision": 3
+					}
+				],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "tblINITSBDStoreWiseGaps"
+				}
+			},
+			"dependsOn": []
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/DS_TAS_tblStoreMaster')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
@@ -1368,59 +1464,6 @@
 					"quoteChar": "\""
 				},
 				"schema": []
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/NCSCSV_2_Staging_WithHeader')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "NCSdataStorageLink",
-					"type": "LinkedServiceReference"
-				},
-				"folder": {
-					"name": "FileConnection"
-				},
-				"annotations": [],
-				"type": "DelimitedText",
-				"typeProperties": {
-					"location": {
-						"type": "AzureBlobStorageLocation",
-						"container": "ncsdata"
-					},
-					"columnDelimiter": ",",
-					"compressionCodec": "ZipDeflate",
-					"compressionLevel": "Fastest",
-					"escapeChar": "\\",
-					"firstRowAsHeader": true,
-					"quoteChar": "\""
-				},
-				"schema": []
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/NCSStorageSourceDataset')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "NCSdataStorageLink",
-					"type": "LinkedServiceReference"
-				},
-				"folder": {
-					"name": "StagingSource"
-				},
-				"annotations": [],
-				"type": "Binary",
-				"typeProperties": {
-					"location": {
-						"type": "AzureBlobStorageLocation",
-						"container": "ncsdata"
-					}
-				}
 			},
 			"dependsOn": []
 		}

@@ -38931,6 +38931,106 @@
 			]
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/DS_DF_tmpProductTransferToDF')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "PnGDataFoundation",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "Data Transfer"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [
+					{
+						"name": "INITClusterID",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "ClusterName",
+						"type": "varchar"
+					},
+					{
+						"name": "LoginID",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "DateTimeStamp",
+						"type": "datetime",
+						"precision": 23,
+						"scale": 3
+					},
+					{
+						"name": "flgActive",
+						"type": "tinyint",
+						"precision": 3
+					}
+				],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "tmpProductTransferToDF"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/PnGDataFoundation')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/DS_TAS_ProductTransfer')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "TASDatabase",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "Data Transfer"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [
+					{
+						"name": "INITClusterID",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "ClusterName",
+						"type": "varchar"
+					},
+					{
+						"name": "LoginID",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "DateTimeStamp",
+						"type": "datetime",
+						"precision": 23,
+						"scale": 3
+					},
+					{
+						"name": "flgActive",
+						"type": "tinyint",
+						"precision": 3
+					}
+				],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "tmpProductTransferToDF"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/TASDatabase')]"
+			]
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/DS_TAS_TmpRawLeapOutstandingAmtData')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
@@ -43565,7 +43665,7 @@
 			"apiVersion": "2018-06-01",
 			"properties": {
 				"annotations": [],
-				"runtimeState": "Started",
+				"runtimeState": "Stopped",
 				"pipelines": [
 					{
 						"pipelineReference": {
@@ -43721,106 +43821,6 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/pipelines/Scaledb')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/DS_TAS_ProductTransfer')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "TASDatabase",
-					"type": "LinkedServiceReference"
-				},
-				"folder": {
-					"name": "Data Transfer"
-				},
-				"annotations": [],
-				"type": "AzureSqlTable",
-				"schema": [
-					{
-						"name": "INITClusterID",
-						"type": "int",
-						"precision": 10
-					},
-					{
-						"name": "ClusterName",
-						"type": "varchar"
-					},
-					{
-						"name": "LoginID",
-						"type": "int",
-						"precision": 10
-					},
-					{
-						"name": "DateTimeStamp",
-						"type": "datetime",
-						"precision": 23,
-						"scale": 3
-					},
-					{
-						"name": "flgActive",
-						"type": "tinyint",
-						"precision": 3
-					}
-				],
-				"typeProperties": {
-					"schema": "dbo",
-					"table": "tmpProductTransferToDF"
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/TASDatabase')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/DS_DF_tmpProductTransferToDF')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "PnGDataFoundation",
-					"type": "LinkedServiceReference"
-				},
-				"folder": {
-					"name": "Data Transfer"
-				},
-				"annotations": [],
-				"type": "AzureSqlTable",
-				"schema": [
-					{
-						"name": "INITClusterID",
-						"type": "int",
-						"precision": 10
-					},
-					{
-						"name": "ClusterName",
-						"type": "varchar"
-					},
-					{
-						"name": "LoginID",
-						"type": "int",
-						"precision": 10
-					},
-					{
-						"name": "DateTimeStamp",
-						"type": "datetime",
-						"precision": 23,
-						"scale": 3
-					},
-					{
-						"name": "flgActive",
-						"type": "tinyint",
-						"precision": 3
-					}
-				],
-				"typeProperties": {
-					"schema": "dbo",
-					"table": "tmpProductTransferToDF"
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/PnGDataFoundation')]"
 			]
 		}
 	]
