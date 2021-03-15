@@ -6265,6 +6265,16 @@
 																	"name": "LastModifiedDatetime",
 																	"type": "DateTime"
 																}
+															},
+															{
+																"source": {
+																	"name": "channel_type_name",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "channel_type_name",
+																	"type": "String"
+																}
 															}
 														]
 													}
@@ -6525,6 +6535,16 @@
 																	"name": "LastModifiedDatetime",
 																	"type": "DateTime"
 																}
+															},
+															{
+																"source": {
+																	"name": "channel_type_name",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "channel_type_name",
+																	"type": "String"
+																}
 															}
 														]
 													}
@@ -6784,6 +6804,16 @@
 																"sink": {
 																	"name": "LastModifiedDatetime",
 																	"type": "DateTime"
+																}
+															},
+															{
+																"source": {
+																	"name": "channel_type_name",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "channel_type_name",
+																	"type": "String"
 																}
 															}
 														]
@@ -16086,6 +16116,15 @@
 																	"name": "irn_no",
 																	"type": "String"
 																}
+															},
+															{
+																"source": {
+																	"name": "apply_to_doc_date",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "apply_to_doc_date"
+																}
 															}
 														]
 													}
@@ -16786,6 +16825,15 @@
 																	"name": "irn_no",
 																	"type": "String"
 																}
+															},
+															{
+																"source": {
+																	"name": "apply_to_doc_date",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "apply_to_doc_date"
+																}
 															}
 														]
 													}
@@ -17485,6 +17533,15 @@
 																"sink": {
 																	"name": "irn_no",
 																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"name": "apply_to_doc_date",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "apply_to_doc_date"
 																}
 															}
 														]

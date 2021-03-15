@@ -5715,6 +5715,16 @@
 																	"name": "LastModifiedDatetime",
 																	"type": "DateTime"
 																}
+															},
+															{
+																"source": {
+																	"name": "channel_type_name",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "channel_type_name",
+																	"type": "String"
+																}
 															}
 														]
 													}
@@ -5975,6 +5985,16 @@
 																	"name": "LastModifiedDatetime",
 																	"type": "DateTime"
 																}
+															},
+															{
+																"source": {
+																	"name": "channel_type_name",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "channel_type_name",
+																	"type": "String"
+																}
 															}
 														]
 													}
@@ -6234,6 +6254,16 @@
 																"sink": {
 																	"name": "LastModifiedDatetime",
 																	"type": "DateTime"
+																}
+															},
+															{
+																"source": {
+																	"name": "channel_type_name",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "channel_type_name",
+																	"type": "String"
 																}
 															}
 														]
@@ -15553,6 +15583,15 @@
 																	"name": "irn_no",
 																	"type": "String"
 																}
+															},
+															{
+																"source": {
+																	"name": "apply_to_doc_date",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "apply_to_doc_date"
+																}
 															}
 														]
 													}
@@ -16253,6 +16292,15 @@
 																	"name": "irn_no",
 																	"type": "String"
 																}
+															},
+															{
+																"source": {
+																	"name": "apply_to_doc_date",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "apply_to_doc_date"
+																}
 															}
 														]
 													}
@@ -16952,6 +17000,15 @@
 																"sink": {
 																	"name": "irn_no",
 																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"name": "apply_to_doc_date",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "apply_to_doc_date"
 																}
 															}
 														]
@@ -36068,6 +36125,10 @@
 						"type": "smalldatetime",
 						"precision": 16,
 						"scale": 0
+					},
+					{
+						"name": "channel_type_name",
+						"type": "nvarchar"
 					}
 				],
 				"typeProperties": {
@@ -37690,6 +37751,46 @@
 						"type": "smalldatetime",
 						"precision": 16,
 						"scale": 0
+					},
+					{
+						"name": "batch",
+						"type": "nvarchar"
+					},
+					{
+						"name": "upc",
+						"type": "nvarchar"
+					},
+					{
+						"name": "tcs_amount",
+						"type": "nvarchar"
+					},
+					{
+						"name": "remarks",
+						"type": "nvarchar"
+					},
+					{
+						"name": "tcs_rate",
+						"type": "nvarchar"
+					},
+					{
+						"name": "branch_gst_no",
+						"type": "nvarchar"
+					},
+					{
+						"name": "dl_no",
+						"type": "nvarchar"
+					},
+					{
+						"name": "dl_expiry_date",
+						"type": "nvarchar"
+					},
+					{
+						"name": "irn_no",
+						"type": "nvarchar"
+					},
+					{
+						"name": "apply_to_doc_date",
+						"type": "nvarchar"
 					}
 				],
 				"typeProperties": {

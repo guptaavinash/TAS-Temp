@@ -466,6 +466,10 @@
 						"type": "smalldatetime",
 						"precision": 16,
 						"scale": 0
+					},
+					{
+						"name": "channel_type_name",
+						"type": "nvarchar"
 					}
 				],
 				"typeProperties": {
