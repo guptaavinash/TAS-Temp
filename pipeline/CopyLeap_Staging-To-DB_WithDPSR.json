@@ -2264,7 +2264,8 @@
 													},
 													{
 														"source": {
-															"name": "apply_to_doc_date"
+															"name": "apply_to_doc_date",
+															"type": "String"
 														},
 														"sink": {
 															"name": "apply_to_doc_date"
