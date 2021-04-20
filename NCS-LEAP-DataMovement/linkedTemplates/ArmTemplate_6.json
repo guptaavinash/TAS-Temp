@@ -125,6 +125,9 @@
 													"value": "@pipeline().parameters.windowEnd",
 													"type": "Expression"
 												}
+											},
+											"formatSettings": {
+												"type": "BinaryReadSettings"
 											}
 										},
 										"sink": {
@@ -4401,7 +4404,7 @@
 								"type": "DatasetReference",
 								"parameters": {
 									"folder": {
-										"value": "/2020/08/10/",
+										"value": "@pipeline().parameters.Directory",
 										"type": "Expression"
 									},
 									"directory": "leap"
@@ -4512,7 +4515,7 @@
 															"type": "AzureBlobFSReadSettings",
 															"recursive": true,
 															"wildcardFolderPath": {
-																"value": "/2020/08/10/",
+																"value": "@pipeline().parameters.Directory",
 																"type": "Expression"
 															},
 															"wildcardFileName": "CCCR_cloud01_*",
@@ -4810,7 +4813,7 @@
 														"parameters": {
 															"Container": "leap",
 															"Directory": {
-																"value": "/2020/08/10/",
+																"value": "@pipeline().parameters.Directory",
 																"type": "Expression"
 															}
 														}
@@ -4881,7 +4884,7 @@
 															"type": "AzureBlobFSReadSettings",
 															"recursive": true,
 															"wildcardFolderPath": {
-																"value": "/2020/08/10/",
+																"value": "@pipeline().parameters.Directory",
 																"type": "Expression"
 															},
 															"wildcardFileName": "CCCR_cloud02_*",
@@ -5179,7 +5182,7 @@
 														"parameters": {
 															"Container": "leap",
 															"Directory": {
-																"value": "/2020/08/10/",
+																"value": "@pipeline().parameters.Directory",
 																"type": "Expression"
 															}
 														}
@@ -5250,7 +5253,7 @@
 															"type": "AzureBlobFSReadSettings",
 															"recursive": true,
 															"wildcardFolderPath": {
-																"value": "/2020/08/10/",
+																"value": "@pipeline().parameters.Directory",
 																"type": "Expression"
 															},
 															"wildcardFileName": "CCCR_cloud03_*",
@@ -5548,7 +5551,7 @@
 														"parameters": {
 															"Container": "leap",
 															"Directory": {
-																"value": "/2020/08/10/",
+																"value": "@pipeline().parameters.Directory",
 																"type": "Expression"
 															}
 														}
@@ -5567,8 +5570,40 @@
 								}
 							]
 						}
+					},
+					{
+						"name": "CCRDataLoad",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [
+							{
+								"activity": "ForEachFile",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[dbo].[spDataLoadRawLEAPTAS_CCCR]"
+						},
+						"linkedServiceName": {
+							"referenceName": "TASDatabase",
+							"type": "LinkedServiceReference"
+						}
 					}
 				],
+				"parameters": {
+					"Directory": {
+						"type": "string"
+					}
+				},
 				"folder": {
 					"name": "Other Pipelines"
 				},
