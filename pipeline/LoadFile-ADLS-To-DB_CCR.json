@@ -22,7 +22,7 @@
 						"type": "DatasetReference",
 						"parameters": {
 							"folder": {
-								"value": "/2020/08/10/",
+								"value": "@pipeline().parameters.Directory",
 								"type": "Expression"
 							},
 							"directory": "leap"
@@ -133,7 +133,7 @@
 													"type": "AzureBlobFSReadSettings",
 													"recursive": true,
 													"wildcardFolderPath": {
-														"value": "/2020/08/10/",
+														"value": "@pipeline().parameters.Directory",
 														"type": "Expression"
 													},
 													"wildcardFileName": "CCCR_cloud01_*",
@@ -431,7 +431,7 @@
 												"parameters": {
 													"Container": "leap",
 													"Directory": {
-														"value": "/2020/08/10/",
+														"value": "@pipeline().parameters.Directory",
 														"type": "Expression"
 													}
 												}
@@ -501,7 +501,7 @@
 													"type": "AzureBlobFSReadSettings",
 													"recursive": true,
 													"wildcardFolderPath": {
-														"value": "/2020/08/10/",
+														"value": "@pipeline().parameters.Directory",
 														"type": "Expression"
 													},
 													"wildcardFileName": "CCCR_cloud02_*",
@@ -799,7 +799,7 @@
 												"parameters": {
 													"Container": "leap",
 													"Directory": {
-														"value": "/2020/08/10/",
+														"value": "@pipeline().parameters.Directory",
 														"type": "Expression"
 													}
 												}
@@ -869,7 +869,7 @@
 													"type": "AzureBlobFSReadSettings",
 													"recursive": true,
 													"wildcardFolderPath": {
-														"value": "/2020/08/10/",
+														"value": "@pipeline().parameters.Directory",
 														"type": "Expression"
 													},
 													"wildcardFileName": "CCCR_cloud03_*",
@@ -1167,7 +1167,7 @@
 												"parameters": {
 													"Container": "leap",
 													"Directory": {
-														"value": "/2020/08/10/",
+														"value": "@pipeline().parameters.Directory",
 														"type": "Expression"
 													}
 												}
@@ -1187,6 +1187,11 @@
 				}
 			}
 		],
+		"parameters": {
+			"Directory": {
+				"type": "string"
+			}
+		},
 		"folder": {
 			"name": "Other Pipelines"
 		},
