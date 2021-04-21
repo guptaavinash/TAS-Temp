@@ -694,7 +694,9 @@
 						"partitionOption": "None"
 					},
 					"sink": {
-						"type": "AzureSqlSink"
+						"type": "AzureSqlSink",
+						"preCopyScript": "TRUNCATE TABLE tmpProductTransferToDF",
+						"disableMetricsCollection": false
 					},
 					"enableStaging": false,
 					"translator": {
