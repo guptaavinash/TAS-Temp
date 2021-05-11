@@ -85,14 +85,7 @@
 						{
 							"name": "LeapCSV_Cloud1_Staging",
 							"type": "Copy",
-							"dependsOn": [
-								{
-									"activity": "SpFileEntry_S3",
-									"dependencyConditions": [
-										"Succeeded"
-									]
-								}
-							],
+							"dependsOn": [],
 							"policy": {
 								"timeout": "7.00:00:00",
 								"retry": 0,
@@ -151,46 +144,6 @@
 									"type": "DatasetReference"
 								}
 							]
-						},
-						{
-							"name": "SpFileEntry_S3",
-							"type": "SqlServerStoredProcedure",
-							"dependsOn": [],
-							"policy": {
-								"timeout": "7.00:00:00",
-								"retry": 0,
-								"retryIntervalInSeconds": 30,
-								"secureOutput": false,
-								"secureInput": false
-							},
-							"userProperties": [],
-							"typeProperties": {
-								"storedProcedureName": "[dbo].[SpFileEntry_S3]",
-								"storedProcedureParameters": {
-									"Filename": {
-										"value": {
-											"value": "@item().name",
-											"type": "Expression"
-										},
-										"type": "String"
-									},
-									"FileType": {
-										"value": "1",
-										"type": "Byte"
-									},
-									"LastModifiedDatetime": {
-										"value": {
-											"value": "@activity('Cloud1FilesMetaData').output.lastModified",
-											"type": "Expression"
-										},
-										"type": "DateTime"
-									}
-								}
-							},
-							"linkedServiceName": {
-								"referenceName": "TASDatabase",
-								"type": "LinkedServiceReference"
-							}
 						}
 					]
 				}
