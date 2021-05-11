@@ -1,5 +1,5 @@
 {
-	"name": "LeapFileLoading_At6",
+	"name": "LeapFileLoading_At5_30",
 	"properties": {
 		"annotations": [],
 		"runtimeState": "Started",
@@ -20,14 +20,14 @@
 			"recurrence": {
 				"frequency": "Day",
 				"interval": 1,
-				"startTime": "2020-06-07T18:27:00Z",
-				"timeZone": "UTC",
+				"startTime": "2020-06-07T18:27:00",
+				"timeZone": "India Standard Time",
 				"schedule": {
 					"minutes": [
 						30
 					],
 					"hours": [
-						0
+						5
 					]
 				}
 			}
