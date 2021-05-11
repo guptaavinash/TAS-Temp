@@ -15,11 +15,11 @@
 			"type": "string",
 			"defaultValue": "@trigger().scheduledTime"
 		},
-		"LeapFileLoading_At6_properties_LeapDataMovement_WithoutProcessing_parameters_windowStart": {
+		"LeapFileLoading_At5_30_properties_LeapDataMovement_WithoutProcessing_parameters_windowStart": {
 			"type": "string",
 			"defaultValue": "@adddays(trigger().scheduledTime, -1)"
 		},
-		"LeapFileLoading_At6_properties_LeapDataMovement_WithoutProcessing_parameters_windowEnd": {
+		"LeapFileLoading_At5_30_properties_LeapDataMovement_WithoutProcessing_parameters_windowEnd": {
 			"type": "string",
 			"defaultValue": "@trigger().scheduledTime"
 		},
@@ -1474,7 +1474,9 @@
 								"partitionOption": "None"
 							},
 							"sink": {
-								"type": "AzureSqlSink"
+								"type": "AzureSqlSink",
+								"preCopyScript": "TRUNCATE TABLE tmpProductTransferToDF",
+								"disableMetricsCollection": false
 							},
 							"enableStaging": false,
 							"translator": {
@@ -5515,7 +5517,7 @@
 			"dependsOn": []
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/LeapFileLoading_At6')]",
+			"name": "[concat(parameters('factoryName'), '/LeapFileLoading_At5_30')]",
 			"type": "Microsoft.DataFactory/factories/triggers",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -5528,8 +5530,8 @@
 							"type": "PipelineReference"
 						},
 						"parameters": {
-							"windowStart": "[parameters('LeapFileLoading_At6_properties_LeapDataMovement_WithoutProcessing_parameters_windowStart')]",
-							"windowEnd": "[parameters('LeapFileLoading_At6_properties_LeapDataMovement_WithoutProcessing_parameters_windowEnd')]"
+							"windowStart": "[parameters('LeapFileLoading_At5_30_properties_LeapDataMovement_WithoutProcessing_parameters_windowStart')]",
+							"windowEnd": "[parameters('LeapFileLoading_At5_30_properties_LeapDataMovement_WithoutProcessing_parameters_windowEnd')]"
 						}
 					}
 				],
@@ -5538,14 +5540,14 @@
 					"recurrence": {
 						"frequency": "Day",
 						"interval": 1,
-						"startTime": "2020-06-07T18:27:00Z",
-						"timeZone": "UTC",
+						"startTime": "2020-06-07T18:27:00",
+						"timeZone": "India Standard Time",
 						"schedule": {
 							"minutes": [
 								30
 							],
 							"hours": [
-								0
+								5
 							]
 						}
 					}
