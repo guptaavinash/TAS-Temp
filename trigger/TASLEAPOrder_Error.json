@@ -1,0 +1,24 @@
+{
+	"name": "TASLEAPOrder_Error",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "TASOrderLog",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Minute",
+				"interval": 15,
+				"startTime": "2021-05-13T17:00:00",
+				"timeZone": "India Standard Time"
+			}
+		}
+	}
+}
