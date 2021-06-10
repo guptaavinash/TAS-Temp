@@ -525,6 +525,12 @@
 						"dependencyConditions": [
 							"Failed"
 						]
+					},
+					{
+						"activity": "SpproductHierrachyTransfertoDF",
+						"dependencyConditions": [
+							"Failed"
+						]
 					}
 				],
 				"userProperties": [],
@@ -535,7 +541,7 @@
 					},
 					"waitOnCompletion": true,
 					"parameters": {
-						"EmailTo": "avinash@astixsolutions.com,alok@astixsolutions.com,ashwani@astixsolutions.com",
+						"EmailTo": "avinash@astix.in,Alok@astix.in,Ashwani@Astix.in",
 						"Subject": "Datafactory Error",
 						"ErrorMessage": "SpDailyDataRefreshSalesData failed, log on to portal for more details"
 					}
@@ -560,7 +566,7 @@
 					},
 					"waitOnCompletion": true,
 					"parameters": {
-						"EmailTo": "avinash@astixsolutions.com,alok@astixsolutions.com,ashwani@astixsolutions.com",
+						"EmailTo": "avinash@astix.in,Alok@astix.in,Ashwani@Astix.in",
 						"Subject": "TAS Datafactory Error",
 						"ErrorMessage": "Copy FiletoDB Part1 Failed, log on to portal for more details"
 					}
@@ -585,7 +591,7 @@
 					},
 					"waitOnCompletion": true,
 					"parameters": {
-						"EmailTo": "avinash@astixsolutions.com,alok@astixsolutions.com,ashwani@astixsolutions.com",
+						"EmailTo": "avinash@astix.in,Alok@astix.in,Ashwani@Astix.in",
 						"Subject": "TAS Datafactory Error",
 						"ErrorMessage": "Copy FiletoDB Part2 Failed, log on to portal for more details"
 					}
@@ -600,6 +606,12 @@
 						"dependencyConditions": [
 							"Failed"
 						]
+					},
+					{
+						"activity": "WhenAllFilesCome",
+						"dependencyConditions": [
+							"Failed"
+						]
 					}
 				],
 				"userProperties": [],
@@ -610,7 +622,7 @@
 					},
 					"waitOnCompletion": true,
 					"parameters": {
-						"EmailTo": "avinash@astixsolutions.com,alok@astixsolutions.com,ashwani@astixsolutions.com",
+						"EmailTo": "avinash@astix.in,Alok@astix.in,Ashwani@Astix.in",
 						"Subject": "TAS Datafactory Error",
 						"ErrorMessage": "SpDSETeleCallingStores Failed, log on to portal for more details"
 					}
@@ -625,6 +637,12 @@
 						"dependencyConditions": [
 							"Failed"
 						]
+					},
+					{
+						"activity": "DeleteFiles_Staging",
+						"dependencyConditions": [
+							"Failed"
+						]
 					}
 				],
 				"userProperties": [],
@@ -635,7 +653,7 @@
 					},
 					"waitOnCompletion": true,
 					"parameters": {
-						"EmailTo": "avinash@astixsolutions.com,alok@astixsolutions.com,ashwani@astixsolutions.com",
+						"EmailTo": "avinash@astix.in,Alok@astix.in,Ashwani@Astix.in",
 						"Subject": "TAS Datafactory Error",
 						"ErrorMessage": "Productmaster Processing Failed, log on to portal for more details"
 					}
