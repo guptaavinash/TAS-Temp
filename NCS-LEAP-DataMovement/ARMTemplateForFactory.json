@@ -44476,6 +44476,834 @@
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/pipelines/TASOrderLog')]"
 			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/LeapDataMovement_WithoutProcessing_10Jun')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "CopyLeapStaging-To-ADLS",
+						"type": "ExecutePipeline",
+						"dependsOn": [],
+						"userProperties": [],
+						"typeProperties": {
+							"pipeline": {
+								"referenceName": "CopyLeapStaging-To-ADLS",
+								"type": "PipelineReference"
+							},
+							"waitOnCompletion": true,
+							"parameters": {}
+						}
+					},
+					{
+						"name": "DeleteFiles_Staging",
+						"type": "Delete",
+						"dependsOn": [
+							{
+								"activity": "CopyLeapStaging-To-ADLS",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"dataset": {
+								"referenceName": "LeapStorageSourceDataset",
+								"type": "DatasetReference",
+								"parameters": {}
+							},
+							"enableLogging": false,
+							"storeSettings": {
+								"type": "AzureBlobStorageReadSettings",
+								"recursive": true
+							}
+						}
+					},
+					{
+						"name": "LookupAllFilesCome",
+						"type": "Lookup",
+						"dependsOn": [
+							{
+								"activity": "Productmasterprocessing",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "AzureSqlSource",
+								"sqlReaderStoredProcedureName": "[[dbo].[SpCheckLeapDataLoaded]",
+								"queryTimeout": "02:00:00",
+								"partitionOption": "None"
+							},
+							"dataset": {
+								"referenceName": "TASDBConnection",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						}
+					},
+					{
+						"name": "WhenAllFilesCome",
+						"type": "IfCondition",
+						"dependsOn": [
+							{
+								"activity": "LookupAllFilesCome",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"userProperties": [],
+						"typeProperties": {
+							"expression": {
+								"value": "@bool(activity('LookupAllFilesCome').output.firstRow.flgDataloaded)",
+								"type": "Expression"
+							},
+							"ifTrueActivities": [
+								{
+									"name": "LoadLeapTasIntegration",
+									"type": "SqlServerStoredProcedure",
+									"dependsOn": [],
+									"policy": {
+										"timeout": "7.00:00:00",
+										"retry": 0,
+										"retryIntervalInSeconds": 30,
+										"secureOutput": false,
+										"secureInput": false
+									},
+									"userProperties": [],
+									"typeProperties": {
+										"storedProcedureName": "[[dbo].[spLoadLeapTasIntegration]"
+									},
+									"linkedServiceName": {
+										"referenceName": "TASDatabase",
+										"type": "LinkedServiceReference"
+									}
+								},
+								{
+									"name": "SpLoadLeapTASIntegration_Error",
+									"type": "ExecutePipeline",
+									"dependsOn": [
+										{
+											"activity": "LoadLeapTasIntegration",
+											"dependencyConditions": [
+												"Failed"
+											]
+										}
+									],
+									"userProperties": [],
+									"typeProperties": {
+										"pipeline": {
+											"referenceName": "Send Notification",
+											"type": "PipelineReference"
+										},
+										"waitOnCompletion": true,
+										"parameters": {
+											"EmailTo": "avinash@astixsolutions.com,alok@astixsolutions.com,ashwani@astixsolutions.com",
+											"Subject": "TAS Datafactory Error",
+											"ErrorMessage": "SpLoadLeapTASIntegration Failed, log on to portal for more details"
+										}
+									}
+								}
+							]
+						}
+					},
+					{
+						"name": "PopulateDSETeleCallingStores",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [
+							{
+								"activity": "WhenAllFilesCome",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[dbo].[spPopulateDSETeleCallingStores]"
+						},
+						"linkedServiceName": {
+							"referenceName": "TASDatabase",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "spDailyDataRefreshSalesData",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [
+							{
+								"activity": "IFDataTransferCanDone",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[dbo].[spDailyDataRefreshSalesData]",
+							"storedProcedureParameters": {
+								"CalledFrom": {
+									"value": "1",
+									"type": "Byte"
+								}
+							}
+						},
+						"linkedServiceName": {
+							"referenceName": "TASDatabase",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "IFDataTransferCanDone",
+						"type": "Lookup",
+						"dependsOn": [
+							{
+								"activity": "PopulateDSETeleCallingStores",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "AzureSqlSource",
+								"sqlReaderQuery": "select flgPngDataTransfer from tblFlagDataProcess",
+								"queryTimeout": "02:00:00",
+								"partitionOption": "None"
+							},
+							"dataset": {
+								"referenceName": "TASDBConnection",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						}
+					},
+					{
+						"name": "Scale Down DB",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [
+							{
+								"activity": "spOlapProcessing",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[dbo].[Scale_S4_DB]"
+						},
+						"linkedServiceName": {
+							"referenceName": "TASDatabase",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "spOlapProcessing",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [
+							{
+								"activity": "spDailyDataRefreshSalesData",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[dbo].[spOlapProcessing]"
+						},
+						"linkedServiceName": {
+							"referenceName": "TASDatabase",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "Productmasterprocessing",
+						"type": "ExecutePipeline",
+						"dependsOn": [
+							{
+								"activity": "DeleteFiles_Staging",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"userProperties": [],
+						"typeProperties": {
+							"pipeline": {
+								"referenceName": "Productmasterprocessing",
+								"type": "PipelineReference"
+							},
+							"waitOnCompletion": true,
+							"parameters": {}
+						}
+					},
+					{
+						"name": "SpDailyDataRefreshSalesData Error",
+						"type": "ExecutePipeline",
+						"dependsOn": [
+							{
+								"activity": "spDailyDataRefreshSalesData",
+								"dependencyConditions": [
+									"Failed"
+								]
+							}
+						],
+						"userProperties": [],
+						"typeProperties": {
+							"pipeline": {
+								"referenceName": "Send Notification",
+								"type": "PipelineReference"
+							},
+							"waitOnCompletion": true,
+							"parameters": {
+								"EmailTo": "avinash@astixsolutions.com,alok@astixsolutions.com,ashwani@astixsolutions.com",
+								"Subject": "Datafactory Error",
+								"ErrorMessage": "SpDailyDataRefreshSalesData failed, log on to portal for more details"
+							}
+						}
+					},
+					{
+						"name": "SpDSETeleCallingStores_Error",
+						"type": "ExecutePipeline",
+						"dependsOn": [
+							{
+								"activity": "PopulateDSETeleCallingStores",
+								"dependencyConditions": [
+									"Failed"
+								]
+							}
+						],
+						"userProperties": [],
+						"typeProperties": {
+							"pipeline": {
+								"referenceName": "Send Notification",
+								"type": "PipelineReference"
+							},
+							"waitOnCompletion": true,
+							"parameters": {
+								"EmailTo": "avinash@astixsolutions.com,alok@astixsolutions.com,ashwani@astixsolutions.com",
+								"Subject": "TAS Datafactory Error",
+								"ErrorMessage": "SpDSETeleCallingStores Failed, log on to portal for more details"
+							}
+						}
+					},
+					{
+						"name": "Productmasterpocessing_Error",
+						"type": "ExecutePipeline",
+						"dependsOn": [
+							{
+								"activity": "Productmasterprocessing",
+								"dependencyConditions": [
+									"Failed"
+								]
+							}
+						],
+						"userProperties": [],
+						"typeProperties": {
+							"pipeline": {
+								"referenceName": "Send Notification",
+								"type": "PipelineReference"
+							},
+							"waitOnCompletion": true,
+							"parameters": {
+								"EmailTo": "avinash@astixsolutions.com,alok@astixsolutions.com,ashwani@astixsolutions.com",
+								"Subject": "TAS Datafactory Error",
+								"ErrorMessage": "Productmaster Processing Failed, log on to portal for more details"
+							}
+						}
+					},
+					{
+						"name": "SpproductHierrachyTransfertoDF",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [
+							{
+								"activity": "Scale Down DB",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[dbo].[spPopulatePopulateProductHierarchyForDF]"
+						},
+						"linkedServiceName": {
+							"referenceName": "TASDatabase",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "tblProductTransfertoDF",
+						"type": "Copy",
+						"dependsOn": [
+							{
+								"activity": "SpproductHierrachyTransfertoDF",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "AzureSqlSource",
+								"queryTimeout": "02:00:00",
+								"partitionOption": "None"
+							},
+							"sink": {
+								"type": "AzureSqlSink",
+								"preCopyScript": "TRUNCATE TABLE tmpProductTransferToDF",
+								"disableMetricsCollection": false
+							},
+							"enableStaging": false,
+							"translator": {
+								"type": "TabularTranslator",
+								"mappings": [
+									{
+										"source": {
+											"name": "CatHierId",
+											"type": "Int32",
+											"physicalType": "int"
+										},
+										"sink": {
+											"name": "CatHierId",
+											"type": "Int32",
+											"physicalType": "int"
+										}
+									},
+									{
+										"source": {
+											"name": "CatNodeID",
+											"type": "Int32",
+											"physicalType": "int"
+										},
+										"sink": {
+											"name": "CatNodeID",
+											"type": "Int32",
+											"physicalType": "int"
+										}
+									},
+									{
+										"source": {
+											"name": "CatNodeType",
+											"type": "Int32",
+											"physicalType": "int"
+										},
+										"sink": {
+											"name": "CatNodeType",
+											"type": "Int32",
+											"physicalType": "int"
+										}
+									},
+									{
+										"source": {
+											"name": "Category",
+											"type": "String",
+											"physicalType": "varchar"
+										},
+										"sink": {
+											"name": "Category",
+											"type": "String",
+											"physicalType": "varchar"
+										}
+									},
+									{
+										"source": {
+											"name": "BrnHierId",
+											"type": "Int32",
+											"physicalType": "int"
+										},
+										"sink": {
+											"name": "BrnHierId",
+											"type": "Int32",
+											"physicalType": "int"
+										}
+									},
+									{
+										"source": {
+											"name": "BrnNodeID",
+											"type": "Int32",
+											"physicalType": "int"
+										},
+										"sink": {
+											"name": "BrnNodeID",
+											"type": "Int32",
+											"physicalType": "int"
+										}
+									},
+									{
+										"source": {
+											"name": "BrnNodeType",
+											"type": "Int32",
+											"physicalType": "int"
+										},
+										"sink": {
+											"name": "BrnNodeType",
+											"type": "Int32",
+											"physicalType": "int"
+										}
+									},
+									{
+										"source": {
+											"name": "Brand",
+											"type": "String",
+											"physicalType": "varchar"
+										},
+										"sink": {
+											"name": "Brand",
+											"type": "String",
+											"physicalType": "varchar"
+										}
+									},
+									{
+										"source": {
+											"name": "BFHierId",
+											"type": "Int32",
+											"physicalType": "int"
+										},
+										"sink": {
+											"name": "BFHierId",
+											"type": "Int32",
+											"physicalType": "int"
+										}
+									},
+									{
+										"source": {
+											"name": "BFNodeID",
+											"type": "Int32",
+											"physicalType": "int"
+										},
+										"sink": {
+											"name": "BFNodeID",
+											"type": "Int32",
+											"physicalType": "int"
+										}
+									},
+									{
+										"source": {
+											"name": "BFNodeType",
+											"type": "Int32",
+											"physicalType": "int"
+										},
+										"sink": {
+											"name": "BFNodeType",
+											"type": "Int32",
+											"physicalType": "int"
+										}
+									},
+									{
+										"source": {
+											"name": "BrandForm",
+											"type": "String",
+											"physicalType": "varchar"
+										},
+										"sink": {
+											"name": "BrandForm",
+											"type": "String",
+											"physicalType": "varchar"
+										}
+									},
+									{
+										"source": {
+											"name": "SBFHierId",
+											"type": "Int32",
+											"physicalType": "int"
+										},
+										"sink": {
+											"name": "SBFHierId",
+											"type": "Int32",
+											"physicalType": "int"
+										}
+									},
+									{
+										"source": {
+											"name": "SBFNodeId",
+											"type": "Int32",
+											"physicalType": "int"
+										},
+										"sink": {
+											"name": "SBFNodeId",
+											"type": "Int32",
+											"physicalType": "int"
+										}
+									},
+									{
+										"source": {
+											"name": "SBFNodeType",
+											"type": "Int32",
+											"physicalType": "int"
+										},
+										"sink": {
+											"name": "SBFNodeType",
+											"type": "Int32",
+											"physicalType": "int"
+										}
+									},
+									{
+										"source": {
+											"name": "SBF",
+											"type": "String",
+											"physicalType": "varchar"
+										},
+										"sink": {
+											"name": "SBF",
+											"type": "String",
+											"physicalType": "varchar"
+										}
+									},
+									{
+										"source": {
+											"name": "PrdHierId",
+											"type": "Int32",
+											"physicalType": "int"
+										},
+										"sink": {
+											"name": "PrdHierId",
+											"type": "Int32",
+											"physicalType": "int"
+										}
+									},
+									{
+										"source": {
+											"name": "PrdNodeId",
+											"type": "Int32",
+											"physicalType": "int"
+										},
+										"sink": {
+											"name": "PrdNodeId",
+											"type": "Int32",
+											"physicalType": "int"
+										}
+									},
+									{
+										"source": {
+											"name": "PrdNodeType",
+											"type": "Int32",
+											"physicalType": "int"
+										},
+										"sink": {
+											"name": "PrdNodeType",
+											"type": "Int32",
+											"physicalType": "int"
+										}
+									},
+									{
+										"source": {
+											"name": "SKUCode",
+											"type": "String",
+											"physicalType": "varchar"
+										},
+										"sink": {
+											"name": "SKUCode",
+											"type": "String",
+											"physicalType": "varchar"
+										}
+									},
+									{
+										"source": {
+											"name": "SKU",
+											"type": "String",
+											"physicalType": "varchar"
+										},
+										"sink": {
+											"name": "SKU",
+											"type": "String",
+											"physicalType": "varchar"
+										}
+									},
+									{
+										"source": {
+											"name": "MRP",
+											"type": "Decimal",
+											"physicalType": "decimal",
+											"scale": 2,
+											"precision": 18
+										},
+										"sink": {
+											"name": "MRP",
+											"type": "Decimal",
+											"physicalType": "decimal",
+											"scale": 2,
+											"precision": 18
+										}
+									},
+									{
+										"source": {
+											"name": "RLP",
+											"type": "Decimal",
+											"physicalType": "decimal",
+											"scale": 10,
+											"precision": 18
+										},
+										"sink": {
+											"name": "RLP",
+											"type": "Decimal",
+											"physicalType": "decimal",
+											"scale": 10,
+											"precision": 18
+										}
+									},
+									{
+										"source": {
+											"name": "PcsInBox",
+											"type": "Int32",
+											"physicalType": "int"
+										},
+										"sink": {
+											"name": "PcsInBox",
+											"type": "Int32",
+											"physicalType": "int"
+										}
+									}
+								],
+								"typeConversion": true,
+								"typeConversionSettings": {
+									"allowDataTruncation": true,
+									"treatBooleanAsNumber": false
+								}
+							}
+						},
+						"inputs": [
+							{
+								"referenceName": "DS_TAS_ProductTransfer",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "DS_DF_tmpProductTransferToDF",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						]
+					},
+					{
+						"name": "SpTransferTASToDFProductMaster",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [
+							{
+								"activity": "tblProductTransfertoDF",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[dbo].[spTransferTASToDFProductMaster]"
+						},
+						"linkedServiceName": {
+							"referenceName": "PnGDataFoundation",
+							"type": "LinkedServiceReference"
+						}
+					}
+				],
+				"parameters": {
+					"windowStart": {
+						"type": "string"
+					},
+					"windowEnd": {
+						"type": "string"
+					}
+				},
+				"folder": {
+					"name": "Leap Data Pipeline"
+				},
+				"annotations": [],
+				"lastPublishTime": "2020-12-13T19:05:55Z"
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/pipelines/CopyLeapStaging-To-ADLS')]",
+				"[concat(variables('factoryId'), '/datasets/LeapStorageSourceDataset')]",
+				"[concat(variables('factoryId'), '/datasets/TASDBConnection')]",
+				"[concat(variables('factoryId'), '/linkedServices/TASDatabase')]",
+				"[concat(variables('factoryId'), '/pipelines/Productmasterprocessing')]",
+				"[concat(variables('factoryId'), '/pipelines/Send Notification')]",
+				"[concat(variables('factoryId'), '/datasets/DS_TAS_ProductTransfer')]",
+				"[concat(variables('factoryId'), '/datasets/DS_DF_tmpProductTransferToDF')]",
+				"[concat(variables('factoryId'), '/linkedServices/PnGDataFoundation')]"
+			]
 		}
 	]
 }

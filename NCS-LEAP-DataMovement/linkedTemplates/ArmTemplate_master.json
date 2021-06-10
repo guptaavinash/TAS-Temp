@@ -284,6 +284,26 @@
 					},
 					"LeapFileLoading_At5_30_properties_LeapDataMovement_WithoutProcessing_parameters_windowEnd": {
 						"value": "[parameters('LeapFileLoading_At5_30_properties_LeapDataMovement_WithoutProcessing_parameters_windowEnd')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'NCS-LEAP-DataMovement_ArmTemplate_6')]"
+			]
+		},
+		{
+			"name": "NCS-LEAP-DataMovement_ArmTemplate_8",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_8.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
 					},
 					"Everyday_properties_LeapDataMovement_parameters_windowStart": {
 						"value": "[parameters('Everyday_properties_LeapDataMovement_parameters_windowStart')]"
@@ -294,7 +314,7 @@
 				}
 			},
 			"dependsOn": [
-				"[resourceId('Microsoft.Resources/deployments', 'NCS-LEAP-DataMovement_ArmTemplate_6')]"
+				"[resourceId('Microsoft.Resources/deployments', 'NCS-LEAP-DataMovement_ArmTemplate_7')]"
 			]
 		}
 	]
