@@ -278,12 +278,6 @@
 					},
 					"CCR_DataProcessingAt10_properties_CCRDataMovement_parameters_windowEnd": {
 						"value": "[parameters('CCR_DataProcessingAt10_properties_CCRDataMovement_parameters_windowEnd')]"
-					},
-					"LeapFileLoading_At5_30_properties_LeapDataMovement_WithoutProcessing_parameters_windowStart": {
-						"value": "[parameters('LeapFileLoading_At5_30_properties_LeapDataMovement_WithoutProcessing_parameters_windowStart')]"
-					},
-					"LeapFileLoading_At5_30_properties_LeapDataMovement_WithoutProcessing_parameters_windowEnd": {
-						"value": "[parameters('LeapFileLoading_At5_30_properties_LeapDataMovement_WithoutProcessing_parameters_windowEnd')]"
 					}
 				}
 			},
@@ -304,6 +298,12 @@
 				"parameters": {
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
+					},
+					"LeapFileLoading_At5_30_properties_LeapDataMovement_WithoutProcessing_parameters_windowStart": {
+						"value": "[parameters('LeapFileLoading_At5_30_properties_LeapDataMovement_WithoutProcessing_parameters_windowStart')]"
+					},
+					"LeapFileLoading_At5_30_properties_LeapDataMovement_WithoutProcessing_parameters_windowEnd": {
+						"value": "[parameters('LeapFileLoading_At5_30_properties_LeapDataMovement_WithoutProcessing_parameters_windowEnd')]"
 					},
 					"Everyday_properties_LeapDataMovement_parameters_windowStart": {
 						"value": "[parameters('Everyday_properties_LeapDataMovement_parameters_windowStart')]"
