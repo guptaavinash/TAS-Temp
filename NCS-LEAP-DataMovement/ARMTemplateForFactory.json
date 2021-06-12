@@ -36919,6 +36919,26 @@
 			]
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/TriggerTest')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Wait1",
+						"type": "Wait",
+						"dependsOn": [],
+						"userProperties": [],
+						"typeProperties": {
+							"waitTimeInSeconds": 1
+						}
+					}
+				],
+				"annotations": []
+			},
+			"dependsOn": []
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/pipeline1')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
 			"apiVersion": "2018-06-01",
@@ -46209,85 +46229,6 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/LeapFileLoading_At5_30')]",
-			"type": "Microsoft.DataFactory/factories/triggers",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"runtimeState": "Started",
-				"pipelines": [
-					{
-						"pipelineReference": {
-							"referenceName": "LeapDataMovement_WithoutProcessing",
-							"type": "PipelineReference"
-						},
-						"parameters": {
-							"windowStart": "[parameters('LeapFileLoading_At5_30_properties_LeapDataMovement_WithoutProcessing_parameters_windowStart')]",
-							"windowEnd": "[parameters('LeapFileLoading_At5_30_properties_LeapDataMovement_WithoutProcessing_parameters_windowEnd')]"
-						}
-					}
-				],
-				"type": "ScheduleTrigger",
-				"typeProperties": {
-					"recurrence": {
-						"frequency": "Day",
-						"interval": 1,
-						"startTime": "2020-06-07T18:27:00",
-						"timeZone": "India Standard Time",
-						"schedule": {
-							"minutes": [
-								30
-							],
-							"hours": [
-								5
-							]
-						}
-					}
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/pipelines/LeapDataMovement_WithoutProcessing')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/ScaleDBAt5_00')]",
-			"type": "Microsoft.DataFactory/factories/triggers",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"runtimeState": "Started",
-				"pipelines": [
-					{
-						"pipelineReference": {
-							"referenceName": "Scaledb",
-							"type": "PipelineReference"
-						},
-						"parameters": {}
-					}
-				],
-				"type": "ScheduleTrigger",
-				"typeProperties": {
-					"recurrence": {
-						"frequency": "Day",
-						"interval": 1,
-						"startTime": "2020-06-17T18:03:00",
-						"timeZone": "India Standard Time",
-						"schedule": {
-							"minutes": [
-								0
-							],
-							"hours": [
-								5
-							]
-						}
-					}
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/pipelines/Scaledb')]"
-			]
-		},
-		{
 			"name": "[concat(parameters('factoryName'), '/TASLEAPOrder_Error')]",
 			"type": "Microsoft.DataFactory/factories/triggers",
 			"apiVersion": "2018-06-01",
@@ -46318,27 +46259,7 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/TriggerTest')]",
-			"type": "Microsoft.DataFactory/factories/pipelines",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"activities": [
-					{
-						"name": "Wait1",
-						"type": "Wait",
-						"dependsOn": [],
-						"userProperties": [],
-						"typeProperties": {
-							"waitTimeInSeconds": 1
-						}
-					}
-				],
-				"annotations": []
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/trigger1')]",
+			"name": "[concat(parameters('factoryName'), '/ScaleDBAt5_00')]",
 			"type": "Microsoft.DataFactory/factories/triggers",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -46347,7 +46268,7 @@
 				"pipelines": [
 					{
 						"pipelineReference": {
-							"referenceName": "TriggerTest",
+							"referenceName": "Scaledb",
 							"type": "PipelineReference"
 						},
 						"parameters": {}
@@ -46358,21 +46279,62 @@
 					"recurrence": {
 						"frequency": "Day",
 						"interval": 1,
-						"startTime": "2021-06-12T08:07:00",
+						"startTime": "2021-06-12T08:10:00",
 						"timeZone": "India Standard Time",
 						"schedule": {
 							"minutes": [
-								39
+								0
 							],
 							"hours": [
-								13
+								5
 							]
 						}
 					}
 				}
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/pipelines/TriggerTest')]"
+				"[concat(variables('factoryId'), '/pipelines/Scaledb')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/LeapFileLoading_At5_30')]",
+			"type": "Microsoft.DataFactory/factories/triggers",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"runtimeState": "Started",
+				"pipelines": [
+					{
+						"pipelineReference": {
+							"referenceName": "LeapDataMovement_WithoutProcessing",
+							"type": "PipelineReference"
+						},
+						"parameters": {
+							"windowStart": "[parameters('LeapFileLoading_At5_30_properties_LeapDataMovement_WithoutProcessing_parameters_windowStart')]",
+							"windowEnd": "[parameters('LeapFileLoading_At5_30_properties_LeapDataMovement_WithoutProcessing_parameters_windowEnd')]"
+						}
+					}
+				],
+				"type": "ScheduleTrigger",
+				"typeProperties": {
+					"recurrence": {
+						"frequency": "Day",
+						"interval": 1,
+						"startTime": "2021-06-12T08:12:00",
+						"timeZone": "India Standard Time",
+						"schedule": {
+							"minutes": [
+								30
+							],
+							"hours": [
+								5
+							]
+						}
+					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/pipelines/LeapDataMovement_WithoutProcessing')]"
 			]
 		}
 	]
