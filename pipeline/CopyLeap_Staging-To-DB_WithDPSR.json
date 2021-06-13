@@ -4880,6 +4880,46 @@
 															"name": "tbe_name",
 															"type": "String"
 														}
+													},
+													{
+														"source": {
+															"name": "phonenumber1_verified",
+															"type": "String"
+														},
+														"sink": {
+															"name": "phonenumber1_verified",
+															"type": "String"
+														}
+													},
+													{
+														"source": {
+															"name": "phonenumber1_verifieddate",
+															"type": "String"
+														},
+														"sink": {
+															"name": "phonenumber1_verifieddate",
+															"type": "String"
+														}
+													},
+													{
+														"source": {
+															"name": "phonenumber2_verified",
+															"type": "String"
+														},
+														"sink": {
+															"name": "phonenumber2_verified",
+															"type": "String"
+														}
+													},
+													{
+														"source": {
+															"name": "phonenumber2_verifieddate",
+															"type": "String"
+														},
+														"sink": {
+															"name": "phonenumber2_verifieddate",
+															"type": "String"
+														}
 													}
 												]
 											}
