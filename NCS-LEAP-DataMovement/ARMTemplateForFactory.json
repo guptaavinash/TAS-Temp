@@ -27186,43 +27186,9 @@
 			"properties": {
 				"activities": [
 					{
-						"name": "PopulateDSETeleCallingStores",
-						"type": "SqlServerStoredProcedure",
-						"dependsOn": [
-							{
-								"activity": "LoadLeapTasIntegration",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"policy": {
-							"timeout": "7.00:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"storedProcedureName": "[[dbo].[spPopulateDSETeleCallingStores]"
-						},
-						"linkedServiceName": {
-							"referenceName": "TASDatabase",
-							"type": "LinkedServiceReference"
-						}
-					},
-					{
 						"name": "spDailyDataRefreshSalesData",
 						"type": "SqlServerStoredProcedure",
-						"dependsOn": [
-							{
-								"activity": "IFDataTransferCanDone",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
+						"dependsOn": [],
 						"policy": {
 							"timeout": "7.00:00:00",
 							"retry": 0,
@@ -27243,39 +27209,6 @@
 						"linkedServiceName": {
 							"referenceName": "TASDatabase",
 							"type": "LinkedServiceReference"
-						}
-					},
-					{
-						"name": "IFDataTransferCanDone",
-						"type": "Lookup",
-						"dependsOn": [
-							{
-								"activity": "PopulateDSETeleCallingStores",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"policy": {
-							"timeout": "7.00:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"source": {
-								"type": "AzureSqlSource",
-								"sqlReaderQuery": "select flgPngDataTransfer from tblFlagDataProcess",
-								"queryTimeout": "02:00:00",
-								"partitionOption": "None"
-							},
-							"dataset": {
-								"referenceName": "TASDBConnection",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
 						}
 					},
 					{
@@ -27360,31 +27293,6 @@
 								"EmailTo": "avinash@astix.in,Alok@astix.in,Ashwani@Astix.in",
 								"Subject": "Datafactory Error",
 								"ErrorMessage": "SpDailyDataRefreshSalesData failed, log on to portal for more details"
-							}
-						}
-					},
-					{
-						"name": "SpDSETeleCallingStores_Error",
-						"type": "ExecutePipeline",
-						"dependsOn": [
-							{
-								"activity": "PopulateDSETeleCallingStores",
-								"dependencyConditions": [
-									"Failed"
-								]
-							}
-						],
-						"userProperties": [],
-						"typeProperties": {
-							"pipeline": {
-								"referenceName": "Send Notification",
-								"type": "PipelineReference"
-							},
-							"waitOnCompletion": true,
-							"parameters": {
-								"EmailTo": "avinash@astix.in,Alok@astix.in,Ashwani@Astix.in",
-								"Subject": "TAS Datafactory Error",
-								"ErrorMessage": "SpDSETeleCallingStores Failed, log on to portal for more details"
 							}
 						}
 					},
@@ -27794,51 +27702,6 @@
 							"referenceName": "PnGDataFoundation",
 							"type": "LinkedServiceReference"
 						}
-					},
-					{
-						"name": "LoadLeapTasIntegration",
-						"type": "SqlServerStoredProcedure",
-						"dependsOn": [],
-						"policy": {
-							"timeout": "7.00:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"storedProcedureName": "[[dbo].[spLoadLeapTasIntegration]"
-						},
-						"linkedServiceName": {
-							"referenceName": "TASDatabase",
-							"type": "LinkedServiceReference"
-						}
-					},
-					{
-						"name": "SpLoadLeapTASIntegration_Error",
-						"type": "ExecutePipeline",
-						"dependsOn": [
-							{
-								"activity": "LoadLeapTasIntegration",
-								"dependencyConditions": [
-									"Failed"
-								]
-							}
-						],
-						"userProperties": [],
-						"typeProperties": {
-							"pipeline": {
-								"referenceName": "Send Notification",
-								"type": "PipelineReference"
-							},
-							"waitOnCompletion": true,
-							"parameters": {
-								"EmailTo": "avinash@astixsolutions.com,alok@astixsolutions.com,ashwani@astixsolutions.com",
-								"Subject": "TAS Datafactory Error",
-								"ErrorMessage": "SpLoadLeapTASIntegration Failed, log on to portal for more details"
-							}
-						}
 					}
 				],
 				"parameters": {
@@ -27857,7 +27720,6 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/linkedServices/TASDatabase')]",
-				"[concat(variables('factoryId'), '/datasets/TASDBConnection')]",
 				"[concat(variables('factoryId'), '/pipelines/Send Notification')]",
 				"[concat(variables('factoryId'), '/datasets/DS_TAS_ProductTransfer')]",
 				"[concat(variables('factoryId'), '/datasets/DS_DF_tmpProductTransferToDF')]",
