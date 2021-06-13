@@ -7,11 +7,11 @@
 			"metadata": "Data Factory name",
 			"defaultValue": "NCS-LEAP-DataMovement"
 		},
-		"CCR_DataProcessingAt10_properties_CCRDataMovement_parameters_windowStart": {
+		"LeapFileLoading_At5_30_properties_LeapDataMovement_WithoutProcessing_parameters_windowStart": {
 			"type": "string",
 			"defaultValue": "@adddays(trigger().scheduledTime, -1)"
 		},
-		"CCR_DataProcessingAt10_properties_CCRDataMovement_parameters_windowEnd": {
+		"LeapFileLoading_At5_30_properties_LeapDataMovement_WithoutProcessing_parameters_windowEnd": {
 			"type": "string",
 			"defaultValue": "@trigger().scheduledTime"
 		},
@@ -29,7 +29,7 @@
 	},
 	"resources": [
 		{
-			"name": "[concat(parameters('factoryName'), '/CCR_DataProcessingAt10')]",
+			"name": "[concat(parameters('factoryName'), '/LeapFileLoading_At5_30')]",
 			"type": "Microsoft.DataFactory/factories/triggers",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -38,12 +38,12 @@
 				"pipelines": [
 					{
 						"pipelineReference": {
-							"referenceName": "CCRDataMovement",
+							"referenceName": "LeapDataMovement_WithoutProcessing",
 							"type": "PipelineReference"
 						},
 						"parameters": {
-							"windowStart": "[parameters('CCR_DataProcessingAt10_properties_CCRDataMovement_parameters_windowStart')]",
-							"windowEnd": "[parameters('CCR_DataProcessingAt10_properties_CCRDataMovement_parameters_windowEnd')]"
+							"windowStart": "[parameters('LeapFileLoading_At5_30_properties_LeapDataMovement_WithoutProcessing_parameters_windowStart')]",
+							"windowEnd": "[parameters('LeapFileLoading_At5_30_properties_LeapDataMovement_WithoutProcessing_parameters_windowEnd')]"
 						}
 					}
 				],
@@ -52,16 +52,44 @@
 					"recurrence": {
 						"frequency": "Day",
 						"interval": 1,
-						"startTime": "2021-06-12T08:18:00",
+						"startTime": "2021-06-12T08:12:00",
 						"timeZone": "India Standard Time",
 						"schedule": {
 							"minutes": [
-								10
+								30
 							],
 							"hours": [
-								22
+								5
 							]
 						}
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/TASLEAPOrder_Error')]",
+			"type": "Microsoft.DataFactory/factories/triggers",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"runtimeState": "Stopped",
+				"pipelines": [
+					{
+						"pipelineReference": {
+							"referenceName": "TASOrderLog",
+							"type": "PipelineReference"
+						},
+						"parameters": {}
+					}
+				],
+				"type": "ScheduleTrigger",
+				"typeProperties": {
+					"recurrence": {
+						"frequency": "Minute",
+						"interval": 15,
+						"startTime": "2021-05-13T17:00:00",
+						"timeZone": "India Standard Time"
 					}
 				}
 			},
