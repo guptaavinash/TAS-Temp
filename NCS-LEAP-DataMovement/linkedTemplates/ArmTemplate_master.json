@@ -272,12 +272,6 @@
 				"parameters": {
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
-					},
-					"CCR_DataProcessingAt10_properties_CCRDataMovement_parameters_windowStart": {
-						"value": "[parameters('CCR_DataProcessingAt10_properties_CCRDataMovement_parameters_windowStart')]"
-					},
-					"CCR_DataProcessingAt10_properties_CCRDataMovement_parameters_windowEnd": {
-						"value": "[parameters('CCR_DataProcessingAt10_properties_CCRDataMovement_parameters_windowEnd')]"
 					}
 				}
 			},
@@ -298,6 +292,12 @@
 				"parameters": {
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
+					},
+					"CCR_DataProcessingAt10_properties_CCRDataMovement_parameters_windowStart": {
+						"value": "[parameters('CCR_DataProcessingAt10_properties_CCRDataMovement_parameters_windowStart')]"
+					},
+					"CCR_DataProcessingAt10_properties_CCRDataMovement_parameters_windowEnd": {
+						"value": "[parameters('CCR_DataProcessingAt10_properties_CCRDataMovement_parameters_windowEnd')]"
 					},
 					"LeapFileLoading_At5_30_properties_LeapDataMovement_WithoutProcessing_parameters_windowStart": {
 						"value": "[parameters('LeapFileLoading_At5_30_properties_LeapDataMovement_WithoutProcessing_parameters_windowStart')]"

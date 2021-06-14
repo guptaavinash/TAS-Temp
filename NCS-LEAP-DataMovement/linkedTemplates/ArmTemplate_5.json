@@ -6196,7 +6196,7 @@
 															},
 															{
 																"source": {
-																	"name": "sales_invoice_no",
+																	"name": "doc_reference_number",
 																	"type": "String"
 																},
 																"sink": {
@@ -6206,7 +6206,7 @@
 															},
 															{
 																"source": {
-																	"name": "sales_invoice_date",
+																	"name": "document_date",
 																	"type": "String"
 																},
 																"sink": {
@@ -6736,7 +6736,7 @@
 															},
 															{
 																"source": {
-																	"name": "sales_invoice_no",
+																	"name": "doc_reference_number",
 																	"type": "String"
 																},
 																"sink": {
@@ -6746,7 +6746,7 @@
 															},
 															{
 																"source": {
-																	"name": "sales_invoice_date",
+																	"name": "document_date",
 																	"type": "String"
 																},
 																"sink": {
