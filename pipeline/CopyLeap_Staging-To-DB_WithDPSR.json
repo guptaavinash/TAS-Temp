@@ -5311,7 +5311,7 @@
 													},
 													{
 														"source": {
-															"name": "class",
+															"name": "class_name",
 															"type": "String"
 														},
 														"sink": {
@@ -5331,7 +5331,7 @@
 													},
 													{
 														"source": {
-															"name": "channel",
+															"name": "channel_name",
 															"type": "String"
 														},
 														"sink": {
@@ -5341,7 +5341,7 @@
 													},
 													{
 														"source": {
-															"name": "subchannel_code",
+															"name": "type_code",
 															"type": "String"
 														},
 														"sink": {
@@ -5351,7 +5351,7 @@
 													},
 													{
 														"source": {
-															"name": "subchannel",
+															"name": "type_name",
 															"type": "String"
 														},
 														"sink": {
@@ -5366,16 +5366,6 @@
 														},
 														"sink": {
 															"name": "mr_account_code",
-															"type": "String"
-														}
-													},
-													{
-														"source": {
-															"name": "mr_account_name",
-															"type": "String"
-														},
-														"sink": {
-															"name": "mr_account_name",
 															"type": "String"
 														}
 													},
@@ -5577,6 +5567,96 @@
 														"sink": {
 															"name": "LastModifiedDatetime",
 															"type": "DateTime"
+														}
+													},
+													{
+														"source": {
+															"name": "distributor_code",
+															"type": "String"
+														},
+														"sink": {
+															"name": "distributor_code",
+															"type": "String"
+														}
+													},
+													{
+														"source": {
+															"name": "payment_mode",
+															"type": "String"
+														},
+														"sink": {
+															"name": "payment_mode",
+															"type": "String"
+														}
+													},
+													{
+														"source": {
+															"name": "retailer_type",
+															"type": "String"
+														},
+														"sink": {
+															"name": "retailer_type",
+															"type": "String"
+														}
+													},
+													{
+														"source": {
+															"name": "store_type",
+															"type": "String"
+														},
+														"sink": {
+															"name": "store_type",
+															"type": "String"
+														}
+													},
+													{
+														"source": {
+															"name": "tbe_name",
+															"type": "String"
+														},
+														"sink": {
+															"name": "tbe_name",
+															"type": "String"
+														}
+													},
+													{
+														"source": {
+															"name": "phonenumber1_verified",
+															"type": "String"
+														},
+														"sink": {
+															"name": "phonenumber1_verified",
+															"type": "String"
+														}
+													},
+													{
+														"source": {
+															"name": "phonenumber1_verifieddate",
+															"type": "String"
+														},
+														"sink": {
+															"name": "phonenumber1_verifieddate",
+															"type": "String"
+														}
+													},
+													{
+														"source": {
+															"name": "phonenumber2_verified",
+															"type": "String"
+														},
+														"sink": {
+															"name": "phonenumber2_verified",
+															"type": "String"
+														}
+													},
+													{
+														"source": {
+															"name": "phonenumber2_verifieddate",
+															"type": "String"
+														},
+														"sink": {
+															"name": "phonenumber2_verifieddate",
+															"type": "String"
 														}
 													}
 												]
