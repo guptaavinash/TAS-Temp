@@ -20787,6 +20787,9 @@
 													"value": "@pipeline().parameters.windowEnd",
 													"type": "Expression"
 												}
+											},
+											"formatSettings": {
+												"type": "BinaryReadSettings"
 											}
 										},
 										"sink": {
@@ -24079,7 +24082,7 @@
 							},
 							"waitOnCompletion": true,
 							"parameters": {
-								"EmailTo": "avinash@astixsolutions.com,alok@astixsolutions.com,ashwani@astixsolutions.com",
+								"EmailTo": "avinash@astix.in,ashwani@Astix.in,alok@astix.in",
 								"Subject": "TAS Datafactory Error",
 								"ErrorMessage": "SpDailyRefreshSchemeData Failed, log on to portal for more details"
 							}
