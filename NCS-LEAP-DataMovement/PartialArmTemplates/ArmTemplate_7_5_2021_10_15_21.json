@@ -1,0 +1,553 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "NCS-LEAP-DataMovement"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "[concat(parameters('factoryName'), '/InvCopy')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"description": "Copy file data from Staging to DB",
+				"activities": [
+					{
+						"name": "GetFileList",
+						"description": "Get the list of file",
+						"type": "GetMetadata",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"dataset": {
+								"referenceName": "LeapStorageSourceDataset",
+								"type": "DatasetReference"
+							},
+							"fieldList": [
+								"childItems",
+								"lastModified",
+								"itemName"
+							],
+							"storeSettings": {
+								"type": "AzureBlobStorageReadSettings",
+								"recursive": true
+							},
+							"formatSettings": {
+								"type": "BinaryReadSettings"
+							}
+						}
+					},
+					{
+						"name": "ForEachFile",
+						"description": "Iterate each file, and move them one by one.",
+						"type": "ForEach",
+						"dependsOn": [
+							{
+								"activity": "FilterFiles",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"userProperties": [],
+						"typeProperties": {
+							"items": {
+								"value": "@activity('FilterFiles').output.value",
+								"type": "Expression"
+							},
+							"batchCount": 20,
+							"activities": [
+								{
+									"name": "SpFileEntry",
+									"type": "SqlServerStoredProcedure",
+									"dependsOn": [],
+									"policy": {
+										"timeout": "7.00:00:00",
+										"retry": 0,
+										"retryIntervalInSeconds": 30,
+										"secureOutput": false,
+										"secureInput": false
+									},
+									"userProperties": [],
+									"typeProperties": {
+										"storedProcedureName": "[[dbo].[SpFileEntry]",
+										"storedProcedureParameters": {
+											"Filename": {
+												"value": {
+													"value": "@item().name",
+													"type": "Expression"
+												},
+												"type": "String"
+											},
+											"FileType": {
+												"value": "1",
+												"type": "Byte"
+											},
+											"LastModifiedDatetime": {
+												"value": {
+													"value": "@activity('GetFileList').output.lastModified",
+													"type": "Expression"
+												},
+												"type": "DateTime"
+											}
+										}
+									},
+									"linkedServiceName": {
+										"referenceName": "TASDatabase",
+										"type": "LinkedServiceReference"
+									}
+								},
+								{
+									"name": "INVVAL_Could1",
+									"type": "IfCondition",
+									"dependsOn": [
+										{
+											"activity": "SpFileEntry",
+											"dependencyConditions": [
+												"Succeeded"
+											]
+										}
+									],
+									"userProperties": [],
+									"typeProperties": {
+										"expression": {
+											"value": "@bool(startswith(item().name,'INVVAL_cloud01_'))",
+											"type": "Expression"
+										},
+										"ifTrueActivities": [
+											{
+												"name": "INVVAL_Cloud1",
+												"description": "Copy a file from the source store to the destination store.",
+												"type": "Copy",
+												"dependsOn": [],
+												"policy": {
+													"timeout": "7.00:00:00",
+													"retry": 0,
+													"retryIntervalInSeconds": 30,
+													"secureOutput": false,
+													"secureInput": false
+												},
+												"userProperties": [],
+												"typeProperties": {
+													"source": {
+														"type": "DelimitedTextSource",
+														"additionalColumns": [
+															{
+																"name": "Filename",
+																"value": {
+																	"value": "@item().name",
+																	"type": "Expression"
+																}
+															},
+															{
+																"name": "LastModifiedDatetime",
+																"value": {
+																	"value": "@activity('GetFileList').output.lastModified",
+																	"type": "Expression"
+																}
+															}
+														],
+														"storeSettings": {
+															"type": "AzureBlobStorageReadSettings",
+															"recursive": true,
+															"wildcardFileName": "INVVAL_cloud01_*",
+															"enablePartitionDiscovery": false
+														},
+														"formatSettings": {
+															"type": "DelimitedTextReadSettings"
+														},
+														"recursive": false
+													},
+													"sink": {
+														"type": "AzureSqlSink"
+													},
+													"enableStaging": false,
+													"dataIntegrationUnits": 2,
+													"translator": {
+														"type": "TabularTranslator",
+														"mappings": [
+															{
+																"source": {
+																	"name": "branch_code",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "branch_code",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"name": "branch_location",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "branch_location",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"name": "warehouse",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "warehouse",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"name": "stock_type",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "stock_type",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"name": "company",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "company",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"name": "category",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "category",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"name": "brand",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "brand",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"name": "brandform",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "brandform",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"name": "subbrand_form",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "subbrand_form",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"name": "sku_code",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "sku_code",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"name": "sku_name",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "sku_name",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"name": "hsn_code",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "hsn_code",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"name": "batch_number",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "batch_number",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"name": "mrp",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "mrp",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"name": "expiry_date",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "expiry_date",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"name": "upc",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "upc",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"name": "dp",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "dp",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"name": "rlp",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "rlp",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"name": "sih_cases",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "sih_cases",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"name": "sih_pieces",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "sih_pieces",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"name": "draft_cases",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "draft_cases",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"name": "draft_pieces",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "draft_pieces",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"name": "value",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "value",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"name": "msu",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "msu",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"name": "stn_intransit",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "stn_intransit",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"name": "stn_intransit_value",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "stn_intransit_value",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"name": "grn_intransit",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "grn_intransit",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"name": "grn_intransit_value",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "grn_intransit_value",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"name": "Filename",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "Filename",
+																	"type": "String"
+																}
+															},
+															{
+																"source": {
+																	"name": "LastModifiedDatetime",
+																	"type": "String"
+																},
+																"sink": {
+																	"name": "LastModifiedDatetime",
+																	"type": "DateTime"
+																}
+															}
+														]
+													}
+												},
+												"inputs": [
+													{
+														"referenceName": "LeapCSV_Staging",
+														"type": "DatasetReference"
+													}
+												],
+												"outputs": [
+													{
+														"referenceName": "INVVAL_table",
+														"type": "DatasetReference"
+													}
+												]
+											}
+										]
+									}
+								}
+							]
+						}
+					},
+					{
+						"name": "FilterFiles",
+						"description": "Only files will be selected, the source-folders will not be selected.",
+						"type": "Filter",
+						"dependsOn": [
+							{
+								"activity": "GetFileList",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"userProperties": [],
+						"typeProperties": {
+							"items": {
+								"value": "@activity('GetFileList').output.childItems",
+								"type": "Expression"
+							},
+							"condition": {
+								"value": "@equals(item().type, 'File')",
+								"type": "Expression"
+							}
+						}
+					}
+				],
+				"parameters": {
+					"SourceStore_Location": {
+						"type": "String"
+					},
+					"SourceStore_Directory": {
+						"type": "String"
+					},
+					"DestinationStore_Location": {
+						"type": "String"
+					},
+					"DestinationStore_Directory": {
+						"type": "String"
+					}
+				},
+				"folder": {
+					"name": "Leap Data Pipeline"
+				},
+				"annotations": [],
+				"lastPublishTime": "2021-01-04T16:41:12Z"
+			},
+			"dependsOn": []
+		}
+	]
+}
