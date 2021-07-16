@@ -55,14 +55,6 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'sasUri' of 'dfdatafoundationLink'"
 		},
-		"CCR_DataProcessingAt10_properties_CCRDataMovement_parameters_windowStart": {
-			"type": "string",
-			"defaultValue": "@adddays(trigger().scheduledTime, -1)"
-		},
-		"CCR_DataProcessingAt10_properties_CCRDataMovement_parameters_windowEnd": {
-			"type": "string",
-			"defaultValue": "@trigger().scheduledTime"
-		},
 		"Everyday_properties_LeapDataMovement_parameters_windowStart": {
 			"type": "string",
 			"defaultValue": "@trigger().outputs.windowStartTime"
@@ -70,14 +62,6 @@
 		"Everyday_properties_LeapDataMovement_parameters_windowEnd": {
 			"type": "string",
 			"defaultValue": "@trigger().outputs.windowEndTime"
-		},
-		"LeapFileLoading_At5_30_properties_LeapDataMovement_WithoutProcessing_parameters_windowStart": {
-			"type": "string",
-			"defaultValue": "@adddays(trigger().scheduledTime, -1)"
-		},
-		"LeapFileLoading_At5_30_properties_LeapDataMovement_WithoutProcessing_parameters_windowEnd": {
-			"type": "string",
-			"defaultValue": "@trigger().scheduledTime"
 		},
 		"containerUri": {
 			"type": "string",
@@ -280,38 +264,6 @@
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
 					},
-					"CCR_DataProcessingAt10_properties_CCRDataMovement_parameters_windowStart": {
-						"value": "[parameters('CCR_DataProcessingAt10_properties_CCRDataMovement_parameters_windowStart')]"
-					},
-					"CCR_DataProcessingAt10_properties_CCRDataMovement_parameters_windowEnd": {
-						"value": "[parameters('CCR_DataProcessingAt10_properties_CCRDataMovement_parameters_windowEnd')]"
-					},
-					"LeapFileLoading_At5_30_properties_LeapDataMovement_WithoutProcessing_parameters_windowStart": {
-						"value": "[parameters('LeapFileLoading_At5_30_properties_LeapDataMovement_WithoutProcessing_parameters_windowStart')]"
-					},
-					"LeapFileLoading_At5_30_properties_LeapDataMovement_WithoutProcessing_parameters_windowEnd": {
-						"value": "[parameters('LeapFileLoading_At5_30_properties_LeapDataMovement_WithoutProcessing_parameters_windowEnd')]"
-					}
-				}
-			},
-			"dependsOn": [
-				"[resourceId('Microsoft.Resources/deployments', 'NCS-LEAP-DataMovement-Temp_ArmTemplate_6')]"
-			]
-		},
-		{
-			"name": "NCS-LEAP-DataMovement-Temp_ArmTemplate_8",
-			"type": "Microsoft.Resources/deployments",
-			"apiVersion": "2018-02-01",
-			"properties": {
-				"mode": "incremental",
-				"templateLink": {
-					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_8.json', parameters('containerSasToken'))]",
-					"contentVersion": "1.0.0.0"
-				},
-				"parameters": {
-					"factoryName": {
-						"value": "[parameters('factoryName')]"
-					},
 					"Everyday_properties_LeapDataMovement_parameters_windowStart": {
 						"value": "[parameters('Everyday_properties_LeapDataMovement_parameters_windowStart')]"
 					},
@@ -321,7 +273,7 @@
 				}
 			},
 			"dependsOn": [
-				"[resourceId('Microsoft.Resources/deployments', 'NCS-LEAP-DataMovement-Temp_ArmTemplate_7')]"
+				"[resourceId('Microsoft.Resources/deployments', 'NCS-LEAP-DataMovement-Temp_ArmTemplate_6')]"
 			]
 		}
 	]
