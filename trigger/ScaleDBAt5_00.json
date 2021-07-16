@@ -2,7 +2,7 @@
 	"name": "ScaleDBAt5_00",
 	"properties": {
 		"annotations": [],
-		"runtimeState": "Stopped",
+		"runtimeState": "Started",
 		"pipelines": [
 			{
 				"pipelineReference": {
