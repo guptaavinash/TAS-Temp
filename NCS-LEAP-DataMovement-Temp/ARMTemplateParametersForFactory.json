@@ -1,0 +1,63 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "NCS-LEAP-DataMovement-Temp"
+		},
+		"AstixLiveServer_connectionString": {
+			"value": ""
+		},
+		"CCRDataStorageLink_connectionString": {
+			"value": ""
+		},
+		"Leap_AmazonS3_secretAccessKey": {
+			"value": ""
+		},
+		"LinkedService_PnGADLS_accountKey": {
+			"value": ""
+		},
+		"NCSdataStorageLink_connectionString": {
+			"value": ""
+		},
+		"PnGDataFoundation_connectionString": {
+			"value": ""
+		},
+		"TASDatabase_connectionString": {
+			"value": ""
+		},
+		"TASDatabase_Temp_connectionString": {
+			"value": ""
+		},
+		"TASDatabase_Test_connectionString": {
+			"value": ""
+		},
+		"Leap_AmazonS3_properties_typeProperties_accessKeyId": {
+			"value": "AKIAW6LTDL6KHDJLBDO2"
+		},
+		"LinkedService_PnGADLS_properties_typeProperties_url": {
+			"value": "https://pngadls.dfs.core.windows.net"
+		},
+		"dfdatafoundationLink_sasUri": {
+			"value": ""
+		},
+		"CCR_DataProcessingAt10_properties_CCRDataMovement_parameters_windowStart": {
+			"value": "@adddays(trigger().scheduledTime, -1)"
+		},
+		"CCR_DataProcessingAt10_properties_CCRDataMovement_parameters_windowEnd": {
+			"value": "@trigger().scheduledTime"
+		},
+		"Everyday_properties_LeapDataMovement_parameters_windowStart": {
+			"value": "@trigger().outputs.windowStartTime"
+		},
+		"Everyday_properties_LeapDataMovement_parameters_windowEnd": {
+			"value": "@trigger().outputs.windowEndTime"
+		},
+		"LeapFileLoading_At5_30_properties_LeapDataMovement_WithoutProcessing_parameters_windowStart": {
+			"value": "@adddays(trigger().scheduledTime, -1)"
+		},
+		"LeapFileLoading_At5_30_properties_LeapDataMovement_WithoutProcessing_parameters_windowEnd": {
+			"value": "@trigger().scheduledTime"
+		}
+	}
+}

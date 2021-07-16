@@ -1,0 +1,328 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "NCS-LEAP-DataMovement-Temp"
+		},
+		"AstixLiveServer_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AstixLiveServer'"
+		},
+		"CCRDataStorageLink_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'CCRDataStorageLink'"
+		},
+		"Leap_AmazonS3_secretAccessKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'secretAccessKey' of 'Leap_AmazonS3'"
+		},
+		"LinkedService_PnGADLS_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LinkedService_PnGADLS'"
+		},
+		"NCSdataStorageLink_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'NCSdataStorageLink'"
+		},
+		"PnGDataFoundation_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'PnGDataFoundation'"
+		},
+		"TASDatabase_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'TASDatabase'"
+		},
+		"TASDatabase_Temp_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'TASDatabase_Temp'"
+		},
+		"TASDatabase_Test_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'TASDatabase_Test'"
+		},
+		"Leap_AmazonS3_properties_typeProperties_accessKeyId": {
+			"type": "string",
+			"defaultValue": "AKIAW6LTDL6KHDJLBDO2"
+		},
+		"LinkedService_PnGADLS_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://pngadls.dfs.core.windows.net"
+		},
+		"dfdatafoundationLink_sasUri": {
+			"type": "secureString",
+			"metadata": "Secure string for 'sasUri' of 'dfdatafoundationLink'"
+		},
+		"CCR_DataProcessingAt10_properties_CCRDataMovement_parameters_windowStart": {
+			"type": "string",
+			"defaultValue": "@adddays(trigger().scheduledTime, -1)"
+		},
+		"CCR_DataProcessingAt10_properties_CCRDataMovement_parameters_windowEnd": {
+			"type": "string",
+			"defaultValue": "@trigger().scheduledTime"
+		},
+		"Everyday_properties_LeapDataMovement_parameters_windowStart": {
+			"type": "string",
+			"defaultValue": "@trigger().outputs.windowStartTime"
+		},
+		"Everyday_properties_LeapDataMovement_parameters_windowEnd": {
+			"type": "string",
+			"defaultValue": "@trigger().outputs.windowEndTime"
+		},
+		"LeapFileLoading_At5_30_properties_LeapDataMovement_WithoutProcessing_parameters_windowStart": {
+			"type": "string",
+			"defaultValue": "@adddays(trigger().scheduledTime, -1)"
+		},
+		"LeapFileLoading_At5_30_properties_LeapDataMovement_WithoutProcessing_parameters_windowEnd": {
+			"type": "string",
+			"defaultValue": "@trigger().scheduledTime"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "NCS-LEAP-DataMovement-Temp_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"AstixLiveServer_connectionString": {
+						"value": "[parameters('AstixLiveServer_connectionString')]"
+					},
+					"CCRDataStorageLink_connectionString": {
+						"value": "[parameters('CCRDataStorageLink_connectionString')]"
+					},
+					"Leap_AmazonS3_secretAccessKey": {
+						"value": "[parameters('Leap_AmazonS3_secretAccessKey')]"
+					},
+					"LinkedService_PnGADLS_accountKey": {
+						"value": "[parameters('LinkedService_PnGADLS_accountKey')]"
+					},
+					"NCSdataStorageLink_connectionString": {
+						"value": "[parameters('NCSdataStorageLink_connectionString')]"
+					},
+					"PnGDataFoundation_connectionString": {
+						"value": "[parameters('PnGDataFoundation_connectionString')]"
+					},
+					"TASDatabase_connectionString": {
+						"value": "[parameters('TASDatabase_connectionString')]"
+					},
+					"TASDatabase_Temp_connectionString": {
+						"value": "[parameters('TASDatabase_Temp_connectionString')]"
+					},
+					"TASDatabase_Test_connectionString": {
+						"value": "[parameters('TASDatabase_Test_connectionString')]"
+					},
+					"Leap_AmazonS3_properties_typeProperties_accessKeyId": {
+						"value": "[parameters('Leap_AmazonS3_properties_typeProperties_accessKeyId')]"
+					},
+					"LinkedService_PnGADLS_properties_typeProperties_url": {
+						"value": "[parameters('LinkedService_PnGADLS_properties_typeProperties_url')]"
+					},
+					"dfdatafoundationLink_sasUri": {
+						"value": "[parameters('dfdatafoundationLink_sasUri')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "NCS-LEAP-DataMovement-Temp_ArmTemplate_1",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_1.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'NCS-LEAP-DataMovement-Temp_ArmTemplate_0')]"
+			]
+		},
+		{
+			"name": "NCS-LEAP-DataMovement-Temp_ArmTemplate_2",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_2.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'NCS-LEAP-DataMovement-Temp_ArmTemplate_1')]"
+			]
+		},
+		{
+			"name": "NCS-LEAP-DataMovement-Temp_ArmTemplate_3",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_3.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'NCS-LEAP-DataMovement-Temp_ArmTemplate_2')]"
+			]
+		},
+		{
+			"name": "NCS-LEAP-DataMovement-Temp_ArmTemplate_4",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_4.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'NCS-LEAP-DataMovement-Temp_ArmTemplate_3')]"
+			]
+		},
+		{
+			"name": "NCS-LEAP-DataMovement-Temp_ArmTemplate_5",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_5.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'NCS-LEAP-DataMovement-Temp_ArmTemplate_4')]"
+			]
+		},
+		{
+			"name": "NCS-LEAP-DataMovement-Temp_ArmTemplate_6",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_6.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'NCS-LEAP-DataMovement-Temp_ArmTemplate_5')]"
+			]
+		},
+		{
+			"name": "NCS-LEAP-DataMovement-Temp_ArmTemplate_7",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_7.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"CCR_DataProcessingAt10_properties_CCRDataMovement_parameters_windowStart": {
+						"value": "[parameters('CCR_DataProcessingAt10_properties_CCRDataMovement_parameters_windowStart')]"
+					},
+					"CCR_DataProcessingAt10_properties_CCRDataMovement_parameters_windowEnd": {
+						"value": "[parameters('CCR_DataProcessingAt10_properties_CCRDataMovement_parameters_windowEnd')]"
+					},
+					"LeapFileLoading_At5_30_properties_LeapDataMovement_WithoutProcessing_parameters_windowStart": {
+						"value": "[parameters('LeapFileLoading_At5_30_properties_LeapDataMovement_WithoutProcessing_parameters_windowStart')]"
+					},
+					"LeapFileLoading_At5_30_properties_LeapDataMovement_WithoutProcessing_parameters_windowEnd": {
+						"value": "[parameters('LeapFileLoading_At5_30_properties_LeapDataMovement_WithoutProcessing_parameters_windowEnd')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'NCS-LEAP-DataMovement-Temp_ArmTemplate_6')]"
+			]
+		},
+		{
+			"name": "NCS-LEAP-DataMovement-Temp_ArmTemplate_8",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_8.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"Everyday_properties_LeapDataMovement_parameters_windowStart": {
+						"value": "[parameters('Everyday_properties_LeapDataMovement_parameters_windowStart')]"
+					},
+					"Everyday_properties_LeapDataMovement_parameters_windowEnd": {
+						"value": "[parameters('Everyday_properties_LeapDataMovement_parameters_windowEnd')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'NCS-LEAP-DataMovement-Temp_ArmTemplate_7')]"
+			]
+		}
+	]
+}
