@@ -6,14 +6,6 @@
 			"type": "string",
 			"metadata": "Data Factory name",
 			"defaultValue": "NCS-LEAP-DataMovement-Temp"
-		},
-		"Everyday_properties_LeapDataMovement_parameters_windowStart": {
-			"type": "string",
-			"defaultValue": "@trigger().outputs.windowStartTime"
-		},
-		"Everyday_properties_LeapDataMovement_parameters_windowEnd": {
-			"type": "string",
-			"defaultValue": "@trigger().outputs.windowEndTime"
 		}
 	},
 	"variables": {
@@ -21,21 +13,17 @@
 	},
 	"resources": [
 		{
-			"name": "[concat(parameters('factoryName'), '/Everyday')]",
+			"name": "[concat(parameters('factoryName'), '/ScaleTrigger_Temp')]",
 			"type": "Microsoft.DataFactory/factories/triggers",
 			"apiVersion": "2018-06-01",
 			"properties": {
 				"annotations": [],
-				"runtimeState": "Stopped",
+				"runtimeState": "Started",
 				"pipelines": [
 					{
 						"pipelineReference": {
-							"referenceName": "LeapDataMovement",
+							"referenceName": "Scaledb",
 							"type": "PipelineReference"
-						},
-						"parameters": {
-							"windowStart": "[parameters('Everyday_properties_LeapDataMovement_parameters_windowStart')]",
-							"windowEnd": "[parameters('Everyday_properties_LeapDataMovement_parameters_windowEnd')]"
 						}
 					}
 				],
@@ -44,17 +32,14 @@
 					"recurrence": {
 						"frequency": "Day",
 						"interval": 1,
-						"startTime": "2020-06-02T01:00:00Z",
-						"timeZone": "UTC",
+						"startTime": "2021-07-19T11:12:00",
+						"timeZone": "India Standard Time",
 						"schedule": {
 							"minutes": [
-								0
+								30
 							],
 							"hours": [
-								1,
-								9,
-								11,
-								17
+								5
 							]
 						}
 					}
