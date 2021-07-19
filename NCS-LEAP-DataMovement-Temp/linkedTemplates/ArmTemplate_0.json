@@ -293,7 +293,7 @@
 						},
 						"userProperties": [],
 						"typeProperties": {
-							"storedProcedureName": "[[dbo].[Scale_GP_Gen5_8]"
+							"storedProcedureName": "[[dbo].[Scale_S4]"
 						},
 						"linkedServiceName": {
 							"referenceName": "TASDatabase",
