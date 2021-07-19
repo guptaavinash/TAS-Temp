@@ -3,18 +3,7 @@
 	"properties": {
 		"annotations": [],
 		"runtimeState": "Started",
-		"pipelines": [
-			{
-				"pipelineReference": {
-					"referenceName": "CCRDataMovement",
-					"type": "PipelineReference"
-				},
-				"parameters": {
-					"windowStart": "@adddays(trigger().scheduledTime, -1)",
-					"windowEnd": "@trigger().scheduledTime"
-				}
-			}
-		],
+		"pipelines": [],
 		"type": "ScheduleTrigger",
 		"typeProperties": {
 			"recurrence": {
