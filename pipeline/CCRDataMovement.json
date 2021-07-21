@@ -1,6 +1,7 @@
 {
 	"name": "CCRDataMovement",
 	"properties": {
+		"description": "For Test",
 		"activities": [
 			{
 				"name": "CopyLeap_Staging-To-DB",
