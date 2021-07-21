@@ -13,6 +13,86 @@
 	},
 	"resources": [
 		{
+			"name": "[concat(parameters('factoryName'), '/DSEM_table')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "TASDatabase",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "DF_DBConnection/LEAP Tables"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [
+					{
+						"name": "branchcode",
+						"type": "nvarchar"
+					},
+					{
+						"name": "branchname",
+						"type": "nvarchar"
+					},
+					{
+						"name": "dsecode",
+						"type": "nvarchar"
+					},
+					{
+						"name": "dsename",
+						"type": "nvarchar"
+					},
+					{
+						"name": "stlcode",
+						"type": "nvarchar"
+					},
+					{
+						"name": "stlname",
+						"type": "nvarchar"
+					},
+					{
+						"name": "becode",
+						"type": "nvarchar"
+					},
+					{
+						"name": "bename",
+						"type": "nvarchar"
+					},
+					{
+						"name": "selected_date",
+						"type": "nvarchar"
+					},
+					{
+						"name": "FileSetId",
+						"type": "bigint",
+						"precision": 19
+					},
+					{
+						"name": "Filename",
+						"type": "varchar"
+					},
+					{
+						"name": "LastModifiedDatetime",
+						"type": "smalldatetime",
+						"precision": 16,
+						"scale": 0
+					},
+					{
+						"name": "TimeStampIns",
+						"type": "smalldatetime",
+						"precision": 16,
+						"scale": 0
+					}
+				],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "tmpRawLEAPTAS_DSEM"
+				}
+			},
+			"dependsOn": []
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/DSE_NCS_table')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
@@ -1503,54 +1583,6 @@
 				"typeProperties": {
 					"schema": "dbo",
 					"table": "tblINITClusterMaster"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/DS_TAS_tblINITFileList')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "TASDatabase",
-					"type": "LinkedServiceReference"
-				},
-				"folder": {
-					"name": "Data Transfer"
-				},
-				"annotations": [],
-				"type": "AzureSqlTable",
-				"schema": [
-					{
-						"name": "INITClusterID",
-						"type": "int",
-						"precision": 10
-					},
-					{
-						"name": "ClusterName",
-						"type": "varchar"
-					},
-					{
-						"name": "LoginID",
-						"type": "int",
-						"precision": 10
-					},
-					{
-						"name": "DateTimeStamp",
-						"type": "datetime",
-						"precision": 23,
-						"scale": 3
-					},
-					{
-						"name": "flgActive",
-						"type": "tinyint",
-						"precision": 3
-					}
-				],
-				"typeProperties": {
-					"schema": "dbo",
-					"table": "tblINITFileList"
 				}
 			},
 			"dependsOn": []
